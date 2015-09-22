@@ -48,18 +48,19 @@
         <appliedProfile href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_UEANMUVlEduH9aQE_pc66w"/>
       </profileApplication>
     </packagedElement>
-    <packagedElement xmi:type="uml:Activity" xmi:id="_YSE8s2E0EeWMfJ_mysFnuA" name="PointSwitchController" classifierBehavior="_YTob4GE0EeWMfJ_mysFnuA" node="__5qGsGE7EeWMfJ_mysFnuA _IVzMkGE8EeWMfJ_mysFnuA _5OsOEGE8EeWMfJ_mysFnuA _9LEkEGE8EeWMfJ_mysFnuA _FE9RcGE9EeWMfJ_mysFnuA" group="_YSFjwGE0EeWMfJ_mysFnuA" partition="_YSFjwGE0EeWMfJ_mysFnuA">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_YSE8s2E0EeWMfJ_mysFnuA" name="PointSwitchController" classifierBehavior="_YTob4GE0EeWMfJ_mysFnuA" node="__5qGsGE7EeWMfJ_mysFnuA _IVzMkGE8EeWMfJ_mysFnuA _5OsOEGE8EeWMfJ_mysFnuA _9LEkEGE8EeWMfJ_mysFnuA _FE9RcGE9EeWMfJ_mysFnuA _7K_QwGE-EeWMfJ_mysFnuA _-uAEgGE-EeWMfJ_mysFnuA" group="_YSFjwGE0EeWMfJ_mysFnuA" partition="_YSFjwGE0EeWMfJ_mysFnuA">
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_YTob4GE0EeWMfJ_mysFnuA" name="PointSwitchController">
         <region xmi:id="_YTpC8GE0EeWMfJ_mysFnuA" name="&lt;region>">
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_YTpC8WE0EeWMfJ_mysFnuA" name="&lt;initial>"/>
         </region>
       </ownedBehavior>
       <ownedOperation xmi:id="_FFCxAGE9EeWMfJ_mysFnuA" name="logAndThrow"/>
+      <ownedOperation xmi:id="_-uEV8GE-EeWMfJ_mysFnuA" name="getInitParameters"/>
       <ownedParameter xmi:id="_5OxGkGE8EeWMfJ_mysFnuA" name="init"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_7-Jd8GE8EeWMfJ_mysFnuA" name="e0" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" target="_IV-ywGE8EeWMfJ_mysFnuA" source="_5OsOEGE8EeWMfJ_mysFnuA"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_DCki8GE9EeWMfJ_mysFnuA" name="e1" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" target="_9LR_cGE8EeWMfJ_mysFnuA" source="_IWAn8GE8EeWMfJ_mysFnuA"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_Onrk4GE9EeWMfJ_mysFnuA" name="e2" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" target="_NYZuUGE9EeWMfJ_mysFnuA" source="_IWDEMGE8EeWMfJ_mysFnuA"/>
-      <group xmi:type="uml:ActivityPartition" xmi:id="_YSFjwGE0EeWMfJ_mysFnuA" name="main" node="__5qGsGE7EeWMfJ_mysFnuA __5ypkGE7EeWMfJ_mysFnuA __5z3sGE7EeWMfJ_mysFnuA __52T8GE7EeWMfJ_mysFnuA __54JIGE7EeWMfJ_mysFnuA __55-UGE7EeWMfJ_mysFnuA _IVzMkGE8EeWMfJ_mysFnuA _IV-ywGE8EeWMfJ_mysFnuA _IWAn8GE8EeWMfJ_mysFnuA _IWDEMGE8EeWMfJ_mysFnuA _IWFgcGE8EeWMfJ_mysFnuA _5OsOEGE8EeWMfJ_mysFnuA _9LEkEGE8EeWMfJ_mysFnuA _9LR_cGE8EeWMfJ_mysFnuA _9LZUMGE8EeWMfJ_mysFnuA _9LdloGE8EeWMfJ_mysFnuA _FE9RcGE9EeWMfJ_mysFnuA _NYZuUGE9EeWMfJ_mysFnuA" edge="_7-Jd8GE8EeWMfJ_mysFnuA _DCki8GE9EeWMfJ_mysFnuA _Onrk4GE9EeWMfJ_mysFnuA"/>
+      <group xmi:type="uml:ActivityPartition" xmi:id="_YSFjwGE0EeWMfJ_mysFnuA" name="main" node="__5qGsGE7EeWMfJ_mysFnuA __5ypkGE7EeWMfJ_mysFnuA __5z3sGE7EeWMfJ_mysFnuA __52T8GE7EeWMfJ_mysFnuA __54JIGE7EeWMfJ_mysFnuA __55-UGE7EeWMfJ_mysFnuA _IVzMkGE8EeWMfJ_mysFnuA _IV-ywGE8EeWMfJ_mysFnuA _IWAn8GE8EeWMfJ_mysFnuA _IWDEMGE8EeWMfJ_mysFnuA _IWFgcGE8EeWMfJ_mysFnuA _5OsOEGE8EeWMfJ_mysFnuA _9LEkEGE8EeWMfJ_mysFnuA _9LR_cGE8EeWMfJ_mysFnuA _9LZUMGE8EeWMfJ_mysFnuA _9LdloGE8EeWMfJ_mysFnuA _FE9RcGE9EeWMfJ_mysFnuA _NYZuUGE9EeWMfJ_mysFnuA _7K_QwGE-EeWMfJ_mysFnuA _-uAEgGE-EeWMfJ_mysFnuA _19KEgGE_EeWMfJ_mysFnuA" edge="_7-Jd8GE8EeWMfJ_mysFnuA _DCki8GE9EeWMfJ_mysFnuA _Onrk4GE9EeWMfJ_mysFnuA"/>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="__5qGsGE7EeWMfJ_mysFnuA" name="b0" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" behavior="_y6jJsF0OEeWb2oHgnb21JQ">
         <argument xmi:id="__5ypkGE7EeWMfJ_mysFnuA" name="init" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_67_54GE7EeWMfJ_mysFnuA"/>
         <argument xmi:id="__5z3sGE7EeWMfJ_mysFnuA" name="stop" inPartition="_YSFjwGE0EeWMfJ_mysFnuA">
@@ -75,7 +76,7 @@
         <argument xmi:id="_IV-ywGE8EeWMfJ_mysFnuA" name="read" incoming="_7-Jd8GE8EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA"/>
         <argument xmi:id="_IWFgcGE8EeWMfJ_mysFnuA" name="read2" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_67_54GE7EeWMfJ_mysFnuA"/>
         <argument xmi:type="uml:ValuePin" xmi:id="_2sbssGE8EeWMfJ_mysFnuA" name="filename" type="_67_54GE7EeWMfJ_mysFnuA">
-          <value xmi:type="uml:LiteralString" xmi:id="_2sewAGE8EeWMfJ_mysFnuA" name="filename" type="_67_54GE7EeWMfJ_mysFnuA" value="../../../pointswitchcontroller.properties"/>
+          <value xmi:type="uml:LiteralString" xmi:id="_3EfgAGE_EeWMfJ_mysFnuA" name="filename" type="_67_54GE7EeWMfJ_mysFnuA" value="pointswitchcontroller.properties"/>
         </argument>
         <result xmi:id="_IWAn8GE8EeWMfJ_mysFnuA" name="ok" outgoing="_DCki8GE9EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_IV4FFGE8EeWMfJ_mysFnuA"/>
         <result xmi:id="_IWDEMGE8EeWMfJ_mysFnuA" name="failed" outgoing="_Onrk4GE9EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_67_54GE7EeWMfJ_mysFnuA"/>
@@ -88,6 +89,10 @@
       </node>
       <node xmi:type="uml:CallOperationAction" xmi:id="_FE9RcGE9EeWMfJ_mysFnuA" name="o0" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" operation="_FFCxAGE9EeWMfJ_mysFnuA">
         <argument xmi:id="_NYZuUGE9EeWMfJ_mysFnuA" name="errorMessage" incoming="_Onrk4GE9EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_67_54GE7EeWMfJ_mysFnuA"/>
+      </node>
+      <node xmi:type="uml:MergeNode" xmi:id="_7K_QwGE-EeWMfJ_mysFnuA" name="m0" inPartition="_YSFjwGE0EeWMfJ_mysFnuA"/>
+      <node xmi:type="uml:CallOperationAction" xmi:id="_-uAEgGE-EeWMfJ_mysFnuA" name="o1" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" operation="_-uEV8GE-EeWMfJ_mysFnuA">
+        <result xmi:id="_19KEgGE_EeWMfJ_mysFnuA" name="" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_67_54GE7EeWMfJ_mysFnuA"/>
       </node>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_f3U20WE0EeWMfJ_mysFnuA" name="lejos.hardware.motor.NXTRegulatedMotor"/>
@@ -224,4 +229,6 @@
   <graphics:Shape xmi:id="_9Lh3EGE8EeWMfJ_mysFnuA" x="216" y="414" width="216" height="108" base_Element="_9LEkEGE8EeWMfJ_mysFnuA"/>
   <graphics:Shape xmi:id="_FFeO0GE9EeWMfJ_mysFnuA" x="342" y="360" width="199" height="55" base_Element="_FE9RcGE9EeWMfJ_mysFnuA" orientation="east"/>
   <graphics:Shape xmi:id="_O-384GE9EeWMfJ_mysFnuA" aux1="0 58 -22 0 " base_Element="_Onrk4GE9EeWMfJ_mysFnuA"/>
+  <graphics:Shape xmi:id="_7LIasGE-EeWMfJ_mysFnuA" x="837" y="189" width="37" height="37" base_Element="_7K_QwGE-EeWMfJ_mysFnuA"/>
+  <graphics:Shape xmi:id="_-uhB4GE-EeWMfJ_mysFnuA" x="756" y="270" width="199" height="55" base_Element="_-uAEgGE-EeWMfJ_mysFnuA"/>
 </xmi:XMI>
