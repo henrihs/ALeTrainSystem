@@ -12,8 +12,8 @@ public class Servo extends Block {
 		motor.setSpeed(1080);
 		motor.rotateTo(state.getAngle());
 	}
-	
-	public SwitchState getState() throws SwitchStateException{
+
+	public SwitchState getState() throws SwitchStateException {
 		int angle = (int) motor.getPosition();
 		switch (Math.abs(angle)) {
 		case 0:
@@ -27,6 +27,22 @@ public class Servo extends Block {
 
 	public void setToInitPosition() {
 		motor.rotateTo(SwitchState.through.getAngle());
+	}
+
+	public NXTRegulatedMotor initializeMotor(String s) throws MotorException {
+		switch (s) {
+		case "A":
+			return lejos.hardware.motor.Motor.A;
+		case "B":
+			return lejos.hardware.motor.Motor.B;
+		case "C":
+			return lejos.hardware.motor.Motor.C;
+		case "D":
+			return lejos.hardware.motor.Motor.D;
+		default:
+			logger.error("Expected motor A through D, got: ".concat(s));
+			throw new MotorException("Expected [A-D], got: ".concat(s));
+		}
 	}
 
 }

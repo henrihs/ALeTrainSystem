@@ -3,6 +3,7 @@
     name="PointSwitch" 
     uuid="_y6jJsF0OEeWb2oHgnb21JQ" 
     status="under construction" 
+    session="multi_session" 
     type="block" 
     >
     <required>
