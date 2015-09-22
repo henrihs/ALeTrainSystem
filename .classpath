@@ -4,5 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="no.ntnu.item.arctis.ARCTIS_RUNTIME_CONTAINER"/>
 	<classpathentry kind="con" path="no.ntnu.item.arctis.ARCTIS_DEPENDENCIES_CONTAINER"/>
+	<classpathentry kind="con" path="org.lejos.ev3.ldt.LEJOS_EV3_LIBRARY_CONTAINER/"/>
+	<classpathentry kind="lib" path="C:/Users/henrihs/aletrain/ntnu.no.aletrainsystem/lib/log4j-1.2.17.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

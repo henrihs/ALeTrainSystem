@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="PointSwitch" 
+    uuid="_y6jJsF0OEeWb2oHgnb21JQ" 
+    status="under construction" 
+    type="block" 
+    >
+    <required>
+        <block name="b0" uuid="_CsvFg10OEeWb2oHgnb21JQ"/>
+    </required>
+</block>
