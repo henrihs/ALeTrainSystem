@@ -1,8 +1,8 @@
-package ntnu.no.aletrainsystem.pointswitch;
+package ntnu.no.aletrainsystem.enums;
 
 public enum SwitchState {
 	
-	through(0), divert(-180);
+	THROUGH(0), DIVERT(-180);
 	
 	private int rotationAngle;
 	private SwitchState(int rotationAngle){

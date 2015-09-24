@@ -1,7 +1,10 @@
 package ntnu.no.aletrainsystem.servo;
 
 import no.ntnu.item.arctis.runtime.Block;
-import ntnu.no.aletrainsystem.pointswitch.SwitchState;
+import ntnu.no.aletrainsystem.enums.MotorPort;
+import ntnu.no.aletrainsystem.enums.SwitchState;
+import ntnu.no.aletrainsystem.exceptions.MotorException;
+import ntnu.no.aletrainsystem.exceptions.SwitchStateException;
 import lejos.hardware.motor.NXTRegulatedMotor;
 
 public class Servo extends Block {
@@ -17,32 +20,20 @@ public class Servo extends Block {
 		int angle = (int) motor.getPosition();
 		switch (Math.abs(angle)) {
 		case 0:
-			return SwitchState.through;
+			return SwitchState.THROUGH;
 		case 180:
-			return SwitchState.divert;
+			return SwitchState.DIVERT;
 		default:
-			throw new SwitchStateException("Angle of servo could not be interpreted");
+			throw new SwitchStateException("Position of servo could not be interpreted");
 		}
 	}
 
 	public void setToInitPosition() {
-		motor.rotateTo(SwitchState.through.getAngle());
+		motor.rotateTo(SwitchState.THROUGH.getAngle());
 	}
 
-	public NXTRegulatedMotor initializeMotor(String s) throws MotorException {
-		switch (s) {
-		case "A":
-			return lejos.hardware.motor.Motor.A;
-		case "B":
-			return lejos.hardware.motor.Motor.B;
-		case "C":
-			return lejos.hardware.motor.Motor.C;
-		case "D":
-			return lejos.hardware.motor.Motor.D;
-		default:
-			logger.error("Expected motor A through D, got: ".concat(s));
-			throw new MotorException("Expected [A-D], got: ".concat(s));
-		}
+	public NXTRegulatedMotor getMotor(MotorPort port) {
+		return port.getMotor();
 	}
 
 }

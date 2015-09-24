@@ -2,19 +2,23 @@ package ntnu.no.aletrainsystem.pointswitch;
 
 import java.util.Date;
 
+import ntnu.no.aletrainsystem.enums.MotorPort;
+import ntnu.no.aletrainsystem.enums.SwitchState;
+import ntnu.no.aletrainsystem.models.PointSwitchId;
+
 public class PointSwitchOrder {
 	private SwitchState switchState;
-	private int pointSwitchId;
+	private PointSwitchId pointSwitchId;
 	private Date timestamp;
-	private String motorPort;
+	private MotorPort motorPort;
 	
-	public PointSwitchOrder(int pointSwitchId, SwitchState switchState){
+	public PointSwitchOrder(PointSwitchId pointSwitchId, SwitchState switchState){
 		this.pointSwitchId = pointSwitchId;
 		this.switchState = switchState;
 		timestamp = new Date();
 	}
 	
-	public int getPointSwitchId(){
+	public PointSwitchId getPointSwitchId(){
 		return pointSwitchId;
 	}
 	
@@ -22,7 +26,7 @@ public class PointSwitchOrder {
 		return switchState;
 	}
 	
-	public String getMotorPort(){
+	public MotorPort getMotorPort(){
 		return motorPort;
 	}
 	
@@ -30,8 +34,10 @@ public class PointSwitchOrder {
 		return timestamp;
 	}
 	
-	protected void setMotorPort(String s){
-		motorPort = s;
+	public void setMotorPort(MotorPort port){
+		if (port == null)
+			throw new NullPointerException();
+		motorPort = port;
 	}
 	
 }
