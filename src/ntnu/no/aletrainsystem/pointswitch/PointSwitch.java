@@ -9,6 +9,7 @@ public class PointSwitch extends Block {
 	public ntnu.no.aletrainsystem.enums.SwitchState finalState;
 	public ntnu.no.aletrainsystem.pointswitch.PointSwitchOrder currentOrder;
 	public ntnu.no.aletrainsystem.enums.SwitchState currentState;
+	public ntnu.no.aletrainsystem.enums.MotorPort motorPort;
 	
 	public static String getAlias(MotorPort port){
 		return port.name();
@@ -24,6 +25,10 @@ public class PointSwitch extends Block {
 
 	public SwitchState getState(PointSwitchOrder order) {
 		return order.getSwitchState();
+	}
+
+	public void onInitialized() {
+		logger.info(String.format("Initialized pointswitch on port %s", motorPort.name()));
 	}
 	
 }

@@ -35,8 +35,6 @@ public class PointSwitchOrder {
 	}
 	
 	public void setMotorPort(MotorPort port){
-		if (port == null)
-			throw new NullPointerException();
 		motorPort = port;
 	}
 	
