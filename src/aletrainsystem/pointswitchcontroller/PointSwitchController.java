@@ -6,8 +6,7 @@ import java.util.Set;
 
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.models.MotorPortMapping;
-import aletrainsystem.models.PointSwitchId;
-import aletrainsystem.pointswitch.PointSwitchOrder;
+import aletrainsystem.models.PointSwitchOrder;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class PointSwitchController extends Block {
@@ -23,7 +22,7 @@ public class PointSwitchController extends Block {
 		Set<MotorPortMapping> mapping = new HashSet<MotorPortMapping>();
 		for (MotorPort motorPort : MotorPort.values()) {
 			if (this.hasProperty(motorPort.getPropertyName())){
-				PointSwitchId id = new PointSwitchId(Integer.valueOf((String) this.getProperty(motorPort.getPropertyName())));
+				int id = Integer.valueOf((String) this.getProperty(motorPort.getPropertyName()));
 				mapping.add(new MotorPortMapping(motorPort, id));
 			}
 		}
@@ -37,7 +36,7 @@ public class PointSwitchController extends Block {
 	public MotorPort getNextMotorPort(Iterator<MotorPortMapping> iterator) {
 		if (iterator.hasNext()){
 			MotorPortMapping next = iterator.next();
-			logger.info(String.format("Initializing pointswitch on port %s with ID %d", next.getPort().name(), next.getId().get()));
+			logger.info(String.format("Initializing pointswitch on port %s with ID %d", next.getPort().name(), next.getPointSwitchId()));
 			return next.getPort();
 		}
 		else return null;
@@ -46,15 +45,15 @@ public class PointSwitchController extends Block {
 	public PointSwitchOrder appendMotorPort(PointSwitchOrder order) {
 		MotorPort port = null;
 		for (MotorPortMapping motorPortMapping : motorPortMappings) {
-			if (motorPortMapping.getId().compareTo(order.getPointSwitchId()) > 0){
+			if (motorPortMapping.getPointSwitchId() == order.getPointSwitchId()){
 				port = motorPortMapping.getPort();
 				order.setMotorPort(port);
-				logger.info(String.format("Routing order with state %s to pointswitch on port %s with ID %d", order.getSwitchState(), port, order.getPointSwitchId().get()));
+				logger.info(String.format("Routing order with state %s to pointswitch on port %s with ID %d", order.getSwitchState(), port, order.getPointSwitchId()));
 				return order;
 			}			
 		}
 		
-		logger.warn("Got order for unmapped PointSwitchId: ".concat(String.valueOf(order.getPointSwitchId().get())));
+		logger.warn("Got order for unmapped PointSwitchId: ".concat(String.valueOf(order.getPointSwitchId())));
 		return order;
 	}
 

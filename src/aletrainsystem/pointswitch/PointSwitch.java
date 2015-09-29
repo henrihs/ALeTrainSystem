@@ -2,12 +2,13 @@ package aletrainsystem.pointswitch;
 
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.enums.SwitchState;
+import aletrainsystem.models.PointSwitchOrder;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class PointSwitch extends Block {
 
 	public aletrainsystem.enums.SwitchState finalState;
-	public aletrainsystem.pointswitch.PointSwitchOrder currentOrder;
+	public aletrainsystem.models.PointSwitchOrder currentOrder;
 	public aletrainsystem.enums.SwitchState currentState;
 	public aletrainsystem.enums.MotorPort motorPort;
 	

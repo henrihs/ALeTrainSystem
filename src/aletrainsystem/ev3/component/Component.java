@@ -2,7 +2,7 @@ package aletrainsystem.ev3.component;
 
 import aletrainsystem.enums.SwitchState;
 import aletrainsystem.models.PointSwitchId;
-import aletrainsystem.pointswitch.PointSwitchOrder;
+import aletrainsystem.models.PointSwitchOrder;
 import lejos.hardware.Key;
 import lejos.hardware.KeyListener;
 import no.ntnu.item.arctis.runtime.Block;
@@ -26,11 +26,11 @@ public class Component extends Block {
 	}
 
 	public PointSwitchOrder newOrderLeft() {
-		return new PointSwitchOrder(new PointSwitchId(i++%4+1), SwitchState.DIVERT);
+		return new PointSwitchOrder((i++%4+1), SwitchState.DIVERT);
 	}
 	
 	public PointSwitchOrder newOrderRight() {
-		return new PointSwitchOrder(new PointSwitchId(j++%4+1), SwitchState.THROUGH);
+		return new PointSwitchOrder((j++%4+1), SwitchState.THROUGH);
 	}
 
 	public void printDone(PointSwitchOrder order) {

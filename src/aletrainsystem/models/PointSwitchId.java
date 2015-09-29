@@ -1,6 +1,6 @@
 package aletrainsystem.models;
 
-public class PointSwitchId implements Comparable<PointSwitchId> {
+public class PointSwitchId {
 	private int id;
 	
 	public PointSwitchId(int id){
@@ -16,10 +16,7 @@ public class PointSwitchId implements Comparable<PointSwitchId> {
 	}
 
 	@Override
-	public int compareTo(PointSwitchId o) {
-		if (o.get() == get()){
-			return 1;
-		}
-		return 0;
+	public boolean equals(Object other){
+		return this.get() == ((PointSwitchId)other).get();
 	}
 }

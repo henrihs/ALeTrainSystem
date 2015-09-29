@@ -18,21 +18,21 @@
             <subvertex xmi:type="uml:State" xmi:id="_qnW9YWaDEeW00cSSV3up0g" name="stopping"/>
           </region>
         </ownedBehavior>
-        <ownedParameter xmi:id="_c55jUGaNEeW00cSSV3up0g" name="init" type="_N1dTwGaNEeW00cSSV3up0g"/>
-        <ownedParameter xmi:id="_c56KYGaNEeW00cSSV3up0g" name="stop" isStream="true"/>
-        <ownedParameter xmi:id="_c56KYWaNEeW00cSSV3up0g" name="stopped" direction="out"/>
-        <ownedParameter xmi:id="_c56KYmaNEeW00cSSV3up0g" name="set" type="_N1kBemaNEeW00cSSV3up0g" isStream="true"/>
-        <ownedParameter xmi:id="_c56KY2aNEeW00cSSV3up0g" name="setComplete" type="_N1kBemaNEeW00cSSV3up0g" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_HRTy0GakEeWq8JNkdzbAOg" name="init" type="_N1dTwGaNEeW00cSSV3up0g"/>
+        <ownedParameter xmi:id="_HRUZ4GakEeWq8JNkdzbAOg" name="stop" isStream="true"/>
+        <ownedParameter xmi:id="_HRUZ4WakEeWq8JNkdzbAOg" name="stopped" direction="out"/>
+        <ownedParameter xmi:id="_HRVA8GakEeWq8JNkdzbAOg" name="set" type="_tTVDUGaiEeWq8JNkdzbAOg" isStream="true"/>
+        <ownedParameter xmi:id="_HRVA8WakEeWq8JNkdzbAOg" name="setComplete" type="_tTVDUGaiEeWq8JNkdzbAOg" direction="out" isStream="true"/>
         <group xmi:type="uml:ActivityPartition" xmi:id="__5si8mE7EeWMfJ_mysFnuA" name="main" node="__5si82E7EeWMfJ_mysFnuA __5tKAGE7EeWMfJ_mysFnuA __5tKA2E7EeWMfJ_mysFnuA __5txEGE7EeWMfJ_mysFnuA __5txEmE7EeWMfJ_mysFnuA"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5si82E7EeWMfJ_mysFnuA" name="init" inPartition="__5si8mE7EeWMfJ_mysFnuA" type="_N1dTwGaNEeW00cSSV3up0g" parameter="_c55jUGaNEeW00cSSV3up0g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5tKAGE7EeWMfJ_mysFnuA" name="stop" inPartition="__5si8mE7EeWMfJ_mysFnuA" parameter="_c56KYGaNEeW00cSSV3up0g">
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5si82E7EeWMfJ_mysFnuA" name="init" inPartition="__5si8mE7EeWMfJ_mysFnuA" type="_N1dTwGaNEeW00cSSV3up0g" parameter="_HRTy0GakEeWq8JNkdzbAOg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5tKAGE7EeWMfJ_mysFnuA" name="stop" inPartition="__5si8mE7EeWMfJ_mysFnuA" parameter="_HRUZ4GakEeWq8JNkdzbAOg">
           <ownedComment xmi:id="__5tKAmE7EeWMfJ_mysFnuA">
             <body>select all</body>
           </ownedComment>
         </node>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5tKA2E7EeWMfJ_mysFnuA" name="stopped" inPartition="__5si8mE7EeWMfJ_mysFnuA" parameter="_c56KYWaNEeW00cSSV3up0g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5txEGE7EeWMfJ_mysFnuA" name="set" inPartition="__5si8mE7EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g" parameter="_c56KYmaNEeW00cSSV3up0g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5txEmE7EeWMfJ_mysFnuA" name="setComplete" inPartition="__5si8mE7EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g" parameter="_c56KY2aNEeW00cSSV3up0g"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5tKA2E7EeWMfJ_mysFnuA" name="stopped" inPartition="__5si8mE7EeWMfJ_mysFnuA" parameter="_HRUZ4WakEeWq8JNkdzbAOg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5txEGE7EeWMfJ_mysFnuA" name="set" inPartition="__5si8mE7EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg" parameter="_HRVA8GakEeWq8JNkdzbAOg"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="__5txEmE7EeWMfJ_mysFnuA" name="setComplete" inPartition="__5si8mE7EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg" parameter="_HRVA8WakEeWq8JNkdzbAOg"/>
       </packagedElement>
       <profileApplication xmi:id="__5uYIWE7EeWMfJ_mysFnuA">
         <eAnnotations xmi:id="__5uYImE7EeWMfJ_mysFnuA" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -71,8 +71,8 @@
       <ownedOperation xmi:id="_sRbwgGLIEeWMfJ_mysFnuA" name="appendMotorPort"/>
       <ownedOperation xmi:id="_zccSgGXlEeW00cSSV3up0g" name="readMotorPortMappings"/>
       <ownedParameter xmi:id="_5OxGkGE8EeWMfJ_mysFnuA" name="init"/>
-      <ownedParameter xmi:id="_f7d5YGLIEeWMfJ_mysFnuA" name="set" type="_N1kBemaNEeW00cSSV3up0g" isStream="true"/>
-      <ownedParameter xmi:id="_kPBZQGLIEeWMfJ_mysFnuA" name="setComplete" type="_N1kBemaNEeW00cSSV3up0g" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_f7d5YGLIEeWMfJ_mysFnuA" name="set" type="_tTVDUGaiEeWq8JNkdzbAOg" isStream="true"/>
+      <ownedParameter xmi:id="_kPBZQGLIEeWMfJ_mysFnuA" name="setComplete" type="_tTVDUGaiEeWq8JNkdzbAOg" direction="out" isStream="true"/>
       <ownedParameter xmi:id="_fP9FgGWtEeW0E9ZRneWTUw" name="stop" isStream="true"/>
       <ownedParameter xmi:id="_09vnoGWtEeW0E9ZRneWTUw" name="stopped" direction="out"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_7-Jd8GE8EeWMfJ_mysFnuA" name="e0" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" target="_IV-ywGE8EeWMfJ_mysFnuA" source="_5OsOEGE8EeWMfJ_mysFnuA"/>
@@ -110,9 +110,9 @@
             <body>select all</body>
           </ownedComment>
         </argument>
-        <argument xmi:id="__54JIGE7EeWMfJ_mysFnuA" name="set" incoming="_0yensGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g"/>
+        <argument xmi:id="__54JIGE7EeWMfJ_mysFnuA" name="set" incoming="_0yensGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg"/>
         <result xmi:id="__52T8GE7EeWMfJ_mysFnuA" name="stopped" outgoing="_2EvE4GWtEeW0E9ZRneWTUw" inPartition="_YSFjwGE0EeWMfJ_mysFnuA"/>
-        <result xmi:id="__55-UGE7EeWMfJ_mysFnuA" name="setComplete" outgoing="_1MrQYGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g"/>
+        <result xmi:id="__55-UGE7EeWMfJ_mysFnuA" name="setComplete" outgoing="_1MrQYGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg"/>
       </node>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_IVzMkGE8EeWMfJ_mysFnuA" name="b1" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" behavior="_cAiZ4aWJEeGtcaXYz8RSig">
         <argument xmi:id="_IV-ywGE8EeWMfJ_mysFnuA" name="read" incoming="_7-Jd8GE8EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA"/>
@@ -149,11 +149,11 @@
       <node xmi:type="uml:ForkNode" xmi:id="_hX1mMGLHEeWMfJ_mysFnuA" name="f0" incoming="_kLG_EGLHEeWMfJ_mysFnuA" outgoing="_1rMKoGLHEeWMfJ_mysFnuA _7N8BgGLHEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA"/>
       <node xmi:type="uml:AddVariableValueAction" xmi:id="_-IwM0GLHEeWMfJ_mysFnuA" name="sv1" incoming="_k3-sIGLHEeWMfJ_mysFnuA" outgoing="_-InC4GLHEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" variable="_A_d7QGLIEeWMfJ_mysFnuA"/>
       <node xmi:type="uml:ReadVariableAction" xmi:id="_Tu09YGLIEeWMfJ_mysFnuA" name="rv0" incoming="_RMnNYGLKEeWMfJ_mysFnuA" outgoing="_TvH4UGLIEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" variable="_A_d7QGLIEeWMfJ_mysFnuA"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_f7UvcGLIEeWMfJ_mysFnuA" name="set" outgoing="_0dG0oGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g" parameter="_f7d5YGLIEeWMfJ_mysFnuA"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_kO3oQGLIEeWMfJ_mysFnuA" name="setComplete" incoming="_1MrQYGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g" parameter="_kPBZQGLIEeWMfJ_mysFnuA"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_f7UvcGLIEeWMfJ_mysFnuA" name="set" outgoing="_0dG0oGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg" parameter="_f7d5YGLIEeWMfJ_mysFnuA"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_kO3oQGLIEeWMfJ_mysFnuA" name="setComplete" incoming="_1MrQYGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg" parameter="_kPBZQGLIEeWMfJ_mysFnuA"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_sRSmkGLIEeWMfJ_mysFnuA" name="o4" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" operation="_sRbwgGLIEeWMfJ_mysFnuA">
-        <argument xmi:id="_NSXlYWLKEeWMfJ_mysFnuA" name="order" incoming="_0dG0oGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g"/>
-        <result xmi:id="_PN2vwGLMEeWMfJ_mysFnuA" name="" outgoing="_0yensGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_N1kBemaNEeW00cSSV3up0g"/>
+        <argument xmi:id="_NSXlYWLKEeWMfJ_mysFnuA" name="order" incoming="_0dG0oGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg"/>
+        <result xmi:id="_PN2vwGLMEeWMfJ_mysFnuA" name="" outgoing="_0yensGLMEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_tTVDUGaiEeWq8JNkdzbAOg"/>
       </node>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_RMw-YWLKEeWMfJ_mysFnuA" name="t0" incoming="_7N8BgGLHEeWMfJ_mysFnuA" outgoing="_RMnNYGLKEeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA">
         <trigger xmi:id="_RMw-YmLKEeWMfJ_mysFnuA" name="t0" event="_RMw-YGLKEeWMfJ_mysFnuA"/>
@@ -263,6 +263,7 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_N1aQcGaNEeW00cSSV3up0g" name="java.util.Iterator&lt;aletrainsystem.models.MotorPortMapping>"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_N1dTwGaNEeW00cSSV3up0g" name="aletrainsystem.enums.MotorPort"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_N1kBemaNEeW00cSSV3up0g" name="aletrainsystem.pointswitch.PointSwitchOrder"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_tTVDUGaiEeWq8JNkdzbAOg" name="aletrainsystem.models.PointSwitchOrder"/>
     <profileApplication xmi:id="_YSE8sWE0EeWMfJ_mysFnuA">
       <eAnnotations xmi:id="_YSE8smE0EeWMfJ_mysFnuA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>

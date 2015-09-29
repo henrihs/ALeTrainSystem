@@ -5,14 +5,14 @@ import aletrainsystem.enums.MotorPort;
 public class MotorPortMapping {
 
 	private MotorPort port;
-	private PointSwitchId id;
+	private int id;
 	
-	public MotorPortMapping(MotorPort motorPort, PointSwitchId id){
+	public MotorPortMapping(MotorPort motorPort, int id){
 		this.port = motorPort;
 		this.id = id;
 	}
 	
-	public PointSwitchId getId() {
+	public int getPointSwitchId() {
 		return id;
 	}
 	

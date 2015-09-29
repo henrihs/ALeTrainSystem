@@ -1,24 +1,23 @@
-package aletrainsystem.pointswitch;
+package aletrainsystem.models;
 
 import java.util.Date;
 
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.enums.SwitchState;
-import aletrainsystem.models.PointSwitchId;
 
 public class PointSwitchOrder {
 	private SwitchState switchState;
-	private PointSwitchId pointSwitchId;
+	private int pointSwitchId;
 	private Date timestamp;
 	private MotorPort motorPort;
 	
-	public PointSwitchOrder(PointSwitchId pointSwitchId, SwitchState switchState){
+	public PointSwitchOrder(int pointSwitchId, SwitchState switchState){
 		this.pointSwitchId = pointSwitchId;
 		this.switchState = switchState;
 		timestamp = new Date();
 	}
 	
-	public PointSwitchId getPointSwitchId(){
+	public int getPointSwitchId(){
 		return pointSwitchId;
 	}
 	

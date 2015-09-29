@@ -75,7 +75,7 @@
       <edge xmi:type="uml:ControlFlow" xmi:id="_tRFaIGEcEeWMfJ_mysFnuA" name="e16" inPartition="_6oGg0GBnEeWy7qLurfNp3g" target="_eTARQGEcEeWMfJ_mysFnuA" source="_gSAnwGBwEeWy7qLurfNp3g"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_tdllEGEcEeWMfJ_mysFnuA" name="e17" inPartition="_6oGg0GBnEeWy7qLurfNp3g" target="_ro0b0GEcEeWMfJ_mysFnuA" source="_gRj70GBwEeWy7qLurfNp3g"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_va8poGEcEeWMfJ_mysFnuA" name="e18" inPartition="_6oGg0GBnEeWy7qLurfNp3g" target="_gR6hIGBwEeWy7qLurfNp3g" source="_XLtecGEcEeWMfJ_mysFnuA"/>
-      <variable xmi:id="_fGYv4GB1EeWMfJ_mysFnuA" name="parameters" type="_ZqBRAGB5EeWMfJ_mysFnuA"/>
+      <variable xmi:id="_fGYv4GB1EeWMfJ_mysFnuA" name="parameters" type="_E24psGaiEeWq8JNkdzbAOg"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_6oGg0GBnEeWy7qLurfNp3g" name="main" node="_7shLMGBnEeWy7qLurfNp3g _GZGpsGBoEeWy7qLurfNp3g _dkjjAGBwEeWy7qLurfNp3g _dkt7EGBwEeWy7qLurfNp3g _dkw-YGBwEeWy7qLurfNp3g _d37yAGBwEeWy7qLurfNp3g _d4ImUGBwEeWy7qLurfNp3g _d4MQsGBwEeWy7qLurfNp3g _d4P7EGBwEeWy7qLurfNp3g _gQ830GBwEeWy7qLurfNp3g _gRRn8GBwEeWy7qLurfNp3g _gRV5YGBwEeWy7qLurfNp3g _gRaK0GBwEeWy7qLurfNp3g _gRfDUGBwEeWy7qLurfNp3g _gRj70GBwEeWy7qLurfNp3g _gRo0UGBwEeWy7qLurfNp3g _gRu68GBwEeWy7qLurfNp3g _gR0agGBwEeWy7qLurfNp3g _gR6hIGBwEeWy7qLurfNp3g _gSAnwGBwEeWy7qLurfNp3g _lp4kAGBzEeWMfJ_mysFnuA _-LSn0GB0EeWMfJ_mysFnuA _D8UyUGB1EeWMfJ_mysFnuA _OEeHAGB1EeWMfJ_mysFnuA _OEVkIGB1EeWMfJ_mysFnuA _ajE8wGB1EeWMfJ_mysFnuA _aixawGB1EeWMfJ_mysFnuA _cIkT4GB1EeWMfJ_mysFnuA _LhgToGB4EeWMfJ_mysFnuA _ZpwyUGB5EeWMfJ_mysFnuA _DeHaEGB6EeWMfJ_mysFnuA _ueHVUGEZEeWMfJ_mysFnuA _ue0f8GEZEeWMfJ_mysFnuA _4XO6EGEaEeWMfJ_mysFnuA _4XVnwGEaEeWMfJ_mysFnuA _Qwm4sGEbEeWMfJ_mysFnuA _XRz74GEbEeWMfJ_mysFnuA _gh0HoGEbEeWMfJ_mysFnuA _l-WBwGEbEeWMfJ_mysFnuA _vhAq0GEbEeWMfJ_mysFnuA _2hdOwWEbEeWMfJ_mysFnuA _Jvyr4GEcEeWMfJ_mysFnuA _PYs1IGEcEeWMfJ_mysFnuA _XLtecGEcEeWMfJ_mysFnuA _eTARQGEcEeWMfJ_mysFnuA _ro0b0GEcEeWMfJ_mysFnuA" edge="_a0qt8GBzEeWMfJ_mysFnuA _cWVVAGBzEeWMfJ_mysFnuA _o-vnAGBzEeWMfJ_mysFnuA _-LIPwGB0EeWMfJ_mysFnuA _cIZ70GB1EeWMfJ_mysFnuA _G1LZUGB2EeWMfJ_mysFnuA _KOih0GB2EeWMfJ_mysFnuA _MHWdkGB2EeWMfJ_mysFnuA _LhWioGB4EeWMfJ_mysFnuA _Uo3jsGEbEeWMfJ_mysFnuA _aHIjMGEbEeWMfJ_mysFnuA _bTWesGEbEeWMfJ_mysFnuA _iB8doGEbEeWMfJ_mysFnuA _ppnZoGEbEeWMfJ_mysFnuA _wpn4sGEbEeWMfJ_mysFnuA _S6F4QGEcEeWMfJ_mysFnuA _tRFaIGEcEeWMfJ_mysFnuA _tdllEGEcEeWMfJ_mysFnuA _va8poGEcEeWMfJ_mysFnuA"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_7shLMGBnEeWy7qLurfNp3g" name="init" outgoing="_a0qt8GBzEeWMfJ_mysFnuA" inPartition="_6oGg0GBnEeWy7qLurfNp3g" type="_ZqBRAGB5EeWMfJ_mysFnuA" parameter="_7sjncGBnEeWy7qLurfNp3g"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_GZGpsGBoEeWy7qLurfNp3g" name="send" outgoing="_cWVVAGBzEeWMfJ_mysFnuA" inPartition="_6oGg0GBnEeWy7qLurfNp3g" type="_Ic_NAGBoEeWy7qLurfNp3g" parameter="_GZKUEGBoEeWy7qLurfNp3g"/>
@@ -113,7 +113,7 @@
       </node>
       <node xmi:type="uml:AddVariableValueAction" xmi:id="_cIkT4GB1EeWMfJ_mysFnuA" name="sv0" incoming="_a0qt8GBzEeWMfJ_mysFnuA" outgoing="_cIZ70GB1EeWMfJ_mysFnuA" inPartition="_6oGg0GBnEeWy7qLurfNp3g" variable="_fGYv4GB1EeWMfJ_mysFnuA"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_LhgToGB4EeWMfJ_mysFnuA" name="o2" inPartition="_6oGg0GBnEeWy7qLurfNp3g" operation="_hvSvAGB5EeWMfJ_mysFnuA">
-        <argument xmi:id="_DeHaEGB6EeWMfJ_mysFnuA" name="params" incoming="_cIZ70GB1EeWMfJ_mysFnuA" inPartition="_6oGg0GBnEeWy7qLurfNp3g" type="_ZqBRAGB5EeWMfJ_mysFnuA"/>
+        <argument xmi:id="_DeHaEGB6EeWMfJ_mysFnuA" name="params" incoming="_cIZ70GB1EeWMfJ_mysFnuA" inPartition="_6oGg0GBnEeWy7qLurfNp3g" type="_E24psGaiEeWq8JNkdzbAOg"/>
         <result xmi:id="_ZpwyUGB5EeWMfJ_mysFnuA" name="" outgoing="_LhWioGB4EeWMfJ_mysFnuA" inPartition="_6oGg0GBnEeWy7qLurfNp3g" type="_gREzoWBwEeWy7qLurfNp3g"/>
       </node>
       <node xmi:type="uml:CallOperationAction" xmi:id="_ueHVUGEZEeWMfJ_mysFnuA" name="o3" inPartition="_6oGg0GBnEeWy7qLurfNp3g" operation="_o0I_oGEaEeWMfJ_mysFnuA">
@@ -248,6 +248,7 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_EXTWwGB4EeWMfJ_mysFnuA" name="java.net.Inet4Address"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ZqBRAGB5EeWMfJ_mysFnuA" name="ntnu.no.aletrainsystem.clientcommunication.ClientParameters"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2hdOwGEbEeWMfJ_mysFnuA" name="java.util.Set"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_E24psGaiEeWq8JNkdzbAOg" name="aletrainsystem.clientcommunication.ClientParameters"/>
     <profileApplication xmi:id="_6oEroWBnEeWy7qLurfNp3g">
       <eAnnotations xmi:id="_6oEromBnEeWy7qLurfNp3g" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>
