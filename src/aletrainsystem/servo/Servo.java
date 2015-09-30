@@ -2,34 +2,34 @@ package aletrainsystem.servo;
 
 import no.ntnu.item.arctis.runtime.Block;
 import aletrainsystem.enums.MotorPort;
-import aletrainsystem.enums.SwitchState;
+import aletrainsystem.enums.IntersectionConnectorEnum;
 import lejos.hardware.motor.NXTRegulatedMotor;
 
 public class Servo extends Block {
 
 	public NXTRegulatedMotor motor;
 
-	public SwitchState rotateServoTo(SwitchState state) {
+	public IntersectionConnectorEnum rotateServoTo(IntersectionConnectorEnum state) {
 		motor.setSpeed(1080);
-		motor.rotateTo(state.getAngle());
+		motor.rotateTo(state.angle());
 		return state;
 	}
 
-	public SwitchState getState() {
+	public IntersectionConnectorEnum getState() {
 		int angle = (int) motor.getPosition();
 		switch (Math.abs(angle)) {
 		case 0:
-			return SwitchState.THROUGH;
+			return IntersectionConnectorEnum.THROUGH;
 		case 180:
-			return SwitchState.DIVERT;
+			return IntersectionConnectorEnum.DIVERT;
 		default:
 			logger.error("Position of servo could not be interpreted");
-			return SwitchState.THROUGH;
+			return IntersectionConnectorEnum.THROUGH;
 		}
 	}
 
 	public void setToInitPosition() {
-		motor.rotateTo(SwitchState.THROUGH.getAngle());
+		motor.rotateTo(IntersectionConnectorEnum.THROUGH.angle());
 	}
 
 	public NXTRegulatedMotor getMotor(MotorPort port) {

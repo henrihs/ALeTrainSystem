@@ -6,6 +6,7 @@ import java.util.Set;
 
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.models.MotorPortMapping;
+import aletrainsystem.models.PointSwitchId;
 import aletrainsystem.models.PointSwitchOrder;
 import no.ntnu.item.arctis.runtime.Block;
 
@@ -23,7 +24,7 @@ public class PointSwitchController extends Block {
 		for (MotorPort motorPort : MotorPort.values()) {
 			if (this.hasProperty(motorPort.getPropertyName())){
 				int id = Integer.valueOf((String) this.getProperty(motorPort.getPropertyName()));
-				mapping.add(new MotorPortMapping(motorPort, id));
+				mapping.add(new MotorPortMapping(motorPort, new PointSwitchId(id)));
 			}
 		}
 		return mapping;
@@ -45,7 +46,7 @@ public class PointSwitchController extends Block {
 	public PointSwitchOrder appendMotorPort(PointSwitchOrder order) {
 		MotorPort port = null;
 		for (MotorPortMapping motorPortMapping : motorPortMappings) {
-			if (motorPortMapping.getPointSwitchId() == order.getPointSwitchId()){
+			if (motorPortMapping.getPointSwitchId().equals(order.getPointSwitchId())){
 				port = motorPortMapping.getPort();
 				order.setMotorPort(port);
 				logger.info(String.format("Routing order with state %s to pointswitch on port %s with ID %d", order.getSwitchState(), port, order.getPointSwitchId()));

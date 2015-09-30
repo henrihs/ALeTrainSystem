@@ -10,7 +10,7 @@ REMOTEPATH = "/home/lejos/programs"
 POINTSWITCHEXECUTABLE = "pointswitchcontroller.jar"
 
 # POINTSWITCHCONTROLLERS = ["192.168.0.191", "192.168.0.190"]
-POINTSWITCHCONTROLLERS = ["192.168.0.191"]
+POINTSWITCHCONTROLLERS = ["192.168.0.101"]
 
 def get_target_dirs():
     target_dirs = []

@@ -1,6 +1,6 @@
 package aletrainsystem.ev3.component;
 
-import aletrainsystem.enums.SwitchState;
+import aletrainsystem.enums.IntersectionConnectorEnum;
 import aletrainsystem.models.PointSwitchId;
 import aletrainsystem.models.PointSwitchOrder;
 import lejos.hardware.Key;
@@ -26,11 +26,11 @@ public class Component extends Block {
 	}
 
 	public PointSwitchOrder newOrderLeft() {
-		return new PointSwitchOrder((i++%4+1), SwitchState.DIVERT);
+		return new PointSwitchOrder(new PointSwitchId(i++%4+1), IntersectionConnectorEnum.DIVERT);
 	}
 	
 	public PointSwitchOrder newOrderRight() {
-		return new PointSwitchOrder((j++%4+1), SwitchState.THROUGH);
+		return new PointSwitchOrder(new PointSwitchId(j++%4+1), IntersectionConnectorEnum.THROUGH);
 	}
 
 	public void printDone(PointSwitchOrder order) {

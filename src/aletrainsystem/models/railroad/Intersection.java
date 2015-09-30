@@ -1,50 +1,75 @@
 package aletrainsystem.models.railroad;
 
-public class Intersection {
-	private RailStretch entry, divert, through;
-	private int pointSwitchId;
-	
-	public Intersection(int pointSwitchId){
-		this.pointSwitchId = pointSwitchId;
-	}
+import java.util.HashMap;
+import java.util.Map;
 
-	public Intersection(int pointSwitchId, RailStretch entry, RailStretch divert, RailStretch through) {
-		this(pointSwitchId);
-		this.setEntry(entry);
-		this.setDivert(divert);
-		this.setThrough(through);
+import aletrainsystem.enums.IntersectionConnectorEnum;
+import aletrainsystem.models.PointSwitchId;
+
+public class Intersection {
+	private Map<IntersectionConnectorEnum, IntersectionConnector> connectors;
+	private PointSwitchId pointSwitchId;
+	
+	public Intersection(PointSwitchId pointSwitchId){
+		this.pointSwitchId = pointSwitchId;
+		connectors = new HashMap<IntersectionConnectorEnum, IntersectionConnector>();
+		for (IntersectionConnectorEnum connectorType : IntersectionConnectorEnum.values()) {
+			addConnector(new IntersectionConnector(this, connectorType));
+		}
 	}
 	
-	public int getPointSwitchId(){
+	public PointSwitchId getPointSwitchId(){
 		return pointSwitchId;
 	}
 	
+	
+	public Map<IntersectionConnectorEnum, IntersectionConnector> getConnectors() {
+		return connectors;
+	}
+	
+	public IntersectionConnector getConnector(IntersectionConnectorEnum type){
+		return connectors.get(type);
+	}
+
+	public void addConnector(IntersectionConnector connector) {
+		connectors.put(connector.getConnectorType(), connector);
+	}
+
 	@Override
 	public boolean equals(Object other){
-		return this.pointSwitchId == ((Intersection)other).getPointSwitchId();
+		return this.pointSwitchId.equals(((Intersection)other).getPointSwitchId());
 	}
+	
+	public class IntersectionConnector {
+		private final Intersection intersection;
+		private final IntersectionConnectorEnum connector;
+		private Track connection;
+	
+		public IntersectionConnector(Intersection intersection, IntersectionConnectorEnum connectorType){
+			this.intersection = intersection;
+			this.connector = connectorType;
+			intersection.addConnector(this);
+		}
+		
+		IntersectionConnector(Intersection intersection, IntersectionConnectorEnum connectorType, Track connection){
+			this(intersection, connectorType);
+			this.connection = connection;
+		}
 
-	public RailStretch getEntry() {
-		return entry;
-	}
+		public Intersection getIntersection() {
+			return intersection;
+		}
 
-	public void setEntry(RailStretch entry) {
-		this.entry = entry;
-	}
+		public IntersectionConnectorEnum getConnectorType() {
+			return connector;
+		}
 
-	public RailStretch getDivert() {
-		return divert;
-	}
+		public Track getConnection() {
+			return connection;
+		}
 
-	public void setDivert(RailStretch divert) {
-		this.divert = divert;
-	}
-
-	public RailStretch getThrough() {
-		return through;
-	}
-
-	public void setThrough(RailStretch through) {
-		this.through = through;
+		public void setConnection(Track connection) {
+			this.connection = connection;
+		}		
 	}
 }
