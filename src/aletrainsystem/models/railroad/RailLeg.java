@@ -2,23 +2,23 @@ package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.TrackStatus;
 import aletrainsystem.models.ConnectorPair;
-import aletrainsystem.models.railroad.Intersection.IntersectionConnector;
+import aletrainsystem.models.railroad.PointSwitch.PointSwitchConnector;
 
-public class Track {
+public class RailLeg {
 	
 	private ConnectorPair connectors;
-	private TrackId trackId;
+	private RailLegId trackId;
 	private int length;
 	private TrackStatus status;
 		
-	public Track(IntersectionConnector connector1, IntersectionConnector connector2, int length){
+	public RailLeg(PointSwitchConnector connector1, PointSwitchConnector connector2, int length){
 		this.length = length;
 		addConnectors(connector1, connector2);
-		trackId = new TrackId(connector1, connector2);
+		trackId = new RailLegId(connector1, connector2);
 		status = TrackStatus.NORMAL;
 	}
 	
-	public TrackId getId() {
+	public RailLegId getId() {
 		return trackId;
 	}
 		
@@ -26,7 +26,7 @@ public class Track {
 		return connectors;
 	}
 	
-	private void addConnectors(IntersectionConnector connector1, IntersectionConnector connector2){
+	private void addConnectors(PointSwitchConnector connector1, PointSwitchConnector connector2){
 		connectors = new ConnectorPair(connector1, connector2);
 	}
 	
@@ -44,11 +44,11 @@ public class Track {
 	
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof Track)) {
+		if (!(other instanceof RailLeg)) {
 			return false;
 		}
 		
-		Track track = (Track) other;
+		RailLeg track = (RailLeg) other;
 		
 		return (trackId.equals(track.trackId) && length == track.getLenght());
 	}

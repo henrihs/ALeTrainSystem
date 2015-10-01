@@ -3,42 +3,42 @@ package aletrainsystem.models.railroad;
 import java.util.HashMap;
 import java.util.Map;
 
-import aletrainsystem.enums.IntersectionConnectorEnum;
+import aletrainsystem.enums.PointSwitchConnectorEnum;
 import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.PointSwitchId;
 
 public class Railroad {
-	private Map<PointSwitchId, Intersection> intersections;
-	private Map<TrackId, Track> tracks;
+	private Map<PointSwitchId, PointSwitch> pointSwitches;
+	private Map<RailLegId, RailLeg> railLegs;
 	
 	public Railroad(){
-		intersections = new HashMap<PointSwitchId, Intersection>();
-		tracks = new HashMap<TrackId, Track>();
+		pointSwitches = new HashMap<PointSwitchId, PointSwitch>();
+		railLegs = new HashMap<RailLegId, RailLeg>();
 	}
 	
-	public void addIntersection(Intersection intersection) {
-		intersections.put(intersection.getPointSwitchId(), intersection);
+	public void addIntersection(PointSwitch intersection) {
+		pointSwitches.put(intersection.getPointSwitchId(), intersection);
 	}
 	
-	public void addTrack(Track track){
-		tracks.put(track.getId(), track);
+	public void addRailLeg(RailLeg track){
+		railLegs.put(track.getId(), track);
 	}
 	
-	public boolean isStationTrack(TrackId trackId) {
-		return isStationTrack(findTrack(trackId));
+	public boolean isStationTrack(RailLegId trackId) {
+		return isStationTrack(findRailLeg(trackId));
 	}
 	
-	public boolean isStationTrack(Track track){
-		if (!tracks.containsKey(track.getId())){
+	public boolean isStationTrack(RailLeg track){
+		if (!railLegs.containsKey(track.getId())){
 			return false;
 		}
 		
 		ConnectorPair connectors = track.getConnectors();
-		if (connectors.getTypeIfIdentical() == IntersectionConnectorEnum.DIVERT){
-			TrackId parallelTrackId = new TrackId(
-					connectors.first().getIntersection().getConnector(IntersectionConnectorEnum.THROUGH), 
-					connectors.second().getIntersection().getConnector(IntersectionConnectorEnum.THROUGH));
-			if (findTrack(parallelTrackId) != null){
+		if (connectors.getTypeIfIdentical() == PointSwitchConnectorEnum.DIVERT){
+			RailLegId parallelTrackId = new RailLegId(
+					connectors.first().getIntersection().getConnector(PointSwitchConnectorEnum.THROUGH), 
+					connectors.second().getIntersection().getConnector(PointSwitchConnectorEnum.THROUGH));
+			if (findRailLeg(parallelTrackId) != null){
 				return true;
 			}
 		}
@@ -46,11 +46,11 @@ public class Railroad {
 		return false;
 	}
 	
-	public Track findTrack(TrackId trackId){
-		return tracks.get(trackId);
+	public RailLeg findRailLeg(RailLegId trackId){
+		return railLegs.get(trackId);
 	}
 	
-	public Intersection findIntersection(PointSwitchId pointSwitchId) {
-		return intersections.get(pointSwitchId);
+	public PointSwitch findIntersection(PointSwitchId pointSwitchId) {
+		return pointSwitches.get(pointSwitchId);
 	}
 }

@@ -3,15 +3,15 @@ package aletrainsystem.models;
 import java.util.Date;
 
 import aletrainsystem.enums.MotorPort;
-import aletrainsystem.enums.IntersectionConnectorEnum;
+import aletrainsystem.enums.PointSwitchConnectorEnum;
 
 public class PointSwitchOrder {
-	private IntersectionConnectorEnum switchState;
+	private PointSwitchConnectorEnum switchState;
 	private PointSwitchId pointSwitchId;
 	private Date timestamp;
 	private MotorPort motorPort;
 	
-	public PointSwitchOrder(PointSwitchId pointSwitchId, IntersectionConnectorEnum switchState){
+	public PointSwitchOrder(PointSwitchId pointSwitchId, PointSwitchConnectorEnum switchState){
 		this.pointSwitchId = pointSwitchId;
 		this.switchState = switchState;
 		timestamp = new Date();
@@ -21,7 +21,7 @@ public class PointSwitchOrder {
 		return pointSwitchId;
 	}
 	
-	public IntersectionConnectorEnum getSwitchState(){
+	public PointSwitchConnectorEnum getSwitchState(){
 		return switchState;
 	}
 	

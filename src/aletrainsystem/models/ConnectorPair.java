@@ -1,15 +1,15 @@
 package aletrainsystem.models;
 
-import aletrainsystem.enums.IntersectionConnectorEnum;
-import aletrainsystem.models.railroad.Intersection.IntersectionConnector;
+import aletrainsystem.enums.PointSwitchConnectorEnum;
+import aletrainsystem.models.railroad.PointSwitch.PointSwitchConnector;
 
-public class ConnectorPair extends Pair<IntersectionConnector> {
+public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnector> {
 
-	public ConnectorPair(IntersectionConnector first, IntersectionConnector second) {
+	public ConnectorPair(PointSwitchConnector first, PointSwitchConnector second) {
 		super(first, second);
 	}
 	
-	public IntersectionConnectorEnum getTypeIfIdentical() {
+	public PointSwitchConnectorEnum getTypeIfIdentical() {
 		if (first.getConnectorType() == second.getConnectorType()) {
 			return first.getConnectorType();
 		}

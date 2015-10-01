@@ -2,19 +2,19 @@ package aletrainsystem.models.railroad;
 
 import java.util.logging.Logger;
 
-import aletrainsystem.models.railroad.Intersection.IntersectionConnector;
+import aletrainsystem.models.railroad.PointSwitch.PointSwitchConnector;
 
-public class TrackId {
+public class RailLegId {
 
 	private static final String PATTERN = "\\d{1,3}[e|t|d]{1}.\\d{1,3}[e|t|d]{1}";
 	private static final String DELIMITER = ".";
 	private final String stringId;
 	
-	public TrackId(String id){
+	public RailLegId(String id){
 		this.stringId = validate(id);
 	}
 
-	public TrackId(IntersectionConnector connector1, IntersectionConnector connector2){
+	public RailLegId(PointSwitchConnector connector1, PointSwitchConnector connector2){
 		String idString = buildOrderedIdString(connector1, connector2);
 		
 		stringId = validate(idString);
@@ -45,7 +45,7 @@ public class TrackId {
 		return stringId;
 	}
 	
-	private static String buildOrderedIdString(IntersectionConnector connector1, IntersectionConnector connector2) {
+	private static String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
 		String idString = "";
 		String idString1 = "";
 		idString1.concat(connector1.getIntersection().getPointSwitchId().toString());
@@ -63,7 +63,7 @@ public class TrackId {
 			idString.concat(idString2).concat(DELIMITER).concat(idString1);
 		}
 		else {
-			Logger.getGlobal().warning(TrackId.class.getName().
+			Logger.getGlobal().warning(RailLegId.class.getName().
 					concat(": TrackId can not consist of two identical pointSwitchIds(".
 					concat(idString1).
 					concat(" and ").
@@ -79,7 +79,7 @@ public class TrackId {
 			s = stringId;
 		}
 		else {
-			Logger.getGlobal().warning(TrackId.class.getName().
+			Logger.getGlobal().warning(RailLegId.class.getName().
 					concat(": TrackId pattern does not match requirements (".
 					concat(stringId).
 					concat(")")));

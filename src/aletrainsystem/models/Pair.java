@@ -1,26 +1,27 @@
 package aletrainsystem.models;
 
-public class Pair<T> {
+public class Pair<T, S> {
 	
-	protected final T first, second;
+	protected final T first;
+	protected final S second;
 	
-	public Pair(T first, T second){
+	public Pair(T first, S second){
 		this.first = first;
 		this.second = second;
 	}
 	
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof Pair<?>)) {
+		if (!(other instanceof Pair<?, ?>)) {
 			return false;
 		}
-		
-		Pair<T> pair = (Pair<T>)other;
+				
+		Pair<T, S> pair = (Pair<T, S>)other;
 		
 		return this.contains(pair.first) && this.contains(pair.second);
 	}
 	
-	public boolean contains(T object){
+	public boolean contains(Object object){
 		return first.equals(object) || second.equals(object);
 	}
 	
@@ -28,7 +29,7 @@ public class Pair<T> {
 		return first;
 	}
 	
-	public T second(){
+	public S second(){
 		return second;
 	}
 }
