@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="C:/Users/henrihs/aletrain/aletrainsystem/lib/jgrapht-0.9.1/jgrapht-demo-0.9.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/henrihs/aletrain/aletrainsystem/lib/jgrapht-0.9.1/jgrapht-ext-0.9.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/henrihs/aletrain/aletrainsystem/lib/jgrapht-0.9.1/jgrapht-ext-0.9.1-uber.jar"/>
+	<classpathentry kind="lib" path="C:/Users/henrihs/aletrain/aletrainsystem/lib/bluebrick4j.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
