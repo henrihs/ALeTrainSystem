@@ -7,7 +7,7 @@
 .backups/
 
 # Package Files #
-*.jar
+
 *.war
 *.ear
 
