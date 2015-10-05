@@ -1,11 +1,13 @@
 package aletrainsystem.models.railroad;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import aletrainsystem.models.railroad.PointSwitch.PointSwitchConnector;
 
 public class RailLegId {
-
+	
+	public final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private static final String PATTERN = "\\d{1,3}[e|t|d]{1}.\\d{1,3}[e|t|d]{1}";
 	private static final String DELIMITER = ".";
 	private final String stringId;
@@ -45,7 +47,7 @@ public class RailLegId {
 		return stringId;
 	}
 	
-	private static String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
+	private String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
 		String idString = "";
 		String idString1 = "";
 		idString1.concat(connector1.getIntersection().getPointSwitchId().toString());
@@ -63,12 +65,11 @@ public class RailLegId {
 			idString.concat(idString2).concat(DELIMITER).concat(idString1);
 		}
 		else {
-			Logger.getGlobal().warning(RailLegId.class.getName().
-					concat(": TrackId can not consist of two identical pointSwitchIds(".
+			logger.warn("TrackId can not consist of two identical pointSwitchIds(".
 					concat(idString1).
 					concat(" and ").
 					concat(idString2).
-					concat(")")));
+					concat(")"));
 		}
 		return idString;
 	}
@@ -79,10 +80,9 @@ public class RailLegId {
 			s = stringId;
 		}
 		else {
-			Logger.getGlobal().warning(RailLegId.class.getName().
-					concat(": TrackId pattern does not match requirements (".
+			logger.warn("TrackId pattern does not match requirements (".
 					concat(stringId).
-					concat(")")));
+					concat(")"));
 		}
 		return s;
 	}

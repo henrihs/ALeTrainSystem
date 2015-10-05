@@ -1,7 +1,7 @@
 package aletrainsystem.models;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.railroad.PointSwitch.PointSwitchConnector;
+import aletrainsystem.models.railroad.PointSwitchConnector;
 
 public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnector> {
 

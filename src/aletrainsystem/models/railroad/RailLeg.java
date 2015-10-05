@@ -2,7 +2,7 @@ package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.TrackStatus;
 import aletrainsystem.models.ConnectorPair;
-import aletrainsystem.models.railroad.PointSwitch.PointSwitchConnector;
+import aletrainsystem.models.railroad.PointSwitchConnector;
 
 public class RailLeg {
 	
@@ -10,6 +10,11 @@ public class RailLeg {
 	private RailLegId trackId;
 	private int length;
 	private TrackStatus status;
+	
+	public RailLeg(PointSwitchConnector connector1) {
+		addConnectors(connector1, null);
+		length = 0;
+	}
 		
 	public RailLeg(PointSwitchConnector connector1, PointSwitchConnector connector2, int length){
 		this.length = length;

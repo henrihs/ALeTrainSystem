@@ -6,6 +6,7 @@ import java.util.Map;
 import aletrainsystem.enums.PointSwitchConnectorEnum;
 import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.PointSwitchId;
+import aletrainsystem.pointswitchcontroller.PointSwitchController;
 
 public class Railroad {
 	private Map<PointSwitchId, PointSwitch> pointSwitches;
@@ -16,8 +17,8 @@ public class Railroad {
 		railLegs = new HashMap<RailLegId, RailLeg>();
 	}
 	
-	public void addIntersection(PointSwitch intersection) {
-		pointSwitches.put(intersection.getPointSwitchId(), intersection);
+	public void addPointSwitch(PointSwitch pointSwitch) {
+		pointSwitches.put(pointSwitch.getPointSwitchId(), pointSwitch);
 	}
 	
 	public void addRailLeg(RailLeg track){
@@ -50,7 +51,15 @@ public class Railroad {
 		return railLegs.get(trackId);
 	}
 	
-	public PointSwitch findIntersection(PointSwitchId pointSwitchId) {
+	public PointSwitch findPointSwitch(PointSwitchId pointSwitchId) {
 		return pointSwitches.get(pointSwitchId);
+	}
+	
+	public PointSwitch findOrAddPointSwitch(String pointSwitchIdAsString) {
+		PointSwitch result = pointSwitches.get(new PointSwitchId(pointSwitchIdAsString));
+		if (result == null) {
+			result = new PointSwitch(new PointSwitchId(pointSwitchIdAsString));
+		}
+		return result;
 	}
 }
