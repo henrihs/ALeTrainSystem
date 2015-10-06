@@ -1,11 +1,11 @@
 package aletrainsystem.models.railroad;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 public class RailLegId {
 	
-	public final Logger logger = LoggerFactory.getLogger(this.getClass());
+//	public final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private static final String PATTERN = "\\d{1,3}[e|t|d]{1}.\\d{1,3}[e|t|d]{1}";
 	private static final String DELIMITER = ".";
 	private final String stringId;
@@ -62,13 +62,13 @@ public class RailLegId {
 				connector2.getIntersection().getPointSwitchId()) < 0) {
 			idString.concat(idString2).concat(DELIMITER).concat(idString1);
 		}
-		else {
-			logger.warn("TrackId can not consist of two identical pointSwitchIds(".
-					concat(idString1).
-					concat(" and ").
-					concat(idString2).
-					concat(")"));
-		}
+//		else {
+//			logger.warn("TrackId can not consist of two identical pointSwitchIds(".
+//					concat(idString1).
+//					concat(" and ").
+//					concat(idString2).
+//					concat(")"));
+//		}
 		return idString;
 	}
 	
@@ -77,11 +77,11 @@ public class RailLegId {
 		if (stringId.matches(PATTERN)) {			
 			s = stringId;
 		}
-		else {
-			logger.warn("TrackId pattern does not match requirements (".
-					concat(stringId).
-					concat(")"));
-		}
+//		else {
+//			logger.warn("TrackId pattern does not match requirements (".
+//					concat(stringId).
+//					concat(")"));
+//		}
 		return s;
 	}
 }

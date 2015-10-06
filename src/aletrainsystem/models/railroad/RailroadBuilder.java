@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import bluebrick4j.conversion.BbmParser;
 import bluebrick4j.model.Brick;
 import bluebrick4j.model.BrickType;
@@ -15,7 +15,7 @@ import bluebrick4j.model.Map;
 
 public class RailroadBuilder {
 
-	public final Logger logger = LoggerFactory.getLogger(this.getClass());
+//	public final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private Railroad railroad;
 	private HashMap<Connexion, Brick> connexionToBrickMapping;
@@ -38,10 +38,13 @@ public class RailroadBuilder {
 		bricks = new ArrayList<>();
 
 		for (Layer layer : map.getLayers().getLayers()) {
-			layer.getBricks().getBricks().forEach((b) -> bricks.add(b));
+			if (layer.getBricks() != null) {
+				layer.getBricks().getBricks().forEach((b) -> bricks.add(b));
+			}
 		}
 
 		connexionToBrickMapping = ConnectionToBrickMapping(bricks);
+		visited = new HashSet<>();
 
 		while (!bricks.isEmpty()){
 			Brick brick = bricks.get(0);
@@ -54,7 +57,7 @@ public class RailroadBuilder {
 			List<Connexion> connections = brick.getConnexions().getConnexions();
 			for (int i = 0; i < 3; i++) {
 				RailLeg nextLeg = new RailLeg(startPoint.getConnector(ConnectorConverter.convert(type).apply(i)));
-				Connexion nextConnection = connections.get(i);
+				Connexion nextConnection = connections.get(i).getLinkedTo();
 				if (!visited.contains(nextConnection)) {
 					RailLeg fullLeg = stepInto(nextConnection, nextLeg);
 					railroad.addRailLeg(fullLeg);
@@ -86,7 +89,10 @@ public class RailroadBuilder {
 		int index = brick.getConnexions().getConnexions().indexOf(connexion);
 		PointSwitchConnector endConnector = endOfLeg.getConnector(ConnectorConverter.convert(brick.getBrickType()).apply(index));
 
-		return new RailLeg(currentLeg.getConnectors().first(), endConnector, currentLeg.getLenght());
+		RailLeg fullLeg = new RailLeg(currentLeg.getConnectors().first(), endConnector, currentLeg.getLenght());
+		currentLeg.getConnectors().first().setConnection(fullLeg);
+		endConnector.setConnection(fullLeg);
+		return fullLeg;
 	}
 
 	private HashMap<Connexion, Brick> ConnectionToBrickMapping(List<Brick> bricks) {
@@ -100,7 +106,7 @@ public class RailroadBuilder {
 		return map;
 	}
 
-//	private Brick getNextConnectedBrick(Brick currentBrick, Brick previousBrick) {
+//	private Connexion getNextConnectedBrick(Brick currentBrick, Brick previousBrick) {
 //		for (Connexion connexion : currentBrick.getConnexions().getConnexions()) {
 //			if (previousBrick.getConnexions().getConnexions().contains(connexion.getLinkedTo())) {
 //				continue;
