@@ -1,15 +1,11 @@
 package aletrainsystem.models.railroad;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Function;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import aletrainsystem.enums.PointSwitchConnectorEnum;
 import bluebrick4j.conversion.BbmParser;
 import bluebrick4j.model.Brick;
 import bluebrick4j.model.BrickType;
@@ -23,16 +19,23 @@ public class RailroadBuilder {
 
 	private Railroad railroad;
 	private HashMap<Connexion, Brick> connexionToBrickMapping;
-	private LinkedList<Brick> bricks;
+	private List<Brick> bricks;
 	private HashSet<Object> visited;
+	private String bbmFilePath;
 
-	public RailroadBuilder(){
+	public RailroadBuilder(String bbmFilePath){
 		railroad = new Railroad();
+		this.bbmFilePath = bbmFilePath;
+	}
+	
+	public Railroad getRailroad() {
+		convertFromBbmFile();
+		return railroad;
 	}
 
-	public Railroad convertFromBbmFile(String bbmFilePath) {
-		Map map = BbmParser.loadMapFromFile("resources/maps/map.bbm");
-		bricks = new LinkedList<>();
+	private void convertFromBbmFile() {
+		Map map = BbmParser.loadMapFromFile(bbmFilePath);
+		bricks = new ArrayList<>();
 
 		for (Layer layer : map.getLayers().getLayers()) {
 			layer.getBricks().getBricks().forEach((b) -> bricks.add(b));
@@ -41,7 +44,7 @@ public class RailroadBuilder {
 		connexionToBrickMapping = ConnectionToBrickMapping(bricks);
 
 		while (!bricks.isEmpty()){
-			Brick brick = bricks.getFirst();
+			Brick brick = bricks.get(0);
 			BrickType type = brick.getBrickType();
 			if (visited.contains(brick) || type == BrickType.CURVED || type == BrickType.STRAIGHT) { 
 				continue; 
@@ -60,18 +63,18 @@ public class RailroadBuilder {
 			
 			bricks.remove(brick);
 		}
-		
-		return railroad;
 	}
 
 	private RailLeg stepInto(Connexion connexion, RailLeg currentLeg) {
 		visited.add(connexion);
 		Brick brick = connexionToBrickMapping.get(connexion);
 		bricks.remove(brick);
+		
 		if (brick.getBrickType() == BrickType.STRAIGHT
 				|| brick.getBrickType() == BrickType.CURVED) {
 			currentLeg.setLenght(currentLeg.getLenght() + 1);
 			bricks.remove(brick);
+			
 			for (Connexion nextConnexion : brick.getConnexions().getConnexions()) {
 				if (nextConnexion != connexion) {
 					return stepInto(nextConnexion.getLinkedTo(), currentLeg);

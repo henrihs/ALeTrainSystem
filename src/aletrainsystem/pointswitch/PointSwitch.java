@@ -28,7 +28,7 @@ public class PointSwitch extends Block {
 		return order.getSwitchState();
 	}
 
-	public void onInitialized() {
+	public void logInitialized() {
 		logger.info(String.format("Initialized pointswitch on port %s", motorPort.name()));
 	}
 	

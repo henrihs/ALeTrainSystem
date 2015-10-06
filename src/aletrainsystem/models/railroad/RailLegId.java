@@ -3,8 +3,6 @@ package aletrainsystem.models.railroad;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aletrainsystem.models.railroad.PointSwitch.PointSwitchConnector;
-
 public class RailLegId {
 	
 	public final Logger logger = LoggerFactory.getLogger(this.getClass());

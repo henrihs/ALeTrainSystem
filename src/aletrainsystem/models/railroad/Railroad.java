@@ -6,22 +6,21 @@ import java.util.Map;
 import aletrainsystem.enums.PointSwitchConnectorEnum;
 import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.PointSwitchId;
-import aletrainsystem.pointswitchcontroller.PointSwitchController;
 
 public class Railroad {
 	private Map<PointSwitchId, PointSwitch> pointSwitches;
 	private Map<RailLegId, RailLeg> railLegs;
 	
-	public Railroad(){
+	protected Railroad(){
 		pointSwitches = new HashMap<PointSwitchId, PointSwitch>();
 		railLegs = new HashMap<RailLegId, RailLeg>();
 	}
 	
-	public void addPointSwitch(PointSwitch pointSwitch) {
+	protected void addPointSwitch(PointSwitch pointSwitch) {
 		pointSwitches.put(pointSwitch.getPointSwitchId(), pointSwitch);
 	}
 	
-	public void addRailLeg(RailLeg track){
+	protected void addRailLeg(RailLeg track){
 		railLegs.put(track.getId(), track);
 	}
 	
