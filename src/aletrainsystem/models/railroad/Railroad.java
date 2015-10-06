@@ -8,20 +8,21 @@ import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.PointSwitchId;
 
 public class Railroad {
-	private Map<PointSwitchId, PointSwitch> pointSwitches;
-	private Map<RailLegId, RailLeg> railLegs;
+	private Map<Integer, PointSwitch> pointSwitches;
+	private Map<String, RailLeg> railLegs;
 	
 	protected Railroad(){
-		pointSwitches = new HashMap<PointSwitchId, PointSwitch>();
-		railLegs = new HashMap<RailLegId, RailLeg>();
+		pointSwitches = new HashMap<Integer, PointSwitch>();
+		railLegs = new HashMap<String, RailLeg>();
 	}
 	
 	protected void addPointSwitch(PointSwitch pointSwitch) {
-		pointSwitches.put(pointSwitch.getPointSwitchId(), pointSwitch);
+		pointSwitches.put(pointSwitch.getPointSwitchId().value(), pointSwitch);
 	}
 	
 	protected void addRailLeg(RailLeg track){
-		railLegs.put(track.getId(), track);
+		railLegs.put(track.getId().value(), track);
+		
 	}
 	
 	public boolean isStationTrack(RailLegId trackId) {
@@ -54,10 +55,11 @@ public class Railroad {
 		return pointSwitches.get(pointSwitchId);
 	}
 	
-	public PointSwitch findOrAddPointSwitch(String pointSwitchIdAsString) {
-		PointSwitch result = pointSwitches.get(new PointSwitchId(pointSwitchIdAsString));
+	public PointSwitch findOrAddPointSwitch(int pointSwitchId) {
+		PointSwitch result = pointSwitches.get(pointSwitchId);
 		if (result == null) {
-			result = new PointSwitch(new PointSwitchId(pointSwitchIdAsString));
+			result = new PointSwitch(new PointSwitchId(pointSwitchId));
+			pointSwitches.put(pointSwitchId, result);
 		}
 		return result;
 	}

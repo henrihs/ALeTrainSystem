@@ -10,11 +10,6 @@ public class RailLeg {
 	private RailLegId trackId;
 	private int length;
 	private TrackStatus status;
-	
-	public RailLeg(PointSwitchConnector connector1) {
-		addConnectors(connector1, null);
-		length = 0;
-	}
 		
 	public RailLeg(PointSwitchConnector connector1, PointSwitchConnector connector2, int length){
 		this.length = length;
@@ -33,6 +28,8 @@ public class RailLeg {
 	
 	private void addConnectors(PointSwitchConnector connector1, PointSwitchConnector connector2){
 		connectors = new ConnectorPair(connector1, connector2);
+		connector1.setConnection(this);
+		connector2.setConnection(this);
 	}
 	
 	public void setLenght(int length){

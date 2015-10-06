@@ -20,7 +20,7 @@ public class RailLegId {
 		stringId = validate(idString);
 	}
 
-	public String get() {
+	public String value() {
 		return stringId;
 	}
 	
