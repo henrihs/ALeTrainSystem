@@ -8,11 +8,11 @@ import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.PointSwitchId;
 
 public class Railroad {
-	private Map<Integer, PointSwitch> pointSwitches;
+	private Map<Long, PointSwitch> pointSwitches;
 	private Map<String, RailLeg> railLegs;
 	
 	protected Railroad(){
-		pointSwitches = new HashMap<Integer, PointSwitch>();
+		pointSwitches = new HashMap<Long, PointSwitch>();
 		railLegs = new HashMap<String, RailLeg>();
 	}
 	
@@ -25,21 +25,25 @@ public class Railroad {
 		
 	}
 	
-	public boolean isStationTrack(RailLegId trackId) {
-		return isStationTrack(findRailLeg(trackId));
+	public boolean isStation(String railLegId) {
+		return isStation(new RailLegId(railLegId));
 	}
 	
-	public boolean isStationTrack(RailLeg track){
-		if (!railLegs.containsKey(track.getId())){
+	public boolean isStation(RailLegId railLegId) {
+		return isStation(findRailLeg(railLegId));
+	}
+	
+	public boolean isStation(RailLeg railLeg){
+		if (railLeg == null || !railLegs.containsKey(railLeg.getId())){
 			return false;
 		}
 		
-		ConnectorPair connectors = track.getConnectors();
-		if (connectors.getTypeIfIdentical() == PointSwitchConnectorEnum.DIVERT){
-			RailLegId parallelTrackId = new RailLegId(
+		ConnectorPair connectors = railLeg.getConnectors();
+		if (connectors.bothOfType(PointSwitchConnectorEnum.DIVERT)){
+			RailLegId parallelRailLegId = new RailLegId(
 					connectors.first().getIntersection().getConnector(PointSwitchConnectorEnum.THROUGH), 
 					connectors.second().getIntersection().getConnector(PointSwitchConnectorEnum.THROUGH));
-			if (findRailLeg(parallelTrackId) != null){
+			if (findRailLeg(parallelRailLegId) != null){
 				return true;
 			}
 		}
@@ -55,7 +59,7 @@ public class Railroad {
 		return pointSwitches.get(pointSwitchId);
 	}
 	
-	public PointSwitch findOrAddPointSwitch(int pointSwitchId) {
+	public PointSwitch findOrAddPointSwitch(long pointSwitchId) {
 		PointSwitch result = pointSwitches.get(pointSwitchId);
 		if (result == null) {
 			result = new PointSwitch(new PointSwitchId(pointSwitchId));

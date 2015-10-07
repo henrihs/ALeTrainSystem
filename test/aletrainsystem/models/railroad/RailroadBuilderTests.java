@@ -5,6 +5,7 @@ public class RailroadBuilderTests {
 		RailroadBuilder builder = new RailroadBuilder("resources/maps/map.bbm");
 		Railroad railroad = builder.getRailroad();
 		
-		railroad.isStationTrack(new RailLegId("lol"));
+		boolean station = railroad.isStation("lol");
+		System.out.println(station);
 	}
 }

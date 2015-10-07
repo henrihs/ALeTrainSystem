@@ -16,5 +16,10 @@ public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnect
 		
 		return null;
 	}
+	
+	public boolean bothOfType(PointSwitchConnectorEnum connectorType) {
+		return first.getConnectorType() == connectorType 
+				&& second.getConnectorType() == connectorType;
+	}
 
 }

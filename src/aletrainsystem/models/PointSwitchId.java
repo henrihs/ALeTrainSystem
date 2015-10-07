@@ -1,9 +1,9 @@
 package aletrainsystem.models;
 
 public class PointSwitchId implements Comparable<PointSwitchId> {
-	private final int id;
+	private final long id;
 	
-	public PointSwitchId(int id){
+	public PointSwitchId(long id){
 		this.id = id;
 	}
 	
@@ -11,7 +11,7 @@ public class PointSwitchId implements Comparable<PointSwitchId> {
 		this.id = Integer.valueOf(id);
 	}
 	
-	public int value(){
+	public long value(){
 		return id;
 	}
 	
@@ -27,6 +27,6 @@ public class PointSwitchId implements Comparable<PointSwitchId> {
 	
 	@Override
 	public int compareTo(PointSwitchId other) {
-		return other.value() - value();
+		return (int) (other.value() - value());
 	}
 }
