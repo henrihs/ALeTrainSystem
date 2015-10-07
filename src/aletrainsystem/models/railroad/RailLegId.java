@@ -6,7 +6,7 @@ package aletrainsystem.models.railroad;
 public class RailLegId {
 	
 //	public final Logger logger = LoggerFactory.getLogger(this.getClass());
-	private static final String PATTERN = "\\d{1,3}[e|t|d]{1}.\\d{1,3}[e|t|d]{1}";
+	private static final String PATTERN = "\\d{1,8}[e|t|d]{1}.\\d{1,8}[e|t|d]{1}";
 	private static final String DELIMITER = ".";
 	private final String stringId;
 	
@@ -46,29 +46,27 @@ public class RailLegId {
 	}
 	
 	private String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
-		String idString = "";
-		String idString1 = "";
-		idString1.concat(connector1.getIntersection().getPointSwitchId().toString());
-		idString1.concat(connector1.getConnectorType().shorthand());
-		String idString2 = "";
-		idString2.concat(connector2.getIntersection().getPointSwitchId().toString());
-		idString2.concat(connector2.getConnectorType().shorthand());
+		String idString1 = connector1.getPointSwitch().getId().toString().
+							concat(connector1.getConnectorType().shorthand());
+		String idString2 = connector2.getPointSwitch().getId().toString().
+						concat(connector2.getConnectorType().shorthand());
+		String idString;
+		if (connector1.getPointSwitch().getId().compareTo(
+				connector2.getPointSwitch().getId()) > 0) {
+			idString = idString1.concat(DELIMITER).concat(idString2);
+		}
+		else if (connector1.getPointSwitch().getId().compareTo(
+				connector2.getPointSwitch().getId()) < 0) {
+			idString = idString2.concat(DELIMITER).concat(idString1);
+		}
+		else {
+			throw new IllegalArgumentException("ID can not consist of two equal ID's: \"".
+												concat(idString1).
+												concat("\" and \"".
+												concat(idString2).
+												concat("\"")));
+		}
 		
-		if (connector1.getIntersection().getPointSwitchId().compareTo(
-				connector2.getIntersection().getPointSwitchId()) > 0) {
-			idString.concat(idString1).concat(DELIMITER).concat(idString2);
-		}
-		else if (connector1.getIntersection().getPointSwitchId().compareTo(
-				connector2.getIntersection().getPointSwitchId()) < 0) {
-			idString.concat(idString2).concat(DELIMITER).concat(idString1);
-		}
-//		else {
-//			logger.warn("TrackId can not consist of two identical pointSwitchIds(".
-//					concat(idString1).
-//					concat(" and ").
-//					concat(idString2).
-//					concat(")"));
-//		}
 		return idString;
 	}
 	
@@ -77,11 +75,9 @@ public class RailLegId {
 		if (stringId.matches(PATTERN)) {			
 			s = stringId;
 		}
-//		else {
-//			logger.warn("TrackId pattern does not match requirements (".
-//					concat(stringId).
-//					concat(")"));
-//		}
+		else {
+			throw new java.lang.IllegalArgumentException("Invalid pattern of ID string given: \"".concat(stringId).concat("\""));
+		}
 		return s;
 	}
 }

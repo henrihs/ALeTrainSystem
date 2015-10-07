@@ -1,7 +1,9 @@
 package aletrainsystem.models.railroad;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
 import aletrainsystem.models.ConnectorPair;
@@ -10,39 +12,58 @@ import aletrainsystem.models.PointSwitchId;
 public class Railroad {
 	private Map<Long, PointSwitch> pointSwitches;
 	private Map<String, RailLeg> railLegs;
+	private Set<PointSwitchConnector> connectedPointSwitchConnector;
+	private PointSwitchConnector railSystemEntryPoint;
 	
 	protected Railroad(){
-		pointSwitches = new HashMap<Long, PointSwitch>();
-		railLegs = new HashMap<String, RailLeg>();
+		pointSwitches = new HashMap<>();
+		railLegs = new HashMap<>();
+		connectedPointSwitchConnector = new HashSet<>();
+	}
+	
+	Map<String, RailLeg> getRailLegs(){
+		return railLegs;
+	}
+	
+	Map<Long, PointSwitch> getPointSwitches(){
+		return pointSwitches;
 	}
 	
 	protected void addPointSwitch(PointSwitch pointSwitch) {
-		pointSwitches.put(pointSwitch.getPointSwitchId().value(), pointSwitch);
+		pointSwitches.put(pointSwitch.getId().value(), pointSwitch);
 	}
 	
-	protected void addRailLeg(RailLeg track){
-		railLegs.put(track.getId().value(), track);
-		
+	protected void addRailLeg(RailLeg railLeg){
+		railLegs.put(railLeg.getId().value(), railLeg);
+		railLeg.getConnectors().forEach(c -> connectedPointSwitchConnector.add(c));
 	}
 	
-	public boolean isStation(String railLegId) {
-		return isStation(new RailLegId(railLegId));
+	protected void setRailSystemEntryPoint(PointSwitchConnector railSystemEntryPoint) {
+		this.railSystemEntryPoint = railSystemEntryPoint;
+	}
+	
+	public PointSwitchConnector getRailSystemEntryPoint() {
+		return railSystemEntryPoint;
 	}
 	
 	public boolean isStation(RailLegId railLegId) {
-		return isStation(findRailLeg(railLegId));
+		return isStation(railLegId.value());
 	}
 	
+	public boolean isStation(String railLegId) {
+		return isStation(findRailLeg(railLegId));
+	}
+		
 	public boolean isStation(RailLeg railLeg){
-		if (railLeg == null || !railLegs.containsKey(railLeg.getId())){
+		if (railLeg == null || !railLegs.containsKey(railLeg.getId().value())){
 			return false;
 		}
 		
 		ConnectorPair connectors = railLeg.getConnectors();
 		if (connectors.bothOfType(PointSwitchConnectorEnum.DIVERT)){
 			RailLegId parallelRailLegId = new RailLegId(
-					connectors.first().getIntersection().getConnector(PointSwitchConnectorEnum.THROUGH), 
-					connectors.second().getIntersection().getConnector(PointSwitchConnectorEnum.THROUGH));
+					connectors.first().getPointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH), 
+					connectors.second().getPointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH));
 			if (findRailLeg(parallelRailLegId) != null){
 				return true;
 			}
@@ -51,12 +72,20 @@ public class Railroad {
 		return false;
 	}
 	
-	public RailLeg findRailLeg(RailLegId trackId){
-		return railLegs.get(trackId);
+	public RailLeg findRailLeg(String railLegId) {
+		return railLegs.get(railLegId);
+	}
+	
+	public RailLeg findRailLeg(RailLegId railLegId){
+		return findRailLeg(railLegId.value());
+	}
+	
+	protected boolean hasRailLegWithConnector(PointSwitchConnector connector) {
+		return connectedPointSwitchConnector.contains(connector);
 	}
 	
 	public PointSwitch findPointSwitch(PointSwitchId pointSwitchId) {
-		return pointSwitches.get(pointSwitchId);
+		return pointSwitches.get(pointSwitchId.value());
 	}
 	
 	public PointSwitch findOrAddPointSwitch(long pointSwitchId) {

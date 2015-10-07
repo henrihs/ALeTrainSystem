@@ -10,6 +10,10 @@ public class RailLeg {
 	private RailLegId trackId;
 	private int length;
 	private TrackStatus status;
+	
+	public RailLeg() {
+		status = TrackStatus.UNDER_CONSTRUCTION; 
+	}
 		
 	public RailLeg(PointSwitchConnector connector1, PointSwitchConnector connector2, int length){
 		this.length = length;
@@ -28,8 +32,13 @@ public class RailLeg {
 	
 	private void addConnectors(PointSwitchConnector connector1, PointSwitchConnector connector2){
 		connectors = new ConnectorPair(connector1, connector2);
-		connector1.setConnection(this);
-		connector2.setConnection(this);
+		if (connector1 != null) {
+			connector1.setConnectedRailLeg(this);
+		}
+		
+		if (connector2 != null) {
+			connector2.setConnectedRailLeg(this);
+		}
 	}
 	
 	public void setLenght(int length){

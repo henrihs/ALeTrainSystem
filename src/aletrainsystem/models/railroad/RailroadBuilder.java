@@ -63,10 +63,15 @@ public class RailroadBuilder {
 			List<Connexion> connections = brick.getConnexions().getConnexions();
 			for (int i = 0; i < 3; i++) {
 				Connexion nextConnection = connections.get(i).getLinkedTo();
-				if (!visited.contains(nextConnection)) {
-					PointSwitchConnector startConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
-					RailLeg fullLeg = stepInto(nextConnection, startConnector, 0);
-					railroad.addRailLeg(fullLeg);
+				PointSwitchConnector startPointConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
+				if (!railroad.hasRailLegWithConnector(startPointConnector)) {
+					RailLeg leg = stepInto(nextConnection, startPointConnector, 0);
+					if (leg != null) {
+						railroad.addRailLeg(leg);
+					}
+					else {
+						railroad.setRailSystemEntryPoint(startPointConnector);
+					}
 				}
 			}
 			
@@ -75,11 +80,15 @@ public class RailroadBuilder {
 	}
 
 	private RailLeg stepInto(Connexion connexion, PointSwitchConnector startConnector, int currentLength) {
+		if (connexion == null) {
+			return null;
+		}
+		
 		visited.add(connexion);
 		Brick brick = connexionToBrickMapping.get(connexion);
 		
-		if (brick.getBrickType() == BrickType.STRAIGHT
-				|| brick.getBrickType() == BrickType.CURVED) {
+		if (brick.getBrickType() != BrickType.LEFTHANDPOINTSWITCH
+				&& brick.getBrickType() != BrickType.RIGHTHANDPOINTSWITCH) {
 			currentLength++;
 			
 			for (Connexion nextConnexion : brick.getConnexions().getConnexions()) {

@@ -18,7 +18,7 @@ public class PointSwitch {
 		}
 	}
 	
-	public PointSwitchId getPointSwitchId(){
+	public PointSwitchId getId(){
 		return pointSwitchId;
 	}
 	
@@ -37,6 +37,6 @@ public class PointSwitch {
 
 	@Override
 	public boolean equals(Object other){
-		return this.pointSwitchId.equals(((PointSwitch)other).getPointSwitchId());
+		return this.pointSwitchId.equals(((PointSwitch)other).getId());
 	}
 }

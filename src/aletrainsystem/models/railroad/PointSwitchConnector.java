@@ -5,20 +5,20 @@ import aletrainsystem.enums.PointSwitchConnectorEnum;
 public class PointSwitchConnector {
 	private final PointSwitch pointSwitch;
 	private final PointSwitchConnectorEnum connector;
-	private RailLeg connection;
+	private RailLeg connectedRailLeg;
 
-	public PointSwitchConnector(PointSwitch intersection, PointSwitchConnectorEnum connectorType){
-		this.pointSwitch = intersection;
+	public PointSwitchConnector(PointSwitch pointSwitch, PointSwitchConnectorEnum connectorType){
+		this.pointSwitch = pointSwitch;
 		this.connector = connectorType;
-		intersection.addConnector(this);
+		pointSwitch.addConnector(this);
 	}
 	
-	PointSwitchConnector(PointSwitch intersection, PointSwitchConnectorEnum connectorType, RailLeg connection){
-		this(intersection, connectorType);
-		this.connection = connection;
+	PointSwitchConnector(PointSwitch pointSwitch, PointSwitchConnectorEnum connectorType, RailLeg connectedRailLeg){
+		this(pointSwitch, connectorType);
+		this.connectedRailLeg = connectedRailLeg;
 	}
 
-	public PointSwitch getIntersection() {
+	public PointSwitch getPointSwitch() {
 		return pointSwitch;
 	}
 
@@ -26,11 +26,11 @@ public class PointSwitchConnector {
 		return connector;
 	}
 
-	public RailLeg getConnection() {
-		return connection;
+	public RailLeg getConnectedRailLeg() {
+		return connectedRailLeg;
 	}
 
-	public void setConnection(RailLeg connection) {
-		this.connection = connection;
+	public void setConnectedRailLeg(RailLeg connection) {
+		this.connectedRailLeg = connection;
 	}		
 }
