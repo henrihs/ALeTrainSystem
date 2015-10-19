@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.PointSwitchId;
 
 public class Railroad {
@@ -14,18 +13,27 @@ public class Railroad {
 	private Map<String, RailLeg> railLegs;
 	private Set<PointSwitchConnector> connectedPointSwitchConnector;
 	private PointSwitchConnector railSystemEntryPoint;
+	private byte[] md5sum;
 	
-	protected Railroad(){
+	protected Railroad() {
 		pointSwitches = new HashMap<>();
 		railLegs = new HashMap<>();
 		connectedPointSwitchConnector = new HashSet<>();
 	}
 	
-	Map<String, RailLeg> getRailLegs(){
+	public byte[] getMd5sum() {
+		return md5sum;
+	}
+	
+	protected void setMd5sum(byte[] md5sum) {
+		this.md5sum = md5sum;
+	}
+	
+	Map<String, RailLeg> getRailLegs() {
 		return railLegs;
 	}
 	
-	Map<Long, PointSwitch> getPointSwitches(){
+	Map<Long, PointSwitch> getPointSwitches() {
 		return pointSwitches;
 	}
 	

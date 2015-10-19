@@ -1,5 +1,12 @@
 package aletrainsystem.models.railroad;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -34,9 +41,37 @@ public class RailroadBuilder {
 
 	private void convertFromBbmFile() {
 		Map map = BbmParser.loadMapFromFile(bbmFilePath);
+		railroad.setMd5sum(getMd5Sum(bbmFilePath));
 		bricks = new ArrayList<>();
 		pointSwitchBricks = new LinkedList<>();
 
+		iterateThroughBricks(map);
+
+		connexionToBrickMapping = ConnectionToBrickMapping(bricks);
+		visited = new HashSet<>();
+
+		followAllPointBrickConnections();
+	}
+	
+	private byte[] getMd5sum(String filePath) {
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try (InputStream is = Files.newInputStream(Paths.get("file.txt"))) {
+		  DigestInputStream dis = new DigestInputStream(is, md);
+		  /* Read stream to EOF as normal... */
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return md.digest();
+	}
+
+	private void iterateThroughBricks(Map map) {
 		for (Layer layer : map.getLayers().getLayers()) {
 			if (layer.getBricks() != null) {
 				layer.getBricks().getBricks().forEach((b) -> {
@@ -48,35 +83,38 @@ public class RailroadBuilder {
 				});
 			}
 		}
+	}
 
-		connexionToBrickMapping = ConnectionToBrickMapping(bricks);
-		visited = new HashSet<>();
-
+	private void followAllPointBrickConnections() {
 		while (!pointSwitchBricks.isEmpty()){
-			Brick brick = pointSwitchBricks.getFirst();
-			BrickType type = brick.getBrickType();
-			if (visited.contains(brick)) { 
+			Brick pointBrick = pointSwitchBricks.getFirst();
+			if (visited.contains(pointBrick)) { 
 				continue; 
 			}
 			
-			PointSwitch startPoint = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
-			List<Connexion> connections = brick.getConnexions().getConnexions();
-			for (int i = 0; i < 3; i++) {
-				Connexion nextConnection = connections.get(i).getLinkedTo();
-				PointSwitchConnector startPointConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
-				if (!railroad.hasRailLegWithConnector(startPointConnector)) {
-					RailLeg leg = stepInto(nextConnection, startPointConnector, 0);
-					if (leg != null) {
-						railroad.addRailLeg(leg);
-					}
-					else {
-						railroad.setRailSystemEntryPoint(startPointConnector);
-					}
-				}
-			}
+			followPointBrickConnections(pointBrick);
 			
 			pointSwitchBricks.removeFirst();
 		}
+	}
+	
+	private void followPointBrickConnections(Brick pointBrick) {
+		PointSwitch startPoint = railroad.findOrAddPointSwitch(Integer.valueOf(pointBrick.getId()));
+		List<Connexion> connections = pointBrick.getConnexions().getConnexions();
+		BrickType type = pointBrick.getBrickType();
+		for (int i = 0; i < 3; i++) {
+			Connexion nextConnection = connections.get(i).getLinkedTo();
+			PointSwitchConnector startPointConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
+			if (!railroad.hasRailLegWithConnector(startPointConnector)) {
+				RailLeg leg = stepInto(nextConnection, startPointConnector, 0);
+				if (leg != null) {
+					railroad.addRailLeg(leg);
+				}
+				else {
+					railroad.setRailSystemEntryPoint(startPointConnector);
+				}
+			}
+		}		
 	}
 
 	private RailLeg stepInto(Connexion connexion, PointSwitchConnector startConnector, int currentLength) {
