@@ -8,5 +8,6 @@
     <required>
         <library path="lib/ev3/dbusjava.jar"/>
         <library path="lib/ev3/ev3classes.jar"/>
+        <block name="b0" uuid="_vCXJcVYREd-4YqQXCGC3ew"/>
     </required>
 </block>
