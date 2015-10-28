@@ -2,8 +2,8 @@ package aletrainsystem.models.railroad;
 
 public class RailroadBuilderTests {
 	public static void main(String[] args) {
-		RailroadBuilder builder = new RailroadBuilder("resources/maps/ngorongoro1.bbm");
-		Railroad railroad = builder.getRailroad();
+//		Railroad railroad = RailroadBuilder.build("resources/maps/ngorongoro1.bbm");
+		Railroad railroad = RailroadBuilder.build("resources/maps/ngorongoro1.map");
 	
 		System.out.println("StartPoint: " + railroad.getRailSystemEntryPoint().getPointSwitch().getId() + "." + railroad.getRailSystemEntryPoint().getConnectorType());
 		for (RailLeg leg : railroad.getRailLegs().values()) {

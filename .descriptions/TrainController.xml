@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="TrainController" 
+    uuid="_CsC_0XNFEeWNAdm5YAmirg" 
+    status="under construction" 
+    type="block" 
+    >
+    <required>
+        <package name="aletrainsystem.traincontroller"/>
+        <block name="b0" uuid="_cAiZ4aWJEeGtcaXYz8RSig"/>
+        <block name="b1" uuid="_fl1soaWJEeGtcaXYz8RSig"/>
+    </required>
+</block>

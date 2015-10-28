@@ -18,10 +18,10 @@ public class Component extends Block {
 	public Component(){
 		i = 0; j = 0;
 		rightButtonListener = new RightKey();
-		leftButtonListener = new LefttKey();
-		downButtonListener = new DownKey();
 		lejos.hardware.Button.RIGHT.addKeyListener(rightButtonListener);
+		leftButtonListener = new LefttKey();
 		lejos.hardware.Button.LEFT.addKeyListener(leftButtonListener);
+		downButtonListener = new DownKey();
 		lejos.hardware.Button.DOWN.addKeyListener(downButtonListener);
 	}
 

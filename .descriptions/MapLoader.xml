@@ -5,4 +5,7 @@
     status="under construction" 
     type="block" 
     >
+    <required>
+        <package name="aletrainsystem.maploader"/>
+    </required>
 </block>

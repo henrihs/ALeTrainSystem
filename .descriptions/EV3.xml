@@ -10,6 +10,10 @@
         <library path="lib/ev3/ev3classes.jar"/>
         <resource path="pointswitchcontroller.properties"/>
         <resource path="src/log4j.properties"/>
+        <package name="aletrainsystem.enums"/>
+        <package name="aletrainsystem.ev3.component"/>
+        <package name="aletrainsystem.models"/>
+        <package name="aletrainsystem.models.railroad"/>
         <block name="b0" uuid="_YSE8s2E0EeWMfJ_mysFnuA"/>
     </required>
 </block>

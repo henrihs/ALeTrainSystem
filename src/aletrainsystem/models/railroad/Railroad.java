@@ -10,6 +10,9 @@ import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.PointSwitchId;
 
 public class Railroad {
+	
+	public static final String PROPERTYNAME = "MAP_FILE";
+	
 	private Map<Long, PointSwitch> pointSwitches;
 	private Map<String, RailLeg> railLegs;
 	private Set<PointSwitchConnector> connectedPointSwitchConnector;

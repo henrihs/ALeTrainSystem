@@ -7,6 +7,10 @@
     type="block" 
     >
     <required>
+        <package name="aletrainsystem.enums"/>
+        <package name="aletrainsystem.models"/>
+        <package name="aletrainsystem.models.railroad"/>
+        <package name="aletrainsystem.pointswitch"/>
         <block name="b0" uuid="_CsvFg10OEeWb2oHgnb21JQ"/>
     </required>
 </block>

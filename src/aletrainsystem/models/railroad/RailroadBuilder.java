@@ -1,12 +1,18 @@
 package aletrainsystem.models.railroad;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-import bluebrick4j.conversion.BbmParser;
+//import bluebrick4j.conversion.BbmParser;
 import bluebrick4j.model.Brick;
 import bluebrick4j.model.BrickType;
 import bluebrick4j.model.Connexion;
@@ -15,43 +21,38 @@ import bluebrick4j.model.Map;
 
 public class RailroadBuilder {
 
-	private Railroad railroad;
-	private HashMap<Connexion, Brick> connexionToBrickMapping;
-	private ArrayList<Brick> bricks;
-	private LinkedList<Brick> pointSwitchBricks;
-	private HashSet<Object> visited;
-	private String bbmFilePath;
-
-	public RailroadBuilder(String bbmFilePath){
-		railroad = new Railroad();
-		this.bbmFilePath = bbmFilePath;
+	public static Railroad build(String filePath){
+		if (filePath.endsWith(".bbm"))
+		{
+//			return convertFromBbmFile(filePath);
+		}
+		else if (filePath.endsWith(".map"))
+		{
+			return convertFromStoredObject(filePath);
+		}
+		return null;
 	}
 	
-	public Railroad getRailroad() {
-		convertFromBbmFile();
-		return railroad;
-	}
-
-	private void convertFromBbmFile() {
-		Map map = BbmParser.loadMapFromFile(bbmFilePath);
-		bricks = new ArrayList<>();
-		pointSwitchBricks = new LinkedList<>();
-
+	private static Railroad convert(Map map) {
+		Railroad railroad = new Railroad();
+		ArrayList<Brick> bricks = new ArrayList<>();
+		LinkedList<Brick> pointSwitchBricks = new LinkedList<>();
+		
 		for (Layer layer : map.getLayers().getLayers()) {
 			if (layer.getBricks() != null) {
 				layer.getBricks().getBricks().forEach((b) -> {
 					bricks.add(b);
 					if (b.getBrickType() == BrickType.LEFTHANDPOINTSWITCH
-						|| b.getBrickType() == BrickType.RIGHTHANDPOINTSWITCH){
+							|| b.getBrickType() == BrickType.RIGHTHANDPOINTSWITCH){
 						pointSwitchBricks.add(b);
 					}
 				});
 			}
 		}
-
-		connexionToBrickMapping = ConnectionToBrickMapping(bricks);
-		visited = new HashSet<>();
-
+		
+		HashMap<Connexion, Brick> connexionToBrickMapping = ConnectionToBrickMapping(bricks);
+		HashSet<Object> visited = new HashSet<>();
+		
 		while (!pointSwitchBricks.isEmpty()){
 			Brick brick = pointSwitchBricks.getFirst();
 			BrickType type = brick.getBrickType();
@@ -65,7 +66,7 @@ public class RailroadBuilder {
 				Connexion nextConnection = connections.get(i).getLinkedTo();
 				PointSwitchConnector startPointConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
 				if (!railroad.hasRailLegWithConnector(startPointConnector)) {
-					RailLeg leg = stepInto(nextConnection, startPointConnector, 0);
+					RailLeg leg = stepInto(railroad, connexionToBrickMapping, nextConnection, startPointConnector, 0, visited);
 					if (leg != null) {
 						railroad.addRailLeg(leg);
 					}
@@ -77,23 +78,42 @@ public class RailroadBuilder {
 			
 			pointSwitchBricks.removeFirst();
 		}
+		
+		return railroad;
 	}
 
-	private RailLeg stepInto(Connexion connexion, PointSwitchConnector startConnector, int currentLength) {
+//	private static Railroad convertFromBbmFile(String bbmFilePath) {
+//		Map map = BbmParser.loadMapFromFile(bbmFilePath);
+//		return convert(map);
+//	}
+	
+	private static Railroad convertFromStoredObject(String mapFilePath) {
+		Map map = loadMapFromStoredFile(mapFilePath);
+		return convert(map);
+	}
+
+	private static RailLeg stepInto(Railroad railroad,
+			HashMap<Connexion, Brick> connexionToBrickMapping, 
+			Connexion connexion, 
+			PointSwitchConnector startConnector, 
+			int currentLength, 
+			HashSet<Object> visited
+			) 
+	{
 		if (connexion == null) {
 			return null;
 		}
-		
+
 		visited.add(connexion);
 		Brick brick = connexionToBrickMapping.get(connexion);
-		
+
 		if (brick.getBrickType() != BrickType.LEFTHANDPOINTSWITCH
 				&& brick.getBrickType() != BrickType.RIGHTHANDPOINTSWITCH) {
 			currentLength++;
-			
+
 			for (Connexion nextConnexion : brick.getConnexions().getConnexions()) {
 				if (nextConnexion != connexion) {
-					return stepInto(nextConnexion.getLinkedTo(), startConnector, currentLength);
+					return stepInto(railroad, connexionToBrickMapping, nextConnexion.getLinkedTo(), startConnector, currentLength, visited);
 				}
 			}
 		}
@@ -106,7 +126,7 @@ public class RailroadBuilder {
 		return fullLeg;
 	}
 
-	private HashMap<Connexion, Brick> ConnectionToBrickMapping(List<Brick> bricks) {
+	private static HashMap<Connexion, Brick> ConnectionToBrickMapping(List<Brick> bricks) {
 		HashMap<Connexion, Brick> map = new HashMap<>();
 		for (Brick brick : bricks) {
 			for (Connexion connection : brick.getConnexions().getConnexions()) {
@@ -115,5 +135,24 @@ public class RailroadBuilder {
 		}
 
 		return map;
+	}
+
+	private static Map loadMapFromStoredFile(String path) {
+		try(
+				InputStream file = new FileInputStream(path);
+				InputStream buffer = new BufferedInputStream(file);
+				ObjectInput input = new ObjectInputStream (buffer);
+				)
+		{
+			return (Map)input.readObject();
+		}
+		catch(ClassNotFoundException ex){
+			ex.printStackTrace();
+		}
+		catch(IOException ex){
+			ex.printStackTrace();
+		}
+		
+		return null;
 	}
 }
