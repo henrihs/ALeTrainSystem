@@ -3,7 +3,6 @@ package aletrainsystem.models.railroad;
 import java.util.ArrayList;
 
 import aletrainsystem.enums.TrackStatus;
-import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.Navigation.Destination;
 import aletrainsystem.models.railroad.PointSwitchConnector;
 

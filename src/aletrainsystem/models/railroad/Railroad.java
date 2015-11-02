@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.RailPartId;
 
 public class Railroad {
