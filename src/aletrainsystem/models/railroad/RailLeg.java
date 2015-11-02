@@ -1,6 +1,7 @@
 package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.TrackStatus;
+import aletrainsystem.models.ConnectorPair;
 import aletrainsystem.models.railroad.PointSwitchConnector;
 
 public class RailLeg {

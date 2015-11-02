@@ -1,9 +1,9 @@
-package aletrainsystem.models.railroad;
+package aletrainsystem.models;
 
 import java.util.Iterator;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.Pair;
+import aletrainsystem.models.railroad.PointSwitchConnector;
 
 public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnector> implements Iterable<PointSwitchConnector> {
 
