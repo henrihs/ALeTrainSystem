@@ -112,7 +112,7 @@ public class RailroadBuilder {
 			for (Connexion nextConnexion : brick.getConnexions().getConnexions()) {
 				if (nextConnexion != connexion) {
 					RailLeg fullLeg = stepInto(railroad, connexionToBrickMapping, nextConnexion.getLinkedTo(), startConnector, visited);
-					fullLeg.addRailPiece(new RailPiece(brick.getId(), fullLeg, brick.getBrickType()));
+					fullLeg.addRailPiece(new RailBrick(brick.getId(), fullLeg, brick.getBrickType()));
 					return fullLeg;
 				}
 			}

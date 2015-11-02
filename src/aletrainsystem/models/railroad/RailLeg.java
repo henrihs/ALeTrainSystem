@@ -11,7 +11,7 @@ public class RailLeg implements Destination {
 	private ConnectorPair connectors;
 	private RailLegId trackId;
 	private int length;
-	private ArrayList<RailPiece> railBricks;
+	private ArrayList<RailBrick> railBricks;
 	private TrackStatus status;
 	
 	public RailLeg() {
@@ -49,7 +49,7 @@ public class RailLeg implements Destination {
 	
 	public int getSleepersCount(){
 		int sleepers = 0;
-		for (RailPiece railBrick : railBricks) {
+		for (RailBrick railBrick : railBricks) {
 			sleepers += railBrick.sleepers();
 		}
 		
@@ -75,7 +75,28 @@ public class RailLeg implements Destination {
 		this.status = status;
 	}
 
-	public void addRailPiece(RailPiece railBrick) {
+	public void addRailPiece(RailBrick railBrick) {
 		railBricks.add(railBrick);
+	}
+	
+	public RailComponent getNextComponent(RailComponent previous, PointSwitch direction) {
+		int previousIndex = railBricks.indexOf(previous);
+		int nextIndex = previousIndex + getRelativeDirection(direction);
+		if (nextIndex >= 0 && nextIndex < railBricks.size()) {
+			return railBricks.get(nextIndex);			
+		}
+		
+		return direction;
+	}
+	
+	private int getRelativeDirection(PointSwitch direction){
+		if (connectors.first().getPointSwitch() == direction){
+			return -1;
+		}
+		else if (connectors.second().getPointSwitch() == direction){
+			return 1;
+		}
+		
+		throw new IllegalArgumentException("Could not relate to PointSwitch with Id " + direction.id().toString());
 	}
 }

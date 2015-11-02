@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.RailPartId;
+import aletrainsystem.models.RailComponentId;
 
-public class PointSwitch implements RailPart {
+public class PointSwitch implements RailComponent {
 	private Map<PointSwitchConnectorEnum, PointSwitchConnector> connectors;
-	private RailPartId pointSwitchId;
+	private RailComponentId pointSwitchId;
 	
-	public PointSwitch(RailPartId pointSwitchId){
+	public PointSwitch(RailComponentId pointSwitchId){
 		this.pointSwitchId = pointSwitchId;
 		connectors = new HashMap<PointSwitchConnectorEnum, PointSwitchConnector>();
 		for (PointSwitchConnectorEnum connectorType : PointSwitchConnectorEnum.values()) {
@@ -18,7 +18,7 @@ public class PointSwitch implements RailPart {
 		}
 	}
 	
-	public RailPartId id(){
+	public RailComponentId id(){
 		return pointSwitchId;
 	}
 	

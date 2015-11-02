@@ -7,17 +7,17 @@ import aletrainsystem.enums.PointSwitchConnectorEnum;
 
 public class PointSwitchOrder {
 	private PointSwitchConnectorEnum switchState;
-	private RailPartId pointSwitchId;
+	private RailComponentId pointSwitchId;
 	private Date timestamp;
 	private MotorPort motorPort;
 	
-	public PointSwitchOrder(RailPartId pointSwitchId, PointSwitchConnectorEnum switchState){
+	public PointSwitchOrder(RailComponentId pointSwitchId, PointSwitchConnectorEnum switchState){
 		this.pointSwitchId = pointSwitchId;
 		this.switchState = switchState;
 		timestamp = new Date();
 	}
 	
-	public RailPartId getPointSwitchId(){
+	public RailComponentId getPointSwitchId(){
 		return pointSwitchId;
 	}
 	

@@ -1,7 +1,7 @@
 package aletrainsystem.routecontroller;
 
 import aletrainsystem.enums.SleeperColor;
-import aletrainsystem.models.RailPartId;
+import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.Navigation.Destination;
 import aletrainsystem.models.Navigation.Position;
 import aletrainsystem.models.Navigation.Route;
@@ -14,7 +14,7 @@ public class RouteController extends Block {
 	public Railroad railroad;
 	public Destination nextDestination;
 	private Position currentPosition;
-	private RailPartId direction;
+	private RailComponentId direction;
 	private int sleeperMod;
 
 	public void initialize(Railroad r) {

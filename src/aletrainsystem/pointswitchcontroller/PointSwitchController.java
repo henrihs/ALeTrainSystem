@@ -6,7 +6,7 @@ import java.util.Set;
 
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.models.MotorPortMapping;
-import aletrainsystem.models.RailPartId;
+import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.PointSwitchOrder;
 import no.ntnu.item.arctis.runtime.Block;
 
@@ -24,7 +24,7 @@ public class PointSwitchController extends Block {
 		for (MotorPort motorPort : MotorPort.values()) {
 			if (this.hasProperty(motorPort.getPropertyName())){
 				int id = Integer.valueOf((String) this.getProperty(motorPort.getPropertyName()));
-				mapping.add(new MotorPortMapping(motorPort, new RailPartId(id)));
+				mapping.add(new MotorPortMapping(motorPort, new RailComponentId(id)));
 			}
 		}
 		return mapping;

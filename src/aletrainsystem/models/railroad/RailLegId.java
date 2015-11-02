@@ -11,13 +11,14 @@ public class RailLegId {
 	private final String stringId;
 	
 	public RailLegId(String id){
-		this.stringId = validate(id);
+		if (validate(id))
+			stringId = id;
+		else 
+			throw new IllegalArgumentException("Illegal format: ".concat(id));
 	}
 
 	public RailLegId(PointSwitchConnector connector1, PointSwitchConnector connector2){
-		String idString = buildOrderedIdString(connector1, connector2);
-		
-		stringId = validate(idString);
+		this(buildOrderedIdString(connector1, connector2));
 	}
 
 	public String value() {
@@ -45,7 +46,7 @@ public class RailLegId {
 		return stringId;
 	}
 	
-	private String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
+	private static String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
 		String idString1 = connector1.getPointSwitch().id().toString().
 							concat(connector1.getConnectorType().shorthand());
 		String idString2 = connector2.getPointSwitch().id().toString().
@@ -70,14 +71,12 @@ public class RailLegId {
 		return idString;
 	}
 	
-	private String validate(String stringId) {
-		String s = "";
+	private boolean validate(String stringId) {
 		if (stringId.matches(PATTERN)) {			
-			s = stringId;
+			return true;
 		}
 		else {
-			throw new java.lang.IllegalArgumentException("Invalid pattern of ID string given: \"".concat(stringId).concat("\""));
+			return false;
 		}
-		return s;
 	}
 }

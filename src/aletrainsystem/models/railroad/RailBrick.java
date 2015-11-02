@@ -1,16 +1,16 @@
 package aletrainsystem.models.railroad;
 
-import aletrainsystem.models.RailPartId;
+import aletrainsystem.models.RailComponentId;
 import bluebrick4j.model.BrickType;
 
-public class RailPiece implements RailPart {
+public class RailBrick implements RailComponent {
 	
-	private RailPartId id;
+	private RailComponentId id;
 	private final RailLeg parentLeg;
 	private final int sleepers;
 	
-	public RailPiece(String id, RailLeg parent, BrickType brickType) {
-		this.id = new RailPartId(id);
+	public RailBrick(String id, RailLeg parent, BrickType brickType) {
+		this.id = new RailComponentId(id);
 		parentLeg = parent;
 		if (brickType == BrickType.CURVED || brickType == BrickType.STRAIGHT) {
 			this.sleepers = 4;
@@ -20,12 +20,16 @@ public class RailPiece implements RailPart {
 		}
 	}
 	
+	public RailLeg parentLeg(){
+		return this.parentLeg;
+	}
+	
 	public int sleepers(){
 		return sleepers;
 	}
 
 	@Override
-	public RailPartId id() {
+	public RailComponentId id() {
 		return id;
 	}
 }

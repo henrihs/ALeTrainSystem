@@ -1,14 +1,12 @@
 package aletrainsystem.models.Navigation;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class Route {
-	private Stack<Destination> viaPoints;
+	private LinkedList<Destination> viaPoints;
 	
-	public Route(Destination[] viaPoints) {
-		this.viaPoints = new Stack<Destination>();
-		for (Destination destination : viaPoints) {
-			this.viaPoints.push(destination);
-		}
+	public Route(LinkedList<Destination> viaPoints) {
+		this.viaPoints = viaPoints;
 	}
 }

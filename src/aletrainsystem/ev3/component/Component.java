@@ -1,7 +1,7 @@
 package aletrainsystem.ev3.component;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.RailPartId;
+import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.PointSwitchOrder;
 import lejos.hardware.Key;
 import lejos.hardware.KeyListener;
@@ -26,11 +26,11 @@ public class Component extends Block {
 	}
 
 	public PointSwitchOrder newOrderLeft() {
-		return new PointSwitchOrder(new RailPartId(i++%4+1), PointSwitchConnectorEnum.DIVERT);
+		return new PointSwitchOrder(new RailComponentId(i++%4+1), PointSwitchConnectorEnum.DIVERT);
 	}
 	
 	public PointSwitchOrder newOrderRight() {
-		return new PointSwitchOrder(new RailPartId(j++%4+1), PointSwitchConnectorEnum.THROUGH);
+		return new PointSwitchOrder(new RailComponentId(j++%4+1), PointSwitchConnectorEnum.THROUGH);
 	}
 
 	public void printDone(PointSwitchOrder order) {

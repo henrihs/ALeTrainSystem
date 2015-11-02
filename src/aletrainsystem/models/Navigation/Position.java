@@ -1,16 +1,37 @@
 package aletrainsystem.models.Navigation;
 
-import aletrainsystem.models.railroad.RailPart;
+import java.util.LinkedList;
+import java.util.Iterator;
 
-public class Position {
+import aletrainsystem.models.railroad.RailComponent;
 
-	private RailPart[] parts;
+public class Position implements Iterable<RailComponent> {
+
+	private LinkedList<RailComponent> parts;
+	private int sizeOfParentObject;
 	
-	public RailPart[] get() {
-		return parts;
+	public Position(RailComponent[] arg0, int sizeOfParentObject) {
+		parts = new LinkedList<RailComponent>();
+		this.sizeOfParentObject = sizeOfParentObject;
+		for (RailComponent railPart : arg0) {
+			parts.add(railPart);
+		}
+	}
+		
+	public RailComponent getFirst(){
+		return parts.getFirst();
 	}
 	
-	public void set(RailPart[] parts) {
-		this.parts = parts;
+	public void moveTo(RailComponent part) {
+		parts.addLast(part);
+		if (parts.size() > sizeOfParentObject) {
+			parts.removeFirst();
+		}
+	}
+
+	@Override
+	public Iterator<RailComponent> iterator() {
+		Iterator<RailComponent> ipart = parts.iterator();
+		return ipart;
 	}
 }

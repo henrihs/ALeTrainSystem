@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Set;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.RailPartId;
+import aletrainsystem.models.RailComponentId;
+import aletrainsystem.models.Navigation.Destination;
+import aletrainsystem.models.Navigation.Route;
 
 public class Railroad {
 	
@@ -86,14 +88,18 @@ public class Railroad {
 		return connectedPointSwitchConnectors.contains(connector);
 	}
 	
-	public PointSwitch findPointSwitch(RailPartId pointSwitchId) {
+	public PointSwitch findPointSwitch(String pointSwitchId) {
+		return pointSwitches.get(pointSwitchId);
+	}
+	
+	public PointSwitch findPointSwitch(RailComponentId pointSwitchId) {
 		return pointSwitches.get(pointSwitchId.value());
 	}
 	
 	public PointSwitch findOrAddPointSwitch(long pointSwitchId) {
 		PointSwitch result = pointSwitches.get(pointSwitchId);
 		if (result == null) {
-			result = new PointSwitch(new RailPartId(pointSwitchId));
+			result = new PointSwitch(new RailComponentId(pointSwitchId));
 			pointSwitches.put(pointSwitchId, result);
 		}
 		return result;
