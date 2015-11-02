@@ -20,8 +20,8 @@ public class Component extends Block {
 		lejos.hardware.Button.RIGHT.addKeyListener(rightButtonListener);
 	}
 	
-	public void appendTolog(SleeperColor color, double speed) {
-		log.add(System.currentTimeMillis() + " : " + color + ", " + speed);
+	public void appendTolog(SleeperColor sleeper) {
+		log.add(System.currentTimeMillis() + ", " + sleeper.toString());
 	}
 	
 	public class RightKey implements KeyListener{
