@@ -1,8 +1,9 @@
 package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
+import aletrainsystem.models.Navigation.Destination;
 
-public class PointSwitchConnector {
+public class PointSwitchConnector implements Destination {
 	private final PointSwitch pointSwitch;
 	private final PointSwitchConnectorEnum connector;
 	private RailLeg connectedRailLeg;

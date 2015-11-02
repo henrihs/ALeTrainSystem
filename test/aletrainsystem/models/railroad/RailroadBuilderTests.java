@@ -5,7 +5,7 @@ public class RailroadBuilderTests {
 //		Railroad railroad = RailroadBuilder.build("resources/maps/ngorongoro1.bbm");
 		Railroad railroad = RailroadBuilder.build("resources/maps/ngorongoro1.map");
 	
-		System.out.println("StartPoint: " + railroad.getRailSystemEntryPoint().getPointSwitch().getId() + "." + railroad.getRailSystemEntryPoint().getConnectorType());
+		System.out.println("StartPoint: " + railroad.getRailSystemEntryPoint().getPointSwitch().id() + "." + railroad.getRailSystemEntryPoint().getConnectorType());
 		for (RailLeg leg : railroad.getRailLegs().values()) {
 			System.out.println(leg.getId() + (railroad.isStation(leg) ? " (Station)" : ""));
 		}

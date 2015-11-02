@@ -1,13 +1,13 @@
 package aletrainsystem.models;
 
-public class PointSwitchId implements Comparable<PointSwitchId> {
+public class RailPartId implements Comparable<RailPartId> {
 	private final long id;
 	
-	public PointSwitchId(long id){
+	public RailPartId(long id){
 		this.id = id;
 	}
 	
-	public PointSwitchId(String id){
+	public RailPartId(String id){
 		this.id = Integer.valueOf(id);
 	}
 	
@@ -17,7 +17,7 @@ public class PointSwitchId implements Comparable<PointSwitchId> {
 	
 	@Override
 	public boolean equals(Object other){
-		return this.value() == ((PointSwitchId)other).value();
+		return this.value() == ((RailPartId)other).value();
 	}
 	
 	@Override
@@ -26,7 +26,7 @@ public class PointSwitchId implements Comparable<PointSwitchId> {
 	}
 	
 	@Override
-	public int compareTo(PointSwitchId other) {
+	public int compareTo(RailPartId other) {
 		return (int) (other.value() - value());
 	}
 }

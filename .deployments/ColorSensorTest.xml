@@ -3,7 +3,7 @@
         <mapping platform="Java Standard Edition - J2SE">
         <value name="blockSourceFileHandling" value="Copy source files into project"/>
         <value name="libraryArchiveHandling" value="Unpack libraries"/>
-        <value name="loggingFramework" value="SLF4J and java.util.Logging"/>
+        <value name="loggingFramework" value="SLF4J and Logback"/>
         <value name="loggingLevel" value="trace"/>
     </mapping>
 </deployment>

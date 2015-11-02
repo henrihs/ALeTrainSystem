@@ -23,4 +23,8 @@ public enum SleeperColor {
 			return NONE;
 		}
 	}
+	
+	public static SleeperColor regularSleeper() {
+		return SleeperColor.BLACK;
+	}
 }

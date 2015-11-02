@@ -7,7 +7,7 @@ import java.util.Set;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
 import aletrainsystem.models.ConnectorPair;
-import aletrainsystem.models.PointSwitchId;
+import aletrainsystem.models.RailPartId;
 
 public class Railroad {
 	
@@ -15,13 +15,13 @@ public class Railroad {
 	
 	private Map<Long, PointSwitch> pointSwitches;
 	private Map<String, RailLeg> railLegs;
-	private Set<PointSwitchConnector> connectedPointSwitchConnector;
+	private Set<PointSwitchConnector> connectedPointSwitchConnectors;
 	private PointSwitchConnector railSystemEntryPoint;
 	
 	protected Railroad(){
 		pointSwitches = new HashMap<>();
 		railLegs = new HashMap<>();
-		connectedPointSwitchConnector = new HashSet<>();
+		connectedPointSwitchConnectors = new HashSet<>();
 	}
 	
 	Map<String, RailLeg> getRailLegs(){
@@ -33,12 +33,12 @@ public class Railroad {
 	}
 	
 	protected void addPointSwitch(PointSwitch pointSwitch) {
-		pointSwitches.put(pointSwitch.getId().value(), pointSwitch);
+		pointSwitches.put(pointSwitch.id().value(), pointSwitch);
 	}
 	
 	protected void addRailLeg(RailLeg railLeg){
 		railLegs.put(railLeg.getId().value(), railLeg);
-		railLeg.getConnectors().forEach(c -> connectedPointSwitchConnector.add(c));
+		railLeg.getConnectors().forEach(c -> connectedPointSwitchConnectors.add(c));
 	}
 	
 	protected void setRailSystemEntryPoint(PointSwitchConnector railSystemEntryPoint) {
@@ -84,17 +84,17 @@ public class Railroad {
 	}
 	
 	protected boolean hasRailLegWithConnector(PointSwitchConnector connector) {
-		return connectedPointSwitchConnector.contains(connector);
+		return connectedPointSwitchConnectors.contains(connector);
 	}
 	
-	public PointSwitch findPointSwitch(PointSwitchId pointSwitchId) {
+	public PointSwitch findPointSwitch(RailPartId pointSwitchId) {
 		return pointSwitches.get(pointSwitchId.value());
 	}
 	
 	public PointSwitch findOrAddPointSwitch(long pointSwitchId) {
 		PointSwitch result = pointSwitches.get(pointSwitchId);
 		if (result == null) {
-			result = new PointSwitch(new PointSwitchId(pointSwitchId));
+			result = new PointSwitch(new RailPartId(pointSwitchId));
 			pointSwitches.put(pointSwitchId, result);
 		}
 		return result;

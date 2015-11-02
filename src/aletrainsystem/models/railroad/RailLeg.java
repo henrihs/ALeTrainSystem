@@ -1,22 +1,25 @@
 package aletrainsystem.models.railroad;
 
+import java.util.ArrayList;
+
 import aletrainsystem.enums.TrackStatus;
 import aletrainsystem.models.ConnectorPair;
+import aletrainsystem.models.Navigation.Destination;
 import aletrainsystem.models.railroad.PointSwitchConnector;
 
-public class RailLeg {
+public class RailLeg implements Destination {
 	
 	private ConnectorPair connectors;
 	private RailLegId trackId;
 	private int length;
+	private ArrayList<RailPiece> railBricks;
 	private TrackStatus status;
 	
 	public RailLeg() {
 		status = TrackStatus.UNDER_CONSTRUCTION; 
 	}
 		
-	public RailLeg(PointSwitchConnector connector1, PointSwitchConnector connector2, int length){
-		this.length = length;
+	public RailLeg(PointSwitchConnector connector1, PointSwitchConnector connector2){
 		addConnectors(connector1, connector2);
 		trackId = new RailLegId(connector1, connector2);
 		status = TrackStatus.NORMAL;
@@ -41,16 +44,17 @@ public class RailLeg {
 		}
 	}
 	
-	public void setLenght(int length){
-		this.length = length;
-	}
-	
 	public int getLenght(){
-		return length;
+		return railBricks.size();
 	}
 	
 	public int getSleepersCount(){
-		return length * 4;
+		int sleepers = 0;
+		for (RailPiece railBrick : railBricks) {
+			sleepers += railBrick.sleepers();
+		}
+		
+		return sleepers;
 	}
 	
 	@Override
@@ -70,5 +74,9 @@ public class RailLeg {
 
 	public void setStatus(TrackStatus status) {
 		this.status = status;
+	}
+
+	public void addRailPiece(RailPiece railBrick) {
+		railBricks.add(railBrick);
 	}
 }
