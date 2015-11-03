@@ -10,7 +10,6 @@ public class RailLeg implements Destination {
 	
 	private ConnectorPair connectors;
 	private RailLegId trackId;
-	private int length;
 	private ArrayList<RailBrick> railBricks;
 	private TrackStatus status;
 	
@@ -43,7 +42,7 @@ public class RailLeg implements Destination {
 		}
 	}
 	
-	public int getLenght(){
+	public int length(){
 		return railBricks.size();
 	}
 	
@@ -64,7 +63,7 @@ public class RailLeg implements Destination {
 		
 		RailLeg track = (RailLeg) other;
 		
-		return (trackId.equals(track.trackId) && length == track.getLenght());
+		return (trackId.equals(track.trackId) && length() == track.length());
 	}
 
 	public TrackStatus getStatus() {
@@ -81,22 +80,65 @@ public class RailLeg implements Destination {
 	
 	public RailComponent getNextComponent(RailComponent previous, PointSwitch direction) {
 		int previousIndex = railBricks.indexOf(previous);
-		int nextIndex = previousIndex + getRelativeDirection(direction);
+		int relativeDirection = getRelativeDirection(direction);
+		int nextIndex = previousIndex + relativeDirection;
 		if (nextIndex >= 0 && nextIndex < railBricks.size()) {
 			return railBricks.get(nextIndex);			
 		}
+		else if (relativeDirection > 0) {
+			return connectors.second().getPointSwitch();
+		}
+		else if (relativeDirection < 0) {
+			return connectors.first().getPointSwitch();
+		}
 		
-		return direction;
+		throw new IllegalArgumentException("Could not relate to PointSwitch with Id " + direction.toString());
+	}
+	
+	public PointSwitchConnector getConnector(PointSwitch pointSwitch) {
+		if (connectors.first().getPointSwitch().equals(pointSwitch)) {
+			return connectors.first();
+		}
+		else if (connectors.second().getPointSwitch().equals(pointSwitch)) {
+			return connectors.second();
+		}
+		return null;
+	}
+	
+	@Override
+	public Destination[] getNext(Destination previous) {
+		if (previous != connectors.first()) {
+			return new Destination[] {connectors.second()};
+		}
+		else if (previous != connectors.second()) {
+			return new Destination[] {connectors.first()};
+		}
+		else
+			return null;
 	}
 	
 	private int getRelativeDirection(PointSwitch direction){
-		if (connectors.first().getPointSwitch() == direction){
+		if (connectors.first().getPointSwitch().equals(direction)){
 			return -1;
 		}
-		else if (connectors.second().getPointSwitch() == direction){
+		else if (connectors.second().getPointSwitch().equals(direction)){
 			return 1;
 		}
 		
-		throw new IllegalArgumentException("Could not relate to PointSwitch with Id " + direction.id().toString());
+		return 0;
+	}
+
+	public PointSwitchConnector getOppositeConnector(PointSwitchConnector connector){
+		return getOppositeConnector(connector.getPointSwitch());
+	}
+	
+	public PointSwitchConnector getOppositeConnector(PointSwitch pointSwitch) {
+		if (pointSwitch == connectors.first().getPointSwitch()) {
+			return connectors.second();
+		}
+		else if (pointSwitch == connectors.second().getPointSwitch()) {
+			return connectors.first();
+		}
+		return null;
 	}
 }

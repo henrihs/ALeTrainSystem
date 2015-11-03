@@ -33,5 +33,23 @@ public class PointSwitchConnector implements Destination {
 
 	public void setConnectedRailLeg(RailLeg connection) {
 		this.connectedRailLeg = connection;
+	}
+
+	@Override
+	public Destination[] getNext(Destination previous) {
+		switch (connector) {
+		case ENTRY:
+			return new Destination[] {pointSwitch.getConnector(PointSwitchConnectorEnum.THROUGH), pointSwitch.getConnector(PointSwitchConnectorEnum.DIVERT)};
+		case THROUGH:		
+		case DIVERT:
+			return new Destination[] {pointSwitch.getConnector(PointSwitchConnectorEnum.ENTRY)};
+		default:
+			return null;
+		}
+	}
+
+	@Override
+	public int length() {
+		return 1;
 	}		
 }
