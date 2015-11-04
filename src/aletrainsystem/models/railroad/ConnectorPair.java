@@ -12,8 +12,8 @@ public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnect
 	}
 		
 	public boolean bothOfType(PointSwitchConnectorEnum connectorType) {
-		return first.getConnectorType() == connectorType 
-				&& second.getConnectorType() == connectorType;
+		return first.getType() == connectorType 
+				&& second.getType() == connectorType;
 	}
 	
 	public boolean hasBothEnds() {

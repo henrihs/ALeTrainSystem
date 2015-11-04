@@ -6,7 +6,7 @@ import aletrainsystem.models.Navigation.Position;
 import aletrainsystem.models.Navigation.Route;
 import aletrainsystem.models.railroad.PointSwitch;
 import aletrainsystem.models.railroad.RailBrick;
-import aletrainsystem.models.railroad.RailLeg;
+import aletrainsystem.models.railroad.RegularLeg;
 import aletrainsystem.models.railroad.Railroad;
 
 public class GreedyAlgorithm implements ShortestPathUniDirectional {
@@ -24,13 +24,13 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 		RouteElement previous;
 		
 		if (position.headIsInPointSwitch()) {
-			start = position.findPointSwitchConnector();
+			start = (RouteElement) position.head();
 			previous = position.getPreviousBrick().parentLeg();
 		}
 		else {
 			RailBrick startBrick = (RailBrick)position.head();
 			start = startBrick.parentLeg();
-			previous = ((RailLeg)start).getOppositeConnector(direction);
+			previous = ((RegularLeg)start).getOppositeConnector(direction);
 		}
 		
 		traverseAllPaths(new Route(), start, previous);

@@ -6,7 +6,7 @@ import java.util.Map;
 import aletrainsystem.enums.PointSwitchConnectorEnum;
 import aletrainsystem.models.RailComponentId;
 
-public class PointSwitch implements RailComponent {
+public class PointSwitch {
 	private Map<PointSwitchConnectorEnum, PointSwitchConnector> connectors;
 	private RailComponentId pointSwitchId;
 	
@@ -18,7 +18,7 @@ public class PointSwitch implements RailComponent {
 		}
 	}
 	
-	public RailComponentId id(){
+	protected RailComponentId id(){
 		return pointSwitchId;
 	}
 	
@@ -32,7 +32,7 @@ public class PointSwitch implements RailComponent {
 	}
 
 	public void addConnector(PointSwitchConnector connector) {
-		connectors.put(connector.getConnectorType(), connector);
+		connectors.put(connector.getType(), connector);
 	}
 
 	@Override

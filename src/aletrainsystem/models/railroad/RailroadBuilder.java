@@ -24,7 +24,7 @@ public class RailroadBuilder {
 	public static Railroad build(String filePath){
 		if (filePath.endsWith(".bbm"))
 		{
-//			return convertFromBbmFile(filePath);
+			//			return convertFromBbmFile(filePath);
 		}
 		else if (filePath.endsWith(".map"))
 		{
@@ -32,12 +32,12 @@ public class RailroadBuilder {
 		}
 		return null;
 	}
-	
+
 	private static Railroad convert(Map map) {
 		Railroad railroad = new Railroad();
 		ArrayList<Brick> bricks = new ArrayList<>();
 		LinkedList<Brick> pointSwitchBricks = new LinkedList<>();
-		
+
 		for (Layer layer : map.getLayers().getLayers()) {
 			if (layer.getBricks() != null) {
 				layer.getBricks().getBricks().forEach((b) -> {
@@ -49,17 +49,17 @@ public class RailroadBuilder {
 				});
 			}
 		}
-		
+
 		HashMap<Connexion, Brick> connexionToBrickMapping = ConnectionToBrickMapping(bricks);
 		HashSet<Object> visited = new HashSet<>();
-		
+
 		while (!pointSwitchBricks.isEmpty()){
 			Brick brick = pointSwitchBricks.getFirst();
 			BrickType type = brick.getBrickType();
 			if (visited.contains(brick)) { 
 				continue; 
 			}
-			
+
 			PointSwitch startPoint = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
 			List<Connexion> connections = brick.getConnexions().getConnexions();
 			for (int i = 0; i < 3; i++) {
@@ -67,26 +67,26 @@ public class RailroadBuilder {
 				PointSwitchConnector startPointConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
 				if (!railroad.hasRailLegWithConnector(startPointConnector)) {
 					RailLeg leg = stepInto(railroad, connexionToBrickMapping, nextConnection, startPointConnector, visited);
-					if (leg != null) {
-						railroad.addRailLeg(leg);
+					if (leg instanceof RegularLeg) {
+						railroad.addRailLeg((RegularLeg) leg);
 					}
-					else {
-						railroad.setRailSystemEntryPoint(startPointConnector);
+					else if (leg instanceof StartLeg){
+						railroad.setRailSystemStartLeg((StartLeg) leg);
 					}
 				}
 			}
-			
+
 			pointSwitchBricks.removeFirst();
 		}
-		
+
 		return railroad;
 	}
 
-//	private static Railroad convertFromBbmFile(String bbmFilePath) {
-//		Map map = BbmParser.loadMapFromFile(bbmFilePath);
-//		return convert(map);
-//	}
-	
+	//	private static Railroad convertFromBbmFile(String bbmFilePath) {
+	//		Map map = BbmParser.loadMapFromFile(bbmFilePath);
+	//		return convert(map);
+	//	}
+
 	private static Railroad convertFromStoredObject(String mapFilePath) {
 		Map map = loadMapFromStoredFile(mapFilePath);
 		return convert(map);
@@ -111,9 +111,16 @@ public class RailroadBuilder {
 
 			for (Connexion nextConnexion : brick.getConnexions().getConnexions()) {
 				if (nextConnexion != connexion) {
-					RailLeg fullLeg = stepInto(railroad, connexionToBrickMapping, nextConnexion.getLinkedTo(), startConnector, visited);
-					fullLeg.addRailPiece(new RailBrick(brick.getId(), fullLeg, brick.getBrickType()));
-					return fullLeg;
+					RailLeg fullLeg;
+					if (nextConnexion.getLinkedTo() != null) {
+						fullLeg = stepInto(railroad, connexionToBrickMapping, nextConnexion.getLinkedTo(), startConnector, visited);
+					}
+					else {
+						fullLeg = new StartLeg(startConnector);
+					}
+						fullLeg.addRailBrick(new RailBrick(brick.getId(), fullLeg, brick.getBrickType()));
+						return fullLeg;
+					
 				}
 			}
 		}
@@ -122,7 +129,7 @@ public class RailroadBuilder {
 		int index = brick.getConnexions().getConnexions().indexOf(connexion);
 		PointSwitchConnector endConnector = endOfLeg.getConnector(ConnectorConverter.convert(brick.getBrickType()).apply(index));
 
-		RailLeg fullLeg = new RailLeg(endConnector, startConnector);
+		RegularLeg fullLeg = new RegularLeg(endConnector, startConnector);
 		return fullLeg;
 	}
 
@@ -152,7 +159,7 @@ public class RailroadBuilder {
 		catch(IOException ex){
 			ex.printStackTrace();
 		}
-		
+
 		return null;
 	}
 }

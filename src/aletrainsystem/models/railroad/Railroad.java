@@ -15,9 +15,9 @@ public class Railroad {
 	public static final String PROPERTYNAME = "MAP_FILE";
 	
 	private Map<Long, PointSwitch> pointSwitches;
-	private Map<String, RailLeg> railLegs;
+	private Map<String, RegularLeg> railLegs;
 	private Set<PointSwitchConnector> connectedPointSwitchConnectors;
-	private PointSwitchConnector railSystemEntryPoint;
+	private StartLeg railSystemEntryPoint;
 	
 	protected Railroad(){
 		pointSwitches = new HashMap<>();
@@ -25,7 +25,7 @@ public class Railroad {
 		connectedPointSwitchConnectors = new HashSet<>();
 	}
 	
-	Map<String, RailLeg> getRailLegs(){
+	Map<String, RegularLeg> getRailLegs(){
 		return railLegs;
 	}
 	
@@ -37,16 +37,16 @@ public class Railroad {
 		pointSwitches.put(pointSwitch.id().value(), pointSwitch);
 	}
 	
-	protected void addRailLeg(RailLeg railLeg){
+	protected void addRailLeg(RegularLeg railLeg){
 		railLegs.put(railLeg.getId().value(), railLeg);
 		railLeg.getConnectors().forEach(c -> connectedPointSwitchConnectors.add(c));
 	}
 	
-	protected void setRailSystemEntryPoint(PointSwitchConnector railSystemEntryPoint) {
+	protected void setRailSystemStartLeg(StartLeg railSystemEntryPoint) {
 		this.railSystemEntryPoint = railSystemEntryPoint;
 	}
 	
-	public PointSwitchConnector getRailSystemEntryPoint() {
+	public StartLeg getRailSystemStartLeg() {
 		return railSystemEntryPoint;
 	}
 	
@@ -58,7 +58,7 @@ public class Railroad {
 		return isStation(findRailLeg(railLegId));
 	}
 		
-	public boolean isStation(RailLeg railLeg){
+	public boolean isStation(RegularLeg railLeg){
 		if (railLeg == null || !railLegs.containsKey(railLeg.getId().value())){
 			return false;
 		}
@@ -66,8 +66,8 @@ public class Railroad {
 		ConnectorPair connectors = railLeg.getConnectors();
 		if (connectors.bothOfType(PointSwitchConnectorEnum.DIVERT)){
 			RailLegId parallelRailLegId = new RailLegId(
-					connectors.first().getPointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH), 
-					connectors.second().getPointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH));
+					connectors.first().pointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH), 
+					connectors.second().pointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH));
 			if (findRailLeg(parallelRailLegId) != null){
 				return true;
 			}
@@ -76,11 +76,11 @@ public class Railroad {
 		return false;
 	}
 	
-	public RailLeg findRailLeg(String railLegId) {
+	public RegularLeg findRailLeg(String railLegId) {
 		return railLegs.get(railLegId);
 	}
 	
-	public RailLeg findRailLeg(RailLegId railLegId){
+	public RegularLeg findRailLeg(RailLegId railLegId){
 		return findRailLeg(railLegId.value());
 	}
 	

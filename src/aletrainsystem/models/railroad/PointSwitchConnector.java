@@ -1,9 +1,10 @@
 package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
+import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.Navigation.RouteElement;
 
-public class PointSwitchConnector extends RouteElement {
+public class PointSwitchConnector extends RouteElement implements RailComponent {
 	private final PointSwitch pointSwitch;
 	private final PointSwitchConnectorEnum connector;
 	private RailLeg connectedRailLeg;
@@ -19,11 +20,11 @@ public class PointSwitchConnector extends RouteElement {
 		this.connectedRailLeg = connectedRailLeg;
 	}
 
-	public PointSwitch getPointSwitch() {
+	public PointSwitch pointSwitch() {
 		return pointSwitch;
 	}
 
-	public PointSwitchConnectorEnum getConnectorType() {
+	public PointSwitchConnectorEnum getType() {
 		return connector;
 	}
 
@@ -31,7 +32,7 @@ public class PointSwitchConnector extends RouteElement {
 		return connectedRailLeg;
 	}
 
-	public void setConnectedRailLeg(RailLeg connection) {
+	public void setConnectedRailLeg(RegularLeg connection) {
 		this.connectedRailLeg = connection;
 	}
 
@@ -51,5 +52,10 @@ public class PointSwitchConnector extends RouteElement {
 	@Override
 	public int length() {
 		return 1;
+	}
+
+	@Override
+	public RailComponentId id() {
+		return pointSwitch.id();
 	}		
 }

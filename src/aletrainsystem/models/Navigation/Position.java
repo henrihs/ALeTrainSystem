@@ -9,6 +9,7 @@ import aletrainsystem.models.railroad.PointSwitchConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailComponent;
 import aletrainsystem.models.railroad.RailLeg;
+import aletrainsystem.models.railroad.RegularLeg;
 
 public class Position implements Iterable<RailComponent> {
 
@@ -42,7 +43,7 @@ public class Position implements Iterable<RailComponent> {
 		}
 	}
 	
-	public void moveInDirection(PointSwitch direction) {
+	public void moveInDirection(PointSwitchConnector direction) {
 		if (head() instanceof RailBrick) {
 			RailBrick frontBrick = (RailBrick)head();
 			moveTo(frontBrick.parentLeg().getNextComponent(frontBrick, direction));
@@ -50,7 +51,7 @@ public class Position implements Iterable<RailComponent> {
 	}
 	
 	public boolean headIsInPointSwitch(){
-		return head() instanceof PointSwitch;
+		return head() instanceof PointSwitchConnector;
 	}
 	
 	public void turnAround(){
@@ -62,16 +63,6 @@ public class Position implements Iterable<RailComponent> {
 		parts = reversedParts;
 	}
 	
-	public PointSwitchConnector findPointSwitchConnector(){
-		if (!headIsInPointSwitch()) {
-			return null;
-		}
-		
-		PointSwitch point = (PointSwitch)head();
-		RailLeg previousLeg = ((RailBrick)parts.get(1)).parentLeg();
-		return previousLeg.getConnector(point);
-	}
-
 	@Override
 	public Iterator<RailComponent> iterator() {
 		Iterator<RailComponent> ipart = parts.iterator();

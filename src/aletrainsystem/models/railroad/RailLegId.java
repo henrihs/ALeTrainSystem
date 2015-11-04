@@ -47,17 +47,17 @@ public class RailLegId {
 	}
 	
 	private static String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
-		String idString1 = connector1.getPointSwitch().id().toString().
-							concat(connector1.getConnectorType().shorthand());
-		String idString2 = connector2.getPointSwitch().id().toString().
-						concat(connector2.getConnectorType().shorthand());
+		String idString1 = connector1.id().toString().
+							concat(connector1.getType().shorthand());
+		String idString2 = connector2.id().toString().
+						concat(connector2.getType().shorthand());
 		String idString;
-		if (connector1.getPointSwitch().id().compareTo(
-				connector2.getPointSwitch().id()) > 0) {
+		if (connector1.id().compareTo(
+				connector2.id()) > 0) {
 			idString = idString1.concat(DELIMITER).concat(idString2);
 		}
-		else if (connector1.getPointSwitch().id().compareTo(
-				connector2.getPointSwitch().id()) < 0) {
+		else if (connector1.id().compareTo(
+				connector2.id()) < 0) {
 			idString = idString2.concat(DELIMITER).concat(idString1);
 		}
 		else {
