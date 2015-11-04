@@ -3,10 +3,10 @@ package aletrainsystem.models.railroad;
 import java.util.ArrayList;
 
 import aletrainsystem.enums.TrackStatus;
-import aletrainsystem.models.Navigation.Destination;
+import aletrainsystem.models.Navigation.RouteElement;
 import aletrainsystem.models.railroad.PointSwitchConnector;
 
-public class RailLeg implements Destination {
+public class RailLeg extends RouteElement {
 	
 	private ConnectorPair connectors;
 	private RailLegId trackId;
@@ -106,12 +106,12 @@ public class RailLeg implements Destination {
 	}
 	
 	@Override
-	public Destination[] getNext(Destination previous) {
+	public RouteElement[] getNext(RouteElement previous) {
 		if (previous != connectors.first()) {
-			return new Destination[] {connectors.second()};
+			return new RouteElement[] {connectors.second()};
 		}
 		else if (previous != connectors.second()) {
-			return new Destination[] {connectors.first()};
+			return new RouteElement[] {connectors.first()};
 		}
 		else
 			return null;

@@ -4,7 +4,7 @@ import aletrainsystem.algorithms.GreedyAlgorithm;
 import aletrainsystem.algorithms.ShortestPathUniDirectional;
 import aletrainsystem.enums.SleeperColor;
 import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.Navigation.Destination;
+import aletrainsystem.models.Navigation.RouteElement;
 import aletrainsystem.models.Navigation.Position;
 import aletrainsystem.models.Navigation.Route;
 import aletrainsystem.models.railroad.PointSwitch;
@@ -16,7 +16,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class RouteController extends Block {
 
 	public Railroad railroad;
-	public Destination nextDestination;
+	public RouteElement nextDestination;
 	private Position currentPosition;
 	private PointSwitch direction;
 	private int sleeperCount;
@@ -24,7 +24,7 @@ public class RouteController extends Block {
 	public void initialize(Railroad r) {
 	}
 
-	public Route findRoute(Destination destination) {
+	public Route findRoute(RouteElement destination) {
 		ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
 		return algorithm.findSingleShortestPath(railroad, currentPosition, destination, direction);
 	}

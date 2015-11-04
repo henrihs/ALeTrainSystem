@@ -17,6 +17,6 @@ public class TrainId {
 	
 	private boolean isValid(String value) {
 		
-		return false;
+		return true;
 	}
 }

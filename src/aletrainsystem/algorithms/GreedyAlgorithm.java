@@ -1,7 +1,7 @@
 package aletrainsystem.algorithms;
 
 import java.util.ArrayList;
-import aletrainsystem.models.Navigation.Destination;
+import aletrainsystem.models.Navigation.RouteElement;
 import aletrainsystem.models.Navigation.Position;
 import aletrainsystem.models.Navigation.Route;
 import aletrainsystem.models.railroad.PointSwitch;
@@ -11,18 +11,17 @@ import aletrainsystem.models.railroad.Railroad;
 
 public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	
-	private Destination finalDestination;
+	private RouteElement finalDestination;
 	private ArrayList<Route> routes;
 	
 	@Override
-	public Route findSingleShortestPath(Railroad railroad, Position position, Destination destination, PointSwitch direction) {
+	public Route findSingleShortestPath(Railroad railroad, Position position, RouteElement destination, PointSwitch direction) {
 		finalDestination = destination;
 		
 		routes = new ArrayList<>();
-		Route route = new Route();
 		
-		Destination start;
-		Destination previous;
+		RouteElement start;
+		RouteElement previous;
 		
 		if (position.headIsInPointSwitch()) {
 			start = position.findPointSwitchConnector();
@@ -34,31 +33,30 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 			previous = ((RailLeg)start).getOppositeConnector(direction);
 		}
 		
-		traverseAllPaths(route, start, previous);
+		traverseAllPaths(new Route(), start, previous);
 		
+		Route shortestRoute = null;
+		for (Route route : routes) {
+			if (shortestRoute == null 
+				|| route.brickLength() < shortestRoute.brickLength())
+				shortestRoute = route;
+		}
+		
+		return shortestRoute;		
 	}
 	
-	private void traverseAllPaths(Route route, Destination current, Destination previous) {
-		route.add(current);
+	private void traverseAllPaths(Route continuedRoute, RouteElement current, RouteElement previous) {
+		continuedRoute.add(current);
 		if (current.equals(finalDestination)) {
 			return;
 		}
 		
-		Destination[] next = current.getNext(previous);
-		traverseAllPaths(route, next[0], current);
+		RouteElement[] next = current.getNext(previous);
+		traverseAllPaths(continuedRoute, next[0], current);
 		if (next.length == 2) {
-			Route alternativeRoute = new Route(route);
+			Route alternativeRoute = new Route(continuedRoute);
 			routes.add(alternativeRoute);
 			traverseAllPaths(alternativeRoute, next[1], current);
 		}
 	}
-
-	private void startInPointSwitch(){
-		
-	}
-	
-	private void startOnRailLeg() {
-		
-	}
-
 }

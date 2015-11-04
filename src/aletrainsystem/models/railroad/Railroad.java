@@ -7,7 +7,7 @@ import java.util.Set;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
 import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.Navigation.Destination;
+import aletrainsystem.models.Navigation.RouteElement;
 import aletrainsystem.models.Navigation.Route;
 
 public class Railroad {

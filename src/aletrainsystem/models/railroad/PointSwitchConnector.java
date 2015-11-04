@@ -1,9 +1,9 @@
 package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.PointSwitchConnectorEnum;
-import aletrainsystem.models.Navigation.Destination;
+import aletrainsystem.models.Navigation.RouteElement;
 
-public class PointSwitchConnector implements Destination {
+public class PointSwitchConnector extends RouteElement {
 	private final PointSwitch pointSwitch;
 	private final PointSwitchConnectorEnum connector;
 	private RailLeg connectedRailLeg;
@@ -36,13 +36,13 @@ public class PointSwitchConnector implements Destination {
 	}
 
 	@Override
-	public Destination[] getNext(Destination previous) {
+	public RouteElement[] getNext(RouteElement previous) {
 		switch (connector) {
 		case ENTRY:
-			return new Destination[] {pointSwitch.getConnector(PointSwitchConnectorEnum.THROUGH), pointSwitch.getConnector(PointSwitchConnectorEnum.DIVERT)};
+			return new RouteElement[] {pointSwitch.getConnector(PointSwitchConnectorEnum.THROUGH), pointSwitch.getConnector(PointSwitchConnectorEnum.DIVERT)};
 		case THROUGH:		
 		case DIVERT:
-			return new Destination[] {pointSwitch.getConnector(PointSwitchConnectorEnum.ENTRY)};
+			return new RouteElement[] {pointSwitch.getConnector(PointSwitchConnectorEnum.ENTRY)};
 		default:
 			return null;
 		}

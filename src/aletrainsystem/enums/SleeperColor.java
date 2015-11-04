@@ -27,4 +27,19 @@ public enum SleeperColor {
 	public static SleeperColor regularSleeper() {
 		return SleeperColor.BLACK;
 	}
+	
+	public PointSwitchConnectorEnum convertToConnector() {
+		switch (this) {
+		
+		case RED:
+			return PointSwitchConnectorEnum.ENTRY;
+		case YELLOW:
+			return PointSwitchConnectorEnum.THROUGH;
+		case GREEN:
+			return PointSwitchConnectorEnum.DIVERT;
+		
+		default:
+			return null;
+		}
+	}
 }

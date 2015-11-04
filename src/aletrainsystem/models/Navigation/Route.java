@@ -3,17 +3,17 @@ package aletrainsystem.models.Navigation;
 import java.util.LinkedList;
 
 public class Route {
-	protected LinkedList<Destination> viaPoints;
+	protected LinkedList<RouteElement> viaPoints;
 	
 	public Route() {
 		viaPoints = new LinkedList<>();
 	}
 	
 	public Route(Route copyFrom) {
-		viaPoints = (LinkedList<Destination>) copyFrom.viaPoints.clone();
+		viaPoints = (LinkedList<RouteElement>) copyFrom.viaPoints.clone();
 	}
 	
-	public void add(Destination destination){
+	public void add(RouteElement destination){
 		viaPoints.addLast(destination);
 	}
 	
@@ -23,7 +23,7 @@ public class Route {
 	
 	public int brickLength() {
 		int i = 0;
-		for (Destination destination : viaPoints) {
+		for (RouteElement destination : viaPoints) {
 			i += destination.length();
 		}
 		
