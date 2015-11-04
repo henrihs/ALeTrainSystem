@@ -60,11 +60,11 @@ public class RailroadBuilder {
 				continue; 
 			}
 
-			PointSwitch startPoint = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
+			Point startPoint = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
 			List<Connexion> connections = brick.getConnexions().getConnexions();
 			for (int i = 0; i < 3; i++) {
 				Connexion nextConnection = connections.get(i).getLinkedTo();
-				PointSwitchConnector startPointConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
+				PointConnector startPointConnector = startPoint.getConnector(ConnectorConverter.convert(type).apply(i));
 				if (!railroad.hasRailLegWithConnector(startPointConnector)) {
 					RailLeg leg = stepInto(railroad, connexionToBrickMapping, nextConnection, startPointConnector, visited);
 					if (leg instanceof RegularLeg) {
@@ -95,7 +95,7 @@ public class RailroadBuilder {
 	private static RailLeg stepInto(Railroad railroad,
 			HashMap<Connexion, Brick> connexionToBrickMapping, 
 			Connexion connexion, 
-			PointSwitchConnector startConnector, 
+			PointConnector startConnector, 
 			HashSet<Object> visited
 			) 
 	{
@@ -125,9 +125,9 @@ public class RailroadBuilder {
 			}
 		}
 
-		PointSwitch endOfLeg = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
+		Point endOfLeg = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
 		int index = brick.getConnexions().getConnexions().indexOf(connexion);
-		PointSwitchConnector endConnector = endOfLeg.getConnector(ConnectorConverter.convert(brick.getBrickType()).apply(index));
+		PointConnector endConnector = endOfLeg.getConnector(ConnectorConverter.convert(brick.getBrickType()).apply(index));
 
 		RegularLeg fullLeg = new RegularLeg(endConnector, startConnector);
 		return fullLeg;

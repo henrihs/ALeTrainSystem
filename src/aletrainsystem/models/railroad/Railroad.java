@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import aletrainsystem.enums.PointSwitchConnectorEnum;
+import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.Navigation.RouteElement;
 import aletrainsystem.models.Navigation.Route;
@@ -14,9 +14,9 @@ public class Railroad {
 	
 	public static final String PROPERTYNAME = "MAP_FILE";
 	
-	private Map<Long, PointSwitch> pointSwitches;
+	private Map<Long, Point> pointSwitches;
 	private Map<String, RegularLeg> railLegs;
-	private Set<PointSwitchConnector> connectedPointSwitchConnectors;
+	private Set<PointConnector> connectedPointSwitchConnectors;
 	private StartLeg railSystemEntryPoint;
 	
 	protected Railroad(){
@@ -29,11 +29,11 @@ public class Railroad {
 		return railLegs;
 	}
 	
-	Map<Long, PointSwitch> getPointSwitches(){
+	Map<Long, Point> getPointSwitches(){
 		return pointSwitches;
 	}
 	
-	protected void addPointSwitch(PointSwitch pointSwitch) {
+	protected void addPointSwitch(Point pointSwitch) {
 		pointSwitches.put(pointSwitch.id().value(), pointSwitch);
 	}
 	
@@ -64,10 +64,10 @@ public class Railroad {
 		}
 		
 		ConnectorPair connectors = railLeg.getConnectors();
-		if (connectors.bothOfType(PointSwitchConnectorEnum.DIVERT)){
+		if (connectors.bothOfType(PointConnectorEnum.DIVERT)){
 			RailLegId parallelRailLegId = new RailLegId(
-					connectors.first().pointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH), 
-					connectors.second().pointSwitch().getConnector(PointSwitchConnectorEnum.THROUGH));
+					connectors.first().pointSwitch().getConnector(PointConnectorEnum.THROUGH), 
+					connectors.second().pointSwitch().getConnector(PointConnectorEnum.THROUGH));
 			if (findRailLeg(parallelRailLegId) != null){
 				return true;
 			}
@@ -84,22 +84,22 @@ public class Railroad {
 		return findRailLeg(railLegId.value());
 	}
 	
-	protected boolean hasRailLegWithConnector(PointSwitchConnector connector) {
+	protected boolean hasRailLegWithConnector(PointConnector connector) {
 		return connectedPointSwitchConnectors.contains(connector);
 	}
 	
-	public PointSwitch findPointSwitch(String pointSwitchId) {
+	public Point findPointSwitch(String pointSwitchId) {
 		return pointSwitches.get(pointSwitchId);
 	}
 	
-	public PointSwitch findPointSwitch(RailComponentId pointSwitchId) {
+	public Point findPointSwitch(RailComponentId pointSwitchId) {
 		return pointSwitches.get(pointSwitchId.value());
 	}
 	
-	public PointSwitch findOrAddPointSwitch(long pointSwitchId) {
-		PointSwitch result = pointSwitches.get(pointSwitchId);
+	public Point findOrAddPointSwitch(long pointSwitchId) {
+		Point result = pointSwitches.get(pointSwitchId);
 		if (result == null) {
-			result = new PointSwitch(new RailComponentId(pointSwitchId));
+			result = new Point(new RailComponentId(pointSwitchId));
 			pointSwitches.put(pointSwitchId, result);
 		}
 		return result;

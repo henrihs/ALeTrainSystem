@@ -29,5 +29,5 @@ public abstract class RailLeg extends RouteElement {
 		railBricks.add(railBrick);
 	}
 	
-	public abstract RailComponent getNextComponent(RailComponent previous, PointSwitchConnector direction);
+	public abstract RailComponent getNextComponent(RailComponent previous, PointConnector direction);
 }

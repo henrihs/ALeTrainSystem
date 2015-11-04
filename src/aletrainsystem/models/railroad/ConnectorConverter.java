@@ -2,12 +2,12 @@ package aletrainsystem.models.railroad;
 
 import java.util.function.Function;
 
-import aletrainsystem.enums.PointSwitchConnectorEnum;
+import aletrainsystem.enums.PointConnectorEnum;
 import bluebrick4j.model.BrickType;
 
 public class ConnectorConverter {
 	
-	public static Function<Integer, PointSwitchConnectorEnum> convert(BrickType type){
+	public static Function<Integer, PointConnectorEnum> convert(BrickType type){
 		if (type == BrickType.LEFTHANDPOINTSWITCH){
 			return ConnectorConverter::leftHandPointSwitchConverter;
 		}
@@ -17,27 +17,27 @@ public class ConnectorConverter {
 		return null;
 	}
 
-	private static PointSwitchConnectorEnum rightHandPointSwitchConverter(int i) {
+	private static PointConnectorEnum rightHandPointSwitchConverter(int i) {
 		switch (i) {
 		case 0:
-			return PointSwitchConnectorEnum.ENTRY;
+			return PointConnectorEnum.ENTRY;
 		case 1:
-			return PointSwitchConnectorEnum.DIVERT;
+			return PointConnectorEnum.DIVERT;
 		case 2:
-			return PointSwitchConnectorEnum.THROUGH;
+			return PointConnectorEnum.THROUGH;
 		default:
 			throw new IllegalArgumentException("Cannot recognize integer ".concat(String.valueOf(i)));
 		}
 	}
 	
-	private static PointSwitchConnectorEnum leftHandPointSwitchConverter(int i) {
+	private static PointConnectorEnum leftHandPointSwitchConverter(int i) {
 		switch (i) {
 		case 0:
-			return PointSwitchConnectorEnum.ENTRY;
+			return PointConnectorEnum.ENTRY;
 		case 1:
-			return PointSwitchConnectorEnum.THROUGH;
+			return PointConnectorEnum.THROUGH;
 		case 2:
-			return PointSwitchConnectorEnum.DIVERT;
+			return PointConnectorEnum.DIVERT;
 		default:
 			throw new IllegalArgumentException("Cannot recognize integer ".concat(String.valueOf(i)));
 		}

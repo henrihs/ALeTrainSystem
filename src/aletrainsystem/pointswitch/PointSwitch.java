@@ -1,15 +1,15 @@
 package aletrainsystem.pointswitch;
 
 import aletrainsystem.enums.MotorPort;
-import aletrainsystem.enums.PointSwitchConnectorEnum;
+import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.PointSwitchOrder;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class PointSwitch extends Block {
 
-	public aletrainsystem.enums.PointSwitchConnectorEnum finalState;
+	public aletrainsystem.enums.PointConnectorEnum finalState;
 	public aletrainsystem.models.PointSwitchOrder currentOrder;
-	public aletrainsystem.enums.PointSwitchConnectorEnum currentState;
+	public aletrainsystem.enums.PointConnectorEnum currentState;
 	public aletrainsystem.enums.MotorPort motorPort;
 	
 	public static String getAlias(MotorPort port){
@@ -24,7 +24,7 @@ public class PointSwitch extends Block {
 		return finalState == currentState;
 	}
 
-	public PointSwitchConnectorEnum getState(PointSwitchOrder order) {
+	public PointConnectorEnum getState(PointSwitchOrder order) {
 		return order.getSwitchState();
 	}
 

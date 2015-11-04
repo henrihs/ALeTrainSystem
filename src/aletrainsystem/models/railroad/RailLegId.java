@@ -17,7 +17,7 @@ public class RailLegId {
 			throw new IllegalArgumentException("Illegal format: ".concat(id));
 	}
 
-	public RailLegId(PointSwitchConnector connector1, PointSwitchConnector connector2){
+	public RailLegId(PointConnector connector1, PointConnector connector2){
 		this(buildOrderedIdString(connector1, connector2));
 	}
 
@@ -46,7 +46,7 @@ public class RailLegId {
 		return stringId;
 	}
 	
-	private static String buildOrderedIdString(PointSwitchConnector connector1, PointSwitchConnector connector2) {
+	private static String buildOrderedIdString(PointConnector connector1, PointConnector connector2) {
 		String idString1 = connector1.id().toString().
 							concat(connector1.getType().shorthand());
 		String idString2 = connector2.id().toString().

@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.Iterator;
 
 import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.railroad.PointSwitch;
-import aletrainsystem.models.railroad.PointSwitchConnector;
+import aletrainsystem.models.railroad.Point;
+import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailComponent;
 import aletrainsystem.models.railroad.RailLeg;
@@ -43,7 +43,7 @@ public class Position implements Iterable<RailComponent> {
 		}
 	}
 	
-	public void moveInDirection(PointSwitchConnector direction) {
+	public void moveInDirection(PointConnector direction) {
 		if (head() instanceof RailBrick) {
 			RailBrick frontBrick = (RailBrick)head();
 			moveTo(frontBrick.parentLeg().getNextComponent(frontBrick, direction));
@@ -51,7 +51,7 @@ public class Position implements Iterable<RailComponent> {
 	}
 	
 	public boolean headIsInPointSwitch(){
-		return head() instanceof PointSwitchConnector;
+		return head() instanceof PointConnector;
 	}
 	
 	public void turnAround(){

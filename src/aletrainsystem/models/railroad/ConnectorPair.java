@@ -2,16 +2,16 @@ package aletrainsystem.models.railroad;
 
 import java.util.Iterator;
 
-import aletrainsystem.enums.PointSwitchConnectorEnum;
+import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.Pair;
 
-public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnector> implements Iterable<PointSwitchConnector> {
+public class ConnectorPair extends Pair<PointConnector, PointConnector> implements Iterable<PointConnector> {
 
-	public ConnectorPair(PointSwitchConnector first, PointSwitchConnector second) {
+	public ConnectorPair(PointConnector first, PointConnector second) {
 		super(first, second);
 	}
 		
-	public boolean bothOfType(PointSwitchConnectorEnum connectorType) {
+	public boolean bothOfType(PointConnectorEnum connectorType) {
 		return first.getType() == connectorType 
 				&& second.getType() == connectorType;
 	}
@@ -21,11 +21,11 @@ public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnect
 	}
 
 	@Override
-	public Iterator<PointSwitchConnector> iterator() {
+	public Iterator<PointConnector> iterator() {
 		return new ConnectorPairIterator();
 	}
 
-	private class ConnectorPairIterator implements Iterator<PointSwitchConnector> {
+	private class ConnectorPairIterator implements Iterator<PointConnector> {
 
 		private int index = 0;
 		
@@ -35,7 +35,7 @@ public class ConnectorPair extends Pair<PointSwitchConnector, PointSwitchConnect
 		}
 
 		@Override
-		public PointSwitchConnector next() {
+		public PointConnector next() {
 			return index++ < 1 ? first() : second();
 		}
 		

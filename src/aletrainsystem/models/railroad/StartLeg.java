@@ -4,14 +4,14 @@ import aletrainsystem.models.Navigation.RouteElement;
 
 public class StartLeg extends RailLeg {
 	
-	private PointSwitchConnector connector;
+	private PointConnector connector;
 	
-	public StartLeg(PointSwitchConnector connector) {
+	public StartLeg(PointConnector connector) {
 		super();
 		this.connector = connector;
 	}
 	
-	public PointSwitchConnector getConnector() {
+	public PointConnector getConnector() {
 		return connector;
 	}
 
@@ -21,7 +21,7 @@ public class StartLeg extends RailLeg {
 	}
 
 	@Override
-	public RailComponent getNextComponent(RailComponent previous, PointSwitchConnector direction) {
+	public RailComponent getNextComponent(RailComponent previous, PointConnector direction) {
 		if (direction != connector) {
 			return null;
 		}

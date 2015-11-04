@@ -1,10 +1,8 @@
 package aletrainsystem.models.railroad;
 
-import java.util.ArrayList;
-
 import aletrainsystem.enums.TrackStatus;
 import aletrainsystem.models.Navigation.RouteElement;
-import aletrainsystem.models.railroad.PointSwitchConnector;
+import aletrainsystem.models.railroad.PointConnector;
 
 public class RegularLeg extends RailLeg {
 	
@@ -12,7 +10,7 @@ public class RegularLeg extends RailLeg {
 	private RailLegId trackId;
 	private TrackStatus status;
 			
-	public RegularLeg(PointSwitchConnector connector1, PointSwitchConnector connector2){
+	public RegularLeg(PointConnector connector1, PointConnector connector2){
 		super();
 		addConnectors(connector1, connector2);
 		trackId = new RailLegId(connector1, connector2);
@@ -28,7 +26,7 @@ public class RegularLeg extends RailLeg {
 		return connectors;
 	}
 	
-	private void addConnectors(PointSwitchConnector connector1, PointSwitchConnector connector2){
+	private void addConnectors(PointConnector connector1, PointConnector connector2){
 		connectors = new ConnectorPair(connector1, connector2);
 		if (connector1 != null) {
 			connector1.setConnectedRailLeg(this);
@@ -63,7 +61,7 @@ public class RegularLeg extends RailLeg {
 
 	
 	
-	public RailComponent getNextComponent(RailComponent previous, PointSwitchConnector direction) {
+	public RailComponent getNextComponent(RailComponent previous, PointConnector direction) {
 		int previousIndex = railBricks.indexOf(previous);
 		int relativeDirection = getRelativeDirection(direction);
 		int nextIndex = previousIndex + relativeDirection;
@@ -80,7 +78,7 @@ public class RegularLeg extends RailLeg {
 		throw new IllegalArgumentException("Could not relate to PointSwitch with Id " + direction.toString());
 	}
 	
-	public PointSwitchConnector getConnector(PointSwitch pointSwitch) {
+	public PointConnector getConnector(Point pointSwitch) {
 		if (connectors.first().pointSwitch().equals(pointSwitch)) {
 			return connectors.first();
 		}
@@ -102,7 +100,7 @@ public class RegularLeg extends RailLeg {
 			return null;
 	}
 	
-	private int getRelativeDirection(PointSwitchConnector direction){
+	private int getRelativeDirection(PointConnector direction){
 		if (connectors.first().equals(direction)){
 			return -1;
 		}
@@ -113,11 +111,11 @@ public class RegularLeg extends RailLeg {
 		return 0;
 	}
 
-	public PointSwitchConnector getOppositeConnector(PointSwitchConnector connector){
+	public PointConnector getOppositeConnector(PointConnector connector){
 		return getOppositeConnector(connector.pointSwitch());
 	}
 	
-	public PointSwitchConnector getOppositeConnector(PointSwitch pointSwitch) {
+	public PointConnector getOppositeConnector(Point pointSwitch) {
 		if (pointSwitch == connectors.first().pointSwitch()) {
 			return connectors.second();
 		}

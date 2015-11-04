@@ -7,7 +7,8 @@ import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.Navigation.RouteElement;
 import aletrainsystem.models.Navigation.Position;
 import aletrainsystem.models.Navigation.Route;
-import aletrainsystem.models.railroad.PointSwitch;
+import aletrainsystem.models.railroad.Point;
+import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.Railroad;
 import no.ntnu.item.arctis.runtime.Block;
@@ -18,7 +19,7 @@ public class RouteController extends Block {
 	public Railroad railroad;
 	public RouteElement nextDestination;
 	private Position currentPosition;
-	private PointSwitch direction;
+	private PointConnector direction;
 	private int sleeperCount;
 
 	public void initialize(Railroad r) {
@@ -42,9 +43,4 @@ public class RouteController extends Block {
 			
 		}
 	}
-	
-	public boolean isCrossingPointSwitch() {
-		return currentPosition.headIsInPointSwitch();
-	}
-
 }

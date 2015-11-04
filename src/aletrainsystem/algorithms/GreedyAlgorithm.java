@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import aletrainsystem.models.Navigation.RouteElement;
 import aletrainsystem.models.Navigation.Position;
 import aletrainsystem.models.Navigation.Route;
-import aletrainsystem.models.railroad.PointSwitch;
+import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RegularLeg;
 import aletrainsystem.models.railroad.Railroad;
@@ -15,7 +15,7 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	private ArrayList<Route> routes;
 	
 	@Override
-	public Route findSingleShortestPath(Railroad railroad, Position position, RouteElement destination, PointSwitch direction) {
+	public Route findSingleShortestPath(Railroad railroad, Position position, RouteElement destination, PointConnector direction) {
 		finalDestination = destination;
 		
 		routes = new ArrayList<>();
