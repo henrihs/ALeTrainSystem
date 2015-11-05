@@ -20,7 +20,7 @@ public class PointConnector extends RouteElement implements RailComponent {
 		this.connectedRailLeg = connectedRailLeg;
 	}
 
-	public Point pointSwitch() {
+	public Point point() {
 		return point;
 	}
 

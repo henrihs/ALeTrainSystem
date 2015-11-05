@@ -34,4 +34,9 @@ public class StartLeg extends RailLeg {
 		
 		return railBricks.get(previousIndex+1);
 	}
+	
+	public RailComponent[] getStartOfLeg(int components) {
+		if (components > railBricks.size())
+		return new RailComponent[] { (RailComponent) railBricks.subList(0, components - 1) };
+	}
 }

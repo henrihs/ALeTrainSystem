@@ -19,9 +19,9 @@ import bluebrick4j.model.Connexion;
 import bluebrick4j.model.Layer;
 import bluebrick4j.model.Map;
 
-public class RailroadBuilder {
+public class RailroadBuilder implements IRailRoadBuilder<Railroad> {
 
-	public static Railroad build(String filePath){
+	public Railroad build(String filePath){
 		if (filePath.endsWith(".bbm"))
 		{
 			//			return convertFromBbmFile(filePath);
@@ -60,7 +60,7 @@ public class RailroadBuilder {
 				continue; 
 			}
 
-			Point startPoint = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
+			Point startPoint = railroad.findOrAddPoint(Integer.valueOf(brick.getId()));
 			List<Connexion> connections = brick.getConnexions().getConnexions();
 			for (int i = 0; i < 3; i++) {
 				Connexion nextConnection = connections.get(i).getLinkedTo();
@@ -125,7 +125,7 @@ public class RailroadBuilder {
 			}
 		}
 
-		Point endOfLeg = railroad.findOrAddPointSwitch(Integer.valueOf(brick.getId()));
+		Point endOfLeg = railroad.findOrAddPoint(Integer.valueOf(brick.getId()));
 		int index = brick.getConnexions().getConnexions().indexOf(connexion);
 		PointConnector endConnector = endOfLeg.getConnector(ConnectorConverter.convert(brick.getBrickType()).apply(index));
 

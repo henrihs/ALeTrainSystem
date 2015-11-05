@@ -79,10 +79,10 @@ public class RegularLeg extends RailLeg {
 	}
 	
 	public PointConnector getConnector(Point pointSwitch) {
-		if (connectors.first().pointSwitch().equals(pointSwitch)) {
+		if (connectors.first().point().equals(pointSwitch)) {
 			return connectors.first();
 		}
-		else if (connectors.second().pointSwitch().equals(pointSwitch)) {
+		else if (connectors.second().point().equals(pointSwitch)) {
 			return connectors.second();
 		}
 		return null;
@@ -112,14 +112,14 @@ public class RegularLeg extends RailLeg {
 	}
 
 	public PointConnector getOppositeConnector(PointConnector connector){
-		return getOppositeConnector(connector.pointSwitch());
+		return getOppositeConnector(connector.point());
 	}
 	
 	public PointConnector getOppositeConnector(Point pointSwitch) {
-		if (pointSwitch == connectors.first().pointSwitch()) {
+		if (pointSwitch == connectors.first().point()) {
 			return connectors.second();
 		}
-		else if (pointSwitch == connectors.second().pointSwitch()) {
+		else if (pointSwitch == connectors.second().point()) {
 			return connectors.first();
 		}
 		return null;

@@ -27,7 +27,7 @@ public class RouteController extends Block {
 
 	public Route findRoute(RouteElement destination) {
 		ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
-		return algorithm.findSingleShortestPath(railroad, currentPosition, destination, direction);
+		return algorithm.findSingleShortestPath(currentPosition, destination, direction);
 	}
 	
 	public void updatePosition(SleeperColor s) {
