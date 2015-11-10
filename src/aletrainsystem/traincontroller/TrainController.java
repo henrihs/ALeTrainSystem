@@ -1,5 +1,8 @@
 package aletrainsystem.traincontroller;
 
+import java.util.HashMap;
+
+import aletrainsystem.mapcontroller.MapInitParams;
 import aletrainsystem.models.TrainId;
 import aletrainsystem.models.railroad.Railroad;
 import aletrainsystem.models.railroad.RailroadBuilder;
@@ -15,7 +18,14 @@ public class TrainController extends Block {
 	
 	
 	public void setInitParamsFromProperties() {
-		id = new TrainId((String) getProperty(TrainId.PROPERTYNAME));
-		railroad = RailroadBuilder.build((String) getProperty(Railroad.PROPERTYNAME));
+		id = new TrainId((String) getProperty(TrainId.ID_KEY));
+		RailroadBuilder builder = new RailroadBuilder();
+		railroad = builder.build((String) getProperty(Railroad.PROPERTYNAME));
+	}
+
+
+	public void setMapParams() {
+		int sizeOfVessel = Integer.valueOf((String) getProperty(TrainId.VESSEL_SIZE_KEY));
+		
 	}
 }

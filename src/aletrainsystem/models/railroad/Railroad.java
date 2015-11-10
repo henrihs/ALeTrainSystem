@@ -7,10 +7,11 @@ import java.util.Set;
 
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
+import aletrainsystem.models.locking.Lockable;
 
 public class Railroad implements IRailroad {
 
-	private Map<Long, Point> points;
+	private Map<String, Point> points;
 	private Map<String, RegularLeg> legs;
 	private Set<PointConnector> connectedPointConnectors;
 	private StartLeg railSystemEntryPoint;
@@ -20,21 +21,36 @@ public class Railroad implements IRailroad {
 		legs = new HashMap<>();
 		connectedPointConnectors = new HashSet<>();
 	}
+	
+	@Override
+	public Lockable getLockableResource(String id) {
+		Lockable lockable = null;
+		if (id.contains(".")) {
+			lockable = legs.get(id);
+			if (lockable == null && id.equals(railSystemEntryPoint.id())) {
+				lockable = railSystemEntryPoint;
+			}
+		}
+		else
+			lockable = points.get(id);
+		
+		return lockable;
+	}
 
 	Map<String, RegularLeg> getRailLegs(){
 		return legs;
 	}
 
-	Map<Long, Point> getPointSwitches(){
+	Map<String, Point> getPointSwitches(){
 		return points;
 	}
 
 	protected void addPointSwitch(Point pointSwitch) {
-		points.put(pointSwitch.id().value(), pointSwitch);
+		points.put(pointSwitch.id().toString(), pointSwitch);
 	}
 
 	protected void addRailLeg(RegularLeg railLeg){
-		legs.put(railLeg.getId().value(), railLeg);
+		legs.put(railLeg.id().toString(), railLeg);
 		railLeg.getConnectors().forEach(c -> connectedPointConnectors.add(c));
 	}
 
@@ -55,7 +71,7 @@ public class Railroad implements IRailroad {
 	}
 
 	public boolean isStation(RegularLeg railLeg){
-		if (railLeg == null || !legs.containsKey(railLeg.getId().value())){
+		if (railLeg == null || !legs.containsKey((railLeg.id().toString()))){
 			return false;
 		}
 
@@ -92,19 +108,19 @@ public class Railroad implements IRailroad {
 		return connectedPointConnectors.contains(connector);
 	}
 
-	public Point findPointSwitch(String pointSwitchId) {
-		return points.get(pointSwitchId);
+	public Point findPoint(String pointId) {
+		return points.get(pointId);
 	}
 
-	public Point findPointSwitch(RailComponentId pointSwitchId) {
-		return points.get(pointSwitchId.value());
+	public Point findPoint(RailComponentId pointId) {
+		return points.get(pointId.toString());
 	}
 
-	public Point findOrAddPoint(long pointSwitchId) {
-		Point result = points.get(pointSwitchId);
+	public Point findOrAddPoint(String pointId) {
+		Point result = points.get(pointId);
 		if (result == null) {
-			result = new Point(new RailComponentId(pointSwitchId));
-			points.put(pointSwitchId, result);
+			result = new Point(new RailComponentId(pointId));
+			points.put(pointId, result);
 		}
 		return result;
 	}

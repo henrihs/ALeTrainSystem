@@ -1,8 +1,8 @@
 package aletrainsystem.algorithms;
 
-import aletrainsystem.models.Navigation.RouteElement;
-import aletrainsystem.models.Navigation.Position;
-import aletrainsystem.models.Navigation.Route;
+import aletrainsystem.models.navigation.Position;
+import aletrainsystem.models.navigation.Route;
+import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.PointConnector;
 
 public interface ShortestPathUniDirectional {

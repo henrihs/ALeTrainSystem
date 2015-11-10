@@ -7,5 +7,7 @@
     >
     <required>
         <block name="b0" uuid="_UtDysoLyEeWAAZdL8L4_Qw"/>
+        <block name="b1" uuid="_G8TVMoerEeWS0rERPEKd6g"/>
+        <block name="b2" uuid="_nm_zooFyEeW-IY1wb01b1A"/>
     </required>
 </block>

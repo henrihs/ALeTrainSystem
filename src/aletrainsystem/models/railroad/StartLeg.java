@@ -1,6 +1,6 @@
 package aletrainsystem.models.railroad;
 
-import aletrainsystem.models.Navigation.RouteElement;
+import aletrainsystem.models.navigation.RouteElement;
 
 public class StartLeg extends RailLeg {
 	
@@ -35,8 +35,14 @@ public class StartLeg extends RailLeg {
 		return railBricks.get(previousIndex+1);
 	}
 	
-	public RailComponent[] getStartOfLeg(int components) {
-		if (components > railBricks.size())
-		return new RailComponent[] { (RailComponent) railBricks.subList(0, components - 1) };
+//	public RailComponent[] getStartOfLeg(int components) {
+//		if (components > railBricks.size())
+//			throw new IllegalArgumentException("This StartLeg has too few components to accomodate the vessel");
+//		return new RailComponent[] { (RailComponent) railBricks.subList(0, components - 1) };
+//	}
+
+	@Override
+	public String id() {
+		return connector.id().toString().concat(".");
 	}
 }

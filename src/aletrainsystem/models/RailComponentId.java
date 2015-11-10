@@ -1,32 +1,32 @@
 package aletrainsystem.models;
 
 public class RailComponentId implements Comparable<RailComponentId> {
-	private final long id;
+	private final String id;
 	
 	public RailComponentId(long id){
-		this.id = id;
+		this.id = String.valueOf(id);
 	}
 	
 	public RailComponentId(String id){
-		this.id = Integer.valueOf(id);
-	}
-	
-	public long value(){
-		return id;
-	}
-	
-	@Override
-	public boolean equals(Object other){
-		return this.value() == ((RailComponentId)other).value();
+		this.id = id;
 	}
 	
 	@Override
 	public String toString(){
-		return String.valueOf(id);
+		return id;
 	}
 	
 	@Override
+	public boolean equals(Object arg0){
+		if (arg0 instanceof RailComponentId) {
+			RailComponentId other = (RailComponentId) arg0;
+			return this.toString().equals(other.toString());			
+		}
+		return false;
+	}
+		
+	@Override
 	public int compareTo(RailComponentId other) {
-		return (int) (other.value() - value());
+		return (Integer.valueOf(other.toString()) - Integer.valueOf(toString()));
 	}
 }

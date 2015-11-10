@@ -1,46 +1,43 @@
 package aletrainsystem.routecontroller;
 
+import java.util.ArrayList;
+
 import aletrainsystem.algorithms.GreedyAlgorithm;
 import aletrainsystem.algorithms.ShortestPathUniDirectional;
-import aletrainsystem.enums.SleeperColor;
-import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.Navigation.RouteElement;
-import aletrainsystem.models.Navigation.Position;
-import aletrainsystem.models.Navigation.Route;
-import aletrainsystem.models.railroad.Point;
+import aletrainsystem.models.navigation.Route;
+import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.PointConnector;
-import aletrainsystem.models.railroad.RailBrick;
-import aletrainsystem.models.railroad.Railroad;
+import aletrainsystem.models.railroad.RegularLeg;
 import no.ntnu.item.arctis.runtime.Block;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class RouteController extends Block {
 
-	public Railroad railroad;
-	public RouteElement nextDestination;
-	private Position currentPosition;
 	private PointConnector direction;
-	private int sleeperCount;
-
-	public void initialize(Railroad r) {
-	}
+	public aletrainsystem.models.navigation.RouteElement nextDestination;
+	public aletrainsystem.models.navigation.Position currentPosition;
+	public aletrainsystem.models.railroad.PointConnector currentDirection;
+	public aletrainsystem.models.railroad.IRailroad railroad;
 
 	public Route findRoute(RouteElement destination) {
 		ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
 		return algorithm.findSingleShortestPath(currentPosition, destination, direction);
 	}
 	
-	public void updatePosition(SleeperColor s) {
-		if (s != SleeperColor.regularSleeper()) {
-			// Do stuff, new signal color detected
-		}
-		else {
-			sleeperCount++;
-			RailBrick brickInFront = (RailBrick)currentPosition.head();
-			if (sleeperCount >= brickInFront.sleepers()) {
-				currentPosition.moveInDirection(direction);
+	public ArrayList<Route> splitIntoSubRoutes(Route route) {
+		ArrayList<Route> subRoutes = new ArrayList<>();
+		Route subRoute = new Route();
+		
+		for (RouteElement routeElement : route) {
+			subRoute.add(routeElement);
+			if (routeElement instanceof RegularLeg) {
+				RegularLeg leg = (RegularLeg) routeElement;
+				if (railroad.isStation(leg)) {
+					subRoutes.add(subRoute);
+					subRoute = new Route();
+				}
 			}
-			
 		}
+		
+		return subRoutes;
 	}
 }

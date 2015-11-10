@@ -2,7 +2,7 @@ package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.Navigation.RouteElement;
+import aletrainsystem.models.navigation.RouteElement;
 
 public class PointConnector extends RouteElement implements RailComponent {
 	private final Point point;

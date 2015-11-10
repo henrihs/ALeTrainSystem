@@ -77,8 +77,8 @@
       <ownedParameter xmi:id="_A2uIIYL3EeWAAZdL8L4_Qw" name="stop" isStream="true"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_UtEZwILyEeWAAZdL8L4_Qw" name="main" node="_YY6ZYYLyEeWAAZdL8L4_Qw _ABr6YILzEeWAAZdL8L4_Qw _B3CScILzEeWAAZdL8L4_Qw _DO6rYILzEeWAAZdL8L4_Qw _blsB8ILzEeWAAZdL8L4_Qw _A2uIIIL3EeWAAZdL8L4_Qw"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_YY6ZYYLyEeWAAZdL8L4_Qw" name="passed" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" type="_YY6ZYILyEeWAAZdL8L4_Qw" parameter="_YY6ZYoLyEeWAAZdL8L4_Qw"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_ABr6YILzEeWAAZdL8L4_Qw" name="enterPointSwitch" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" type="_EyG8cILzEeWAAZdL8L4_Qw" parameter="_ABshcILzEeWAAZdL8L4_Qw"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_B3CScILzEeWAAZdL8L4_Qw" name="leavePointSwitch" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" type="_EyG8cILzEeWAAZdL8L4_Qw" parameter="_B3CScYLzEeWAAZdL8L4_Qw"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_ABr6YILzEeWAAZdL8L4_Qw" name="enterPointSwitch" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" type="_qdLh0IetEeWS0rERPEKd6g" parameter="_ABshcILzEeWAAZdL8L4_Qw"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_B3CScILzEeWAAZdL8L4_Qw" name="leavePointSwitch" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" type="_qdLh0IetEeWS0rERPEKd6g" parameter="_B3CScYLzEeWAAZdL8L4_Qw"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_DO6rYILzEeWAAZdL8L4_Qw" name="passedRegularSleeper" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" parameter="_DO6rYYLzEeWAAZdL8L4_Qw"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_blsB8ILzEeWAAZdL8L4_Qw" name="init" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" parameter="_blsB8YLzEeWAAZdL8L4_Qw"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_A2uIIIL3EeWAAZdL8L4_Qw" name="stop" inPartition="_UtEZwILyEeWAAZdL8L4_Qw" parameter="_A2uIIYL3EeWAAZdL8L4_Qw"/>
@@ -88,6 +88,7 @@
     <packagedElement xmi:type="uml:SignalEvent" xmi:id="_lpqoUILzEeWAAZdL8L4_Qw" name="init"/>
     <packagedElement xmi:type="uml:SignalEvent" xmi:id="_rJa1kILzEeWAAZdL8L4_Qw" name="passed"/>
     <packagedElement xmi:type="uml:SignalEvent" xmi:id="_E3Vd4YL3EeWAAZdL8L4_Qw" name="stop"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_qdLh0IetEeWS0rERPEKd6g" name="aletrainsystem.enums.PointConnectorEnum"/>
     <profileApplication xmi:id="_UtDysILyEeWAAZdL8L4_Qw">
       <eAnnotations xmi:id="_UtDysYLyEeWAAZdL8L4_Qw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>

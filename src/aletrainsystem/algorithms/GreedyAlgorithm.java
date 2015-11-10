@@ -1,9 +1,10 @@
 package aletrainsystem.algorithms;
 
 import java.util.ArrayList;
-import aletrainsystem.models.Navigation.RouteElement;
-import aletrainsystem.models.Navigation.Position;
-import aletrainsystem.models.Navigation.Route;
+
+import aletrainsystem.models.navigation.Position;
+import aletrainsystem.models.navigation.Route;
+import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RegularLeg;

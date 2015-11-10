@@ -124,6 +124,8 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_RU_9gXNWEeWNAdm5YAmirg" name="java.lang.String"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_RVBLonNWEeWNAdm5YAmirg" name="java.util.List&lt;java.lang.String>"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3B5tUIFwEeW-IY1wb01b1A" name="aletrainsystem.models.TrainId"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_RLPj0YPZEeWRLfKAue1ERQ" name="T"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_RNBsgIPZEeWRLfKAue1ERQ" name="java.lang.Object"/>
     <profileApplication xmi:id="__l7VsHM_EeWNAdm5YAmirg">
       <eAnnotations xmi:id="__l_AEHM_EeWNAdm5YAmirg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>
@@ -143,9 +145,9 @@
   <graphics:Shape xmi:id="__qiI4HM_EeWNAdm5YAmirg" x="180" y="55" width="613" height="54" base_Element="__px68XM_EeWNAdm5YAmirg"/>
   <graphics:Shape xmi:id="__qiv8HM_EeWNAdm5YAmirg" x="180" y="108" width="613" height="415" base_Element="__qhh0HM_EeWNAdm5YAmirg"/>
   <arctis:esm xmi:id="_9ZwqAHNIEeWNAdm5YAmirg" base_StateMachine="_9YNx4HNIEeWNAdm5YAmirg"/>
-  <graphics:Shape xmi:id="_9ZyfMHNIEeWNAdm5YAmirg" x="558" y="324" width="289" height="307" base_Element="_9YKHgHNIEeWNAdm5YAmirg"/>
+  <graphics:Shape xmi:id="_9ZyfMHNIEeWNAdm5YAmirg" x="900" y="198" width="289" height="307" base_Element="_9YKHgHNIEeWNAdm5YAmirg"/>
   <graphics:Shape xmi:id="_xbJbkHNLEeWNAdm5YAmirg" base_Element="_uxClwHNLEeWNAdm5YAmirg" orientation="north"/>
-  <graphics:Shape xmi:id="_y1SeUHNLEeWNAdm5YAmirg" x="567" y="243" base_Element="_y1QpIHNLEeWNAdm5YAmirg"/>
+  <graphics:Shape xmi:id="_y1SeUHNLEeWNAdm5YAmirg" x="909" y="135" base_Element="_y1QpIHNLEeWNAdm5YAmirg"/>
   <arctis:esm xmi:id="_RWZrsHNWEeWNAdm5YAmirg" base_StateMachine="_RVCZwHNWEeWNAdm5YAmirg"/>
   <arctis:event xmi:id="_RWa50HNWEeWNAdm5YAmirg" base_Transition="_RWaSxXNWEeWNAdm5YAmirg" triggers="_RU-IUnNWEeWNAdm5YAmirg"/>
   <arctis:event xmi:id="_RWbg4XNWEeWNAdm5YAmirg" base_Transition="_RWbg4HNWEeWNAdm5YAmirg" triggers="_RU_WcXNWEeWNAdm5YAmirg"/>

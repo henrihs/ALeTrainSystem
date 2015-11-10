@@ -1,7 +1,7 @@
 package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.TrackStatus;
-import aletrainsystem.models.Navigation.RouteElement;
+import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.PointConnector;
 
 public class RegularLeg extends RailLeg {
@@ -18,7 +18,7 @@ public class RegularLeg extends RailLeg {
 		
 	}
 	
-	public RailLegId getId() {
+	public RailLegId id() {
 		return trackId;
 	}
 		

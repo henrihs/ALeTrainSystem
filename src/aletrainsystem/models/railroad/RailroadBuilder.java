@@ -60,7 +60,7 @@ public class RailroadBuilder implements IRailRoadBuilder<Railroad> {
 				continue; 
 			}
 
-			Point startPoint = railroad.findOrAddPoint(Integer.valueOf(brick.getId()));
+			Point startPoint = railroad.findOrAddPoint(brick.getId());
 			List<Connexion> connections = brick.getConnexions().getConnexions();
 			for (int i = 0; i < 3; i++) {
 				Connexion nextConnection = connections.get(i).getLinkedTo();
@@ -125,7 +125,7 @@ public class RailroadBuilder implements IRailRoadBuilder<Railroad> {
 			}
 		}
 
-		Point endOfLeg = railroad.findOrAddPoint(Integer.valueOf(brick.getId()));
+		Point endOfLeg = railroad.findOrAddPoint(brick.getId());
 		int index = brick.getConnexions().getConnexions().indexOf(connexion);
 		PointConnector endConnector = endOfLeg.getConnector(ConnectorConverter.convert(brick.getBrickType()).apply(index));
 

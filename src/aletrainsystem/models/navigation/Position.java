@@ -1,15 +1,10 @@
-package aletrainsystem.models.Navigation;
+package aletrainsystem.models.navigation;
 
 import java.util.LinkedList;
 import java.util.Iterator;
-
-import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.railroad.Point;
 import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailComponent;
-import aletrainsystem.models.railroad.RailLeg;
-import aletrainsystem.models.railroad.RegularLeg;
 
 public class Position implements Iterable<RailComponent> {
 
@@ -43,11 +38,19 @@ public class Position implements Iterable<RailComponent> {
 		}
 	}
 	
-	public void moveInDirection(PointConnector direction) {
+	public RailComponent moveInDirection(PointConnector direction) {
+		RailComponent nextComponent = lookAhead(direction);
+		moveTo(nextComponent);
+		return nextComponent;
+	}
+	
+	public RailComponent lookAhead(PointConnector direction) {
 		if (head() instanceof RailBrick) {
 			RailBrick frontBrick = (RailBrick)head();
-			moveTo(frontBrick.parentLeg().getNextComponent(frontBrick, direction));
+			return frontBrick.parentLeg().getNextComponent(frontBrick, direction);
 		}
+		
+		return head();
 	}
 	
 	public boolean headIsInPointSwitch(){

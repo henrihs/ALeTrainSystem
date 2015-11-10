@@ -2,9 +2,11 @@ package aletrainsystem.models.railroad;
 
 import java.util.ArrayList;
 
-import aletrainsystem.models.Navigation.RouteElement;
+import aletrainsystem.models.TrainId;
+import aletrainsystem.models.locking.Lockable;
+import aletrainsystem.models.navigation.RouteElement;
 
-public abstract class RailLeg extends RouteElement {
+public abstract class RailLeg extends RouteElement implements Lockable {
 	
 	protected ArrayList<RailBrick> railBricks;
 	
@@ -30,4 +32,40 @@ public abstract class RailLeg extends RouteElement {
 	}
 	
 	public abstract RailComponent getNextComponent(RailComponent previous, PointConnector direction);
+	
+	private TrainId lockedBy = null;
+	private TrainId reservedBy = null;
+	
+	@Override
+	public TrainId checkLock() {
+		return lockedBy;
+	}
+		
+	@Override
+	public TrainId checkReservation() {
+		return reservedBy;
+	}
+	
+	@Override
+	public void reserveLock(TrainId owner) {
+		if (reservedBy == null)
+			reservedBy = owner;
+	}
+	
+	@Override
+	public void releaseReservation() {
+		reservedBy = null;		
+	}
+	
+	@Override
+	public void performLock(TrainId owner) {
+		if (reservedBy == null || reservedBy.equals(owner))
+			lockedBy = owner;		
+	}
+	
+	@Override
+	public void unLock() {
+		reservedBy = null;
+		lockedBy = null;
+	}
 }

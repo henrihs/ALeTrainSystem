@@ -1,8 +1,9 @@
-package aletrainsystem.models.Navigation;
+package aletrainsystem.models.navigation;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Route {
+public class Route implements Iterable<RouteElement> {
 	protected LinkedList<RouteElement> viaPoints;
 	
 	public Route() {
@@ -28,5 +29,11 @@ public class Route {
 		}
 		
 		return i;
+	}
+
+	@Override
+	public Iterator<RouteElement> iterator() {
+		Iterator<RouteElement> iviapoints = viaPoints.iterator();
+		return iviapoints;
 	}
 }
