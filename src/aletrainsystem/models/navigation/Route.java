@@ -1,21 +1,22 @@
 package aletrainsystem.models.navigation;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Route implements Iterable<RouteElement> {
-	protected LinkedList<RouteElement> viaPoints;
+	protected ArrayList<RouteElement> viaPoints;
 	
 	public Route() {
-		viaPoints = new LinkedList<>();
+		viaPoints = new ArrayList<>();
 	}
 	
 	public Route(Route copyFrom) {
-		viaPoints = (LinkedList<RouteElement>) copyFrom.viaPoints.clone();
+		viaPoints = (ArrayList<RouteElement>) copyFrom.viaPoints.clone();
 	}
 	
-	public void add(RouteElement destination){
-		viaPoints.addLast(destination);
+	public void add(RouteElement viaPoint){
+		viaPoints.add(viaPoint);
 	}
 	
 	public int componentLength() {
@@ -30,10 +31,27 @@ public class Route implements Iterable<RouteElement> {
 		
 		return i;
 	}
+	
+	public RouteElement getFirstElement() {
+		return viaPoints.get(0);
+	}
+	
+	public RouteElement getLastElement() {
+		return viaPoints.get(viaPoints.size()-1);
+	}
 
 	@Override
 	public Iterator<RouteElement> iterator() {
 		Iterator<RouteElement> iviapoints = viaPoints.iterator();
 		return iviapoints;
+	}
+	
+	public RouteElement getNext(RouteElement current) {
+		int currentIndex = viaPoints.indexOf(current);
+		if (currentIndex < viaPoints.size()) {
+			return viaPoints.get(currentIndex+1);
+		}
+		
+		return null;
 	}
 }

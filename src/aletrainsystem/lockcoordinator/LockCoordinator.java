@@ -1,5 +1,6 @@
 package aletrainsystem.lockcoordinator;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import aletrainsystem.models.TrainId;
@@ -12,7 +13,7 @@ import no.ntnu.item.arctis.runtime.Block;
 public class LockCoordinator extends Block {
 	public static final String PARTICIPANTS_KEY = "participants";
 	public static final String ENTITY_ID = "id";
-	public Set<Response> responses;
+	public ArrayList<Response> responses;
 	public aletrainsystem.models.locking.TransactionId id;
 	public java.util.Set<aletrainsystem.models.locking.Lockable> objectsToLock;
 	public aletrainsystem.models.locking.Request request;
@@ -42,12 +43,16 @@ public class LockCoordinator extends Block {
 		return request;
 	}
 
-	public boolean lockAcquired(Response response) {
+	public boolean reservationAcquired(Response response) {
 		return response.success();
 	}
 
 	public void saveResponse(Response r) {
-		responses.add(r);
+		if (responses.stream().noneMatch(
+				savedResponse -> savedResponse.responder().equals(r.responder())
+				)) {
+			responses.add(r);
+		}
 	}
 
 	public boolean waitingForResponses() {
@@ -58,20 +63,28 @@ public class LockCoordinator extends Block {
 				participants = (Set<TrainId>) p;
 			}
 		}
-		int matches = 0;
-		for (Response response : responses) {
-			for (TrainId participant : participants) {
-				if (response.responder().equals(participant))
-					matches++;
-			}
-		}
-		if (matches == participants.size())
+		
+		if (responses.size() < participants.size())
 			return true;
 		return false;
 	}
 
 	public Request changeToPerformRequest(Request r) {
 		r.type(RequestType.PERFORM);
+		return r;
+	}
+
+	public boolean allResponsesSuccessfull() {
+		for (Response response : responses) {
+			if (!response.success())
+				return false;
+		}
+		
+		return true;
+	}
+
+	public Request changeToAbortRequest(Request r) {
+		r.type(RequestType.ABORT);
 		return r;
 	}
 }

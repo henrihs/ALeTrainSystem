@@ -18,6 +18,8 @@ public class LockParticipant extends Block {
 
 	public aletrainsystem.models.railroad.IRailroad resources;
 
+	public aletrainsystem.models.locking.Response response;
+
 	public LockParticipant() {
 	}
 
@@ -53,6 +55,10 @@ public class LockParticipant extends Block {
 
 	public boolean isRelease() {
 		return request.type() == RequestType.RELEASE;
+	}
+	
+	public boolean isInternalResponse() {
+		return response.responder().equals(response.requester());
 	}
 
 	public void reserveLock() {

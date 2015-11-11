@@ -1,6 +1,7 @@
 package aletrainsystem.routecontroller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import aletrainsystem.algorithms.GreedyAlgorithm;
 import aletrainsystem.algorithms.ShortestPathUniDirectional;
@@ -17,7 +18,8 @@ public class RouteController extends Block {
 	public aletrainsystem.models.navigation.Position currentPosition;
 	public aletrainsystem.models.railroad.PointConnector currentDirection;
 	public aletrainsystem.models.railroad.IRailroad railroad;
-
+	public java.util.ArrayList<aletrainsystem.models.navigation.Route> subRoutes;
+	public java.util.Iterator<aletrainsystem.models.navigation.Route> subRouteIterator;
 	public Route findRoute(RouteElement destination) {
 		ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
 		return algorithm.findSingleShortestPath(currentPosition, destination, direction);
@@ -39,5 +41,16 @@ public class RouteController extends Block {
 		}
 		
 		return subRoutes;
+	}
+	
+	public Iterator<Route> getSubRouteIterator() {
+		return subRoutes.iterator();
+	}
+
+	public Route getNextSubRoute() {
+		if (subRouteIterator.hasNext()) {
+			return subRouteIterator.next();
+		}
+		return null;
 	}
 }

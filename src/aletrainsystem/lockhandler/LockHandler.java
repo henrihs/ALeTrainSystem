@@ -17,6 +17,7 @@ public class LockHandler extends Block {
 	
 	public long counter = 10000;
 	public TrainId trainId;
+	public aletrainsystem.models.locking.Request request;
 	
 	public void setIds(TrainId id) {
 		this.trainId = id;
@@ -39,10 +40,14 @@ public class LockHandler extends Block {
 	}
 	
 	public Message generateRequestMessage(Request r) {
-		return new Message("trains", r);
+		return new Message("trains.common", r);
 	}
 
 	// Do not edit this constructor.
 	public LockHandler() {
+	}
+
+	public boolean isInternalRequest() {
+		return request.coordinator().equals(trainId);
 	}
 }
