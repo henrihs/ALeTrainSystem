@@ -31,17 +31,20 @@ public class Position implements Iterable<RailComponent> {
 		return null;
 	}
 	
-	public void moveTo(RailComponent part) {
+	public RailComponent moveTo(RailComponent part) {
 		parts.addLast(part);
 		if (parts.size() > sizeOfParentObject) {
+			RailComponent passed = parts.getFirst();
 			parts.removeFirst();
+			return passed;
 		}
+		
+		return null;
 	}
 	
 	public RailComponent moveInDirection(PointConnector direction) {
 		RailComponent nextComponent = lookAhead(direction);
-		moveTo(nextComponent);
-		return nextComponent;
+		return moveTo(nextComponent);
 	}
 	
 	public RailComponent lookAhead(PointConnector direction) {
@@ -64,6 +67,15 @@ public class Position implements Iterable<RailComponent> {
 		}
 		
 		parts = reversedParts;
+	}
+	
+	public boolean isTouchingRouteElement(RouteElement element) {
+		for (RailComponent railComponent : parts) {
+			if (element.equals(railComponent.partOfElement()))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	@Override

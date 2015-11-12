@@ -2,31 +2,46 @@ package aletrainsystem.models.locking;
 
 import aletrainsystem.models.TrainId;
 
-public class Response {
+public class Response implements LockingMessage {
 	
 	private Request request;
-	private TrainId responder;
+	private TrainId respondent;
 	private boolean success;
 	
-	public Response(TrainId participant, Request request, boolean success) {
+	public Response(TrainId respondent, Request request, boolean success) {
 		this.request = request;
 		this.success = success;
-		this.responder = participant;
+		this.respondent = respondent;
 	}
 	
 	public boolean success() {
 		return success;
 	}
 	
-	public TrainId requester() {
-		return request.coordinator();
+	@Override
+	public TrainId collector() {
+		return request.collector();
 	}
 	
+	@Override
 	public TransactionId transactionId() {
-		return request.id();
+		return request.transactionId();
 	}
 	
-	public TrainId responder() {
-		return responder;
+	public TrainId respondent() {
+		return respondent;
+	}
+	
+	@Override
+	public RequestType type() {
+		return request.type();
+	}
+	
+	@Override
+	public String toString() {
+		return "Transaction: " + transactionId().toString() + ", " + 
+				"Respondent: " + respondent.toString() + ", " +
+				"Success: " + success;
+				
 	}
 }

@@ -12,6 +12,7 @@
           <transition xmi:id="_cuCmUIhzEeWS0rERPEKd6g" name="getNextSubRoute / subRoute" source="_Xn06cIhzEeWS0rERPEKd6g" target="_Xn06cIhzEeWS0rERPEKd6g"/>
           <transition xmi:id="_e70FcIhzEeWS0rERPEKd6g" name="getNextSubRoute / routeFinished" source="_Xn06cIhzEeWS0rERPEKd6g" target="_Zsk8UIe2EeWS0rERPEKd6g"/>
           <transition xmi:id="_jw6MIIhzEeWS0rERPEKd6g" name="update / " source="_Xn06cIhzEeWS0rERPEKd6g" target="_Xn06cIhzEeWS0rERPEKd6g"/>
+          <transition xmi:id="_fNnYgIliEeWbcpvolr7Psw" name=" / routeFinished" source="_c5wqAIe2EeWS0rERPEKd6g" target="_Zsk8UIe2EeWS0rERPEKd6g"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_npgVE4FyEeW-IY1wb01b1A" name="&lt;initial>"/>
           <subvertex xmi:type="uml:State" xmi:id="_Zsk8UIe2EeWS0rERPEKd6g" name="idle"/>
           <subvertex xmi:type="uml:State" xmi:id="_c5wqAIe2EeWS0rERPEKd6g" name="calculating"/>
@@ -184,4 +185,5 @@
   <arctis:event xmi:id="_cuEbgIhzEeWS0rERPEKd6g" base_Transition="_cuCmUIhzEeWS0rERPEKd6g" triggers="_mD5NUIhxEeWS0rERPEKd6g" effects="_Mk6_AIe1EeWS0rERPEKd6g"/>
   <arctis:event xmi:id="_e716oIhzEeWS0rERPEKd6g" base_Transition="_e70FcIhzEeWS0rERPEKd6g" triggers="_mD5NUIhxEeWS0rERPEKd6g" effects="_d7POsIhyEeWS0rERPEKd6g"/>
   <arctis:event xmi:id="_jw8BUIhzEeWS0rERPEKd6g" base_Transition="_jw6MIIhzEeWS0rERPEKd6g" triggers="_inRpoIe6EeWS0rERPEKd6g"/>
+  <arctis:event xmi:id="_fPH0YIliEeWbcpvolr7Psw" base_Transition="_fNnYgIliEeWbcpvolr7Psw" effects="_d7POsIhyEeWS0rERPEKd6g"/>
 </xmi:XMI>

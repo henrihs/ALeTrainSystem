@@ -2,6 +2,7 @@ package aletrainsystem.lockparticipant;
 
 import aletrainsystem.models.TrainId;
 import aletrainsystem.models.locking.Lockable;
+import aletrainsystem.models.locking.LockingMessage;
 import aletrainsystem.models.locking.Request;
 import aletrainsystem.models.locking.RequestType;
 import aletrainsystem.models.locking.Response;
@@ -58,16 +59,16 @@ public class LockParticipant extends Block {
 	}
 	
 	public boolean isInternalResponse() {
-		return response.responder().equals(response.requester());
+		return response.respondent().equals(response.collector());
 	}
 
 	public void reserveLock() {
 		for (Lockable lockable : request.objectsToLock()) {
 			Lockable localInstance = railroad.getLockableResource(lockable.id().toString());
 			TrainId lockOwner = localInstance.checkLock();
-			if (lockOwner == null || lockOwner.equals(request.coordinator())) {
-				localInstance.reserveLock(request.coordinator());
-				lockable.reserveLock(request.coordinator());
+			if (lockOwner == null || lockOwner.equals(request.collector())) {
+				localInstance.reserveLock(request.collector());
+				lockable.reserveLock(request.collector());
 			}
 		}
 	}
@@ -76,7 +77,7 @@ public class LockParticipant extends Block {
 		for (Lockable lockable : request.objectsToLock()) {
 			Lockable localInstance = railroad.getLockableResource(lockable.id().toString());
 			TrainId lockOwner = localInstance.checkReservation();
-			if (!lockOwner.equals(request.coordinator())) {
+			if (!lockOwner.equals(request.collector())) {
 				return false;
 			}
 		}
@@ -87,7 +88,7 @@ public class LockParticipant extends Block {
 		for (Lockable lockable : request.objectsToLock()) {
 			Lockable localInstance = railroad.getLockableResource(lockable.id().toString());
 			TrainId lockOwner = localInstance.checkLock();
-			if (lockOwner != null || !lockOwner.equals(request.coordinator()))
+			if (lockOwner != null || !lockOwner.equals(request.collector()))
 				return true;
 		}
 		return false;
@@ -97,9 +98,9 @@ public class LockParticipant extends Block {
 		for (Lockable lockable : request.objectsToLock()) {
 			Lockable localInstance = railroad.getLockableResource(lockable.id().toString());
 			TrainId lockOwner = localInstance.checkLock();
-			if (lockOwner == null || lockOwner.equals(request.coordinator())) {
-				localInstance.performLock(request.coordinator());
-				lockable.performLock(request.coordinator());
+			if (lockOwner == null || lockOwner.equals(request.collector())) {
+				localInstance.performLock(request.collector());
+				lockable.performLock(request.collector());
 			}
 		}
 	}
@@ -108,7 +109,7 @@ public class LockParticipant extends Block {
 		for (Lockable lockable : request.objectsToLock()) {
 			Lockable localInstance = railroad.getLockableResource(lockable.id().toString());
 			TrainId lockOwner = localInstance.checkReservation();
-			if (lockOwner == null || lockOwner.equals(request.coordinator())) {
+			if (lockOwner == null || lockOwner.equals(request.collector())) {
 				localInstance.releaseReservation();
 				lockable.releaseReservation();
 			}
@@ -119,7 +120,7 @@ public class LockParticipant extends Block {
 		for (Lockable lockable : request.objectsToLock()) {
 			Lockable localInstance = railroad.getLockableResource(lockable.id().toString());
 			TrainId lockOwner = localInstance.checkLock();
-			if (!lockOwner.equals(request.coordinator())) {
+			if (!lockOwner.equals(request.collector())) {
 				return false;
 			}
 		}

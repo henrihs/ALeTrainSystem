@@ -1,6 +1,7 @@
 package aletrainsystem.models.railroad;
 
 import aletrainsystem.models.RailComponentId;
+import aletrainsystem.models.navigation.RouteElement;
 import bluebrick4j.model.BrickType;
 
 public class RailBrick implements RailComponent {
@@ -31,5 +32,21 @@ public class RailBrick implements RailComponent {
 	@Override
 	public RailComponentId id() {
 		return id;
+	}
+
+	@Override
+	public RouteElement partOfElement() {
+		return parentLeg();
+	}
+	
+	@Override
+	public boolean equals(Object arg0) {
+		if (arg0 instanceof RailBrick) {
+			RailBrick other = (RailBrick) arg0;
+			if (id.equals(other.id()) && parentLeg.equals(other.parentLeg()))
+				return true;
+		}
+		
+		return false;
 	}
 }

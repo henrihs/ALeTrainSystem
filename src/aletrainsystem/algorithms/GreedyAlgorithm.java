@@ -2,38 +2,42 @@ package aletrainsystem.algorithms;
 
 import java.util.ArrayList;
 
+import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.navigation.Position;
 import aletrainsystem.models.navigation.Route;
 import aletrainsystem.models.navigation.RouteElement;
+import aletrainsystem.models.railroad.IRailroad;
 import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
+import aletrainsystem.models.railroad.RailLeg;
 import aletrainsystem.models.railroad.RegularLeg;
 
 public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	
 	private RouteElement finalDestination;
 	private ArrayList<Route> routes;
+	private RouteElement startPosition;
+	private IRailroad railroad;
 	
 	@Override
-	public Route findSingleShortestPath(Position position, RouteElement destination, PointConnector direction) {
+	public Route findSingleShortestPath(IRailroad railroad, Position position, RouteElement destination, PointConnector direction) {
 		finalDestination = destination;
-		
+		this.railroad = railroad;
 		routes = new ArrayList<>();
 		
-		RouteElement start;
 		RouteElement previous;
 		
 		if (position.headIsInPointSwitch()) {
-			start = (RouteElement) position.head();
+			startPosition = (RouteElement) position.head();
 			previous = position.getPreviousBrick().parentLeg();
 		}
 		else {
 			RailBrick startBrick = (RailBrick)position.head();
-			start = startBrick.parentLeg();
-			previous = ((RegularLeg)start).getOppositeConnector(direction);
+			startPosition = startBrick.parentLeg();
+			previous = ((RegularLeg)startPosition).getOppositeConnector(direction);
 		}
 		
-		traverseAllPaths(new Route(), start, previous);
+		traverseAllPaths(new Route(), startPosition, previous);
 		
 		Route shortestRoute = null;
 		for (Route route : routes) {
@@ -50,13 +54,53 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 		if (current.equals(finalDestination)) {
 			return;
 		}
+
+		else if (current.equals(startPosition)) {
+			routes.remove(continuedRoute);
+			return;
+		}
 		
 		RouteElement[] next = current.getNext(previous);
-		traverseAllPaths(continuedRoute, next[0], current);
-		if (next.length == 2) {
+		
+		
+		if (next.length == 1) {
+			traverseAllPaths(continuedRoute, next[0], current);
+		}
+		
+		else if (isStation(next)) {
+			RouteElement choice = chooseDirection(next);
+			traverseAllPaths(continuedRoute, choice, current);
+		}
+		
+		else if (next.length == 2) {
 			Route alternativeRoute = new Route(continuedRoute);
 			routes.add(alternativeRoute);
+			traverseAllPaths(continuedRoute, next[0], current);
 			traverseAllPaths(alternativeRoute, next[1], current);
 		}
+	}
+	
+	private boolean isStation(RouteElement[] next) {
+		if (next.length == 2) {
+			RailLeg possibleStation = ((PointConnector)next[0]).getConnectedRailLeg();
+			if (possibleStation instanceof RegularLeg 
+					&& railroad.isStation((RegularLeg)possibleStation)) {
+				return true;				
+			}			
+		}
+		
+		return false;
+	}
+	
+	private RouteElement chooseDirection(RouteElement[] choices) {
+		PointConnector throughConnector = (PointConnector)choices[0];
+		RailComponentId pointId = throughConnector.id();
+		RailComponentId oppositePointId = ((RegularLeg)throughConnector.getConnectedRailLeg()).
+										getOppositeConnector(throughConnector).id();
+		if (pointId.compareTo(oppositePointId) < 0) {
+			return choices[0];
+		}
+		
+		return choices[1];
 	}
 }

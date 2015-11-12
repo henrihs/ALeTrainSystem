@@ -8,6 +8,7 @@ import aletrainsystem.models.TrainId;
 import aletrainsystem.models.locking.CoordinatorInitParams;
 import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.locking.Request;
+import aletrainsystem.models.locking.RequestType;
 import aletrainsystem.models.locking.Response;
 import aletrainsystem.models.locking.TransactionId;
 import no.ntnu.item.arctis.runtime.Block;
@@ -35,19 +36,24 @@ public class LockHandler extends Block {
 		return new CoordinatorInitParams(transactionId, objectsToLock);
 	}
 
-	public Message generateResponseMessage(Response r) {
-		return new Message("trains.".concat(r.requester().toString()), r);
-	}
-	
-	public Message generateRequestMessage(Request r) {
-		return new Message("trains.common", r);
-	}
+//	public Message generateResponseMessage(Response r) {
+//		return new Message("trains.".concat(r.requester().toString()), r);
+//	}
+//	
+//	public Message generateRequestMessage(Request r) {
+//		return new Message("trains.common", r);
+//	}
 
 	// Do not edit this constructor.
 	public LockHandler() {
 	}
 
 	public boolean isInternalRequest() {
-		return request.coordinator().equals(trainId);
+		return request.collector().equals(trainId);
+	}
+
+	public Request generateReleaseRequest(Set<Lockable> resourcesToRelease) {
+		String id = trainId.toString().concat(String.valueOf(++counter));
+		return new Request(new TransactionId(id), trainId, resourcesToRelease, RequestType.RELEASE);
 	}
 }

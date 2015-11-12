@@ -10,10 +10,10 @@ import aletrainsystem.models.locking.Lockable;
 
 public class Point implements Lockable {
 	private Map<PointConnectorEnum, PointConnector> connectors;
-	private RailComponentId pointSwitchId;
+	private RailComponentId id;
 	
-	public Point(RailComponentId pointSwitchId){
-		this.pointSwitchId = pointSwitchId;
+	public Point(RailComponentId id){
+		this.id = id;
 		connectors = new HashMap<PointConnectorEnum, PointConnector>();
 		for (PointConnectorEnum connectorType : PointConnectorEnum.values()) {
 			addConnector(new PointConnector(this, connectorType));
@@ -21,7 +21,7 @@ public class Point implements Lockable {
 	}
 	
 	public RailComponentId id(){
-		return pointSwitchId;
+		return id;
 	}
 	
 	
@@ -38,8 +38,14 @@ public class Point implements Lockable {
 	}
 
 	@Override
-	public boolean equals(Object other){
-		return this.pointSwitchId.equals(((Point)other).id());
+	public boolean equals(Object arg0) {
+		if (arg0 instanceof Point) {
+			Point other = (Point) arg0;
+			if (id.equals(other.id()))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	private TrainId lockedBy = null;

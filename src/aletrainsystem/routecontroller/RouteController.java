@@ -22,7 +22,7 @@ public class RouteController extends Block {
 	public java.util.Iterator<aletrainsystem.models.navigation.Route> subRouteIterator;
 	public Route findRoute(RouteElement destination) {
 		ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
-		return algorithm.findSingleShortestPath(currentPosition, destination, direction);
+		return algorithm.findSingleShortestPath(railroad, currentPosition, destination, direction);
 	}
 	
 	public ArrayList<Route> splitIntoSubRoutes(Route route) {

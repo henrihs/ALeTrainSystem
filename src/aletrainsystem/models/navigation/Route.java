@@ -3,6 +3,7 @@ package aletrainsystem.models.navigation;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class Route implements Iterable<RouteElement> {
 	protected ArrayList<RouteElement> viaPoints;
@@ -32,12 +33,22 @@ public class Route implements Iterable<RouteElement> {
 		return i;
 	}
 	
+	public RouteElement popFirst() {
+		RouteElement first = getFirstElement();
+		viaPoints.remove(first);
+		return first;
+	}
+	
 	public RouteElement getFirstElement() {
 		return viaPoints.get(0);
 	}
 	
 	public RouteElement getLastElement() {
 		return viaPoints.get(viaPoints.size()-1);
+	}
+	
+	public ArrayList<RouteElement> getClonedList() {
+		return (ArrayList<RouteElement>) viaPoints.clone(); 
 	}
 
 	@Override

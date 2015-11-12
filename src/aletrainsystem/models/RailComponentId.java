@@ -27,6 +27,6 @@ public class RailComponentId implements Comparable<RailComponentId> {
 		
 	@Override
 	public int compareTo(RailComponentId other) {
-		return (Integer.valueOf(other.toString()) - Integer.valueOf(toString()));
+		return (Integer.valueOf(toString()) - Integer.valueOf(other.toString()));
 	}
 }

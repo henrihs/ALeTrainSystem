@@ -68,4 +68,9 @@ public abstract class RailLeg extends RouteElement implements Lockable {
 		reservedBy = null;
 		lockedBy = null;
 	}
+	
+	@Override
+	public Lockable getLockableResource() {
+		return this;
+	}
 }

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import aletrainsystem.models.TrainId;
 import aletrainsystem.models.locking.CoordinatorInitParams;
+import aletrainsystem.models.locking.LockingMessage;
 import aletrainsystem.models.locking.Request;
 import aletrainsystem.models.locking.RequestType;
 import aletrainsystem.models.locking.Response;
@@ -49,7 +50,7 @@ public class LockCoordinator extends Block {
 
 	public void saveResponse(Response r) {
 		if (responses.stream().noneMatch(
-				savedResponse -> savedResponse.responder().equals(r.responder())
+				savedResponse -> savedResponse.respondent().equals(r.respondent())
 				)) {
 			responses.add(r);
 		}
@@ -70,7 +71,7 @@ public class LockCoordinator extends Block {
 	}
 
 	public Request changeToPerformRequest(Request r) {
-		r.type(RequestType.PERFORM);
+		r.setType(RequestType.PERFORM);
 		return r;
 	}
 
@@ -84,7 +85,12 @@ public class LockCoordinator extends Block {
 	}
 
 	public Request changeToAbortRequest(Request r) {
-		r.type(RequestType.ABORT);
+		r.setType(RequestType.ABORT);
 		return r;
+	}
+
+	public void log() {
+		String failedAt = responses.size() > 0 ? responses.stream().filter(r -> !r.success()).toString() : " internal reservation.";
+		logger.info("Could not aquire lock, failed at".concat(failedAt));
 	}
 }

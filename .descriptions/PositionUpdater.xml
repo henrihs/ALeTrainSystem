@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <block
-    name="Positioning" 
-    uuid="_kNCIooiNEeWS0rERPEKd6g" 
+    name="PositionUpdater" 
+    uuid="_H8UkcYkvEeWbcpvolr7Psw" 
     status="under construction" 
     type="block" 
     >

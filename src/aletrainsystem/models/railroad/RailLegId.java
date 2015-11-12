@@ -53,11 +53,11 @@ public class RailLegId {
 						concat(connector2.getType().shorthand());
 		String idString;
 		if (connector1.id().compareTo(
-				connector2.id()) > 0) {
+				connector2.id()) < 0) {
 			idString = idString1.concat(DELIMITER).concat(idString2);
 		}
 		else if (connector1.id().compareTo(
-				connector2.id()) < 0) {
+				connector2.id()) > 0) {
 			idString = idString2.concat(DELIMITER).concat(idString1);
 		}
 		else {

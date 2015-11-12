@@ -191,6 +191,7 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_jgh98IebEeWRLfKAue1ERQ" name="aletrainsystem.models.locking.Request"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_u8ec0IebEeWRLfKAue1ERQ" name="aletrainsystem.models.railroad.Railroad"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_y4AeQIebEeWRLfKAue1ERQ" name="aletrainsystem.models.railroad.IRailroad"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_1w5OoIlWEeWbcpvolr7Psw" name="aletrainsystem.models.locking.LockingMessage"/>
     <profileApplication xmi:id="_ICD-iIeYEeWRLfKAue1ERQ">
       <eAnnotations xmi:id="_ICD-iYeYEeWRLfKAue1ERQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>

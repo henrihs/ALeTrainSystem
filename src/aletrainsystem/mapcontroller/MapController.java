@@ -2,6 +2,7 @@ package aletrainsystem.mapcontroller;
 
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.enums.SpeedLevel;
+import aletrainsystem.models.TrainId;
 import aletrainsystem.models.navigation.Position;
 import aletrainsystem.models.navigation.Route;
 import aletrainsystem.models.navigation.RouteElement;
@@ -13,6 +14,7 @@ import no.ntnu.item.arctis.runtime.Block;
 
 public class MapController extends Block {
 
+	public TrainId id;
 	public aletrainsystem.models.railroad.IRailroad map;
 	public aletrainsystem.models.navigation.Position position;
 	public aletrainsystem.models.navigation.Route currentRoute;
@@ -21,20 +23,12 @@ public class MapController extends Block {
 
 	public Position init(MapInitParams params) {
 		map = params.railroad();
-		
+		id = params.id();
 		StartLeg start = map.getRailSystemStartLeg();
 		
 		direction = start.getConnector();  
 		position = new Position(new RailComponent[] {start.getConnector()}, params.sizeOfParentObject());
 		return position;
-	}
-
-	public RailComponent incrementPosition() {
-		return position.moveInDirection(direction);
-	}
-
-	public RailComponent getHead(Position p) {
-		return p.head();
 	}
 
 	public SpeedLevel slowCommand() {
@@ -45,69 +39,30 @@ public class MapController extends Block {
 		return SpeedLevel.STOPPED;
 	}
 
-	public boolean lastElementOnSubRoute(RailComponent component) {
-		RouteElement element = null;
-		
-		if (component instanceof PointConnector) {
-			PointConnector connector = (PointConnector) component;
-			element = connector;
-		}
-		else if (component instanceof RailBrick) {
-			RailBrick brick = (RailBrick) component;
-			element = brick.parentLeg();
-		}
-		
-		return element.equals(currentRoute.getLastElement());
-	}
-
-	public RouteElement getCurrentRouteElementFromPosition() {
-		RailBrick brick = null;
-		if (!position.headIsInPointSwitch()) {
-			 brick = (RailBrick)position.head();
-		}
-		else {
-			brick = (RailBrick)position.getPreviousBrick();
-		}
-		
-		return brick.parentLeg();
-	}
-
-	public RailComponent jumpToNext(PointConnectorEnum connectorType) {
-		while (!position.headIsInPointSwitch()) {
-			position.moveInDirection(direction);
-		}
-		
-		logIfUnexpectedConnector(connectorType);
-		currentRouteElement = currentRoute.getNext(currentRouteElement);
-		
-		return position.head();
-	}
-
-	private void logIfUnexpectedConnector(PointConnectorEnum connectorType) {
-		PointConnector pointInFront = (PointConnector) position.head();
-		if (pointInFront.getType() != connectorType) {
-			logger.warn(
-					"Unexpected connector type! Expected '".
-					concat(pointInFront.getType().toString()).
-					concat("', actual '").
-					concat(connectorType.toString()));
-		}
-	}
-
-	public RailBrick castToRailBrick(RailComponent component) {
-		if (component instanceof RailBrick)
-			return (RailBrick) position.lookAhead(direction);
-		return null;
-	}
-
-	public void setNewDirection(PointConnectorEnum connectorType) {
-		logIfUnexpectedConnector(connectorType);
-		
-		
-	}
-
 	public void initCurrentRouteElement(Route route) {
 		currentRouteElement = route.getFirstElement();
 	}
 
+	public boolean isRouteLocked() {
+		for (RouteElement routeElement : currentRoute) {
+			if (routeElement instanceof PointConnector) {
+				if (!id.equals(((PointConnector)routeElement).point().checkLock()))
+					return false;
+			}
+		}
+		
+		return true;
+	}
+
+	public SpeedLevel driveCommand() {
+		return SpeedLevel.MEDIUM;
+	}
+
+	public void logLockingErr() {
+		logger.error("Expected lock on " + currentRoute + " not successfull!");
+	}
+
+	public MapController getThisInstance() {
+		return this;
+	}
 }

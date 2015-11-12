@@ -2,6 +2,7 @@ package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
+import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.navigation.RouteElement;
 
 public class PointConnector extends RouteElement implements RailComponent {
@@ -57,5 +58,26 @@ public class PointConnector extends RouteElement implements RailComponent {
 	@Override
 	public RailComponentId id() {
 		return point.id();
+	}
+
+	@Override
+	public RouteElement partOfElement() {
+		return this;
 	}		
+	
+	@Override
+	public boolean equals(Object arg0) {
+		if (arg0 instanceof PointConnector) {
+			PointConnector other = (PointConnector) arg0;
+			if (point.equals(other.point()) && connector.equals(other.getType()))
+				return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public Lockable getLockableResource() {
+		return point();
+	}
 }
