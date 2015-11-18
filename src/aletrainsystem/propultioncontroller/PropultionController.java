@@ -11,7 +11,7 @@ public class PropultionController extends Block {
 	public EV3MediumRegulatedMotor motor = new EV3MediumRegulatedMotor(A);
 
 	public void changeSpeed(SpeedLevel speed) {
-		motor.rotateTo(-15 * speed.ordinal(), false);
+		motor.rotateTo(15 * speed.ordinal(), false);
 	}
 
 	public void calibrateController(int degrees) {

@@ -9,16 +9,16 @@ import aletrainsystem.models.locking.CoordinatorInitParams;
 import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.locking.Request;
 import aletrainsystem.models.locking.RequestType;
-import aletrainsystem.models.locking.Response;
 import aletrainsystem.models.locking.TransactionId;
 import no.ntnu.item.arctis.runtime.Block;
-import ntnu.no.rabbitamqp.util.Message;
 
 public class LockHandler extends Block {
 	
 	public long counter = 10000;
 	public TrainId trainId;
 	public aletrainsystem.models.locking.Request request;
+	public java.util.Set<aletrainsystem.models.TrainId> participants;
+	public aletrainsystem.models.railroad.IRailroad railroad;
 	
 	public void setIds(TrainId id) {
 		this.trainId = id;
@@ -27,6 +27,7 @@ public class LockHandler extends Block {
 	}
 
 	public void updateParticipants(Set<TrainId> participants) {
+		this.participants = participants;
 		setProperty(LockCoordinator.PARTICIPANTS_KEY, participants);
 	}
 
@@ -51,9 +52,21 @@ public class LockHandler extends Block {
 	public boolean isInternalRequest() {
 		return request.collector().equals(trainId);
 	}
+	
+	public boolean isNoOtherParticipants() {
+		return participants.size() == 0;
+	}
 
 	public Request generateReleaseRequest(Set<Lockable> resourcesToRelease) {
 		String id = trainId.toString().concat(String.valueOf(++counter));
 		return new Request(new TransactionId(id), trainId, resourcesToRelease, RequestType.RELEASE);
+	}
+
+	public Set<Lockable> forceLock(Set<Lockable> objects) {
+		for (Lockable lockable : objects) {
+			lockable.performLock(trainId);
+		}
+		
+		return objects;
 	}
 }

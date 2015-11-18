@@ -25,4 +25,17 @@ public enum PointConnectorEnum {
 		return color;
 	}
 	
+	public static PointConnectorEnum getConnectorFromShortHand(String shorthand) {
+		switch (shorthand) {
+		case "t":
+			return THROUGH;
+		case "e":
+			return ENTRY;
+		case "d":
+			return DIVERT;
+		default:
+			return null;
+		}
+	}
+	
 }

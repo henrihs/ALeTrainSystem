@@ -10,5 +10,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/ev3/ev3classes.jar"/>
 	<classpathentry kind="lib" path="lib/bluebrick4j.jar"/>
 	<classpathentry kind="lib" path="lib/rabbitmq-client.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

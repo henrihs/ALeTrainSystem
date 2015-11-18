@@ -1,5 +1,7 @@
 package aletrainsystem.positionupdater;
 
+import java.util.ArrayList;
+
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.mapcontroller.MapController;
 import aletrainsystem.models.navigation.RouteElement;
@@ -80,6 +82,8 @@ public class PositionUpdater extends Block {
 
 	public void clearVariables() {
 		passedComponent = null;
+		if (passedElements == null)
+			passedElements = new ArrayList<>();
 		passedElements.clear();
 	}
 	

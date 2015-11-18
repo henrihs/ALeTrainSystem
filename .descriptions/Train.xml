@@ -8,6 +8,11 @@
     <required>
         <package name="aletrainsystem.train.component"/>
         <block name="b0" uuid="_CsC_0XNFEeWNAdm5YAmirg"/>
-        <block name="b1" uuid="_XAfIYXNQEeWwSc-b3mUj5g"/>
+        <block name="b1" uuid="_00G2840fEeWhyqPFGZmtAQ"/>
+        <block name="b2" uuid="_GrqrMI0cEeWhyqPFGZmtAQ"/>
+        <block name="b3" uuid="_XAfIYXNQEeWwSc-b3mUj5g"/>
+        <block name="b4" uuid="_OUgmUFeJEd-6BOcoDEhEvw"/>
+        <block name="b5" uuid="_cAiZ4aWJEeGtcaXYz8RSig"/>
+        <block name="b6" uuid="_fl1soaWJEeGtcaXYz8RSig"/>
     </required>
 </block>

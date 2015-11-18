@@ -8,6 +8,7 @@ import java.util.Set;
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.locking.Lockable;
+import aletrainsystem.models.navigation.RouteElement;
 
 public class Railroad implements IRailroad {
 
@@ -39,6 +40,24 @@ public class Railroad implements IRailroad {
 
 	Map<String, RegularLeg> getRailLegs(){
 		return legs;
+	}
+	
+	@Override
+	public RouteElement getRouteElement(String id) {
+		if (legs.containsKey(id)) {
+			return legs.get(id);
+		}
+		else if (railSystemEntryPoint.id().equals(id)) {
+			return railSystemEntryPoint;
+		}
+		
+		String pointId = id.substring(0, id.length()-2);
+		String connector = id.substring(id.length()-2, id.length()-1);
+		if (points.containsKey(pointId)) {
+			return points.get(pointId).getConnector(PointConnectorEnum.getConnectorFromShortHand(connector));
+		}
+		
+		return null;
 	}
 
 	Map<String, Point> getPointSwitches(){
