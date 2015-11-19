@@ -129,4 +129,15 @@ public class LockParticipant extends Block {
 
 	public void releaseLock() {
 	}
+
+	public void logInit() {
+		logger.info("Initialized");
+	}
+
+	public void received() {
+		logger.info(
+				request.transactionId().toString().
+				concat(": Received ").
+				concat(request.type().toString()));
+	}
 }

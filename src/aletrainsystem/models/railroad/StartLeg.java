@@ -1,5 +1,6 @@
 package aletrainsystem.models.railroad;
 
+import java.util.ArrayList;
 import aletrainsystem.models.navigation.RouteElement;
 
 public class StartLeg extends RailLeg {
@@ -9,6 +10,9 @@ public class StartLeg extends RailLeg {
 	public StartLeg(PointConnector connector) {
 		super();
 		this.connector = connector;
+		if (connector != null) {
+			connector.setConnectedRailLeg(this);
+		}
 	}
 	
 	public PointConnector getConnector() {
@@ -35,11 +39,11 @@ public class StartLeg extends RailLeg {
 		return railBricks.get(previousIndex+1);
 	}
 	
-//	public RailComponent[] getStartOfLeg(int components) {
-//		if (components > railBricks.size())
-//			throw new IllegalArgumentException("This StartLeg has too few components to accomodate the vessel");
-//		return new RailComponent[] { (RailComponent) railBricks.subList(0, components - 1) };
-//	}
+	public Iterable<RailComponent> getStartOfLeg(int components) {
+		if (components > railBricks.size())
+			throw new IllegalArgumentException("This StartLeg has too few components to accomodate the vessel");
+		return new ArrayList<RailComponent>(railBricks.subList(0, components - 1));
+	}
 
 	@Override
 	public String id() {

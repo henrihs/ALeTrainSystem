@@ -6,4 +6,5 @@ import aletrainsystem.models.navigation.RouteElement;
 public interface RailComponent {
 	public RailComponentId id();
 	public RouteElement partOfElement();
+	public RailComponent lookAhead(PointConnector direction);
 }

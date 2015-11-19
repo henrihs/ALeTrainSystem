@@ -1,5 +1,7 @@
 package aletrainsystem.mapcontroller;
 
+import java.util.ArrayList;
+
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.enums.SpeedLevel;
 import aletrainsystem.models.TrainId;
@@ -7,8 +9,7 @@ import aletrainsystem.models.navigation.Position;
 import aletrainsystem.models.navigation.Route;
 import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.PointConnector;
-import aletrainsystem.models.railroad.RailBrick;
-import aletrainsystem.models.railroad.RailComponent;
+//import aletrainsystem.models.railroad.RailComponent;
 import aletrainsystem.models.railroad.StartLeg;
 import no.ntnu.item.arctis.runtime.Block;
 
@@ -27,7 +28,10 @@ public class MapController extends Block {
 		StartLeg start = map.getRailSystemStartLeg();
 		
 		direction = start.getConnector();  
-		position = new Position(new RailComponent[] {start.getConnector()}, params.sizeOfParentObject());
+//		position = new Position(new RailComponent[] {start.getConnector()}, params.sizeOfParentObject());
+		position = new Position(start.getStartOfLeg(params.sizeOfParentObject()), params.sizeOfParentObject());
+		
+		logger.info("Initializing");
 		return position;
 	}
 
@@ -40,17 +44,20 @@ public class MapController extends Block {
 	}
 
 	public void initCurrentRouteElement(Route route) {
+		logger.info("Waiting for lock on route ".concat(route.toString()));
 		currentRouteElement = route.getFirstElement();
 	}
 
 	public boolean isRouteLocked() {
 		for (RouteElement routeElement : currentRoute) {
 			if (routeElement instanceof PointConnector) {
-				if (!id.equals(((PointConnector)routeElement).point().checkLock()))
+				if (!id.equals(((PointConnector)routeElement).point().checkLock())) {
 					return false;
+				}
 			}
 		}
 		
+		logger.info("Lock acquired for route ".concat(currentRoute.toString()));
 		return true;
 	}
 
@@ -64,5 +71,15 @@ public class MapController extends Block {
 
 	public MapController getThisInstance() {
 		return this;
+	}
+
+	public void logInit() {
+		logger.info("Initialized");
+	}
+
+	public ArrayList<RouteElement> removeFromCurrentRoute(ArrayList<RouteElement> elements) {
+		elements.forEach(e -> currentRoute.remove(e));
+		currentRouteElement = currentRoute.getFirstElement();
+		return elements;
 	}
 }

@@ -24,6 +24,7 @@ public class LockHandler extends Block {
 		this.trainId = id;
 		setProperty(LockCoordinator.ENTITY_ID, id);
 		setProperty(LockParticipant.ENTITY_ID, id);
+		logger.info("Initialized");
 	}
 
 	public void updateParticipants(Set<TrainId> participants) {

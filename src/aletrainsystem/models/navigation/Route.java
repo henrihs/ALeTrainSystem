@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
+import aletrainsystem.models.railroad.PointConnector;
+import aletrainsystem.models.railroad.RailLeg;
+
 public class Route implements Iterable<RouteElement> {
 	protected ArrayList<RouteElement> viaPoints;
 	
@@ -33,10 +36,29 @@ public class Route implements Iterable<RouteElement> {
 		return i;
 	}
 	
+	public void remove(RouteElement element) {
+		viaPoints.remove(element);
+	}
+	
 	public RouteElement popFirst() {
 		RouteElement first = getFirstElement();
 		viaPoints.remove(first);
 		return first;
+	}
+	
+	public PointConnector getNextEndOfLeg(){
+		RouteElement previous = null;
+		for (RouteElement current : viaPoints) {
+			if (previous instanceof PointConnector 
+					&& current instanceof PointConnector
+					&& current != viaPoints.get(0)) {
+				return (PointConnector)previous;
+			}
+			
+			previous = current;
+		}
+		
+		return null;
 	}
 	
 	public RouteElement getFirstElement() {
@@ -64,5 +86,20 @@ public class Route implements Iterable<RouteElement> {
 		}
 		
 		return null;
+	}
+	
+	public boolean contains(RouteElement element) {
+		return viaPoints.contains(element);
+	}
+	
+	@Override
+	public String toString() {
+		String s = "";
+		for (RouteElement routeElement : viaPoints) {
+			if (routeElement instanceof RailLeg) {
+				s += (routeElement.toString()).concat("\n");
+			}
+		}
+		return s.substring(0, s.length());
 	}
 }

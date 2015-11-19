@@ -22,7 +22,9 @@ public class RouteController extends Block {
 	public java.util.Iterator<aletrainsystem.models.navigation.Route> subRouteIterator;
 	public Route findRoute(RouteElement destination) {
 		ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
-		return algorithm.findSingleShortestPath(railroad, currentPosition, destination, direction);
+		Route shortestRoute = algorithm.findSingleShortestPath(railroad, currentPosition, destination, direction);
+		logger.info("Shortest route found is ".concat(shortestRoute.toString()));
+		return shortestRoute;
 	}
 	
 	public ArrayList<Route> splitIntoSubRoutes(Route route) {
@@ -39,7 +41,8 @@ public class RouteController extends Block {
 				}
 			}
 		}
-		
+
+		logger.info("Splitting route into ".concat(String.valueOf(subRoutes.size()).concat(" subroutes")));
 		return subRoutes;
 	}
 	
@@ -51,6 +54,11 @@ public class RouteController extends Block {
 		if (subRouteIterator.hasNext()) {
 			return subRouteIterator.next();
 		}
+		logger.info("Route finished");
 		return null;
+	}
+
+	public void logInit() {
+		logger.info("Initialized");
 	}
 }

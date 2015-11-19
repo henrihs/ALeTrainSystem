@@ -1,5 +1,7 @@
 package aletrainsystem.models.railroad;
 
+import java.util.regex.Pattern;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
@@ -31,8 +33,8 @@ public class RailLegId {
 			return false;
 		}
 		
-		String[] o = other.toString().split(DELIMITER);
-		String[] t = this.toString().split(DELIMITER);
+		String[] o = other.toString().split(Pattern.quote(DELIMITER));
+		String[] t = this.toString().split(Pattern.quote(DELIMITER));
 		if (t[0].equals(o[0]) && t[1].equals(o[1])
 			|| t[0].equals(o[1]) && t[1].equals(o[0])) {
 			return true;

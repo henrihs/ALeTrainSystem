@@ -13,6 +13,7 @@ import no.ntnu.item.arctis.runtime.Block;
 public class Component extends Block {
 
 	public GreetingMessage newNullGreeting() {
+		logger.info("Timed out while waiting for greeting message, assuming this is the first train to enter the system");
 		return null;
 	}
 

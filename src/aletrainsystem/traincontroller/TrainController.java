@@ -69,6 +69,9 @@ public class TrainController extends Block {
 			railroad = greeting.latestMap();
 			trainsInProximity = greeting.trainsInSystem();			
 		}
+		else {
+			trainsInProximity = new HashSet<>();
+		}
 	}
 
 
@@ -89,6 +92,8 @@ public class TrainController extends Block {
 
 
 	public JoinMessage generateJoinMessage() {
+		logger.info("Initialized");
+		logger.info("Sending Join message for train ".concat(id.toString()));
 		return new JoinMessage(id);
 	}
 
@@ -105,6 +110,8 @@ public class TrainController extends Block {
 			stationIterator = servedStations.iterator();
 		}
 		
-		return stationIterator.next();
+		RouteElement next = stationIterator.next();
+		logger.info("Heading to station ".concat(next.toString()));
+		return next;
 	}
 }

@@ -73,4 +73,8 @@ public abstract class RailLeg extends RouteElement implements Lockable {
 	public Lockable getLockableResource() {
 		return this;
 	}
+	
+	public String toString() {
+		return id().toString();
+	}
 }

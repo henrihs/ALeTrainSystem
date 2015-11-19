@@ -62,6 +62,15 @@ public class RegularLeg extends RailLeg {
 	
 	
 	public RailComponent getNextComponent(RailComponent previous, PointConnector direction) {
+		if (!railBricks.contains(previous)) {
+			if (direction == connectors.first()) {
+				return railBricks.get(railBricks.size() - 1);
+			}
+			else if (direction == connectors.second()) {
+				return railBricks.get(0);
+			}
+		}
+		
 		int previousIndex = railBricks.indexOf(previous);
 		int relativeDirection = getRelativeDirection(direction);
 		int nextIndex = previousIndex + relativeDirection;
@@ -90,10 +99,10 @@ public class RegularLeg extends RailLeg {
 	
 	@Override
 	public RouteElement[] getNext(RouteElement previous) {
-		if (previous != connectors.first()) {
+		if (previous == connectors.first()) {
 			return new RouteElement[] {connectors.second()};
 		}
-		else if (previous != connectors.second()) {
+		else if (previous == connectors.second()) {
 			return new RouteElement[] {connectors.first()};
 		}
 		else

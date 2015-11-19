@@ -50,13 +50,22 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	}
 	
 	private void traverseAllPaths(Route continuedRoute, RouteElement current, RouteElement previous) {
-		continuedRoute.add(current);
-		if (current.equals(finalDestination)) {
+		if (continuedRoute.contains(current) 
+			|| (continuedRoute.brickLength() > 1 
+				&& current.equals(startPosition)
+				)
+			) {
+			routes.remove(continuedRoute);
 			return;
 		}
 
-		else if (current.equals(startPosition)) {
+		else if (continuedRoute.brickLength() > 1 && current.equals(startPosition)) {
 			routes.remove(continuedRoute);
+			return;
+		}
+		
+		continuedRoute.add(current);
+		if (current.equals(finalDestination)) {
 			return;
 		}
 		

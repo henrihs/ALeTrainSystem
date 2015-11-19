@@ -1,26 +1,29 @@
 package aletrainsystem.models.navigation;
 
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Iterator;
+
+import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailComponent;
 
 public class Position implements Iterable<RailComponent> {
 
-	private LinkedList<RailComponent> parts;
+	private ArrayList<RailComponent> parts;
 	private int sizeOfParentObject;
 	
-	public Position(RailComponent[] arg0, int sizeOfParentObject) {
-		parts = new LinkedList<RailComponent>();
+	public Position(Iterable<RailComponent> arg0, int sizeOfParentObject) {
+		parts = new ArrayList<RailComponent>();
 		this.sizeOfParentObject = sizeOfParentObject;
 		for (RailComponent railPart : arg0) {
-			parts.add(railPart);
+			parts.add(0, railPart);
 		}
 	}
 		
 	public RailComponent head(){
-		return parts.getFirst();
+		return parts.get(0);
 	}
 	
 	public RailBrick getPreviousBrick(){
@@ -32,10 +35,10 @@ public class Position implements Iterable<RailComponent> {
 	}
 	
 	public RailComponent moveTo(RailComponent part) {
-		parts.addLast(part);
+		parts.add(0, part);
 		if (parts.size() > sizeOfParentObject) {
-			RailComponent passed = parts.getFirst();
-			parts.removeFirst();
+			RailComponent passed = parts.get(parts.size() - 1);
+			parts.remove(passed);
 			return passed;
 		}
 		
@@ -48,12 +51,7 @@ public class Position implements Iterable<RailComponent> {
 	}
 	
 	public RailComponent lookAhead(PointConnector direction) {
-		if (head() instanceof RailBrick) {
-			RailBrick frontBrick = (RailBrick)head();
-			return frontBrick.parentLeg().getNextComponent(frontBrick, direction);
-		}
-		
-		return head();
+		return head().lookAhead(direction);
 	}
 	
 	public boolean headIsInPointSwitch(){
@@ -61,17 +59,17 @@ public class Position implements Iterable<RailComponent> {
 	}
 	
 	public void turnAround(){
-		LinkedList<RailComponent> reversedParts = new LinkedList<>();
+		ArrayList<RailComponent> reversedParts = new ArrayList<>();
 		for (RailComponent railComponent : parts) {
-			reversedParts.addFirst(railComponent);
+			reversedParts.add(0, railComponent);
 		}
 		
 		parts = reversedParts;
 	}
 	
-	public boolean isTouchingRouteElement(RouteElement element) {
+	public boolean isTouchingLockable(Lockable lockable) {
 		for (RailComponent railComponent : parts) {
-			if (element.equals(railComponent.partOfElement()))
+			if (lockable.equals(railComponent.partOfElement().getLockableResource()))
 				return true;
 		}
 		

@@ -30,6 +30,7 @@ public class LockCoordinator extends Block {
 	public void saveInitParams(CoordinatorInitParams params) {
 		this.id = params.id();
 		this.objectsToLock = params.objectsToLock();
+		logger.info("Starting locking procedure ".concat(id.toString()));
 	}
 
 	public Request generateReservationRequest() {
@@ -52,6 +53,12 @@ public class LockCoordinator extends Block {
 		if (responses.stream().noneMatch(
 				savedResponse -> savedResponse.respondent().equals(r.respondent())
 				)) {
+			logger.info(
+					r.transactionId().toString().
+					concat(": Received response from ").
+					concat(r.respondent().toString().
+					concat(" - ").
+					concat(String.valueOf(r.success()))));
 			responses.add(r);
 		}
 	}
@@ -71,6 +78,7 @@ public class LockCoordinator extends Block {
 	}
 
 	public Request changeToPerformRequest(Request r) {
+		logger.info(r.transactionId().toString().concat(": Performing lock"));
 		r.setType(RequestType.PERFORM);
 		return r;
 	}
@@ -85,6 +93,7 @@ public class LockCoordinator extends Block {
 	}
 
 	public Request changeToAbortRequest(Request r) {
+		logger.info(r.transactionId().toString().concat(": Aborting lock"));
 		r.setType(RequestType.ABORT);
 		return r;
 	}
@@ -92,5 +101,9 @@ public class LockCoordinator extends Block {
 	public void log() {
 		String failedAt = responses.size() > 0 ? responses.stream().filter(r -> !r.success()).toString() : " internal reservation.";
 		logger.info("Could not aquire lock, failed at".concat(failedAt));
+	}
+
+	public void retry() {
+		logger.info(id.toString().concat(": Retrying"));
 	}
 }

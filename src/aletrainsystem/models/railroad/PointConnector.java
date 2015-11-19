@@ -33,18 +33,22 @@ public class PointConnector extends RouteElement implements RailComponent {
 		return connectedRailLeg;
 	}
 
-	public void setConnectedRailLeg(RegularLeg connection) {
+	public void setConnectedRailLeg(RailLeg connection) {
 		this.connectedRailLeg = connection;
 	}
 
 	@Override
 	public RouteElement[] getNext(RouteElement previous) {
+		if (previous instanceof PointConnector) {
+			return new RouteElement[] { connectedRailLeg };
+		}
+		
 		switch (connector) {
 		case ENTRY:
-			return new RouteElement[] {point.getConnector(PointConnectorEnum.THROUGH), point.getConnector(PointConnectorEnum.DIVERT)};
+			return new RouteElement[] { point.getConnector(PointConnectorEnum.THROUGH), point.getConnector(PointConnectorEnum.DIVERT) };
 		case THROUGH:		
 		case DIVERT:
-			return new RouteElement[] {point.getConnector(PointConnectorEnum.ENTRY)};
+			return new RouteElement[] { point.getConnector(PointConnectorEnum.ENTRY) };
 		default:
 			return null;
 		}
@@ -79,5 +83,20 @@ public class PointConnector extends RouteElement implements RailComponent {
 	@Override
 	public Lockable getLockableResource() {
 		return point();
+	}
+	
+	@Override
+	public String toString() {
+		return point.toString().concat(connector.toString());
+	}
+
+	@Override
+	public RailComponent lookAhead(PointConnector direction) {
+		if (direction != this) {
+			return direction;
+		}
+		
+		PointConnector newDirection = ((RegularLeg)connectedRailLeg).getOppositeConnector(direction);
+		return  connectedRailLeg.getNextComponent(this, newDirection);
 	}
 }

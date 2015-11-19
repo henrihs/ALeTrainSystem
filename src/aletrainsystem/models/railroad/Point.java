@@ -83,4 +83,9 @@ public class Point implements Lockable {
 		reservedBy = null;
 		lockedBy = null;
 	}
+	
+	@Override
+	public String toString() {
+		return id().toString();
+	}
 }

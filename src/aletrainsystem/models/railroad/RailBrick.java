@@ -49,4 +49,14 @@ public class RailBrick implements RailComponent {
 		
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		return "B".concat(id.toString());
+	}
+
+	@Override
+	public RailComponent lookAhead(PointConnector direction) {
+		return parentLeg().getNextComponent(this, direction);
+	}
 }

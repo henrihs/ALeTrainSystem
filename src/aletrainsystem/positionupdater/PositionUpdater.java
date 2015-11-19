@@ -16,6 +16,7 @@ public class PositionUpdater extends Block {
 	public MapController parent;
 	public aletrainsystem.models.railroad.RailComponent passedComponent;
 	public java.util.ArrayList<aletrainsystem.models.navigation.RouteElement> passedElements;
+	public aletrainsystem.enums.PointConnectorEnum connector;
 	
 	public RailLeg getCurrentLeg() {
 		RailBrick brick = null;
@@ -26,10 +27,15 @@ public class PositionUpdater extends Block {
 			brick = (RailBrick)parent.position.getPreviousBrick();
 		}
 		
+		logger.info("Now at ".concat(brick.parentLeg().toString()));		
 		return brick.parentLeg();
 	}
 	
 	public boolean lastElementOnSubRoute(RailComponent component) {
+		if (parent.currentRoute == null) {
+			return false;
+		}
+		
 		RouteElement element = null;
 		
 		if (component instanceof PointConnector) {
@@ -50,13 +56,22 @@ public class PositionUpdater extends Block {
 		while (!parent.position.headIsInPointSwitch()) {
 			lastPopped = parent.position.moveInDirection(parent.direction);
 		}
-				
+		
+		if (parent.currentRoute != null) {
+			parent.direction = (PointConnector)parent.currentRoute.getNextEndOfLeg();
+		}
+		else {
+			parent.direction = ((PointConnector)getHead()).point().getConnector(PointConnectorEnum.ENTRY);
+		}
+		
 		return lastPopped;
 	}
 	
 	public RailBrick castToRailBrick(RailComponent component) {
-		if (component instanceof RailBrick)
-			return (RailBrick) parent.position.lookAhead(parent.direction);
+		if (component instanceof RailBrick) {
+			RailBrick brick = (RailBrick) component;
+			return brick;
+		}
 		return null;
 	}
 	
@@ -70,7 +85,7 @@ public class PositionUpdater extends Block {
 	
 	public RouteElement hasPassedElement(RailComponent component) {
 		RouteElement elementInScope = component.partOfElement();
-		if (parent.position.isTouchingRouteElement(elementInScope))
+		if (!parent.position.isTouchingLockable(elementInScope.getLockableResource()))
 			return elementInScope;
 		return null;
 	}
@@ -100,5 +115,17 @@ public class PositionUpdater extends Block {
 					concat("', actual '").
 					concat(connectorType.toString()));
 		}
+	}
+
+	public void logInit() {
+		logger.info("Initialized");
+	}
+
+	public void logUnLock() {
+		logger.info("Unlocking ".concat(passedElements.toString()));
+	}
+
+	public void updateDirection() {
+		parent.direction = (PointConnector)parent.direction.lookAhead(parent.direction);
 	}
 }
