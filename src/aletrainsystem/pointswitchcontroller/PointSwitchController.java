@@ -7,7 +7,7 @@ import java.util.Set;
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.models.MotorPortMapping;
 import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.PointSwitchOrder;
+import aletrainsystem.models.messaging.PointSwitchOrder;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class PointSwitchController extends Block {
@@ -23,7 +23,7 @@ public class PointSwitchController extends Block {
 		Set<MotorPortMapping> mapping = new HashSet<MotorPortMapping>();
 		for (MotorPort motorPort : MotorPort.values()) {
 			if (this.hasProperty(motorPort.getPropertyName())){
-				int id = Integer.valueOf((String) this.getProperty(motorPort.getPropertyName()));
+				String id = (String) this.getProperty(motorPort.getPropertyName());
 				mapping.add(new MotorPortMapping(motorPort, new RailComponentId(id)));
 			}
 		}
@@ -46,15 +46,15 @@ public class PointSwitchController extends Block {
 	public PointSwitchOrder appendMotorPort(PointSwitchOrder order) {
 		MotorPort port = null;
 		for (MotorPortMapping motorPortMapping : motorPortMappings) {
-			if (motorPortMapping.getPointSwitchId().equals(order.getPointSwitchId())){
+			if (motorPortMapping.getPointSwitchId().equals(order.getPointId())){
 				port = motorPortMapping.getPort();
 				order.setMotorPort(port);
-				logger.info(String.format("Routing order with state %s to pointswitch on port %s with ID %d", order.getSwitchState(), port, order.getPointSwitchId()));
+				logger.info(String.format("Routing order with state %s to pointswitch on port %s with ID %d", order.getSwitchState(), port, order.getPointId()));
 				return order;
 			}			
 		}
 		
-		logger.warn("Got order for unmapped PointSwitchId: ".concat(String.valueOf(order.getPointSwitchId())));
+		logger.warn("Got order for unmapped PointSwitchId: ".concat(String.valueOf(order.getPointId())));
 		return order;
 	}
 

@@ -1,32 +1,80 @@
 package aletrainsystem.messagewrapper;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import aletrainsystem.models.locking.Request;
 import aletrainsystem.models.locking.Response;
 import aletrainsystem.models.messaging.GreetingMessage;
 import aletrainsystem.models.messaging.JoinMessage;
+import aletrainsystem.models.messaging.PointSwitchOrder;
+import aletrainsystem.models.messaging.TerminationMessage;
 import no.ntnu.item.arctis.runtime.Block;
 import ntnu.no.rabbitamqp.util.Message;
 
 public class MessageWrapper extends Block {
 
+	public java.util.Iterator<Message> messageIterator;
+
 	public Message joinToAmqpMessage(JoinMessage join) {
-		return new Message("trains.common.".concat(join.getClass().toString()), join);
+		Message message = new Message("trains.common.".concat(join.getClass().toString()), join);
+		return message;
 	}
 
-	public Message GreetingToAmqpMessage(GreetingMessage greeting) {
-		return new Message("trains.".
+	public Message greetingToAmqpMessage(GreetingMessage greeting) {
+		Message message = new Message("trains.".
 							concat(greeting.entrant().toString()).
+							concat(".").
 							concat(greeting.getClass().toString()), greeting);
+		return message;
+	}
+	
+	public Message terminationToAmqpMessage(TerminationMessage termination) {
+		Message message = new Message("common.".concat(termination.getClass().toString()), termination);
+		return message;
 	}
 
-	public Message RequestToAmqpMessage(Request request) {
-		return new Message("trains.common.".concat(request.getClass().toString()), request);
+	public Message requestToAmqpMessage(Request request) {
+		Message message = new Message("trains.common.".concat(request.getClass().toString()), request);
+		return message;
 	}
 
-	public Message ResponseToAmqpMessage(Response response) {
-		return new Message("trains.".
-							concat(response.collector().toString().
-							concat(response.getClass().toString())), response);
+	public Message responseToAmqpMessage(Response response) {
+		Message message = new Message("trains.".
+								concat(response.collector().toString().
+								concat(".").
+								concat(response.getClass().toString())), 
+							response);
+		return message;
 	}
 
+	public Set<Message> pointSwitchOrdersToAmqpMessages(Set<PointSwitchOrder> orders) {
+		Set<Message> messages = new HashSet<>();
+		for (PointSwitchOrder order : orders) {
+			Message message = new Message("points.".
+							concat(order.getPointId().toString().
+							concat(".").
+							concat(order.getClass().toString())), 
+					order);
+			messages.add(message);
+		}
+		
+		return messages;
+	}
+
+	public Message iterateMessages() {
+		if (messageIterator.hasNext()) {
+			return messageIterator.next();
+		}
+		
+		return null;
+	}
+
+	public void saveIterator(Set<Message> messages) {
+		messageIterator = messages.iterator();
+	}
+
+	public boolean iteratorHasNext() {
+		return messageIterator.hasNext();
+	}
 }

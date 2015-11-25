@@ -1,7 +1,9 @@
 package aletrainsystem.models.railroad;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,6 +11,8 @@ import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.navigation.RouteElement;
+import aletrainsystem.pointswitch.Point;
+import aletrainsystem.pointswitch.PointConnector;
 
 public class Railroad implements IRailroad {
 
@@ -36,6 +40,26 @@ public class Railroad implements IRailroad {
 			lockable = points.get(id);
 		
 		return lockable;
+	}
+	
+	public List<Lockable> getReservedResources() {
+		List<Lockable> resources = new ArrayList<Lockable>();
+		for (Lockable lockable : points.values()) {
+			if (lockable.checkReservation() != null)
+				resources.add(lockable);
+		}
+		
+		return resources;
+	}
+	
+	public List<Lockable> getLockedResources() {
+		List<Lockable> resources = new ArrayList<Lockable>();
+		for (Lockable lockable : points.values()) {
+			if (lockable.checkLock() != null)
+				resources.add(lockable);
+		}
+		
+		return resources;
 	}
 
 	Map<String, RegularLeg> getRailLegs(){

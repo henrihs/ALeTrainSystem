@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
+import aletrainsystem.pointswitch.Point;
+import aletrainsystem.pointswitch.PointConnector;
 //import bluebrick4j.conversion.BbmParser;
 import bluebrick4j.model.Brick;
 import bluebrick4j.model.BrickType;

@@ -2,7 +2,7 @@ package aletrainsystem.ev3.component;
 
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
-import aletrainsystem.models.PointSwitchOrder;
+import aletrainsystem.models.messaging.PointSwitchOrder;
 import lejos.hardware.Key;
 import lejos.hardware.KeyListener;
 import no.ntnu.item.arctis.runtime.Block;

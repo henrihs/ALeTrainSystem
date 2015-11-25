@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.Pair;
+import aletrainsystem.pointswitch.PointConnector;
 
 public class ConnectorPair extends Pair<PointConnector, PointConnector> implements Iterable<PointConnector> {
 

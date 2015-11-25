@@ -41,8 +41,8 @@
       <ownedOperation xmi:id="_KmGV4I0bEeWhyqPFGZmtAQ" name="forceLock"/>
       <ownedParameter xmi:id="_F1QIW4eYEeWRLfKAue1ERQ" name="init" type="_-SE4YIecEeWRLfKAue1ERQ"/>
       <ownedParameter xmi:id="_F1QIXIeYEeWRLfKAue1ERQ" name="participantsUpdate" type="_FqtPoIeZEeWRLfKAue1ERQ" isStream="true"/>
-      <ownedParameter xmi:id="_RAmCcIecEeWRLfKAue1ERQ" name="update" type="_ESbGsIecEeWRLfKAue1ERQ" isStream="true"/>
-      <ownedParameter xmi:id="_R6W8AIecEeWRLfKAue1ERQ" name="updated" type="_ESbGsIecEeWRLfKAue1ERQ" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_RAmCcIecEeWRLfKAue1ERQ" name="update" type="_IuMJIJHpEeWj6Onok_9k0w" isStream="true"/>
+      <ownedParameter xmi:id="_R6W8AIecEeWRLfKAue1ERQ" name="updated" type="_IuMJIJHpEeWj6Onok_9k0w" direction="out" isStream="true"/>
       <ownedParameter xmi:id="_kM9wsIecEeWRLfKAue1ERQ" name="lock" type="_VlNIAIeaEeWRLfKAue1ERQ" isStream="true"/>
       <ownedParameter xmi:id="_fYXnAIehEeWS0rERPEKd6g" name="locked" type="_VlNIAIeaEeWRLfKAue1ERQ" direction="out" isStream="true"/>
       <ownedParameter xmi:id="_U3wSgIeiEeWS0rERPEKd6g" name="requestIn" type="_VlL54oeaEeWRLfKAue1ERQ" isStream="true"/>
@@ -108,9 +108,9 @@
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_OfuvkIeZEeWRLfKAue1ERQ" name="b0" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" behavior="_ICD-AYeYEeWRLfKAue1ERQ">
         <argument xmi:id="_OhXHQIeZEeWRLfKAue1ERQ" name="init" incoming="_ipN3QIeiEeWS0rERPEKd6g" inPartition="_F1QIXYeYEeWRLfKAue1ERQ"/>
         <argument xmi:id="_OhaKkIeZEeWRLfKAue1ERQ" name="in" incoming="_W8W9oIeZEeWRLfKAue1ERQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_VlL54oeaEeWRLfKAue1ERQ"/>
-        <argument xmi:id="_Ohwv4IeZEeWRLfKAue1ERQ" name="update" incoming="_XpVRAIecEeWRLfKAue1ERQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_ESbGsIecEeWRLfKAue1ERQ"/>
+        <argument xmi:id="_Ohwv4IeZEeWRLfKAue1ERQ" name="update" incoming="_XpVRAIecEeWRLfKAue1ERQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_IuMJIJHpEeWj6Onok_9k0w"/>
         <result xmi:id="_OhhfUIeZEeWRLfKAue1ERQ" name="out" outgoing="_BVZfUIklEeWbcpvolr7Psw" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_VlMg8IeaEeWRLfKAue1ERQ"/>
-        <result xmi:id="_Oho0EIeZEeWRLfKAue1ERQ" name="updated" outgoing="_zH7-YIegEeWS0rERPEKd6g" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_ESbGsIecEeWRLfKAue1ERQ"/>
+        <result xmi:id="_Oho0EIeZEeWRLfKAue1ERQ" name="updated" outgoing="_zH7-YIegEeWS0rERPEKd6g" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_IuMJIJHpEeWj6Onok_9k0w"/>
         <result xmi:id="_ChkpsIiEEeWS0rERPEKd6g" name="internalOut" outgoing="_UPo4sIeZEeWRLfKAue1ERQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_VlMg8IeaEeWRLfKAue1ERQ"/>
       </node>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_O-YacIeZEeWRLfKAue1ERQ" name="b1" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" behavior="_EYZIwIeYEeWRLfKAue1ERQ">
@@ -122,8 +122,8 @@
         <result xmi:id="_O_TngIeZEeWRLfKAue1ERQ" name="locked" outgoing="_iTZ0wIehEeWS0rERPEKd6g" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_VlNIAIeaEeWRLfKAue1ERQ"/>
         <result xmi:id="_okGloIiEEeWS0rERPEKd6g" name="retrying" inPartition="_F1QIXYeYEeWRLfKAue1ERQ"/>
       </node>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_RAeGoIecEeWRLfKAue1ERQ" name="update" outgoing="_XpVRAIecEeWRLfKAue1ERQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_ESbGsIecEeWRLfKAue1ERQ" parameter="_RAmCcIecEeWRLfKAue1ERQ"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_R6NLAIecEeWRLfKAue1ERQ" name="updated" incoming="_zH7-YIegEeWS0rERPEKd6g" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_ESbGsIecEeWRLfKAue1ERQ" parameter="_R6W8AIecEeWRLfKAue1ERQ"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_RAeGoIecEeWRLfKAue1ERQ" name="update" outgoing="_XpVRAIecEeWRLfKAue1ERQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_IuMJIJHpEeWj6Onok_9k0w" parameter="_RAmCcIecEeWRLfKAue1ERQ"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_R6NLAIecEeWRLfKAue1ERQ" name="updated" incoming="_zH7-YIegEeWS0rERPEKd6g" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_IuMJIJHpEeWj6Onok_9k0w" parameter="_R6W8AIecEeWRLfKAue1ERQ"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_kMxjcIecEeWRLfKAue1ERQ" name="lock" outgoing="_TRkxIIedEeWRLfKAue1ERQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_VlNIAIeaEeWRLfKAue1ERQ" parameter="_kM9wsIecEeWRLfKAue1ERQ"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_PTP6YIedEeWRLfKAue1ERQ" name="o2" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" operation="_PTX2MIedEeWRLfKAue1ERQ">
         <argument xmi:id="_x2iIQIedEeWRLfKAue1ERQ" name="objectsToLock" incoming="_PThjwI0aEeWhyqPFGZmtAQ" inPartition="_F1QIXYeYEeWRLfKAue1ERQ" type="_VlNIAIeaEeWRLfKAue1ERQ"/>
@@ -206,22 +206,19 @@
             <subvertex xmi:type="uml:FinalState" xmi:id="_OhRApYeZEeWRLfKAue1ERQ" name="&lt;final>"/>
           </region>
         </ownedBehavior>
-        <ownedParameter xmi:id="_ekVJ0IiEEeWS0rERPEKd6g" name="init"/>
-        <ownedParameter xmi:id="_ekVJ0YiEEeWS0rERPEKd6g" name="in" type="_VlL54oeaEeWRLfKAue1ERQ" isStream="true"/>
-        <ownedParameter xmi:id="_ekVJ0oiEEeWS0rERPEKd6g" name="out" type="_VlMg8IeaEeWRLfKAue1ERQ" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_ekVw4IiEEeWS0rERPEKd6g" name="updated" type="_ESbGsIecEeWRLfKAue1ERQ" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_ekVw4YiEEeWS0rERPEKd6g" name="update" type="_ESbGsIecEeWRLfKAue1ERQ" isStream="true"/>
-        <ownedParameter xmi:id="_ekVw4oiEEeWS0rERPEKd6g" name="internalOut" type="_VlMg8IeaEeWRLfKAue1ERQ" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_ekW_AoiEEeWS0rERPEKd6g" name="internalOut" type="_VlMg8IeaEeWRLfKAue1ERQ" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_ekYNIoiEEeWS0rERPEKd6g" name="internalOut" type="_VlMg8IeaEeWRLfKAue1ERQ" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_ekY0MIiEEeWS0rERPEKd6g" name="updated" type="_ESbGsIecEeWRLfKAue1ERQ" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_hz96wJHpEeWj6Onok_9k0w" name="init"/>
+        <ownedParameter xmi:id="_hz96wZHpEeWj6Onok_9k0w" name="in" type="_VlL54oeaEeWRLfKAue1ERQ" isStream="true"/>
+        <ownedParameter xmi:id="_hz-h0JHpEeWj6Onok_9k0w" name="out" type="_VlMg8IeaEeWRLfKAue1ERQ" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_hz-h0ZHpEeWj6Onok_9k0w" name="updated" type="_IuMJIJHpEeWj6Onok_9k0w" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_hz-h0pHpEeWj6Onok_9k0w" name="update" type="_IuMJIJHpEeWj6Onok_9k0w" isStream="true"/>
+        <ownedParameter xmi:id="_hz_I4JHpEeWj6Onok_9k0w" name="internalOut" type="_VlMg8IeaEeWRLfKAue1ERQ" direction="out" isStream="true"/>
         <group xmi:type="uml:ActivityPartition" xmi:id="_Of1dQIeZEeWRLfKAue1ERQ" name="main" node="_Of1dQYeZEeWRLfKAue1ERQ _Of1dQ4eZEeWRLfKAue1ERQ _Of2EUIeZEeWRLfKAue1ERQ _Of2EUoeZEeWRLfKAue1ERQ _Of2rYIeZEeWRLfKAue1ERQ _ChejEYiEEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of1dQYeZEeWRLfKAue1ERQ" name="init" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" parameter="_ekVJ0IiEEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of1dQ4eZEeWRLfKAue1ERQ" name="in" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_VlL54oeaEeWRLfKAue1ERQ" parameter="_ekVJ0YiEEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of2EUIeZEeWRLfKAue1ERQ" name="out" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_VlMg8IeaEeWRLfKAue1ERQ" parameter="_ekVJ0oiEEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of2EUoeZEeWRLfKAue1ERQ" name="updated" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_ESbGsIecEeWRLfKAue1ERQ" parameter="_ekY0MIiEEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of2rYIeZEeWRLfKAue1ERQ" name="update" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_ESbGsIecEeWRLfKAue1ERQ" parameter="_ekVw4YiEEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_ChejEYiEEeWS0rERPEKd6g" name="internalOut" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_VlMg8IeaEeWRLfKAue1ERQ" parameter="_ekYNIoiEEeWS0rERPEKd6g"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of1dQYeZEeWRLfKAue1ERQ" name="init" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" parameter="_hz96wJHpEeWj6Onok_9k0w"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of1dQ4eZEeWRLfKAue1ERQ" name="in" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_VlL54oeaEeWRLfKAue1ERQ" parameter="_hz96wZHpEeWj6Onok_9k0w"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of2EUIeZEeWRLfKAue1ERQ" name="out" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_VlMg8IeaEeWRLfKAue1ERQ" parameter="_hz-h0JHpEeWj6Onok_9k0w"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of2EUoeZEeWRLfKAue1ERQ" name="updated" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_IuMJIJHpEeWj6Onok_9k0w" parameter="_hz-h0ZHpEeWj6Onok_9k0w"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Of2rYIeZEeWRLfKAue1ERQ" name="update" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_IuMJIJHpEeWj6Onok_9k0w" parameter="_hz-h0pHpEeWj6Onok_9k0w"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_ChejEYiEEeWS0rERPEKd6g" name="internalOut" inPartition="_Of1dQIeZEeWRLfKAue1ERQ" type="_VlMg8IeaEeWRLfKAue1ERQ" parameter="_hz_I4JHpEeWj6Onok_9k0w"/>
       </packagedElement>
       <profileApplication xmi:id="_Of3ScIeZEeWRLfKAue1ERQ">
         <eAnnotations xmi:id="_Of3ScYeZEeWRLfKAue1ERQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -322,6 +319,7 @@
         <expr xmi:type="uml:LiteralString" xmi:id="_-YnL0Y4LEeWhyqPFGZmtAQ" name="t3" value="0"/>
       </when>
     </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_IuMJIJHpEeWj6Onok_9k0w" name="aletrainsystem.models.railroad.Railroad"/>
     <profileApplication xmi:id="_F1QItIeYEeWRLfKAue1ERQ">
       <eAnnotations xmi:id="_F1QItYeYEeWRLfKAue1ERQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>

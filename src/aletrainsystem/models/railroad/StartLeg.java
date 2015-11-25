@@ -2,6 +2,7 @@ package aletrainsystem.models.railroad;
 
 import java.util.ArrayList;
 import aletrainsystem.models.navigation.RouteElement;
+import aletrainsystem.pointswitch.PointConnector;
 
 public class StartLeg extends RailLeg {
 	
@@ -26,7 +27,7 @@ public class StartLeg extends RailLeg {
 
 	@Override
 	public RailComponent getNextComponent(RailComponent previous, PointConnector direction) {
-		if (direction != connector) {
+		if (direction.point() != connector.point()) {
 			return null;
 		}
 		
@@ -36,7 +37,7 @@ public class StartLeg extends RailLeg {
 			return connector;
 		}
 		
-		return railBricks.get(previousIndex+1);
+		return railBricks.get(nextIndex);
 	}
 	
 	public Iterable<RailComponent> getStartOfLeg(int components) {
@@ -48,5 +49,11 @@ public class StartLeg extends RailLeg {
 	@Override
 	public String id() {
 		return connector.id().toString().concat(".");
+	}
+
+	@Override
+	public PointConnector getOppositeConnector(PointConnector connector) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

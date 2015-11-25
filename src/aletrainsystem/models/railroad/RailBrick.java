@@ -2,6 +2,7 @@ package aletrainsystem.models.railroad;
 
 import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.navigation.RouteElement;
+import aletrainsystem.pointswitch.PointConnector;
 import bluebrick4j.model.BrickType;
 
 public class RailBrick implements RailComponent {

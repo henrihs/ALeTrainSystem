@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import aletrainsystem.mapcontroller.MapInitParams;
@@ -20,16 +21,16 @@ import no.ntnu.item.arctis.runtime.Block;
 public class TrainController extends Block {
 	
 	public aletrainsystem.models.TrainId id;
-	public aletrainsystem.models.railroad.IRailroad railroad;
 	public java.util.Set<aletrainsystem.models.TrainId> trainsInProximity;
 	public LinkedList<aletrainsystem.models.navigation.RouteElement> servedStations;
 	private Iterator<RouteElement> stationIterator;
 	public aletrainsystem.models.navigation.RouteElement servingStation;
+	public aletrainsystem.models.railroad.Railroad railroad;
+	
 	public void logAndThrow(String errorMessage) {
 		logger.error(errorMessage);
 	}
-	
-	
+		
 	public void setVariablesFromProperties() {
 		id = new TrainId((String) getProperty(TrainId.ID_KEY));
 		RailroadBuilder builder = new RailroadBuilder();
@@ -42,7 +43,7 @@ public class TrainController extends Block {
 		String[] stations = ((String) getProperty(IRailroad.STATIONLISTKEY)).split(",");
 		for (String string : stations) {
 			if (!railroad.isStation(string)) {
-				logWarn("Could not find station with id".concat(string));
+				logWarn("Could not find station with ID ".concat(string));
 				continue;
 			}
 			servedStations.add(railroad.getRouteElement(string));
@@ -58,22 +59,21 @@ public class TrainController extends Block {
 		trainsInProximity.add(train);
 	}
 
-
 	public void removeFromProximitySet(TrainId train) {
 		trainsInProximity.remove(train);
 	}
 
-
 	public void updateFieldsFromGreeting(GreetingMessage greeting) {
 		if (greeting != null) {
-			railroad = greeting.latestMap();
+			
+			updateRailroadFromGreeting(greeting);
+			
 			trainsInProximity = greeting.trainsInSystem();			
 		}
 		else {
 			trainsInProximity = new HashSet<>();
 		}
 	}
-
 
 	public Set<Lockable> extractLockableSetFromRoute(Route route) {
 		return extraxtLockableSet(route);
@@ -83,27 +83,17 @@ public class TrainController extends Block {
 		return extraxtLockableSet(routeElements);
 	}
 	
-	private Set<Lockable> extraxtLockableSet(Iterable<RouteElement> iterable) {
-		HashSet<Lockable> set = new HashSet<>();
-		iterable.forEach(r -> set.add(r.getLockableResource()));
-		
-		return set;
-	}
-
-
 	public JoinMessage generateJoinMessage() {
 		logger.info("Initialized");
 		logger.info("Sending Join message for train ".concat(id.toString()));
 		return new JoinMessage(id);
 	}
 
-
 	public GreetingMessage generateGreeting(JoinMessage join) {
 		Set<TrainId> allTrains = new HashSet<TrainId>(trainsInProximity);
 		allTrains.add(id);
 		return new GreetingMessage(join.id(), allTrains, railroad);
 	}
-
 
 	public RouteElement getNextServedStation() {
 		if (stationIterator == null || !stationIterator.hasNext()) {
@@ -113,5 +103,21 @@ public class TrainController extends Block {
 		RouteElement next = stationIterator.next();
 		logger.info("Heading to station ".concat(next.toString()));
 		return next;
+	}
+	
+	private Set<Lockable> extraxtLockableSet(Iterable<RouteElement> iterable) {
+		HashSet<Lockable> set = new HashSet<>();
+		iterable.forEach(r -> set.add(r.getLockableResource()));
+		
+		return set;
+	}
+	
+	private void updateRailroadFromGreeting(GreetingMessage greeting) {
+		for (Entry<String, TrainId> entry: greeting.getReservedResources().entrySet()) {
+			railroad.getLockableResource(entry.getKey()).reserveLock(entry.getValue());
+		}
+		for (Entry<String, TrainId> entry: greeting.getLockedResources().entrySet()) {
+			railroad.getLockableResource(entry.getKey()).performLock(entry.getValue());
+		}
 	}
 }

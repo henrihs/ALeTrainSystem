@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import aletrainsystem.models.TrainId;
 import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.navigation.RouteElement;
+import aletrainsystem.pointswitch.PointConnector;
 
 public abstract class RailLeg extends RouteElement implements Lockable {
 	
@@ -32,6 +33,8 @@ public abstract class RailLeg extends RouteElement implements Lockable {
 	}
 	
 	public abstract RailComponent getNextComponent(RailComponent previous, PointConnector direction);
+	
+	public abstract PointConnector getOppositeConnector(PointConnector connector);
 	
 	private TrainId lockedBy = null;
 	private TrainId reservedBy = null;

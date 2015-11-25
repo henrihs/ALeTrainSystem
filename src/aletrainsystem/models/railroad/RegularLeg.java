@@ -2,7 +2,8 @@ package aletrainsystem.models.railroad;
 
 import aletrainsystem.enums.TrackStatus;
 import aletrainsystem.models.navigation.RouteElement;
-import aletrainsystem.models.railroad.PointConnector;
+import aletrainsystem.pointswitch.Point;
+import aletrainsystem.pointswitch.PointConnector;
 
 public class RegularLeg extends RailLeg {
 	
@@ -63,10 +64,10 @@ public class RegularLeg extends RailLeg {
 	
 	public RailComponent getNextComponent(RailComponent previous, PointConnector direction) {
 		if (!railBricks.contains(previous)) {
-			if (direction == connectors.first()) {
+			if (direction.point() == connectors.first().point()) {
 				return railBricks.get(railBricks.size() - 1);
 			}
-			else if (direction == connectors.second()) {
+			else if (direction.point() == connectors.second().point()) {
 				return railBricks.get(0);
 			}
 		}
@@ -110,10 +111,10 @@ public class RegularLeg extends RailLeg {
 	}
 	
 	private int getRelativeDirection(PointConnector direction){
-		if (connectors.first().equals(direction)){
+		if (connectors.first().point() == direction.point()){
 			return -1;
 		}
-		else if (connectors.second().equals(direction)){
+		else if (connectors.second().point() == direction.point()){
 			return 1;
 		}
 		

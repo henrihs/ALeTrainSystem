@@ -7,8 +7,8 @@ import aletrainsystem.algorithms.GreedyAlgorithm;
 import aletrainsystem.algorithms.ShortestPathUniDirectional;
 import aletrainsystem.models.navigation.Route;
 import aletrainsystem.models.navigation.RouteElement;
-import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RegularLeg;
+import aletrainsystem.pointswitch.PointConnector;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class RouteController extends Block {
@@ -16,10 +16,10 @@ public class RouteController extends Block {
 	private PointConnector direction;
 	public aletrainsystem.models.navigation.RouteElement nextDestination;
 	public aletrainsystem.models.navigation.Position currentPosition;
-	public aletrainsystem.models.railroad.PointConnector currentDirection;
-	public aletrainsystem.models.railroad.IRailroad railroad;
+	public aletrainsystem.pointswitch.PointConnector currentDirection;
 	public java.util.ArrayList<aletrainsystem.models.navigation.Route> subRoutes;
 	public java.util.Iterator<aletrainsystem.models.navigation.Route> subRouteIterator;
+	public aletrainsystem.models.railroad.Railroad railroad;
 	public Route findRoute(RouteElement destination) {
 		ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
 		Route shortestRoute = algorithm.findSingleShortestPath(railroad, currentPosition, destination, direction);

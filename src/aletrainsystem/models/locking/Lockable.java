@@ -1,8 +1,10 @@
 package aletrainsystem.models.locking;
 
+import java.io.Serializable;
+
 import aletrainsystem.models.TrainId;
 
-public interface Lockable {
+public interface Lockable extends Serializable {
 	
 	public Object id();
 	

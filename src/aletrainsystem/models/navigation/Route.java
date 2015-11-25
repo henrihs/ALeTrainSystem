@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
-import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailLeg;
+import aletrainsystem.pointswitch.PointConnector;
 
 public class Route implements Iterable<RouteElement> {
 	protected ArrayList<RouteElement> viaPoints;
@@ -59,6 +59,41 @@ public class Route implements Iterable<RouteElement> {
 		}
 		
 		return null;
+	}
+	
+//	public PointConnector getNextDirection(PointConnector currentDirection) {
+//		RouteElement previous = null;
+//		RouteElement first = viaPoints.get(0);
+//		for (RouteElement current : viaPoints) {
+//			if (previous instanceof PointConnector 
+//					&& current instanceof PointConnector
+//					&& current != first
+//					&& previous != first
+//					&& current != currentDirection) {
+//				return (PointConnector)current;
+//			}
+//			
+//			previous = current;
+//		}
+//		
+//		return null;
+//	}
+	
+	public PointConnector getNextDirection(PointConnector currentDirection) {
+		int currentDirectionIndex = viaPoints.indexOf(currentDirection);
+		RouteElement previous = null;
+		for (int i = currentDirectionIndex + 1; i < viaPoints.size(); i++) {
+			RouteElement current = viaPoints.get(i);
+			
+			if (previous instanceof PointConnector 
+					&& current instanceof PointConnector) {
+				return (PointConnector)current;
+			}
+			
+			previous = current;
+		}
+		
+		return currentDirection.getConnectedRailLeg().getOppositeConnector(currentDirection);
 	}
 	
 	public RouteElement getFirstElement() {

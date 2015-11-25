@@ -23,6 +23,7 @@ public class Component extends Block {
 		params.put("USERNAME", (String) getProperty("USERNAME"));
 		params.put("PASSWORD", (String) getProperty("PASSWORD"));
 		params.put("HOSTNAME", (String) getProperty("HOSTNAME"));
+		params.put("EXCHANGE_NAME", (String) getProperty("EXCHANGE_NAME"));
 		
 		return params;
 	}
@@ -31,7 +32,8 @@ public class Component extends Block {
 		String trainId = (String) getProperty(TrainId.ID_KEY);
 		
 		ArrayList<String> topics = new ArrayList<>();
-		topics.add("trains.common".concat(".*"));
+		topics.add("trains.common.*");
+		topics.add("common.*");
 		topics.add("trains.".concat(trainId).concat(".*"));
 		return topics;
 	}

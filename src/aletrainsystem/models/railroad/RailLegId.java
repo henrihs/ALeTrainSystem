@@ -2,6 +2,8 @@ package aletrainsystem.models.railroad;
 
 import java.util.regex.Pattern;
 
+import aletrainsystem.pointswitch.PointConnector;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 

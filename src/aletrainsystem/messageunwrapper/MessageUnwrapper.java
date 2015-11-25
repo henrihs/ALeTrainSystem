@@ -5,8 +5,12 @@ import com.rabbitmq.client.Envelope;
 
 import aletrainsystem.models.locking.Request;
 import aletrainsystem.models.locking.Response;
+
+import aletrainsystem.models.messaging.PointSwitchOrder;
 import aletrainsystem.models.messaging.GreetingMessage;
 import aletrainsystem.models.messaging.JoinMessage;
+import aletrainsystem.models.messaging.TerminationMessage;
+
 import no.ntnu.item.arctis.runtime.Block;
 import ntnu.no.rabbitamqp.util.Message;
 
@@ -23,6 +27,10 @@ public class MessageUnwrapper extends Block {
 		return parsedMessage instanceof GreetingMessage;
 	}
 	
+	public boolean isTerminationMessage() {
+		return parsedMessage instanceof TerminationMessage;
+	}
+	
 	public boolean isRequest() {
 		return parsedMessage instanceof Request;
 	}
@@ -31,10 +39,13 @@ public class MessageUnwrapper extends Block {
 		return parsedMessage instanceof Response;
 	}
 	
+	public boolean isPointSwitchOrder() {
+		return parsedMessage instanceof PointSwitchOrder;
+	}
+	
 	public Object parseMessage(Message message) {
 		String json = message.getJsonBody();
 		String className = getClassNameFromEnvelope(message.getEnvelope());
-
 		Gson g = new Gson();
 		switch (className) {
 		case "JoinMessage":
@@ -43,11 +54,17 @@ public class MessageUnwrapper extends Block {
 		case "GreetingMessage":
 			parsedMessage = g.fromJson(json, GreetingMessage.class);
 			break;
+		case "TerminationMessage":
+			parsedMessage = g.fromJson(json, TerminationMessage.class);
+			break;
 		case "Request":
 			parsedMessage = g.fromJson(json, Request.class);
 			break;
 		case "Response":
 			parsedMessage = g.fromJson(json, Response.class);
+			break;
+		case "PointSwitchOrder":
+			parsedMessage = g.fromJson(json, PointSwitchOrder.class);
 			break;
 		default:
 			parsedMessage = null;
@@ -65,6 +82,10 @@ public class MessageUnwrapper extends Block {
 		return (GreetingMessage)o;
 	}
 	
+	public TerminationMessage castToTerminationMessage(Object o) {
+		return (TerminationMessage)o;
+	}
+	
 	public Request castToRequest(Object o) {
 		return (Request)o;
 	}
@@ -73,6 +94,10 @@ public class MessageUnwrapper extends Block {
 		return (Response)o;
 	}
 
+	public PointSwitchOrder castToPointSwitchOrder(Object o) {
+		return (PointSwitchOrder)o;
+	}
+	
 	private String getClassNameFromEnvelope(Envelope envelope) {
 		String s = envelope.getRoutingKey();
 		String[] a = s.split(".");
@@ -85,4 +110,5 @@ public class MessageUnwrapper extends Block {
 				concat(", should be of type ").
 				concat(getClassNameFromEnvelope(message.getEnvelope())));
 	}
+
 }

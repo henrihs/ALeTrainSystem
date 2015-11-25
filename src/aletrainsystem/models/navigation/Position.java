@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import aletrainsystem.models.locking.Lockable;
-import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailComponent;
+import aletrainsystem.pointswitch.PointConnector;
 
 public class Position implements Iterable<RailComponent> {
 

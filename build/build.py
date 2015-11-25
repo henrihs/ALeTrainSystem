@@ -5,12 +5,20 @@ import shutil
 
 BUILDPATH = os.path.dirname(os.path.realpath(__file__))
 ROOTPATH = re.sub(r'/build', '', os.path.dirname(os.path.realpath(__file__)))
+RESOURCEPATH = BUILDPATH+"/configs"
+MAPPATH = RESOURCEPATH+"/maps"
 ROOTPROJ = ROOTPATH.split('/').pop()
 REMOTEPATH = "/home/lejos/programs"
-POINTSWITCHEXECUTABLE = "pointswitchcontroller.jar"
+REMOTERESPATH = REMOTEPATH+"/resources/"
+REMOTEMAPPATH = REMOTERESPATH+"maps/"
+POINTSWITCHEXECUTABLE = "point.jar"
+POINTCONFIG = "pointswitchcontroller.properties"
+TRAINEXECUTABLE = "train.jar"
+TRAINCONFIG = "traincontroller.properties"
+MAP = "ngorongoro2.map"
 
-# POINTSWITCHCONTROLLERS = ["192.168.0.191", "192.168.0.190"]
-POINTSWITCHCONTROLLERS = ["192.168.0.101"]
+POINTSWITCHpointS = ["192.168.0.101", "192.168.0.102", "192.168.0.103", "192.168.0.104"]
+TRAINS = ["192.168.0.191", "192.168.0.195"]
 
 def get_target_dirs():
     target_dirs = []
@@ -25,24 +33,52 @@ def distribute_log4j():
         print 'Copying log4j.properties to ' + target
         shutil.copyfile(ROOTPATH+'/log4j.properties', target+'/log4j.properties')
 
+def distribute_configs():
+    for point in POINTSWITCHpointS:
+        print "Copying point config to {0}".format(point)
+        subfolder = getLastIpSubSection(point)
+        os.system("scp {0}/{1}/{2} root@{3}:{4}/".format(RESOURCEPATH, subfolder, POINTCONFIG, point, REMOTERESPATH))
+    for train in TRAINS:
+        print "Copying train config to {0}".format(train)
+        subfolder = getLastIpSubSection(train)
+        os.system("scp {0}/{1}/{2} root@{3}:{4}/".format(RESOURCEPATH, subfolder, TRAINCONFIG, train, REMOTERESPATH))
+        print "Copying " + MAP + " to {0}".format(train)
+        os.system("scp {0}/{1} root@{2}:{3}/".format(MAPPATH, MAP, train, REMOTEMAPPATH))
+
 def distribute_jars():
-    for controller in POINTSWITCHCONTROLLERS:
-        print "Copying pointswitchcontroller to {0}".format(controller)
-        os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, POINTSWITCHEXECUTABLE, controller, REMOTEPATH))
+    for point in POINTSWITCHpointS:
+        print "Copying point to {0}".format(point)
+        os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, POINTSWITCHEXECUTABLE, point, REMOTEPATH))
+    for train in TRAINS:
+        print "Copying train to {0}".format(train)
+        os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, POINTSWITCHEXECUTABLE, train, REMOTEPATH))
 
 def execute_jars():
-    for controller in POINTSWITCHCONTROLLERS:
-        print "Executing pointswitchcontroller on {0}".format(controller)
-        os.system("ssh root@{0} jrun -cp {1}/{2} ntnu.no.aletrainsystem.ev3.Start &".format(controller, REMOTEPATH, POINTSWITCHEXECUTABLE))
+    for point in POINTSWITCHpointS:
+        print "Executing point on {0}".format(point)
+        #os.system("run mintty -t {0} ssh root@{0} jrun -cp {1}/{2} aletrainsystem.point.Start".format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
+        os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.point.Start &".format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
+    for train in TRAINS:
+        print "Executing train on {0}".format(train)
+        #os.system("run mintty -t {0} ssh root@{0} jrun -cp {1}/{2} aletrainsystem.train.Start".format(train, REMOTEPATH, TRAINEXECUTABLE))
+        os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.train.Start &".format(train, REMOTEPATH, TRAINEXECUTABLE))
 
 def kill_jars():
-    for controller in POINTSWITCHCONTROLLERS:
-        print "Ending pointswitchcontroller on {0}".format(controller)
-        os.system("ssh root@{0} kill $(ps | grep {1} | grep -v 'grep' | awk ' {{ print $1 }} ' )".format(controller, POINTSWITCHEXECUTABLE))
+    for point in POINTSWITCHpointS:
+        print "Ending point on {0}".format(point)
+        os.system("ssh root@{0} kill $(ps | grep {1} | grep -v 'grep' | awk ' {{ print $1 }} ' )".format(point, POINTSWITCHEXECUTABLE))
+    for train in TRAINS:
+        print "Ending point on {0}".format(train)
+        os.system("ssh root@{0} kill $(ps | grep {1} | grep -v 'grep' | awk ' {{ print $1 }} ' )".format(train, TRAINEXECUTABLE))
 
 def add_trustee(ip):
     os.system("ssh-copy-id -i ~/.ssh/id_rsa.pub root@{0}".format(ip))
 
+def getLastIpSubSection(ip):
+    return ip.split('.').pop()
+
 if (__name__ == "__main__"):
     # distribute_log4j()
     distribute_jars()
+    distribute_configs()
+    execute_jars()

@@ -7,10 +7,10 @@ import aletrainsystem.models.navigation.Position;
 import aletrainsystem.models.navigation.Route;
 import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.IRailroad;
-import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailLeg;
 import aletrainsystem.models.railroad.RegularLeg;
+import aletrainsystem.pointswitch.PointConnector;
 
 public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	

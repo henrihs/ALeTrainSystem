@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.mapcontroller.MapController;
 import aletrainsystem.models.navigation.RouteElement;
-import aletrainsystem.models.railroad.PointConnector;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailComponent;
 import aletrainsystem.models.railroad.RailLeg;
+import aletrainsystem.pointswitch.PointConnector;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class PositionUpdater extends Block {
@@ -57,12 +57,12 @@ public class PositionUpdater extends Block {
 			lastPopped = parent.position.moveInDirection(parent.direction);
 		}
 		
-		if (parent.currentRoute != null) {
-			parent.direction = (PointConnector)parent.currentRoute.getNextEndOfLeg();
-		}
-		else {
-			parent.direction = ((PointConnector)getHead()).point().getConnector(PointConnectorEnum.ENTRY);
-		}
+//		if (parent.currentRoute != null) {
+//			parent.direction = (PointConnector)parent.currentRoute.getNextEndOfLeg();
+//		}
+//		else {
+//			parent.direction = ((PointConnector)getHead()).point().getConnector(PointConnectorEnum.ENTRY);
+//		}
 		
 		return lastPopped;
 	}
@@ -107,13 +107,23 @@ public class PositionUpdater extends Block {
 	}
 	
 	public void logIfUnexpectedConnector(PointConnectorEnum connectorType) {
-		PointConnector pointInFront = (PointConnector) parent.position.head();
-		if (pointInFront.getType() != connectorType) {
+		if (!(parent.position.head() instanceof PointConnector)) {
 			logger.warn(
-					"Unexpected connector type! Expected '".
-					concat(pointInFront.getType().toString()).
+					"Unexpected type! Expected '".
+					concat(parent.position.head().toString()).
 					concat("', actual '").
 					concat(connectorType.toString()));
+		}
+
+		else {			
+			PointConnector pointInFront = (PointConnector) parent.position.head();
+			if (pointInFront.getType() != connectorType) {
+				logger.warn(
+						"Unexpected connector type! Expected '".
+						concat(pointInFront.getType().toString()).
+						concat("', actual '").
+						concat(connectorType.toString()));
+			}
 		}
 	}
 
@@ -126,6 +136,14 @@ public class PositionUpdater extends Block {
 	}
 
 	public void updateDirection() {
-		parent.direction = (PointConnector)parent.direction.lookAhead(parent.direction);
+		parent.direction = parent.currentRoute.getNextDirection(parent.direction);
+	}
+	
+	public boolean isHeadEqualToDirection() {
+		return parent.direction == parent.position.head();
+	}
+	
+	public boolean isNextComponentPointConnector() {
+		return parent.position.lookAhead(parent.direction) instanceof PointConnector;
 	}
 }

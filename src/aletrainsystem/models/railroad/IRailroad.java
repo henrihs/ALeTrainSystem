@@ -2,6 +2,7 @@ package aletrainsystem.models.railroad;
 
 import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.navigation.RouteElement;
+import aletrainsystem.pointswitch.Point;
 
 public interface IRailroad {
 	public static final String PROPERTYNAME = "MAP_FILE";
