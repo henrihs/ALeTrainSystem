@@ -3,11 +3,11 @@ package aletrainsystem.servo;
 import no.ntnu.item.arctis.runtime.Block;
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.enums.PointConnectorEnum;
-import lejos.hardware.motor.NXTRegulatedMotor;
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
 
 public class Servo extends Block {
 
-	public NXTRegulatedMotor motor;
+	public EV3LargeRegulatedMotor motor;
 
 	public PointConnectorEnum rotateServoTo(PointConnectorEnum state) {
 		motor.setSpeed(1080);
@@ -32,16 +32,16 @@ public class Servo extends Block {
 		motor.rotateTo(PointConnectorEnum.THROUGH.angle());
 	}
 
-	public NXTRegulatedMotor getMotor(MotorPort port) {
+	public EV3LargeRegulatedMotor getMotor(MotorPort port) {
 		switch (port) {
 		case A:
-			return lejos.hardware.motor.Motor.A;
+			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.A);
 		case B:
-			return lejos.hardware.motor.Motor.B;
+			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.B);
 		case C:
-			return lejos.hardware.motor.Motor.C;
+			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.C);
 		case D:
-			return lejos.hardware.motor.Motor.D;
+			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.D);
 		default:
 			logger.error("Missing case for enum ".concat(port.name()));
 			return null;

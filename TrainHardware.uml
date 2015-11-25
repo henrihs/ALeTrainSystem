@@ -46,6 +46,7 @@
           <transition xmi:id="_fJqiUYFvEeW-IY1wb01b1A" name="stop / " source="_fI-l0IFvEeW-IY1wb01b1A" target="_D3WLMIFwEeW-IY1wb01b1A"/>
           <transition xmi:id="_FBtskIFwEeW-IY1wb01b1A" name=" / stopped" source="_D3WLMIFwEeW-IY1wb01b1A" target="_FBwI0IFwEeW-IY1wb01b1A"/>
           <transition xmi:id="_ScdacIFwEeW-IY1wb01b1A" name=" / initialized" source="_RE4jgIFwEeW-IY1wb01b1A" target="_fI-l0IFvEeW-IY1wb01b1A"/>
+          <transition xmi:id="_bSOl8JOzEeWbfeQJRVcevA" name="stop / " source="_RE4jgIFwEeW-IY1wb01b1A" target="_D3WLMIFwEeW-IY1wb01b1A"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_fI3REIFvEeW-IY1wb01b1A" name="&lt;initial>"/>
           <subvertex xmi:type="uml:State" xmi:id="_fI-l0IFvEeW-IY1wb01b1A" name="active"/>
           <subvertex xmi:type="uml:State" xmi:id="_D3WLMIFwEeW-IY1wb01b1A" name="stopping"/>
@@ -268,4 +269,5 @@
   <arctis:event xmi:id="_FBvhwIFwEeW-IY1wb01b1A" base_Transition="_FBtskIFwEeW-IY1wb01b1A" effects="_QTGWsIFvEeW-IY1wb01b1A"/>
   <graphics:Shape xmi:id="_MTAI4IFwEeW-IY1wb01b1A" x="252" y="594" base_Element="_MScvQIFwEeW-IY1wb01b1A"/>
   <arctis:event xmi:id="_SceokIFwEeW-IY1wb01b1A" base_Transition="_ScdacIFwEeW-IY1wb01b1A" effects="_MScvQIFwEeW-IY1wb01b1A"/>
+  <arctis:event xmi:id="_bTuawJOzEeWbfeQJRVcevA" base_Transition="_bSOl8JOzEeWbfeQJRVcevA" triggers="_NdHoEIFvEeW-IY1wb01b1A"/>
 </xmi:XMI>

@@ -38,4 +38,9 @@ public class PointSwitchOrder {
 		motorPort = port;
 	}
 	
+	@Override
+	public String toString() {
+		return pointId.toString() + ":" + switchState.toString();
+	}
+	
 }

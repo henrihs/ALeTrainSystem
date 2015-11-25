@@ -30,16 +30,17 @@ public class Component extends Block {
 
 	public List<String> getTopics() {
 		List<String> topics = new ArrayList<String>();
-		topics.add("common.*");
+		topics.add("common.#");
 		for (MotorPort motorPort : MotorPort.values()) {
 			if (this.hasProperty(motorPort.getPropertyName())){
 				String pointId = (String) this.getProperty(motorPort.getPropertyName());
 				if (Integer.valueOf(pointId) != 0) {
-					topics.add("points.".concat(pointId).concat(".*"));
+					topics.add("points.".concat(pointId).concat(".#"));
 				}
 			}
 		}
 		
+		logger.info("Subscribing to ".concat(topics.toString()));
 		return topics;
 	}
 

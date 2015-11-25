@@ -150,8 +150,8 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_96WhEJNyEeWbfeQJRVcevA" name="java.util.Iterator&lt;Message>"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_-N1dwJNyEeWbfeQJRVcevA" name="java.util.Iterator&lt;ntnu.no.rabbitamqp.util.Message>"/>
     <packagedElement xmi:type="uml:TimeEvent" xmi:id="_wm1nIJNzEeWbfeQJRVcevA" name="t1">
-      <when xmi:id="_w-bAsJNzEeWbfeQJRVcevA" name="t1">
-        <expr xmi:type="uml:LiteralString" xmi:id="_w-bAsZNzEeWbfeQJRVcevA" name="t1" value="0"/>
+      <when xmi:id="_8l84IJOtEeWbfeQJRVcevA" name="t1">
+        <expr xmi:type="uml:LiteralString" xmi:id="_8l84IZOtEeWbfeQJRVcevA" name="t1" value="100"/>
       </when>
     </packagedElement>
     <packagedElement xmi:type="uml:TimeEvent" xmi:id="_I8WZcJN0EeWbfeQJRVcevA" name="t2">

@@ -34,6 +34,6 @@ public class TerminationClient {
 	   System.out.println("Publishing termination message on behalf of henrihs");
        channel.basicPublish(EXCHANGE_NAME, topic, null, msg.getBytes() );
        
-       connection.close();
+       
     }
 }

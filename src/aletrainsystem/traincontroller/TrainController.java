@@ -90,8 +90,10 @@ public class TrainController extends Block {
 	}
 
 	public GreetingMessage generateGreeting(JoinMessage join) {
+		logger.info("Received join message from train " + join.id().toString() + ", sending greeting");
 		Set<TrainId> allTrains = new HashSet<TrainId>(trainsInProximity);
 		allTrains.add(id);
+		trainsInProximity.add(join.id());
 		return new GreetingMessage(join.id(), allTrains, railroad);
 	}
 

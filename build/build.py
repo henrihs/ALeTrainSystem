@@ -56,20 +56,20 @@ def distribute_jars():
 def execute_jars():
     for point in POINTSWITCHpointS:
         print "Executing point on {0}".format(point)
-        os.system("run mintty -t {0} ssh root@{0} jrun -cp {1}/{2} aletrainsystem.point.Start".format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
+        os.system('run mintty -t {0} ssh root@{0} "cd /home/lejos/programs/ && jrun -cp {1}/{2} aletrainsystem.point.Start"'.format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
         #os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.point.Start &".format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
     for train in TRAINS:
         print "Executing train on {0}".format(train)
-        os.system("run mintty -t {0} ssh root@{0} jrun -cp {1}/{2} aletrainsystem.train.Start".format(train, REMOTEPATH, TRAINEXECUTABLE))
+        os.system('run mintty -t {0} ssh root@{0} "cd /home/lejos/programs/ && jrun -cp {1}/{2} aletrainsystem.train.Start"'.format(train, REMOTEPATH, TRAINEXECUTABLE))
         #os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.train.Start &".format(train, REMOTEPATH, TRAINEXECUTABLE))
 
 def kill_jars():
     for point in POINTSWITCHpointS:
         print "Ending point on {0}".format(point)
-        os.system("ssh root@{0} kill $(ps | grep {1} | grep -v 'grep' | awk ' {{ print $1 }} ' )".format(point, POINTSWITCHEXECUTABLE))
+        os.system("ssh root@{0} killall java".format(point))
     for train in TRAINS:
-        print "Ending point on {0}".format(train)
-        os.system("ssh root@{0} kill $(ps | grep {1} | grep -v 'grep' | awk ' {{ print $1 }} ' )".format(train, TRAINEXECUTABLE))
+        print "Ending train on {0}".format(train)
+        os.system("ssh root@{0} killall java".format(train))
 
 def add_trustee(ip):
     os.system("ssh-copy-id -i ~/.ssh/id_rsa.pub root@{0}".format(ip))

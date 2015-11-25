@@ -34,9 +34,11 @@ public class Component extends Block {
 		String trainId = (String) getProperty(TrainId.ID_KEY);
 		
 		ArrayList<String> topics = new ArrayList<>();
-		topics.add("trains.common.*");
-		topics.add("common.*");
-		topics.add("trains.".concat(trainId).concat(".*"));
+		topics.add("trains.common.#");
+		topics.add("common.#");
+		topics.add("trains.".concat(trainId).concat(".#"));
+		
+		logger.info("Subscribing to " + topics.toString());
 		return topics;
 	}
 

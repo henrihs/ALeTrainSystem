@@ -14,6 +14,7 @@ public class PointSwitchController extends Block {
 
 	public java.util.Iterator<MotorPortMapping> mappings;
 	public java.util.Set<aletrainsystem.models.MotorPortMapping> motorPortMappings;
+	private int counter = 0;
 
 	public void logAndThrow(String errorMessage) {
 		logger.error(errorMessage);
@@ -56,6 +57,15 @@ public class PointSwitchController extends Block {
 		
 		logger.warn("Got order for unmapped PointSwitchId: ".concat(String.valueOf(order.getPointId().toString())));
 		return order;
+	}
+
+	public boolean countInits() {
+		counter++;
+		if (counter >= motorPortMappings.size()) {
+			logger.info("Initialized all ports");
+			return true;
+		}
+		return false;
 	}
 
 }

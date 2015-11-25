@@ -17,7 +17,7 @@ public class MessageWrapper extends Block {
 	public java.util.Iterator<Message> messageIterator;
 
 	public Message joinToAmqpMessage(JoinMessage join) {
-		Message message = new Message("trains.common.".concat(join.getClass().toString()), join);
+		Message message = new Message("trains.common.".concat(join.getClass().getSimpleName()), join);
 		return message;
 	}
 
@@ -25,25 +25,25 @@ public class MessageWrapper extends Block {
 		Message message = new Message("trains.".
 							concat(greeting.entrant().toString()).
 							concat(".").
-							concat(greeting.getClass().toString()), greeting);
+							concat(greeting.getClass().getSimpleName()), greeting);
 		return message;
 	}
 	
 	public Message terminationToAmqpMessage(TerminationMessage termination) {
-		Message message = new Message("common.".concat(termination.getClass().toString()), termination);
+		Message message = new Message("common.".concat(termination.getClass().getSimpleName()), termination);
 		return message;
 	}
 
 	public Message requestToAmqpMessage(Request request) {
-		Message message = new Message("trains.common.".concat(request.getClass().toString()), request);
+		Message message = new Message("trains.common.".concat(request.getClass().getSimpleName()), request);
 		return message;
 	}
 
 	public Message responseToAmqpMessage(Response response) {
 		Message message = new Message("trains.".
-								concat(response.collector().toString().
+								concat(response.collector().toString()).
 								concat(".").
-								concat(response.getClass().toString())), 
+								concat(response.getClass().getSimpleName()), 
 							response);
 		return message;
 	}
@@ -52,9 +52,9 @@ public class MessageWrapper extends Block {
 		Set<Message> messages = new HashSet<>();
 		for (PointSwitchOrder order : orders) {
 			Message message = new Message("points.".
-							concat(order.getPointId().toString().
+							concat(order.getPointId().toString()).
 							concat(".").
-							concat(order.getClass().toString())), 
+							concat(order.getClass().getSimpleName()), 
 					order);
 			messages.add(message);
 		}
@@ -64,7 +64,8 @@ public class MessageWrapper extends Block {
 
 	public Message iterateMessages() {
 		if (messageIterator.hasNext()) {
-			return messageIterator.next();
+			Message next = messageIterator.next();
+			return next;
 		}
 		
 		return null;

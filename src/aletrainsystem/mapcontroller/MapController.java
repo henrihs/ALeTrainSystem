@@ -100,7 +100,7 @@ public class MapController extends Block {
 				}
 			}
 		}
-		
+		logger.info("Generated orders: " + orders.toString());
 		return orders;
 	}
 }
