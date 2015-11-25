@@ -8,6 +8,7 @@
     <required>
         <library path="lib/ev3/dbusjava.jar"/>
         <library path="lib/ev3/ev3classes.jar"/>
+        <resource path="resources/pointswitchcontroller.properties"/>
         <block name="b0" uuid="_YSE8s2E0EeWMfJ_mysFnuA"/>
         <block name="b1" uuid="_XAfIYXNQEeWwSc-b3mUj5g"/>
         <block name="b2" uuid="_cAiZ4aWJEeGtcaXYz8RSig"/>

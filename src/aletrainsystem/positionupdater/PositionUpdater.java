@@ -132,7 +132,9 @@ public class PositionUpdater extends Block {
 	}
 
 	public void logUnLock() {
-		logger.info("Unlocking ".concat(passedElements.toString()));
+		if (passedElements.size() > 0) {
+			logger.info("Unlocking ".concat(passedElements.toString()));			
+		}
 	}
 
 	public void updateDirection() {

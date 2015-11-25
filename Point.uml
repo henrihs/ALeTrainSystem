@@ -96,7 +96,7 @@
         </node>
         <node xmi:type="uml:CallBehaviorAction" xmi:id="_vkHRwJNmEeWQW4a8LHZMPw" name="b2" inPartition="_lVm2YJNmEeWQW4a8LHZMPw" behavior="_cAiZ4aWJEeGtcaXYz8RSig">
           <argument xmi:type="uml:ValuePin" xmi:id="_vkr5gJNmEeWQW4a8LHZMPw" name="filename" type="_o_fuMJNmEeWQW4a8LHZMPw">
-            <value xmi:type="uml:LiteralString" xmi:id="_oSiCEJOIEeWbfeQJRVcevA" name="filename" type="_o_fuMJNmEeWQW4a8LHZMPw" value="/home/lejos/programs/resources/pointswitchcontroller.properties"/>
+            <value xmi:type="uml:LiteralString" xmi:id="_jHOVoJOaEeWbfeQJRVcevA" name="filename" type="_o_fuMJNmEeWQW4a8LHZMPw" value="resources/pointswitchcontroller.properties"/>
           </argument>
           <argument xmi:id="_vk4t0JNmEeWQW4a8LHZMPw" name="read" incoming="_eMAZoJNqEeWQW4a8LHZMPw" inPartition="_lVm2YJNmEeWQW4a8LHZMPw"/>
           <argument xmi:id="_vlApoJNmEeWQW4a8LHZMPw" name="read2" inPartition="_lVm2YJNmEeWQW4a8LHZMPw" type="_o_fuMJNmEeWQW4a8LHZMPw"/>
