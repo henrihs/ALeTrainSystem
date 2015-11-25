@@ -7,7 +7,9 @@ import java.util.List;
 import com.rabbitmq.client.impl.AMQBasicProperties;
 
 import aletrainsystem.enums.MotorPort;
+import aletrainsystem.models.messaging.TerminationMessage;
 import no.ntnu.item.arctis.runtime.Block;
+import ntnu.no.rabbitamqp.util.AMQPProperties;
 
 public class Component extends Block {
 
@@ -15,13 +17,13 @@ public class Component extends Block {
 		logger.error(errorMessage);
 	}
 
-	public HashMap<String, String> prepareCommParams() {
-		HashMap<String, String> params = new HashMap<>();
+	public HashMap<AMQPProperties, String> prepareCommParams() {
+		HashMap<AMQPProperties, String> params = new HashMap<>();
 		
-		params.put("USERNAME", (String) getProperty("USERNAME"));
-		params.put("PASSWORD", (String) getProperty("PASSWORD"));
-		params.put("HOSTNAME", (String) getProperty("HOSTNAME"));
-		params.put("EXCHANGE_NAME", (String) getProperty("EXCHANGE_NAME"));
+		params.put(AMQPProperties.USERNAME, (String) getProperty("USERNAME"));
+		params.put(AMQPProperties.PASSWORD, (String) getProperty("PASSWORD"));
+		params.put(AMQPProperties.HOSTNAME, (String) getProperty("HOSTNAME"));
+		params.put(AMQPProperties.EXCHANGENAME, (String) getProperty("EXCHANGE_NAME"));
 		
 		return params;
 	}
@@ -42,7 +44,11 @@ public class Component extends Block {
 	}
 
 	public void logWarning(String e) {
-		logWarn(e);
+		logger.warn(e);
+	}
+
+	public void receivedTermination(TerminationMessage t) {
+		logger.info("Received termination message from " + t.getSender() + ", halting system NOW");
 	}
 
 }

@@ -118,7 +118,7 @@
         <argument xmi:id="_IV-ywGE8EeWMfJ_mysFnuA" name="read" incoming="_7-Jd8GE8EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA"/>
         <argument xmi:id="_IWFgcGE8EeWMfJ_mysFnuA" name="read2" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_67_54GE7EeWMfJ_mysFnuA"/>
         <argument xmi:type="uml:ValuePin" xmi:id="_2sbssGE8EeWMfJ_mysFnuA" name="filename" type="_67_54GE7EeWMfJ_mysFnuA">
-          <value xmi:type="uml:LiteralString" xmi:id="_yjsu0JHmEeWj6Onok_9k0w" name="filename" type="_67_54GE7EeWMfJ_mysFnuA" value="resources/pointswitchcontroller.properties"/>
+          <value xmi:type="uml:LiteralString" xmi:id="_pe1dIJOIEeWbfeQJRVcevA" name="filename" type="_67_54GE7EeWMfJ_mysFnuA" value="/home/lejos/programs/resources/pointswitchcontroller.properties"/>
         </argument>
         <result xmi:id="_IWAn8GE8EeWMfJ_mysFnuA" name="ok" outgoing="_DCki8GE9EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_IV4FFGE8EeWMfJ_mysFnuA"/>
         <result xmi:id="_IWDEMGE8EeWMfJ_mysFnuA" name="failed" outgoing="_Onrk4GE9EeWMfJ_mysFnuA" inPartition="_YSFjwGE0EeWMfJ_mysFnuA" type="_67_54GE7EeWMfJ_mysFnuA"/>

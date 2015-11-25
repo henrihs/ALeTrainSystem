@@ -37,7 +37,7 @@ public class PointSwitchController extends Block {
 	public MotorPort getNextMotorPort(Iterator<MotorPortMapping> iterator) {
 		if (iterator.hasNext()){
 			MotorPortMapping next = iterator.next();
-			logger.info(String.format("Initializing pointswitch on port %s with ID %d", next.getPort().name(), next.getPointSwitchId()));
+			logger.info(String.format("Initializing pointswitch on port %s with ID %s", next.getPort().name(), next.getPointSwitchId().toString()));
 			return next.getPort();
 		}
 		else return null;
@@ -49,12 +49,12 @@ public class PointSwitchController extends Block {
 			if (motorPortMapping.getPointSwitchId().equals(order.getPointId())){
 				port = motorPortMapping.getPort();
 				order.setMotorPort(port);
-				logger.info(String.format("Routing order with state %s to pointswitch on port %s with ID %d", order.getSwitchState(), port, order.getPointId()));
+				logger.info(String.format("Routing order with state %s to pointswitch on port %s with ID %s", order.getSwitchState(), port, order.getPointId().toString()));
 				return order;
 			}			
 		}
 		
-		logger.warn("Got order for unmapped PointSwitchId: ".concat(String.valueOf(order.getPointId())));
+		logger.warn("Got order for unmapped PointSwitchId: ".concat(String.valueOf(order.getPointId().toString())));
 		return order;
 	}
 

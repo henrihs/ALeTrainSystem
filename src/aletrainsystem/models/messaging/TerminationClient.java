@@ -30,8 +30,9 @@ public class TerminationClient {
        TerminationMessage message = new TerminationMessage("henrihs");
        Gson g = new Gson();
 	   msg = g.toJson(message);
+	   String topic = TOPIC.concat(TerminationMessage.class.getSimpleName());
 	   System.out.println("Publishing termination message on behalf of henrihs");
-       channel.basicPublish(EXCHANGE_NAME, TOPIC.concat(TerminationMessage.class.getSimpleName()), null, msg.getBytes() );
+       channel.basicPublish(EXCHANGE_NAME, topic, null, msg.getBytes() );
        
        connection.close();
     }

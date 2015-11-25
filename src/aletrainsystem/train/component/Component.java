@@ -6,9 +6,11 @@ import java.util.List;
 
 import aletrainsystem.models.TrainId;
 import aletrainsystem.models.messaging.GreetingMessage;
+import aletrainsystem.models.messaging.TerminationMessage;
 import lejos.hardware.Key;
 import lejos.hardware.KeyListener;
 import no.ntnu.item.arctis.runtime.Block;
+import ntnu.no.rabbitamqp.util.AMQPProperties;
 
 public class Component extends Block {
 
@@ -17,13 +19,13 @@ public class Component extends Block {
 		return null;
 	}
 
-	public HashMap<String, String> getInitParams() {
-		HashMap<String, String> params = new HashMap<>();
+	public HashMap<AMQPProperties, String> getInitParams() {
+		HashMap<AMQPProperties, String> params = new HashMap<>();
 		
-		params.put("USERNAME", (String) getProperty("USERNAME"));
-		params.put("PASSWORD", (String) getProperty("PASSWORD"));
-		params.put("HOSTNAME", (String) getProperty("HOSTNAME"));
-		params.put("EXCHANGE_NAME", (String) getProperty("EXCHANGE_NAME"));
+		params.put(AMQPProperties.USERNAME, (String) getProperty("USERNAME"));
+		params.put(AMQPProperties.PASSWORD, (String) getProperty("PASSWORD"));
+		params.put(AMQPProperties.HOSTNAME, (String) getProperty("HOSTNAME"));
+		params.put(AMQPProperties.EXCHANGENAME, (String) getProperty("EXCHANGE_NAME"));
 		
 		return params;
 	}
@@ -56,6 +58,10 @@ public class Component extends Block {
 				sendToBlock("BACKBUTTONPRESSED");				
 			}
 		});;
+	}
+	
+	public void receivedTermination(TerminationMessage t) {
+		logger.info("Received termination message from " + t.getSender() + ", halting system NOW");
 	}
 
 }
