@@ -45,22 +45,24 @@ def distribute_configs():
         print "Copying " + MAP + " to {0}".format(train)
         os.system("scp {0}/{1} root@{2}:{3}/".format(MAPPATH, MAP, train, REMOTEMAPPATH))
 
-def distribute_jars():
+def distribute_points():
     for point in POINTSWITCHpointS:
         print "Copying point to {0}".format(point)
         os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, POINTSWITCHEXECUTABLE, point, REMOTEPATH))
+
+def distribute_trains():
     for train in TRAINS:
         print "Copying train to {0}".format(train)
         os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, TRAINEXECUTABLE, train, REMOTEPATH))
 
-def execute_jars():
+def execute():
     for point in POINTSWITCHpointS:
         print "Executing point on {0}".format(point)
-        os.system('run mintty -t {0} ssh root@{0} "cd /home/lejos/programs/ && jrun -cp {1}/{2} aletrainsystem.point.Start"'.format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
+        os.system('run mintty -t {0} ssh root@{0} "cd {1} && jrun -cp {1}/{2} aletrainsystem.point.Start; read -p \"Press enter to close this window.\""'.format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
         #os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.point.Start &".format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
     for train in TRAINS:
         print "Executing train on {0}".format(train)
-        os.system('run mintty -t {0} ssh root@{0} "cd /home/lejos/programs/ && jrun -cp {1}/{2} aletrainsystem.train.Start"'.format(train, REMOTEPATH, TRAINEXECUTABLE))
+        os.system('run mintty -t {0} ssh root@{0} "cd {1} && jrun -cp {1}/{2} aletrainsystem.train.Start; read -p \"Press enter to close this window.\""'.format(train, REMOTEPATH, TRAINEXECUTABLE))
         #os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.train.Start &".format(train, REMOTEPATH, TRAINEXECUTABLE))
 
 def kill_jars():
@@ -79,5 +81,6 @@ def getLastIpSubSection(ip):
 
 if (__name__ == "__main__"):
     # distribute_log4j()
-    distribute_jars()
+    distribute_points()
+    distribute_trains()
     distribute_configs()

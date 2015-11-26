@@ -12,25 +12,26 @@
             <transition xmi:id="_TeLygYL3EeWAAZdL8L4_Qw" name="stop / " source="_TeFr44L3EeWAAZdL8L4_Qw" target="_TeFr4YL3EeWAAZdL8L4_Qw"/>
             <transition xmi:id="_TeMZkYL3EeWAAZdL8L4_Qw" name="init / " source="_TeFr4IL3EeWAAZdL8L4_Qw" target="_TeFr4oL3EeWAAZdL8L4_Qw"/>
             <transition xmi:id="_TeNAoYL3EeWAAZdL8L4_Qw" name="stop / " source="_TeFr4oL3EeWAAZdL8L4_Qw" target="_TeFr4YL3EeWAAZdL8L4_Qw"/>
+            <transition xmi:id="_QFy1YJRFEeWMOc1E_7dksQ" name="passed / " source="_TeFr4oL3EeWAAZdL8L4_Qw" target="_TeFr4oL3EeWAAZdL8L4_Qw"/>
             <subvertex xmi:type="uml:Pseudostate" xmi:id="_TeFr4IL3EeWAAZdL8L4_Qw" name="&lt;initial>"/>
             <subvertex xmi:type="uml:FinalState" xmi:id="_TeFr4YL3EeWAAZdL8L4_Qw" name="&lt;final>"/>
             <subvertex xmi:type="uml:State" xmi:id="_TeFr4oL3EeWAAZdL8L4_Qw" name="onTrack"/>
             <subvertex xmi:type="uml:State" xmi:id="_TeFr44L3EeWAAZdL8L4_Qw" name="inPointSwitch"/>
           </region>
         </ownedBehavior>
-        <ownedParameter xmi:id="_t_jcYIetEeWS0rERPEKd6g" name="passed" type="_hLvBQILvEeW-IY1wb01b1A" isStream="true"/>
-        <ownedParameter xmi:id="_t_kDcYetEeWS0rERPEKd6g" name="enterPointSwitch" type="_t_kDcIetEeWS0rERPEKd6g" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_t_kDcoetEeWS0rERPEKd6g" name="leavePointSwitch" type="_t_kDcIetEeWS0rERPEKd6g" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_t_kqgIetEeWS0rERPEKd6g" name="passedRegularSleeper" direction="out" isStream="true"/>
-        <ownedParameter xmi:id="_t_kqgYetEeWS0rERPEKd6g" name="init"/>
-        <ownedParameter xmi:id="_t_kqgoetEeWS0rERPEKd6g" name="stop" isStream="true"/>
+        <ownedParameter xmi:id="_QFuj8JRFEeWMOc1E_7dksQ" name="passed" type="_hLvBQILvEeW-IY1wb01b1A" isStream="true"/>
+        <ownedParameter xmi:id="_QFvLAJRFEeWMOc1E_7dksQ" name="enterPointSwitch" type="_t_kDcIetEeWS0rERPEKd6g" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_QFvyEJRFEeWMOc1E_7dksQ" name="leavePointSwitch" type="_t_kDcIetEeWS0rERPEKd6g" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_QFvyEZRFEeWMOc1E_7dksQ" name="passedRegularSleeper" direction="out" isStream="true"/>
+        <ownedParameter xmi:id="_QFwZIJRFEeWMOc1E_7dksQ" name="init"/>
+        <ownedParameter xmi:id="_QFwZIZRFEeWMOc1E_7dksQ" name="stop" isStream="true"/>
         <group xmi:type="uml:ActivityPartition" xmi:id="_TcdUMIL3EeWAAZdL8L4_Qw" name="main" node="_Tcd7QIL3EeWAAZdL8L4_Qw _TceiUYL3EeWAAZdL8L4_Qw _TceiU4L3EeWAAZdL8L4_Qw _TcfJYIL3EeWAAZdL8L4_Qw _TcfJYoL3EeWAAZdL8L4_Qw _TcfJZIL3EeWAAZdL8L4_Qw"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Tcd7QIL3EeWAAZdL8L4_Qw" name="passed" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" type="_hLvBQILvEeW-IY1wb01b1A" parameter="_t_jcYIetEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TceiUYL3EeWAAZdL8L4_Qw" name="enterPointSwitch" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" type="_t_kDcIetEeWS0rERPEKd6g" parameter="_t_kDcYetEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TceiU4L3EeWAAZdL8L4_Qw" name="leavePointSwitch" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" type="_t_kDcIetEeWS0rERPEKd6g" parameter="_t_kDcoetEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TcfJYIL3EeWAAZdL8L4_Qw" name="passedRegularSleeper" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" parameter="_t_kqgIetEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TcfJYoL3EeWAAZdL8L4_Qw" name="init" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" parameter="_t_kqgYetEeWS0rERPEKd6g"/>
-        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TcfJZIL3EeWAAZdL8L4_Qw" name="stop" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" parameter="_t_kqgoetEeWS0rERPEKd6g"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_Tcd7QIL3EeWAAZdL8L4_Qw" name="passed" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" type="_hLvBQILvEeW-IY1wb01b1A" parameter="_QFuj8JRFEeWMOc1E_7dksQ"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TceiUYL3EeWAAZdL8L4_Qw" name="enterPointSwitch" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" type="_t_kDcIetEeWS0rERPEKd6g" parameter="_QFvLAJRFEeWMOc1E_7dksQ"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TceiU4L3EeWAAZdL8L4_Qw" name="leavePointSwitch" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" type="_t_kDcIetEeWS0rERPEKd6g" parameter="_QFvyEJRFEeWMOc1E_7dksQ"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TcfJYIL3EeWAAZdL8L4_Qw" name="passedRegularSleeper" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" parameter="_QFvyEZRFEeWMOc1E_7dksQ"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TcfJYoL3EeWAAZdL8L4_Qw" name="init" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" parameter="_QFwZIJRFEeWMOc1E_7dksQ"/>
+        <node xmi:type="uml:ActivityParameterNode" xmi:id="_TcfJZIL3EeWAAZdL8L4_Qw" name="stop" inPartition="_TcdUMIL3EeWAAZdL8L4_Qw" parameter="_QFwZIZRFEeWMOc1E_7dksQ"/>
       </packagedElement>
       <profileApplication xmi:id="_TcfwcoL3EeWAAZdL8L4_Qw">
         <eAnnotations xmi:id="_TcgXgIL3EeWAAZdL8L4_Qw" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -800,4 +801,5 @@
   <graphics:Shape xmi:id="_vslFsJNwEeWbfeQJRVcevA" x="1251" y="351" width="37" height="37" base_Element="_vr_24JNwEeWbfeQJRVcevA"/>
   <graphics:Shape xmi:id="_zg2okJNwEeWbfeQJRVcevA" x="1548" y="378" base_Element="_zfYB4JNwEeWbfeQJRVcevA" orientation="east"/>
   <arctis:event xmi:id="__DjPsJNwEeWbfeQJRVcevA" base_Transition="__De-QJNwEeWbfeQJRVcevA" effects="_K9FbUIexEeWS0rERPEKd6g"/>
+  <arctis:event xmi:id="_QHbNEJRFEeWMOc1E_7dksQ" base_Transition="_QFy1YJRFEeWMOc1E_7dksQ" triggers="_Tcd7QIL3EeWAAZdL8L4_Qw"/>
 </xmi:XMI>

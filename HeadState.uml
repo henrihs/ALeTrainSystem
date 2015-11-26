@@ -7,8 +7,8 @@
           <transition xmi:id="_lplv0ILzEeWAAZdL8L4_Qw" source="_lpmW4ILzEeWAAZdL8L4_Qw" target="_lpozIILzEeWAAZdL8L4_Qw">
             <trigger xmi:id="_lpqBQILzEeWAAZdL8L4_Qw" name="in via init" event="_lpqoUILzEeWAAZdL8L4_Qw"/>
           </transition>
-          <transition xmi:id="_q0kfkIL2EeWAAZdL8L4_Qw" source="_lpozIILzEeWAAZdL8L4_Qw" target="_q0lGoIL2EeWAAZdL8L4_Qw">
-            <trigger xmi:id="_q0lGoYL2EeWAAZdL8L4_Qw" name="in via passed" event="_rJa1kILzEeWAAZdL8L4_Qw"/>
+          <transition xmi:id="_q0kfkIL2EeWAAZdL8L4_Qw" source="_lpozIILzEeWAAZdL8L4_Qw" target="_pB1uIJRDEeWMOc1E_7dksQ">
+            <trigger xmi:id="_pB1uIZRDEeWMOc1E_7dksQ" name="in via passed" event="_rJa1kILzEeWAAZdL8L4_Qw"/>
           </transition>
           <transition xmi:id="_scopkIL2EeWAAZdL8L4_Qw" guard="_scopkYL2EeWAAZdL8L4_Qw" source="_q0lGoIL2EeWAAZdL8L4_Qw" target="_lpozIILzEeWAAZdL8L4_Qw">
             <ownedRule xmi:id="_scopkYL2EeWAAZdL8L4_Qw" name="passedRegularSleeper()"/>
@@ -23,17 +23,17 @@
               <node xmi:type="uml:OpaqueAction" xmi:id="_vhjMFIL2EeWAAZdL8L4_Qw" name="out  enterPointSwitch"/>
             </effect>
           </transition>
-          <transition xmi:id="_zhRxAIL2EeWAAZdL8L4_Qw" source="_vhjMEIL2EeWAAZdL8L4_Qw" target="_zhSYEIL2EeWAAZdL8L4_Qw">
-            <trigger xmi:id="_zhSYEYL2EeWAAZdL8L4_Qw" name="in via passed" event="_rJa1kILzEeWAAZdL8L4_Qw"/>
+          <transition xmi:id="_zhRxAIL2EeWAAZdL8L4_Qw" source="_vhjMEIL2EeWAAZdL8L4_Qw" target="_8-TnIZREEeWMOc1E_7dksQ">
+            <trigger xmi:id="_DpQcMJRFEeWMOc1E_7dksQ" name="in via passed" event="_rJa1kILzEeWAAZdL8L4_Qw"/>
           </transition>
-          <transition xmi:id="_2v0JkIL2EeWAAZdL8L4_Qw" guard="_2v0JkYL2EeWAAZdL8L4_Qw" source="_zhSYEIL2EeWAAZdL8L4_Qw" target="_vhjMEIL2EeWAAZdL8L4_Qw">
-            <ownedRule xmi:id="_2v0JkYL2EeWAAZdL8L4_Qw" name="passedRegularSleeper()"/>
+          <transition xmi:id="_2v0JkIL2EeWAAZdL8L4_Qw" guard="_H1AV0JRDEeWMOc1E_7dksQ" source="_zhSYEIL2EeWAAZdL8L4_Qw" target="_vhjMEIL2EeWAAZdL8L4_Qw">
+            <ownedRule xmi:id="_H1AV0JRDEeWMOc1E_7dksQ" name="else"/>
           </transition>
-          <transition xmi:id="_60gHAIL2EeWAAZdL8L4_Qw" guard="_-_LFwIL4EeWAAZdL8L4_Qw" source="_zhSYEIL2EeWAAZdL8L4_Qw" target="_lpozIILzEeWAAZdL8L4_Qw">
-            <ownedRule xmi:id="_-_LFwIL4EeWAAZdL8L4_Qw" name="else"/>
-            <effect xmi:type="uml:Activity" xmi:id="_60gHAoL2EeWAAZdL8L4_Qw" name="effect" node="_-_LFwYL4EeWAAZdL8L4_Qw _-_LFwoL4EeWAAZdL8L4_Qw">
-              <node xmi:type="uml:OpaqueAction" xmi:id="_-_LFwYL4EeWAAZdL8L4_Qw" name="call leavedOnType"/>
-              <node xmi:type="uml:OpaqueAction" xmi:id="_-_LFwoL4EeWAAZdL8L4_Qw" name="out  leavePointSwitch"/>
+          <transition xmi:id="_60gHAIL2EeWAAZdL8L4_Qw" guard="_f0kiwJRCEeWMOc1E_7dksQ" source="_zhSYEIL2EeWAAZdL8L4_Qw" target="_lpozIILzEeWAAZdL8L4_Qw">
+            <ownedRule xmi:id="_f0kiwJRCEeWMOc1E_7dksQ" name="passedDifferentThanEnteredOn()"/>
+            <effect xmi:type="uml:Activity" xmi:id="_60gHAoL2EeWAAZdL8L4_Qw" name="effect" node="_f0lw4JRCEeWMOc1E_7dksQ _f0lw4ZRCEeWMOc1E_7dksQ">
+              <node xmi:type="uml:OpaqueAction" xmi:id="_f0lw4JRCEeWMOc1E_7dksQ" name="call leavedOnType"/>
+              <node xmi:type="uml:OpaqueAction" xmi:id="_f0lw4ZRCEeWMOc1E_7dksQ" name="out  leavePointSwitch"/>
             </effect>
           </transition>
           <transition xmi:id="_E3SakIL3EeWAAZdL8L4_Qw" source="_lpozIILzEeWAAZdL8L4_Qw" target="_E3U20IL3EeWAAZdL8L4_Qw">
@@ -42,6 +42,18 @@
           <transition xmi:id="_IY9KgIL3EeWAAZdL8L4_Qw" source="_vhjMEIL2EeWAAZdL8L4_Qw" target="_IY9KgYL3EeWAAZdL8L4_Qw">
             <trigger xmi:id="_IY9KgoL3EeWAAZdL8L4_Qw" name="in via stop" event="_E3Vd4YL3EeWAAZdL8L4_Qw"/>
           </transition>
+          <transition xmi:id="_jaHbMJREEeWMOc1E_7dksQ" guard="_jaHbMZREEeWMOc1E_7dksQ" source="_pB1uIJRDEeWMOc1E_7dksQ" target="_q0lGoIL2EeWAAZdL8L4_Qw">
+            <ownedRule xmi:id="_jaHbMZREEeWMOc1E_7dksQ" name="isValidColor()"/>
+          </transition>
+          <transition xmi:id="_rb3rIJREEeWMOc1E_7dksQ" guard="_rb3rIZREEeWMOc1E_7dksQ" source="_pB1uIJRDEeWMOc1E_7dksQ" target="_lpozIILzEeWAAZdL8L4_Qw">
+            <ownedRule xmi:id="_rb3rIZREEeWMOc1E_7dksQ" name="else"/>
+          </transition>
+          <transition xmi:id="_8-TnIJREEeWMOc1E_7dksQ" guard="_8-UOMJREEeWMOc1E_7dksQ" source="_8-TnIZREEeWMOc1E_7dksQ" target="_zhSYEIL2EeWAAZdL8L4_Qw">
+            <ownedRule xmi:id="_8-UOMJREEeWMOc1E_7dksQ" name="isValidColor()"/>
+          </transition>
+          <transition xmi:id="__e7JwJREEeWMOc1E_7dksQ" guard="__e7JwZREEeWMOc1E_7dksQ" source="_8-TnIZREEeWMOc1E_7dksQ" target="_vhjMEIL2EeWAAZdL8L4_Qw">
+            <ownedRule xmi:id="__e7JwZREEeWMOc1E_7dksQ" name="else"/>
+          </transition>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_lpmW4ILzEeWAAZdL8L4_Qw" name="&lt;initial>"/>
           <subvertex xmi:type="uml:State" xmi:id="_lpozIILzEeWAAZdL8L4_Qw" name="onTrack"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_q0lGoIL2EeWAAZdL8L4_Qw" name="passedOnTrack" kind="choice"/>
@@ -49,24 +61,27 @@
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_zhSYEIL2EeWAAZdL8L4_Qw" name="passedInPointSwitch" kind="choice"/>
           <subvertex xmi:type="uml:FinalState" xmi:id="_E3U20IL3EeWAAZdL8L4_Qw" name="&lt;final>"/>
           <subvertex xmi:type="uml:FinalState" xmi:id="_IY9KgYL3EeWAAZdL8L4_Qw" name="&lt;final>"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_pB1uIJRDEeWMOc1E_7dksQ" name="isValidOnTrack" kind="choice"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_8-TnIZREEeWMOc1E_7dksQ" name="isValidInPoint" kind="choice"/>
         </region>
       </ownedBehavior>
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_UvIPQILyEeWAAZdL8L4_Qw" name="HeadState">
         <ownedComment xmi:id="_UxTZgILyEeWAAZdL8L4_Qw">
-          <body>HASH:33cdfbfa6c6d5e67862ece957a97fa6ff22112e6</body>
+          <body>HASH:cb644d62a3eb73ec4da5eeca07fb9adc1a9a7ed9</body>
         </ownedComment>
         <region xmi:id="_UvI2UYLyEeWAAZdL8L4_Qw" name="&lt;region>">
-          <transition xmi:id="_IZWME4L3EeWAAZdL8L4_Qw" name="passed / " source="_IZWMEoL3EeWAAZdL8L4_Qw" target="_IZWMEoL3EeWAAZdL8L4_Qw"/>
-          <transition xmi:id="_IZWzIYL3EeWAAZdL8L4_Qw" name="passed / passedRegularSleeper" source="_IZWMEYL3EeWAAZdL8L4_Qw" target="_IZWMEYL3EeWAAZdL8L4_Qw"/>
-          <transition xmi:id="_IZWzI4L3EeWAAZdL8L4_Qw" name="passed / enterPointSwitch" source="_IZWMEYL3EeWAAZdL8L4_Qw" target="_IZWMEoL3EeWAAZdL8L4_Qw"/>
-          <transition xmi:id="_IZXaMYL3EeWAAZdL8L4_Qw" name="passed / leavePointSwitch" source="_IZWMEoL3EeWAAZdL8L4_Qw" target="_IZWMEYL3EeWAAZdL8L4_Qw"/>
-          <transition xmi:id="_IZXaM4L3EeWAAZdL8L4_Qw" name="stop / " source="_IZWMEoL3EeWAAZdL8L4_Qw" target="_IZWMEIL3EeWAAZdL8L4_Qw"/>
-          <transition xmi:id="_IZYBQYL3EeWAAZdL8L4_Qw" name="init / " source="_IZVlAIL3EeWAAZdL8L4_Qw" target="_IZWMEYL3EeWAAZdL8L4_Qw"/>
-          <transition xmi:id="_IZYBQ4L3EeWAAZdL8L4_Qw" name="stop / " source="_IZWMEYL3EeWAAZdL8L4_Qw" target="_IZWMEIL3EeWAAZdL8L4_Qw"/>
-          <subvertex xmi:type="uml:Pseudostate" xmi:id="_IZVlAIL3EeWAAZdL8L4_Qw" name="&lt;initial>"/>
-          <subvertex xmi:type="uml:FinalState" xmi:id="_IZWMEIL3EeWAAZdL8L4_Qw" name="&lt;final>"/>
-          <subvertex xmi:type="uml:State" xmi:id="_IZWMEYL3EeWAAZdL8L4_Qw" name="onTrack"/>
-          <subvertex xmi:type="uml:State" xmi:id="_IZWMEoL3EeWAAZdL8L4_Qw" name="inPointSwitch"/>
+          <transition xmi:id="_DpqE0ZRFEeWMOc1E_7dksQ" name="passed / passedRegularSleeper" source="_DppdwZRFEeWMOc1E_7dksQ" target="_DppdwZRFEeWMOc1E_7dksQ"/>
+          <transition xmi:id="_DpqE05RFEeWMOc1E_7dksQ" name="stop / " source="_DppdwZRFEeWMOc1E_7dksQ" target="_DpqE0JRFEeWMOc1E_7dksQ"/>
+          <transition xmi:id="_Dpqr4ZRFEeWMOc1E_7dksQ" name="passed / leavePointSwitch" source="_DppdwJRFEeWMOc1E_7dksQ" target="_DppdwZRFEeWMOc1E_7dksQ"/>
+          <transition xmi:id="_Dpqr45RFEeWMOc1E_7dksQ" name="passed / " source="_DppdwZRFEeWMOc1E_7dksQ" target="_DppdwZRFEeWMOc1E_7dksQ"/>
+          <transition xmi:id="_DprS8JRFEeWMOc1E_7dksQ" name="passed / " source="_DppdwJRFEeWMOc1E_7dksQ" target="_DppdwJRFEeWMOc1E_7dksQ"/>
+          <transition xmi:id="_DprS8pRFEeWMOc1E_7dksQ" name="init / " source="_DppdwpRFEeWMOc1E_7dksQ" target="_DppdwZRFEeWMOc1E_7dksQ"/>
+          <transition xmi:id="_DprS9JRFEeWMOc1E_7dksQ" name="passed / enterPointSwitch" source="_DppdwZRFEeWMOc1E_7dksQ" target="_DppdwJRFEeWMOc1E_7dksQ"/>
+          <transition xmi:id="_Dpr6AJRFEeWMOc1E_7dksQ" name="stop / " source="_DppdwJRFEeWMOc1E_7dksQ" target="_DpqE0JRFEeWMOc1E_7dksQ"/>
+          <subvertex xmi:type="uml:State" xmi:id="_DppdwJRFEeWMOc1E_7dksQ" name="inPointSwitch"/>
+          <subvertex xmi:type="uml:State" xmi:id="_DppdwZRFEeWMOc1E_7dksQ" name="onTrack"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_DppdwpRFEeWMOc1E_7dksQ" name="&lt;initial>"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_DpqE0JRFEeWMOc1E_7dksQ" name="&lt;final>"/>
         </region>
       </ownedBehavior>
       <ownedParameter xmi:id="_YY6ZYoLyEeWAAZdL8L4_Qw" name="passed" type="_YY6ZYILyEeWAAZdL8L4_Qw" isStream="true"/>
@@ -111,11 +126,12 @@
   <graphics:Shape xmi:id="_DO7ScILzEeWAAZdL8L4_Qw" x="793" y="148" base_Element="_DO6rYILzEeWAAZdL8L4_Qw" orientation="east"/>
   <graphics:Shape xmi:id="_bltQEILzEeWAAZdL8L4_Qw" x="125" y="148" base_Element="_blsB8ILzEeWAAZdL8L4_Qw" orientation="west"/>
   <graphics:Shape xmi:id="_A2uvMIL3EeWAAZdL8L4_Qw" x="125" y="148" base_Element="_A2uIIIL3EeWAAZdL8L4_Qw" orientation="west"/>
-  <arctis:event xmi:id="_IZWzIIL3EeWAAZdL8L4_Qw" base_Transition="_IZWME4L3EeWAAZdL8L4_Qw" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw"/>
-  <arctis:event xmi:id="_IZWzIoL3EeWAAZdL8L4_Qw" base_Transition="_IZWzIYL3EeWAAZdL8L4_Qw" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw" effects="_DO6rYILzEeWAAZdL8L4_Qw"/>
-  <arctis:event xmi:id="_IZXaMIL3EeWAAZdL8L4_Qw" base_Transition="_IZWzI4L3EeWAAZdL8L4_Qw" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw" effects="_ABr6YILzEeWAAZdL8L4_Qw"/>
-  <arctis:event xmi:id="_IZXaMoL3EeWAAZdL8L4_Qw" base_Transition="_IZXaMYL3EeWAAZdL8L4_Qw" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw" effects="_B3CScILzEeWAAZdL8L4_Qw"/>
-  <arctis:event xmi:id="_IZYBQIL3EeWAAZdL8L4_Qw" base_Transition="_IZXaM4L3EeWAAZdL8L4_Qw" triggers="_A2uIIIL3EeWAAZdL8L4_Qw"/>
-  <arctis:event xmi:id="_IZYBQoL3EeWAAZdL8L4_Qw" base_Transition="_IZYBQYL3EeWAAZdL8L4_Qw" triggers="_blsB8ILzEeWAAZdL8L4_Qw"/>
-  <arctis:event xmi:id="_IZYoUIL3EeWAAZdL8L4_Qw" base_Transition="_IZYBQ4L3EeWAAZdL8L4_Qw" triggers="_A2uIIIL3EeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_DpqE0pRFEeWMOc1E_7dksQ" base_Transition="_DpqE0ZRFEeWMOc1E_7dksQ" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw" effects="_DO6rYILzEeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_Dpqr4JRFEeWMOc1E_7dksQ" base_Transition="_DpqE05RFEeWMOc1E_7dksQ" triggers="_A2uIIIL3EeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_Dpqr4pRFEeWMOc1E_7dksQ" base_Transition="_Dpqr4ZRFEeWMOc1E_7dksQ" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw" effects="_B3CScILzEeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_Dpqr5JRFEeWMOc1E_7dksQ" base_Transition="_Dpqr45RFEeWMOc1E_7dksQ" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_DprS8ZRFEeWMOc1E_7dksQ" base_Transition="_DprS8JRFEeWMOc1E_7dksQ" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_DprS85RFEeWMOc1E_7dksQ" base_Transition="_DprS8pRFEeWMOc1E_7dksQ" triggers="_blsB8ILzEeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_DprS9ZRFEeWMOc1E_7dksQ" base_Transition="_DprS9JRFEeWMOc1E_7dksQ" triggers="_YY6ZYYLyEeWAAZdL8L4_Qw" effects="_ABr6YILzEeWAAZdL8L4_Qw"/>
+  <arctis:event xmi:id="_Dpr6AZRFEeWMOc1E_7dksQ" base_Transition="_Dpr6AJRFEeWMOc1E_7dksQ" triggers="_A2uIIIL3EeWAAZdL8L4_Qw"/>
 </xmi:XMI>
