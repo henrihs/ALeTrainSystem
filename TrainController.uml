@@ -146,7 +146,7 @@
       <node xmi:type="uml:ActivityParameterNode" xmi:id="__Jm3AHNIEeWNAdm5YAmirg" name="init" outgoing="_MBZo0HNJEeWNAdm5YAmirg" inPartition="_CsDm4HNFEeWNAdm5YAmirg" parameter="__JxPEHNIEeWNAdm5YAmirg"/>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_KqAYEHNJEeWNAdm5YAmirg" name="b0" inPartition="_CsDm4HNFEeWNAdm5YAmirg" behavior="_cAiZ4aWJEeGtcaXYz8RSig">
         <argument xmi:type="uml:ValuePin" xmi:id="_KqbO0HNJEeWNAdm5YAmirg" name="filename" type="_KqkYwXNJEeWNAdm5YAmirg">
-          <value xmi:type="uml:LiteralString" xmi:id="_rxkUwJOIEeWbfeQJRVcevA" name="filename" type="_KqkYwXNJEeWNAdm5YAmirg" value="/home/lejos/programs/resources/traincontroller.properties"/>
+          <value xmi:type="uml:LiteralString" xmi:id="_EoO-MJRLEeWMOc1E_7dksQ" name="filename" type="_KqkYwXNJEeWNAdm5YAmirg" value="resources/traincontroller.properties"/>
         </argument>
         <argument xmi:id="_KqguYHNJEeWNAdm5YAmirg" name="read" incoming="_e9nN4IFwEeW-IY1wb01b1A" inPartition="_CsDm4HNFEeWNAdm5YAmirg"/>
         <argument xmi:id="_KqkYwnNJEeWNAdm5YAmirg" name="read2" inPartition="_CsDm4HNFEeWNAdm5YAmirg" type="_KqkYwXNJEeWNAdm5YAmirg"/>

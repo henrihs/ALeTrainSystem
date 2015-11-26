@@ -168,7 +168,7 @@
         <node xmi:type="uml:MergeNode" xmi:id="_CG5AAI0-EeWhyqPFGZmtAQ" name="m0" incoming="_5X0MgI08EeWhyqPFGZmtAQ _ElRG8I0-EeWhyqPFGZmtAQ" outgoing="_CGkP4I0-EeWhyqPFGZmtAQ" inPartition="__qhh0HM_EeWNAdm5YAmirg"/>
         <node xmi:type="uml:CallBehaviorAction" xmi:id="_Tv_ksI0-EeWhyqPFGZmtAQ" name="b5" inPartition="__qhh0HM_EeWNAdm5YAmirg" behavior="_cAiZ4aWJEeGtcaXYz8RSig">
           <argument xmi:type="uml:ValuePin" xmi:id="_TwrhMI0-EeWhyqPFGZmtAQ" name="filename" type="_RU_9gXNWEeWNAdm5YAmirg">
-            <value xmi:type="uml:LiteralString" xmi:id="_qo7RsJOIEeWbfeQJRVcevA" name="filename" type="_RU_9gXNWEeWNAdm5YAmirg" value="/home/lejos/programs/resources/traincontroller.properties"/>
+            <value xmi:type="uml:LiteralString" xmi:id="_Gzf74JRLEeWMOc1E_7dksQ" name="filename" type="_RU_9gXNWEeWNAdm5YAmirg" value="resources/traincontroller.properties"/>
           </argument>
           <argument xmi:id="_TxLQcI0-EeWhyqPFGZmtAQ" name="read" incoming="_fGDeAI0-EeWhyqPFGZmtAQ" inPartition="__qhh0HM_EeWNAdm5YAmirg"/>
           <argument xmi:id="_TxgnoY0-EeWhyqPFGZmtAQ" name="read2" inPartition="__qhh0HM_EeWNAdm5YAmirg" type="_RU_9gXNWEeWNAdm5YAmirg"/>
