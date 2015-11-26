@@ -25,7 +25,7 @@ public class LockParticipant extends Block {
 		TrainId participant = null;
 		if (hasProperty(ENTITY_ID)) {
 			Object c = getProperty(ENTITY_ID);
-			if (c != null && c instanceof Class<?>) {
+			if (c != null && c instanceof TrainId) {
 				participant = (TrainId) c;
 			}
 		}
