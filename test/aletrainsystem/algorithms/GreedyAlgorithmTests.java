@@ -24,7 +24,7 @@ public class GreedyAlgorithmTests {
 		pos.add(start.getConnector());
 		Position position = new Position(pos, 3);
 		
-		RouteElement station = railroad.getRouteElement("29620820d.62920918d");
+		RouteElement station = railroad.getRouteElement("29620820dt.62920918t");
 		
 		Route shortestRoute = greedy.findSingleShortestPath(railroad, position, station, direction);
 		
