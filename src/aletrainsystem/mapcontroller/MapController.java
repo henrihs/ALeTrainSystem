@@ -7,6 +7,7 @@ import java.util.Set;
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.enums.SpeedLevel;
 import aletrainsystem.models.TrainId;
+import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.messaging.PointSwitchOrder;
 import aletrainsystem.models.navigation.Position;
 import aletrainsystem.models.navigation.Route;
@@ -53,9 +54,9 @@ public class MapController extends Block {
 		currentRouteElement = route.getFirstElement();
 	}
 
-	public boolean isRouteLocked() {
-		for (RouteElement routeElement : currentRoute) {
-			if (!id.equals(routeElement.getLockableResource().checkLock())) {
+	public boolean isRouteLocked(Set<Lockable> lockedObjects) {
+		for (Lockable lockable : lockedObjects) {
+			if (!id.equals(lockable.checkLock())) {
 				return false;
 			}
 		}

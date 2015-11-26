@@ -19,6 +19,7 @@ public class LockCoordinator extends Block {
 	public aletrainsystem.models.locking.Request request;
 	private TrainId coordinatorId;
 	public java.util.Set<aletrainsystem.models.TrainId> participants;
+	
 	public static String getAlias(CoordinatorInitParams params) {
 		return params.getTransactionId().toString();
 	}
@@ -76,6 +77,7 @@ public class LockCoordinator extends Block {
 				return false;
 		}
 		
+		objectsToLock.forEach(obj -> obj.performLock(coordinatorId));
 		return true;
 	}
 
