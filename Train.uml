@@ -158,6 +158,9 @@
         <node xmi:type="uml:CallBehaviorAction" xmi:id="_mkmIoI09EeWhyqPFGZmtAQ" name="b4" inPartition="__qhh0HM_EeWNAdm5YAmirg" behavior="_OUgmUFeJEd-6BOcoDEhEvw">
           <argument xmi:id="_mlNMoI09EeWhyqPFGZmtAQ" name="start" incoming="_2pZpAI09EeWhyqPFGZmtAQ" inPartition="__qhh0HM_EeWNAdm5YAmirg"/>
           <argument xmi:id="_mlbPEI09EeWhyqPFGZmtAQ" name="event" inPartition="__qhh0HM_EeWNAdm5YAmirg"/>
+          <argument xmi:type="uml:ValuePin" xmi:id="_WhANMJRkEeWMOc1E_7dksQ" name="duration" type="_mlECsI09EeWhyqPFGZmtAQ">
+            <value xmi:type="uml:LiteralInteger" xmi:id="_WhYAoJRkEeWMOc1E_7dksQ" name="duration" type="_mlECsI09EeWhyqPFGZmtAQ" value="5000"/>
+          </argument>
           <result xmi:id="_mlpRgI09EeWhyqPFGZmtAQ" name="timeout" outgoing="_Eb4hcI0-EeWhyqPFGZmtAQ" inPartition="__qhh0HM_EeWNAdm5YAmirg"/>
           <result xmi:id="_ml5JII09EeWhyqPFGZmtAQ" name="inTime" inPartition="__qhh0HM_EeWNAdm5YAmirg"/>
         </node>

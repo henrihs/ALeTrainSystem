@@ -15,6 +15,7 @@ public class GreetingMessage {
 	private Map<String, TrainId> lockedResources;
 	
 	public GreetingMessage(TrainId entrant, Set<TrainId> trainsInSystem, Railroad latestMap) {
+		this.entrant = entrant;
 		this.trainsInSystem = trainsInSystem;
 
 		populateResources(latestMap);

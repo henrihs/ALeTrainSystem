@@ -143,6 +143,7 @@
       <variable xmi:id="_EYZI94eYEeWRLfKAue1ERQ" name="id" type="_Mhj9QIeaEeWRLfKAue1ERQ"/>
       <variable xmi:id="_EYZI-IeYEeWRLfKAue1ERQ" name="request" type="_MhWh4IeaEeWRLfKAue1ERQ"/>
       <variable xmi:id="_EYZI-YeYEeWRLfKAue1ERQ" name="objectsToLock" type="_MhqD4IeaEeWRLfKAue1ERQ"/>
+      <variable xmi:id="_mtBTYJRlEeWMOc1E_7dksQ" name="participants" type="_g15vAJRlEeWMOc1E_7dksQ"/>
       <group xmi:type="uml:ActivityPartition" xmi:id="_EYZI4IeYEeWRLfKAue1ERQ" name="main" node="_EYZI-oeYEeWRLfKAue1ERQ _EYZI-4eYEeWRLfKAue1ERQ _EYZI_IeYEeWRLfKAue1ERQ _EYZI_YeYEeWRLfKAue1ERQ _EYZI_4eYEeWRLfKAue1ERQ _EYZJAIeYEeWRLfKAue1ERQ _EYZJAYeYEeWRLfKAue1ERQ _EYZJAoeYEeWRLfKAue1ERQ _EYZJA4eYEeWRLfKAue1ERQ _EYZJBIeYEeWRLfKAue1ERQ _EYZJBYeYEeWRLfKAue1ERQ _EYZJBoeYEeWRLfKAue1ERQ _EYZJB4eYEeWRLfKAue1ERQ _EYZJCIeYEeWRLfKAue1ERQ _EYZJCYeYEeWRLfKAue1ERQ _EYZJCoeYEeWRLfKAue1ERQ _EYZJC4eYEeWRLfKAue1ERQ _EYZJDIeYEeWRLfKAue1ERQ _EYZJDYeYEeWRLfKAue1ERQ _EYZI_oeYEeWRLfKAue1ERQ _EYZJEYeYEeWRLfKAue1ERQ _EYZJEoeYEeWRLfKAue1ERQ _EYZJE4eYEeWRLfKAue1ERQ _EYZJFIeYEeWRLfKAue1ERQ _EYZJGYeYEeWRLfKAue1ERQ _EYZJGoeYEeWRLfKAue1ERQ _EYZJG4eYEeWRLfKAue1ERQ _EYZJHIeYEeWRLfKAue1ERQ _2mzTEIh-EeWS0rERPEKd6g _UlSgEIh_EeWS0rERPEKd6g _XpB94Ih_EeWS0rERPEKd6g _b9W50Ih_EeWS0rERPEKd6g _dGxY8Ih_EeWS0rERPEKd6g _jXvAsIh_EeWS0rERPEKd6g _rJlMYIh_EeWS0rERPEKd6g _rJMx4Ih_EeWS0rERPEKd6g _yITSAIh_EeWS0rERPEKd6g _01U48Ih_EeWS0rERPEKd6g _rgbUMIiBEeWS0rERPEKd6g _zeTwwIiBEeWS0rERPEKd6g _3dUkAIiBEeWS0rERPEKd6g _WFgOQYiCEeWS0rERPEKd6g _PRbyEIiFEeWS0rERPEKd6g _ShyIgIiFEeWS0rERPEKd6g _SiWJMIiFEeWS0rERPEKd6g _SiLxIIiFEeWS0rERPEKd6g _UiFMUIiFEeWS0rERPEKd6g _X_fjkIkjEeWbcpvolr7Psw _adl0EI69EeWHC5QBWQCGDw" edge="_EYZI4YeYEeWRLfKAue1ERQ _EYZI4oeYEeWRLfKAue1ERQ _EYZI44eYEeWRLfKAue1ERQ _EYZI5IeYEeWRLfKAue1ERQ _EYZI5YeYEeWRLfKAue1ERQ _EYZI6IeYEeWRLfKAue1ERQ _EYZI6oeYEeWRLfKAue1ERQ _EYZI64eYEeWRLfKAue1ERQ _EYZI7YeYEeWRLfKAue1ERQ _EYZI8IeYEeWRLfKAue1ERQ _EYZI8YeYEeWRLfKAue1ERQ _EYZI8oeYEeWRLfKAue1ERQ _EYZI84eYEeWRLfKAue1ERQ _EYZI9IeYEeWRLfKAue1ERQ _EYZI9YeYEeWRLfKAue1ERQ _0CXncIh-EeWS0rERPEKd6g _2mo7AIh-EeWS0rERPEKd6g _UlGS0Ih_EeWS0rERPEKd6g _ez9TgIh_EeWS0rERPEKd6g _jXjagIh_EeWS0rERPEKd6g _kHcmYIh_EeWS0rERPEKd6g _vqMQ0Ih_EeWS0rERPEKd6g _yIHr0Ih_EeWS0rERPEKd6g _01IEoIh_EeWS0rERPEKd6g _5QSBUIh_EeWS0rERPEKd6g _wNOagIiBEeWS0rERPEKd6g _yHkAQIiBEeWS0rERPEKd6g _3dGhkIiBEeWS0rERPEKd6g _WFSy4IiCEeWS0rERPEKd6g _KeIbIIiFEeWS0rERPEKd6g _PRNIkIiFEeWS0rERPEKd6g _VoQxQIiFEeWS0rERPEKd6g _V00mkIiFEeWS0rERPEKd6g _WCfPIIiFEeWS0rERPEKd6g _X_Q6EIkjEeWbcpvolr7Psw _adYYsI69EeWHC5QBWQCGDw"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_EYZI-oeYEeWRLfKAue1ERQ" name="init" outgoing="_EYZI8IeYEeWRLfKAue1ERQ" inPartition="_EYZI4IeYEeWRLfKAue1ERQ" type="_bAGf4IeZEeWRLfKAue1ERQ" parameter="_EYZI2IeYEeWRLfKAue1ERQ"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_EYZI-4eYEeWRLfKAue1ERQ" name="out" incoming="_jXjagIh_EeWS0rERPEKd6g" inPartition="_EYZI4IeYEeWRLfKAue1ERQ" type="_MhWh4IeaEeWRLfKAue1ERQ" parameter="_EYZI2YeYEeWRLfKAue1ERQ"/>
@@ -250,6 +251,7 @@
         <expr xmi:type="uml:LiteralString" xmi:id="_WFtpoYiCEeWS0rERPEKd6g" name="t1" value="0"/>
       </when>
     </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_g15vAJRlEeWMOc1E_7dksQ" name="java.util.Set&lt;aletrainsystem.models.TrainId>"/>
     <profileApplication xmi:id="_EYZJMIeYEeWRLfKAue1ERQ">
       <eAnnotations xmi:id="_EYZJMYeYEeWRLfKAue1ERQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>
@@ -341,4 +343,6 @@
   <graphics:Shape xmi:id="_X4MzkIiFEeWS0rERPEKd6g" aux1="162 0 0 90 " base_Element="_VoQxQIiFEeWS0rERPEKd6g"/>
   <graphics:Shape xmi:id="_YBegkIkjEeWbcpvolr7Psw" x="702" y="252" width="199" height="55" base_Element="_X_fjkIkjEeWbcpvolr7Psw"/>
   <graphics:Shape xmi:id="_afsF0I69EeWHC5QBWQCGDw" x="558" y="180" width="97" height="55" base_Element="_adl0EI69EeWHC5QBWQCGDw"/>
+  <arctis:location xmi:id="_mtFk0JRlEeWMOc1E_7dksQ" base_Variable="_mtBTYJRlEeWMOc1E_7dksQ" partition="_EYZI4IeYEeWRLfKAue1ERQ"/>
+  <graphics:Shape xmi:id="_mtGL4JRlEeWMOc1E_7dksQ" x="756" y="108" base_Element="_mtBTYJRlEeWMOc1E_7dksQ"/>
 </xmi:XMI>

@@ -8,9 +8,7 @@ import aletrainsystem.models.locking.Response;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class LockParticipant extends Block {
-	
-	public final static String ENTITY_ID = "id";
-	
+		
 	public Request request;
 	public RequestType requestType;
 
@@ -18,25 +16,19 @@ public class LockParticipant extends Block {
 
 	public aletrainsystem.models.railroad.Railroad resources;
 
+	public aletrainsystem.models.TrainId participantId;
+
 	public LockParticipant() {
 	}
 
 	public Response generateResponse() {
-		TrainId participant = null;
-		if (hasProperty(ENTITY_ID)) {
-			Object c = getProperty(ENTITY_ID);
-			if (c != null && c instanceof Class<?>) {
-				participant = (TrainId) c;
-			}
-		}
-				
 		boolean success = false;
 		if (isReserve())
 			success = isReservedForCoordinator();
 		else if (isPerform())
 			success = isLockedForCoordinator();
 		
-		return new Response(participant, request, success);
+		return new Response(participantId, request, success);
 	}
 
 	public boolean isReserve() {

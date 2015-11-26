@@ -20,31 +20,21 @@ public class LockHandler extends Block {
 	public java.util.Set<aletrainsystem.models.TrainId> participants;
 	public aletrainsystem.models.railroad.IRailroad railroad;
 	
-	public void setIds(TrainId id) {
+	public TrainId setId(TrainId id) {
 		this.trainId = id;
-		setProperty(LockCoordinator.ENTITY_ID, id);
-		setProperty(LockParticipant.ENTITY_ID, id);
 		logger.info("Initialized");
+		return id;
 	}
 
 	public void updateParticipants(Set<TrainId> participants) {
 		this.participants = participants;
-		setProperty(LockCoordinator.PARTICIPANTS_KEY, participants);
 	}
 
 	public CoordinatorInitParams generateCoordinatorInitParams(Set<Lockable> objectsToLock) {
 		String s = trainId.toString().concat(String.valueOf(++counter));
 		TransactionId transactionId = new TransactionId(s);
-		return new CoordinatorInitParams(transactionId, objectsToLock);
+		return new CoordinatorInitParams(trainId, transactionId, objectsToLock, participants);
 	}
-
-//	public Message generateResponseMessage(Response r) {
-//		return new Message("trains.".concat(r.requester().toString()), r);
-//	}
-//	
-//	public Message generateRequestMessage(Request r) {
-//		return new Message("trains.common", r);
-//	}
 
 	// Do not edit this constructor.
 	public LockHandler() {
@@ -70,4 +60,5 @@ public class LockHandler extends Block {
 		
 		return objects;
 	}
+
 }
