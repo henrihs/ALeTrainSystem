@@ -49,6 +49,7 @@ public class MapController extends Block {
 
 	public void initCurrentRouteElement(Route route) {
 		logger.info("Waiting for lock on route ".concat(route.toString()));
+		direction = (PointConnector)route.getSecondElement();
 		currentRouteElement = route.getFirstElement();
 	}
 

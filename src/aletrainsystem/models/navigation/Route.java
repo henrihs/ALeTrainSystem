@@ -61,24 +61,6 @@ public class Route implements Iterable<RouteElement> {
 		return null;
 	}
 	
-//	public PointConnector getNextDirection(PointConnector currentDirection) {
-//		RouteElement previous = null;
-//		RouteElement first = viaPoints.get(0);
-//		for (RouteElement current : viaPoints) {
-//			if (previous instanceof PointConnector 
-//					&& current instanceof PointConnector
-//					&& current != first
-//					&& previous != first
-//					&& current != currentDirection) {
-//				return (PointConnector)current;
-//			}
-//			
-//			previous = current;
-//		}
-//		
-//		return null;
-//	}
-	
 	public PointConnector getNextDirection(PointConnector currentDirection) {
 		int currentDirectionIndex = viaPoints.indexOf(currentDirection);
 		RouteElement previous = null;
@@ -98,6 +80,10 @@ public class Route implements Iterable<RouteElement> {
 	
 	public RouteElement getFirstElement() {
 		return viaPoints.get(0);
+	}
+	
+	public RouteElement getSecondElement() {
+		return viaPoints.get(1);
 	}
 	
 	public RouteElement getLastElement() {

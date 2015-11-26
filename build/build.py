@@ -55,11 +55,13 @@ def distribute_trains():
         print "Copying train to {0}".format(train)
         os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, TRAINEXECUTABLE, train, REMOTEPATH))
 
-def execute():
+def execute_points():
     for point in POINTSWITCHpointS:
         print "Executing point on {0}".format(point)
         os.system('run mintty -t {0} ssh root@{0} "cd {1} && jrun -cp {1}/{2} aletrainsystem.point.Start; read -p \"Press enter to close this window.\""'.format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
         #os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.point.Start &".format(point, REMOTEPATH, POINTSWITCHEXECUTABLE))
+
+def execute_trains():
     for train in TRAINS:
         print "Executing train on {0}".format(train)
         os.system('run mintty -t {0} ssh root@{0} "cd {1} && jrun -cp {1}/{2} aletrainsystem.train.Start; read -p \"Press enter to close this window.\""'.format(train, REMOTEPATH, TRAINEXECUTABLE))

@@ -66,6 +66,7 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 		
 		continuedRoute.add(current);
 		if (current.equals(finalDestination)) {
+			routes.add(continuedRoute);
 			return;
 		}
 		
@@ -83,7 +84,6 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 		
 		else if (next.length == 2) {
 			Route alternativeRoute = new Route(continuedRoute);
-			routes.add(alternativeRoute);
 			traverseAllPaths(continuedRoute, next[0], current);
 			traverseAllPaths(alternativeRoute, next[1], current);
 		}
