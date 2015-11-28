@@ -85,8 +85,10 @@ public class PositionUpdater extends Block {
 	
 	public RouteElement hasPassedElement(RailComponent component) {
 		RouteElement elementInScope = component.partOfElement();
-		if (!parent.position.isTouchingLockable(elementInScope.getLockableResource()))
+		if (!parent.position.isTouchingElement(elementInScope)) {
 			return elementInScope;
+		}
+		
 		return null;
 	}
 
@@ -133,7 +135,7 @@ public class PositionUpdater extends Block {
 
 	public void logUnLock() {
 		if (passedElements.size() > 0) {
-			logger.info("Unlocking ".concat(passedElements.toString()));			
+			logger.info("Passed ".concat(passedElements.toString()));			
 		}
 	}
 

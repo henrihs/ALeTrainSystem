@@ -12,6 +12,10 @@ public class PropultionController extends Block {
 
 	public void changeSpeed(SpeedLevel speed) {
 		motor.rotateTo(15 * speed.ordinal(), false);
+		if (speed == SpeedLevel.STOPPED) {
+			String timestamp = String.valueOf(System.currentTimeMillis());
+			logger.info("Breaking complete at ".concat(timestamp));
+		}
 	}
 
 	public void calibrateController(int degrees) {

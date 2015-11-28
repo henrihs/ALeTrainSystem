@@ -76,6 +76,15 @@ public class Position implements Iterable<RailComponent> {
 		return false;
 	}
 	
+	public boolean isTouchingElement(RouteElement element) {
+		for (RailComponent railComponent : parts) {
+			if (element.equals(railComponent.partOfElement()))
+				return true;
+		}
+		
+		return false;
+	}
+	
 	@Override
 	public Iterator<RailComponent> iterator() {
 		Iterator<RailComponent> ipart = parts.iterator();

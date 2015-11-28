@@ -18,7 +18,7 @@ TRAINCONFIG = "traincontroller.properties"
 MAP = "ngorongoro2.map"
 
 POINTSWITCHpointS = ["192.168.0.101", "192.168.0.102", "192.168.0.103", "192.168.0.104"]
-TRAINS = ["192.168.0.191", "192.168.0.195"]
+TRAINS = ["192.168.0.191", "", "", "","192.168.0.195"]
 
 def get_target_dirs():
     target_dirs = []
@@ -39,11 +39,12 @@ def distribute_configs():
         subfolder = getLastIpSubSection(point)
         os.system("scp {0}/{1}/{2} root@{3}:{4}/".format(RESOURCEPATH, subfolder, POINTCONFIG, point, REMOTERESPATH))
     for train in TRAINS:
-        print "Copying train config to {0}".format(train)
-        subfolder = getLastIpSubSection(train)
-        os.system("scp {0}/{1}/{2} root@{3}:{4}/".format(RESOURCEPATH, subfolder, TRAINCONFIG, train, REMOTERESPATH))
-        print "Copying " + MAP + " to {0}".format(train)
-        os.system("scp {0}/{1} root@{2}:{3}/".format(MAPPATH, MAP, train, REMOTEMAPPATH))
+        if train:
+            print "Copying train config to {0}".format(train)
+            subfolder = getLastIpSubSection(train)
+            os.system("scp {0}/{1}/{2} root@{3}:{4}/".format(RESOURCEPATH, subfolder, TRAINCONFIG, train, REMOTERESPATH))
+            print "Copying " + MAP + " to {0}".format(train)
+            os.system("scp {0}/{1} root@{2}:{3}/".format(MAPPATH, MAP, train, REMOTEMAPPATH))
 
 def distribute_points():
     for point in POINTSWITCHpointS:
@@ -52,8 +53,9 @@ def distribute_points():
 
 def distribute_trains():
     for train in TRAINS:
-        print "Copying train to {0}".format(train)
-        os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, TRAINEXECUTABLE, train, REMOTEPATH))
+        if train:
+            print "Copying train to {0}".format(train)
+            os.system("scp {0}/{1} root@{2}:{3}/".format(BUILDPATH, TRAINEXECUTABLE, train, REMOTEPATH))
 
 def execute_points():
     for point in POINTSWITCHpointS:
@@ -63,17 +65,39 @@ def execute_points():
 
 def execute_trains():
     for train in TRAINS:
-        print "Executing train on {0}".format(train)
-        os.system('run mintty -t {0} ssh root@{0} "cd {1} && jrun -cp {1}/{2} aletrainsystem.train.Start; read -p \"Press enter to close this window.\""'.format(train, REMOTEPATH, TRAINEXECUTABLE))
-        #os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.train.Start &".format(train, REMOTEPATH, TRAINEXECUTABLE))
+        if train:
+            print "Executing train on {0}".format(train)
+            os.system('run mintty -t {0} ssh root@{0} "cd {1} && jrun -cp {1}/{2} aletrainsystem.train.Start; read -p \"Press enter to close this window.\""'.format(train, REMOTEPATH, TRAINEXECUTABLE))
+            #os.system("ssh root@{0} jrun -cp {1}/{2} aletrainsystem.train.Start &".format(train, REMOTEPATH, TRAINEXECUTABLE))
 
-def kill_jars():
+def killall():
+    kill_points()
+    kill_trains()
+
+def execute_train(i):
+    if TRAINS[i-1]:
+        print "Executing train on {0}".format(TRAINS[i-1])
+        os.system('run mintty -t {0} ssh root@{0} "cd {1} && jrun -cp {1}/{2} aletrainsystem.train.Start; read -p \"Press enter to close this window.\""'.format(TRAINS[i-1], REMOTEPATH, TRAINEXECUTABLE))
+    else:
+        print "No such train"
+
+def kill_points():
     for point in POINTSWITCHpointS:
         print "Ending point on {0}".format(point)
         os.system("ssh root@{0} killall java".format(point))
+
+def kill_trains():
     for train in TRAINS:
-        print "Ending train on {0}".format(train)
-        os.system("ssh root@{0} killall java".format(train))
+        if train:
+            print "Ending train on {0}".format(train)
+            os.system("ssh root@{0} killall java".format(train))
+
+def kill_train(i):
+    if TRAINS[i-1]:
+        print "Ending train on {0}".format(TRAINS[i-1])
+        os.system("ssh root@{0} killall java".format(TRAINS[i-1]))
+    else:
+        print "No such train"
 
 def add_trustee(ip):
     os.system("ssh-copy-id -i ~/.ssh/id_rsa.pub root@{0}".format(ip))

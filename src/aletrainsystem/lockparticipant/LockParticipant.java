@@ -58,6 +58,8 @@ public class LockParticipant extends Block {
 			if (lockOwner == null || lockOwner.equals(request.collector())) {
 				localInstance.reserveLock(request.collector());
 			}
+			
+			updateLocalInstance(localInstance);
 		}
 	}
 
@@ -89,6 +91,8 @@ public class LockParticipant extends Block {
 			if (lockOwner == null || lockOwner.equals(request.collector())) {
 				localInstance.performLock(request.collector());
 			}
+			
+			updateLocalInstance(localInstance);
 		}
 	}
 
@@ -99,6 +103,8 @@ public class LockParticipant extends Block {
 			if (lockOwner == null || lockOwner.equals(request.collector())) {
 				localInstance.releaseReservation();
 			}
+			
+			updateLocalInstance(localInstance);
 		}
 	}
 
@@ -115,7 +121,9 @@ public class LockParticipant extends Block {
 
 	public void releaseLock() {
 		for (String id : request.lockableIDs()) {
-			getLocalInstance(id).unLock();
+			Lockable localInstance = getLocalInstance(id);
+			localInstance.unLock();
+			updateLocalInstance(localInstance);
 		}
 	}
 
@@ -123,14 +131,21 @@ public class LockParticipant extends Block {
 		logger.info("Initialized");
 	}
 	
-	private Lockable getLocalInstance(String id) {
+	private synchronized Lockable getLocalInstance(String id) {
 		return resources.getLockableResource(id);
+	}
+	
+	private synchronized void updateLocalInstance(Lockable lockable) {
+		resources.updateLockableResource(lockable);
 	}
 
 	public void received() {
 		logger.info(
 				request.transactionId().toString().
 				concat(": Received ").
-				concat(request.type().toString()));
+				concat(request.type().toString()).
+				concat(" for ").
+				concat(request.lockableIDs().toString())
+				);
 	}
 }

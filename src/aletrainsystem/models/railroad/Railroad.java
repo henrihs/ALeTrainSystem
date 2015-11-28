@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.RailComponentId;
@@ -16,19 +17,19 @@ import aletrainsystem.pointswitch.PointConnector;
 
 public class Railroad implements IRailroad {
 
-	private Map<String, Point> points;
-	private Map<String, RegularLeg> legs;
+	private ConcurrentHashMap<String, Point> points;
+	private ConcurrentHashMap<String, RegularLeg> legs;
 	private Set<PointConnector> connectedPointConnectors;
 	private StartLeg railSystemEntryPoint;
 
 	protected Railroad(){
-		points = new HashMap<>();
-		legs = new HashMap<>();
+		points = new ConcurrentHashMap<>();
+		legs = new ConcurrentHashMap<>();
 		connectedPointConnectors = new HashSet<>();
 	}
 	
 	@Override
-	public Lockable getLockableResource(String id) {
+	public synchronized Lockable getLockableResource(String id) {
 		Lockable lockable = null;
 		if (id.contains(".")) {
 			lockable = legs.get(id);
@@ -40,6 +41,18 @@ public class Railroad implements IRailroad {
 			lockable = points.get(id);
 		
 		return lockable;
+	}
+	
+	public synchronized void updateLockableResource(Lockable lockable) {
+		if (lockable instanceof Point) {
+			points.put(lockable.id().toString(), (Point) lockable);
+		}
+		else if (lockable instanceof RegularLeg) {
+			legs.put(lockable.id().toString(), (RegularLeg) lockable);
+		}
+		else if (lockable instanceof StartLeg) {
+			railSystemEntryPoint = (StartLeg) lockable;
+		}
 	}
 	
 	public List<Lockable> getReservedResources() {

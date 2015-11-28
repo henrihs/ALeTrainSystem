@@ -3,6 +3,7 @@ package aletrainsystem.servo;
 import no.ntnu.item.arctis.runtime.Block;
 import aletrainsystem.enums.MotorPort;
 import aletrainsystem.enums.PointConnectorEnum;
+import lejos.hardware.ev3.LocalEV3;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 
 public class Servo extends Block {
@@ -33,19 +34,10 @@ public class Servo extends Block {
 	}
 
 	public EV3LargeRegulatedMotor getMotor(MotorPort port) {
-		switch (port) {
-		case A:
-			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.A);
-		case B:
-			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.B);
-		case C:
-			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.C);
-		case D:
-			return new EV3LargeRegulatedMotor(lejos.hardware.port.MotorPort.D);
-		default:
-			logger.error("Missing case for enum ".concat(port.name()));
-			return null;
-		}
+		return new EV3LargeRegulatedMotor(LocalEV3.get().getPort(port.toString()));		
 	}
 
+	public void init() {
+		motor.resetTachoCount();
+	}
 }

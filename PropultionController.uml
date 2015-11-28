@@ -27,6 +27,7 @@
       <ownedOperation xmi:id="_jm2UFnv4EeWoPI4aagTCRw" name="changeLEDColor"/>
       <ownedOperation xmi:id="_jm2UF3v4EeWoPI4aagTCRw" name="resetTachoCount"/>
       <ownedOperation xmi:id="_jm2UGHv4EeWoPI4aagTCRw" name="stopPod"/>
+      <ownedOperation xmi:id="_H7jc4JW7EeWqAarulp6kVA" name="run"/>
       <ownedParameter xmi:id="_jm2UGXv4EeWoPI4aagTCRw" name="setSpeed" type="_j_2qoIFuEeW-IY1wb01b1A" isStream="true"/>
       <ownedParameter xmi:id="_jm2UGnv4EeWoPI4aagTCRw" name="calibrate" type="_jm2UNnv4EeWoPI4aagTCRw" isStream="true"/>
       <ownedParameter xmi:id="_jm2UG3v4EeWoPI4aagTCRw" name="stop" isStream="true"/>

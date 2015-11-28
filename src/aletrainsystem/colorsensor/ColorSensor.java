@@ -19,34 +19,34 @@ public class ColorSensor extends Block {
 	private Port s1 = LocalEV3.get().getPort("S1");
 	private int lastDetectedColorId = -1;
 	private int lastRegisteredColorId = BACKGROUND_COLOR_ID;
-	private int readings;
+//	private int readings;
 
 	public SleeperColor readColor() {
-		float[] f = new float[SAMPLESIZE];
-		for (int i = 0; i < f.length; i++) {
-			colorSensor.fetchSample(f, i);
-			if (i > 0 && f[i] != f[i-1]) return null;
-		}
+//		float[] f = new float[SAMPLESIZE];
+//		for (int i = 0; i < f.length; i++) {
+//			colorSensor.fetchSample(f, i);
+//			if (i > 0 && f[i] != f[i-1]) return null;
+//		}
 
-		int detectedColorId = (int) f[0];
+		int detectedColorId = colorSensor.getColorID();
 
-		if (detectedColorId == lastRegisteredColorId) {	
-			return null;
-		}
+//		if (detectedColorId == lastRegisteredColorId) {	
+//			return null;
+//		}
 
 		if (detectedColorId != lastDetectedColorId) {
 			lastDetectedColorId = detectedColorId;
-			readings = 1;
+//			readings = 1;
 			return null;
 		}
 
-		readings++;
-		if (detectedColorId < HIGHEST_SIGNAL_COLOR_ID || readings == CONSECUTIVE_READINGS_REQUIREMENT) {
-			lastRegisteredColorId = detectedColorId;
+//		readings++;
+//		if (detectedColorId < HIGHEST_SIGNAL_COLOR_ID || readings == CONSECUTIVE_READINGS_REQUIREMENT) {
+//			lastRegisteredColorId = detectedColorId;
 			if (detectedColorId != BACKGROUND_COLOR_ID) {
 				return SleeperColor.convertFromLejosColor(detectedColorId);
 			}
-		}
+//		}
 		return null;
 	}
 

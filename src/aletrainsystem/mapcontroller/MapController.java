@@ -39,12 +39,18 @@ public class MapController extends Block {
 		logger.info("Initializing");
 		return position;
 	}
+	
+	public boolean isOnLastElement() {
+		return currentRouteElement == currentRoute.getLastElement();
+	}
 
 	public SpeedLevel slowCommand() {
 		return SpeedLevel.LOW;
 	}
 
 	public SpeedLevel stopCommand() {
+		String timestamp = String.valueOf(System.currentTimeMillis());
+		logger.info("Breaking at ".concat(timestamp));
 		return SpeedLevel.STOPPED;
 	}
 
@@ -82,9 +88,17 @@ public class MapController extends Block {
 	}
 
 	public ArrayList<RouteElement> removeFromCurrentRoute(ArrayList<RouteElement> elements) {
-		elements.forEach(e -> currentRoute.remove(e));
+		if (currentRoute == null)
+			return null;
+		ArrayList<RouteElement> readyToUnlock = new ArrayList<>();
+		elements.forEach(e -> {
+			currentRoute.remove(e);
+			if (!position.isTouchingLockable(e.getLockableResource()))
+				readyToUnlock.add(e);
+			});
+		
 		currentRouteElement = currentRoute.getFirstElement();
-		return elements;
+		return readyToUnlock.size() > 0 ? readyToUnlock : null;
 	}
 
 	public RailBrick nextbrick(RailBrick r) {
@@ -93,14 +107,17 @@ public class MapController extends Block {
 
 	public Set<PointSwitchOrder> generateOrdersFromRoute() {
 		Set<PointSwitchOrder> orders = new HashSet<>();
-		for (RouteElement routeElement : currentRoute) {
-			if (routeElement instanceof PointConnector) {
-				PointConnector connector = (PointConnector) routeElement;
+		RouteElement previous = null;
+		for (RouteElement current : currentRoute) {
+			if (previous instanceof PointConnector
+				&& current instanceof PointConnector) {
+				PointConnector connector = (PointConnector) current;
 				if (connector.getType() == PointConnectorEnum.DIVERT 
 						|| connector.getType() == PointConnectorEnum.THROUGH) {
 					orders.add(new PointSwitchOrder(connector.id(), connector.getType()));
 				}
 			}
+			previous = current;
 		}
 		logger.info("Generated orders: " + orders.toString());
 		return orders;
