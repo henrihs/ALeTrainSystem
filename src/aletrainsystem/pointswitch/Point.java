@@ -11,6 +11,10 @@ import aletrainsystem.models.locking.Lockable;
 public class Point implements Lockable {
 	private Map<PointConnectorEnum, PointConnector> connectors;
 	private RailComponentId id;
+
+	private volatile TrainId lockedBy = null;
+	private volatile TrainId reservedBy = null;
+
 	
 	public Point(RailComponentId id){
 		this.id = id;
@@ -47,9 +51,6 @@ public class Point implements Lockable {
 		
 		return false;
 	}
-	
-	private TrainId lockedBy = null;
-	private TrainId reservedBy = null;
 	
 	@Override
 	public TrainId checkLock() {

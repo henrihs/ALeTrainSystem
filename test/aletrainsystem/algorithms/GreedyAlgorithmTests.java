@@ -14,19 +14,22 @@ public class GreedyAlgorithmTests {
 	public static void main(String[] args) {
 		RailroadBuilder builder = new RailroadBuilder();
 		IRailroad railroad = builder.build("resources/maps/ngorongoro2.map");
-		ShortestPathUniDirectional greedy = new GreedyAlgorithm();
+		GreedyAlgorithm greedy = new GreedyAlgorithm();
 		
-		StartLeg start = railroad.getRailSystemStartLeg();
+//		StartLeg start = railroad.getRailSystemStartLeg();
 		
-		PointConnector direction = start.getConnector().point().getConnector(PointConnectorEnum.ENTRY);  
+//		PointConnector direction = start.getConnector().point().getConnector(PointConnectorEnum.ENTRY);  
 		ArrayList<RailComponent> pos = new ArrayList<>();
-		start.getStartOfLeg(4).forEach(c -> pos.add(c));
-		pos.add(start.getConnector());
-		Position position = new Position(pos, 3);
+//		start.getStartOfLeg(4).forEach(c -> pos.add(c));
+//		pos.add(start.getConnector());
+//		Position position = new Position(pos, 3);
 		
-		RouteElement station = railroad.getRouteElement("45563182t.66487809t");
+		RailLeg start = (RailLeg) railroad.getRouteElement("41383174d.62887372d");
+		PointConnector direction = (PointConnector) railroad.getRouteElement("41383174d"); 
+		RouteElement station = railroad.getRouteElement("29620820t.62920918t");
 		
-		Route shortestRoute = greedy.findSingleShortestPath(railroad, position, station, direction);
+		
+		Route shortestRoute = greedy.findSingleShortestPath(railroad, start, station, direction);
 		
 		System.out.println(shortestRoute);
 	}

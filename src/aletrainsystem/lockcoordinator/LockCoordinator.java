@@ -5,6 +5,7 @@ import java.util.Set;
 
 import aletrainsystem.models.TrainId;
 import aletrainsystem.models.locking.CoordinatorInitParams;
+import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.locking.LockingMessage;
 import aletrainsystem.models.locking.Request;
 import aletrainsystem.models.locking.RequestType;
@@ -12,14 +13,14 @@ import aletrainsystem.models.locking.Response;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class LockCoordinator extends Block {
-	
+
 	public ArrayList<Response> responses = new ArrayList<>();
 	public aletrainsystem.models.locking.TransactionId id;
 	public java.util.Set<aletrainsystem.models.locking.Lockable> objectsToLock;
 	public aletrainsystem.models.locking.Request request;
 	private TrainId coordinatorId;
 	public java.util.Set<aletrainsystem.models.TrainId> participants;
-	
+
 	public static String getAlias(CoordinatorInitParams params) {
 		return params.getTransactionId().toString();
 	}
@@ -42,6 +43,16 @@ public class LockCoordinator extends Block {
 	}
 
 	public boolean reservationAcquired(Response response) {
+		if (!response.success()) {
+			String resourcesNotLocked = "";
+			for (Lockable lockable : objectsToLock) {
+				if (!coordinatorId.equals(lockable.checkReservation()))
+					resourcesNotLocked += lockable.toString() + ":" + lockable.checkReservation() + ", ";
+			}
+
+			logger.info("Could not aquire lock, failed at internal check: ".concat(resourcesNotLocked));
+		}
+		
 		return response.success();
 	}
 
@@ -53,8 +64,8 @@ public class LockCoordinator extends Block {
 					r.transactionId().toString().
 					concat(": Received response from ").
 					concat(r.respondent().toString().
-					concat(" - ").
-					concat(String.valueOf(r.success()))));
+							concat(" - ").
+							concat(String.valueOf(r.success()))));
 			responses.add(r);
 		}
 	}
@@ -76,7 +87,7 @@ public class LockCoordinator extends Block {
 			if (!response.success())
 				return false;
 		}
-		
+
 		objectsToLock.forEach(obj -> obj.performLock(coordinatorId));
 		return true;
 	}

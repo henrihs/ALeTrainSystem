@@ -54,11 +54,7 @@ public class LockParticipant extends Block {
 	public void reserveLock() {
 		for (String lockableId : request.lockableIDs()) {
 			Lockable localInstance = getLocalInstance(lockableId);
-			TrainId lockOwner = localInstance.checkLock();
-			if (lockOwner == null || lockOwner.equals(request.collector())) {
-				localInstance.reserveLock(request.collector());
-			}
-			
+			localInstance.reserveLock(request.collector());
 			updateLocalInstance(localInstance);
 		}
 	}
@@ -71,6 +67,7 @@ public class LockParticipant extends Block {
 				return false;
 			}
 		}
+		
 		return true;
 	}
 
@@ -78,17 +75,17 @@ public class LockParticipant extends Block {
 		for (String lockableId : request.lockableIDs()) {
 			Lockable localInstance = getLocalInstance(lockableId);
 			TrainId lockOwner = localInstance.checkReservation();
-			if (lockOwner == null || lockOwner.equals(request.collector()))
-				return false;
+			if (lockOwner != null && !lockOwner.equals(request.collector()))
+				return true;
 		}
-		return true;
+		
+		return false;
 	}
 
 	public void lock() {
 		for (String lockableId : request.lockableIDs()) {
 			Lockable localInstance = getLocalInstance(lockableId);
-			TrainId lockOwner = localInstance.checkReservation();
-			if (lockOwner == null || lockOwner.equals(request.collector())) {
+			if (localInstance.checkReservation() == null && localInstance.checkLock() == null ) {
 				localInstance.performLock(request.collector());
 			}
 			
@@ -100,7 +97,7 @@ public class LockParticipant extends Block {
 		for (String lockableId : request.lockableIDs()) {
 			Lockable localInstance = getLocalInstance(lockableId);
 			TrainId lockOwner = localInstance.checkReservation();
-			if (lockOwner == null || lockOwner.equals(request.collector())) {
+			if (lockOwner.equals(request.collector())) {
 				localInstance.releaseReservation();
 			}
 			

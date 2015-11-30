@@ -88,8 +88,8 @@ public class Railroad implements IRailroad {
 			return railSystemEntryPoint;
 		}
 		
-		String pointId = id.substring(0, id.length()-2);
-		String connector = id.substring(id.length()-2, id.length()-1);
+		String pointId = id.substring(0, id.length()-1);
+		String connector = id.substring(id.length()-1, id.length());
 		if (points.containsKey(pointId)) {
 			return points.get(pointId).getConnector(PointConnectorEnum.getConnectorFromShortHand(connector));
 		}

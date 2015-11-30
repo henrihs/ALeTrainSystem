@@ -56,7 +56,7 @@ public class MapController extends Block {
 
 	public void initCurrentRouteElement(Route route) {
 		logger.info("Waiting for lock on route ".concat(route.toString()));
-		direction = (PointConnector)route.getSecondElement();
+		direction = (PointConnector)route.getNextDirection(null);
 		currentRouteElement = route.getFirstElement();
 	}
 
@@ -121,5 +121,10 @@ public class MapController extends Block {
 		}
 		logger.info("Generated orders: " + orders.toString());
 		return orders;
+	}
+
+	public RouteElement br(RouteElement r) {
+		System.out.println("lol");
+		return r;
 	}
 }

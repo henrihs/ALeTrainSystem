@@ -81,11 +81,7 @@ public class Route implements Iterable<RouteElement> {
 	public RouteElement getFirstElement() {
 		return viaPoints.get(0);
 	}
-	
-	public RouteElement getSecondElement() {
-		return viaPoints.get(1);
-	}
-	
+		
 	public RouteElement getLastElement() {
 		return viaPoints.get(viaPoints.size()-1);
 	}

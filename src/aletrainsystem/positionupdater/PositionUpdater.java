@@ -55,6 +55,10 @@ public class PositionUpdater extends Block {
 		
 		while (!parent.position.headIsInPointSwitch()) {
 			lastPopped = parent.position.moveInDirection(parent.direction);
+			RouteElement passedElement = hasPassedElement(lastPopped);
+			if (passedElement != null) {
+				passedElements.add(passedElement);
+			}
 		}
 		
 //		if (parent.currentRoute != null) {
@@ -84,6 +88,10 @@ public class PositionUpdater extends Block {
 	}
 	
 	public RouteElement hasPassedElement(RailComponent component) {
+		if (component == null) {
+			return null;
+		}
+		
 		RouteElement elementInScope = component.partOfElement();
 		if (!parent.position.isTouchingElement(elementInScope)) {
 			return elementInScope;

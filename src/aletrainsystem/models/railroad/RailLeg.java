@@ -10,6 +10,8 @@ import aletrainsystem.pointswitch.PointConnector;
 public abstract class RailLeg extends RouteElement implements Lockable {
 	
 	protected ArrayList<RailBrick> railBricks;
+	private volatile TrainId lockedBy = null;
+	private volatile TrainId reservedBy = null;
 	
 	protected RailLeg() {
 		railBricks = new ArrayList<>();
@@ -35,9 +37,6 @@ public abstract class RailLeg extends RouteElement implements Lockable {
 	public abstract RailComponent getNextComponent(RailComponent previous, PointConnector direction);
 	
 	public abstract PointConnector getOppositeConnector(PointConnector connector);
-	
-	private TrainId lockedBy = null;
-	private TrainId reservedBy = null;
 	
 	@Override
 	public TrainId checkLock() {

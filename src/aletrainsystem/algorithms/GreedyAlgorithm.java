@@ -10,6 +10,7 @@ import aletrainsystem.models.railroad.IRailroad;
 import aletrainsystem.models.railroad.RailBrick;
 import aletrainsystem.models.railroad.RailLeg;
 import aletrainsystem.models.railroad.RegularLeg;
+import aletrainsystem.models.railroad.StartLeg;
 import aletrainsystem.pointswitch.PointConnector;
 
 public class GreedyAlgorithm implements ShortestPathUniDirectional {
@@ -19,25 +20,53 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	private RouteElement startPosition;
 	private IRailroad railroad;
 	
+//	public Route findSingleShortestPath(IRailroad railroad, Position position, RouteElement destination, PointConnector direction) {
+//		finalDestination = destination;
+//		this.railroad = railroad;
+//		routes = new ArrayList<>();
+//		
+//		RouteElement previous;
+//		
+//		if (position.headIsInPointSwitch()) {
+//			startPosition = (RouteElement) position.head();
+//			previous = position.getPreviousBrick().parentLeg();
+//		}
+//		else {
+//			RailBrick startBrick = (RailBrick)position.head();
+//			startPosition = startBrick.parentLeg();
+//			previous = ((RegularLeg)startPosition).getOppositeConnector(direction);
+//		}
+//		
+//		traverseAllPaths(new Route(), startPosition, previous);
+//		
+//		Route shortestRoute = null;
+//		for (Route route : routes) {
+//			if (shortestRoute == null 
+//				|| route.brickLength() < shortestRoute.brickLength())
+//				shortestRoute = route;
+//		}
+//		
+//		return shortestRoute;		
+//	}
+	
 	@Override
-	public Route findSingleShortestPath(IRailroad railroad, Position position, RouteElement destination, PointConnector direction) {
+	public Route findSingleShortestPath(IRailroad railroad, RailLeg start, RouteElement destination, PointConnector direction) {
 		finalDestination = destination;
 		this.railroad = railroad;
 		routes = new ArrayList<>();
+		RouteElement previous = null;
+		RouteElement startPoint = null;
 		
-		RouteElement previous;
-		
-		if (position.headIsInPointSwitch()) {
-			startPosition = (RouteElement) position.head();
-			previous = position.getPreviousBrick().parentLeg();
-		}
+		if (start instanceof StartLeg) {
+			previous = start;
+			startPoint = ((StartLeg)previous).getConnector();
+		}		
 		else {
-			RailBrick startBrick = (RailBrick)position.head();
-			startPosition = startBrick.parentLeg();
-			previous = ((RegularLeg)startPosition).getOppositeConnector(direction);
+			previous = start.getOppositeConnector(direction);
+			startPoint = start;
 		}
 		
-		traverseAllPaths(new Route(), startPosition, previous);
+		traverseAllPaths(new Route(), startPoint, previous);
 		
 		Route shortestRoute = null;
 		for (Route route : routes) {
@@ -46,7 +75,7 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 				shortestRoute = route;
 		}
 		
-		return shortestRoute;		
+		return shortestRoute;
 	}
 	
 	private void traverseAllPaths(Route continuedRoute, RouteElement current, RouteElement previous) {
@@ -54,13 +83,8 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 			|| (continuedRoute.brickLength() > 1 
 				&& current.equals(startPosition)
 				)
+			|| current instanceof StartLeg
 			) {
-			routes.remove(continuedRoute);
-			return;
-		}
-
-		else if (continuedRoute.brickLength() > 1 && current.equals(startPosition)) {
-			routes.remove(continuedRoute);
 			return;
 		}
 		
