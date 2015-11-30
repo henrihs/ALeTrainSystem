@@ -1,0 +1,337 @@
+Starting runtime...
+Nov 30, 2015 6:16:31 PM aletrainsystem.train.component.Component getTopics
+INFO: Subscribing to [trains.common.#, common.#, trains.01.#]
+Turn on pod battery box
+Press any key when ready
+up/down for big adjustments
+right/left for small adjustments
+Press ENTER when finished
+Nov 30, 2015 6:17:01 PM aletrainsystem.colorsensor.ColorSensor init
+INFO: Initialized
+Nov 30, 2015 6:17:01 PM aletrainsystem.mapcontroller.MapController init
+INFO: Initializing
+Nov 30, 2015 6:17:01 PM aletrainsystem.positionupdater.PositionUpdater logInit
+INFO: Initialized
+Nov 30, 2015 6:17:01 PM aletrainsystem.mapcontroller.MapController logInit
+INFO: Initialized
+Nov 30, 2015 6:17:01 PM aletrainsystem.routecontroller.RouteController logInit
+INFO: Initialized
+Nov 30, 2015 6:17:01 PM aletrainsystem.traincontroller.TrainController generateJoinMessage
+INFO: Initialized
+Nov 30, 2015 6:17:01 PM aletrainsystem.traincontroller.TrainController generateJoinMessage
+INFO: Sending Join message for train 01
+Nov 30, 2015 6:17:02 PM aletrainsystem.lockhandler.LockHandler setId
+INFO: Initialized
+Nov 30, 2015 6:17:02 PM aletrainsystem.lockparticipant.LockParticipant logInit
+INFO: Initialized
+Nov 30, 2015 6:17:07 PM aletrainsystem.train.component.Component newNullGreeting
+INFO: Timed out while waiting for greeting message, assuming this is the first train to enter the system
+Nov 30, 2015 6:17:07 PM aletrainsystem.traincontroller.TrainController getNextServedStation
+INFO: Heading to station 41383174d.62887372d
+lol
+Nov 30, 2015 6:17:10 PM aletrainsystem.routecontroller.RouteController$1 run
+INFO: Shortest route found is 27598891e.61836031e
+27598891d.57656175d
+52578955e.57656175e
+50527452d.52578955d
+50527452e.62925079d
+62887372e.62925079e
+41383174d.62887372d
+
+Nov 30, 2015 6:17:10 PM aletrainsystem.routecontroller.RouteController splitIntoSubRoutes
+INFO: Splitting route into 2 subroutes
+Nov 30, 2015 6:17:10 PM aletrainsystem.mapcontroller.MapController initCurrentRouteElement
+INFO: Waiting for lock on route 27598891e.61836031e
+27598891d.57656175d
+52578955e.57656175e
+50527452d.52578955d
+
+Nov 30, 2015 6:17:10 PM aletrainsystem.mapcontroller.MapController isRouteLocked
+INFO: Lock acquired for route 27598891e.61836031e
+27598891d.57656175d
+52578955e.57656175e
+50527452d.52578955d
+
+Nov 30, 2015 6:17:10 PM aletrainsystem.mapcontroller.MapController generateOrdersFromRoute
+INFO: Generated orders: [52578955:DIVERT, 27598891:DIVERT]
+Nov 30, 2015 6:17:15 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [61836031.]
+Nov 30, 2015 6:17:16 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110001: Received RELEASE for [61836031.]
+Nov 30, 2015 6:17:16 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [61836031THROUGH]
+Nov 30, 2015 6:17:16 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [61836031ENTRY]
+Nov 30, 2015 6:17:16 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110002: Received RELEASE for [61836031]
+Nov 30, 2015 6:17:19 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [27598891e.61836031e]
+Nov 30, 2015 6:17:19 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110003: Received RELEASE for [27598891e.61836031e]
+Nov 30, 2015 6:17:19 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [27598891ENTRY]
+Nov 30, 2015 6:17:19 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [27598891DIVERT]
+Nov 30, 2015 6:17:19 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110004: Received RELEASE for [27598891]
+Nov 30, 2015 6:17:24 PM aletrainsystem.traincontroller.TrainController generateGreeting
+INFO: Received join message from train 05, sending greeting
+Nov 30, 2015 6:17:25 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [27598891d.57656175d]
+Nov 30, 2015 6:17:25 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110005: Received RELEASE for [27598891d.57656175d]
+Nov 30, 2015 6:17:25 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [57656175DIVERT]
+Nov 30, 2015 6:17:26 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [57656175ENTRY, 57656175ENTRY]
+Nov 30, 2015 6:17:26 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110006: Received RELEASE for [57656175]
+Nov 30, 2015 6:17:27 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [52578955e.57656175e]
+Nov 30, 2015 6:17:27 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110007: Received RELEASE for [52578955e.57656175e]
+Nov 30, 2015 6:17:27 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [52578955ENTRY]
+Nov 30, 2015 6:17:27 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [52578955DIVERT]
+Nov 30, 2015 6:17:27 PM aletrainsystem.mapcontroller.MapController stopCommand
+INFO: Breaking at 1448907447734
+Nov 30, 2015 6:17:28 PM aletrainsystem.propultioncontroller.PropultionController changeSpeed
+INFO: Breaking complete at 1448907447999
+Nov 30, 2015 6:17:28 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110008: Received RELEASE for [52578955]
+Nov 30, 2015 6:17:28 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510001: Received RESERVE for [45563182d.66487809d, 27598891e.61836031e, 66487809, 61836031, 27598891t.66487809e, 27598891]
+Nov 30, 2015 6:17:33 PM aletrainsystem.mapcontroller.MapController initCurrentRouteElement
+INFO: Waiting for lock on route 50527452e.62925079d
+62887372e.62925079e
+41383174d.62887372d
+
+Nov 30, 2015 6:17:33 PM aletrainsystem.lockcoordinator.LockCoordinator saveInitParams
+INFO: Starting locking procedure 0110009
+Nov 30, 2015 6:17:33 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110009: Received RESERVE for [41383174d.62887372d, 62887372, 50527452, 62925079, 50527452e.62925079d, 62887372e.62925079e]
+Nov 30, 2015 6:17:34 PM aletrainsystem.lockcoordinator.LockCoordinator saveResponse
+INFO: 0110009: Received response from 05 - true
+Nov 30, 2015 6:17:34 PM aletrainsystem.lockcoordinator.LockCoordinator changeToPerformRequest
+INFO: 0110009: Performing lock
+Nov 30, 2015 6:17:34 PM aletrainsystem.mapcontroller.MapController isRouteLocked
+INFO: Lock acquired for route 50527452e.62925079d
+62887372e.62925079e
+41383174d.62887372d
+
+Nov 30, 2015 6:17:34 PM aletrainsystem.mapcontroller.MapController generateOrdersFromRoute
+INFO: Generated orders: [62887372:DIVERT]
+Nov 30, 2015 6:17:35 PM aletrainsystem.train.component.LockCoordinatorSM findSession
+SEVERE: Session map for LockCoordinator does not contain alias 0110009.
+Nov 30, 2015 6:17:36 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510002: Received RELEASE for [61836031.]
+Nov 30, 2015 6:17:37 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510003: Received RELEASE for [61836031]
+Nov 30, 2015 6:17:40 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510004: Received RELEASE for [27598891e.61836031e]
+Nov 30, 2015 6:17:40 PM aletrainsystem.positionupdater.PositionUpdater logIfUnexpectedConnector
+WARNING: Unexpected connector type! Expected 'DIVERT', actual 'ENTRY
+Nov 30, 2015 6:17:40 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510005: Received RELEASE for [27598891]
+Nov 30, 2015 6:17:43 PM aletrainsystem.positionupdater.PositionUpdater logIfUnexpectedConnector
+WARNING: Unexpected connector type! Expected 'ENTRY', actual 'DIVERT
+Nov 30, 2015 6:17:43 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [50527452d.52578955d]
+Nov 30, 2015 6:17:43 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110010: Received RELEASE for [50527452d.52578955d]
+Nov 30, 2015 6:17:44 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [50527452DIVERT]
+Nov 30, 2015 6:17:44 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510006: Received RELEASE for [27598891t.66487809e]
+Nov 30, 2015 6:17:44 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [50527452ENTRY]
+Nov 30, 2015 6:17:44 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110011: Received RELEASE for [50527452]
+Nov 30, 2015 6:17:45 PM aletrainsystem.positionupdater.PositionUpdater logIfUnexpectedConnector
+WARNING: Unexpected connector type! Expected 'DIVERT', actual 'ENTRY
+Nov 30, 2015 6:17:45 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510007: Received RELEASE for [66487809]
+Nov 30, 2015 6:17:47 PM aletrainsystem.positionupdater.PositionUpdater logIfUnexpectedConnector
+WARNING: Unexpected connector type! Expected 'ENTRY', actual 'DIVERT
+Nov 30, 2015 6:17:47 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [50527452e.62925079d]
+Nov 30, 2015 6:17:48 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110012: Received RELEASE for [50527452e.62925079d]
+Nov 30, 2015 6:17:48 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [62925079DIVERT]
+Nov 30, 2015 6:17:48 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [62925079ENTRY]
+Nov 30, 2015 6:17:48 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110013: Received RELEASE for [62925079]
+Nov 30, 2015 6:17:49 PM aletrainsystem.positionupdater.PositionUpdater logIfUnexpectedConnector
+WARNING: Unexpected connector type! Expected 'ENTRY', actual 'DIVERT
+Nov 30, 2015 6:17:50 PM aletrainsystem.positionupdater.PositionUpdater logIfUnexpectedConnector
+WARNING: Unexpected connector type! Expected 'DIVERT', actual 'ENTRY
+Nov 30, 2015 6:17:50 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [62887372e.62925079e]
+Nov 30, 2015 6:17:51 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110014: Received RELEASE for [62887372e.62925079e]
+Nov 30, 2015 6:17:51 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [62887372ENTRY]
+Nov 30, 2015 6:17:51 PM aletrainsystem.positionupdater.PositionUpdater logUnLock
+INFO: Passed [62887372DIVERT]
+Nov 30, 2015 6:17:51 PM aletrainsystem.mapcontroller.MapController stopCommand
+INFO: Breaking at 1448907471465
+Nov 30, 2015 6:17:51 PM aletrainsystem.propultioncontroller.PropultionController changeSpeed
+INFO: Breaking complete at 1448907471735
+Nov 30, 2015 6:17:51 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110015: Received RELEASE for [62887372]
+Nov 30, 2015 6:17:52 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510008: Received RESERVE for [41383174e.45563182e, 45563182d.66487809d, 45563182, 41383174t.62887372t, 41383174]
+Nov 30, 2015 6:17:53 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510008: Received PERFORM for [41383174e.45563182e, 45563182d.66487809d, 45563182, 41383174t.62887372t, 41383174]
+Nov 30, 2015 6:17:56 PM aletrainsystem.routecontroller.RouteController getNextSubRoute
+INFO: Route finished
+Nov 30, 2015 6:17:56 PM aletrainsystem.traincontroller.TrainController getNextServedStation
+INFO: Heading to station 29620820t.62920918t
+lol
+Nov 30, 2015 6:17:57 PM aletrainsystem.routecontroller.RouteController$1 run
+INFO: Shortest route found is 41383174d.62887372d
+41383174e.45563182e
+45563182t.66487809t
+27598891t.66487809e
+27598891e.61836031e
+29620820e.61836031d
+29620820t.62920918t
+
+Nov 30, 2015 6:17:57 PM aletrainsystem.routecontroller.RouteController splitIntoSubRoutes
+INFO: Splitting route into 2 subroutes
+Nov 30, 2015 6:17:57 PM aletrainsystem.mapcontroller.MapController initCurrentRouteElement
+INFO: Waiting for lock on route 41383174d.62887372d
+41383174e.45563182e
+45563182t.66487809t
+
+Nov 30, 2015 6:17:57 PM aletrainsystem.lockcoordinator.LockCoordinator saveInitParams
+INFO: Starting locking procedure 0110016
+Nov 30, 2015 6:17:57 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:17:57 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:17:57 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:17:58 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510009: Received RELEASE for [45563182d.66487809d]
+Nov 30, 2015 6:17:58 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:17:58 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:17:58 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:17:58 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:17:58 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510010: Received RELEASE for [45563182]
+Nov 30, 2015 6:18:02 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:02 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:02 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:02 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:03 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:03 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:03 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:03 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:05 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:05 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:05 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:05 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:06 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:06 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:06 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:06 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:08 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510011: Received RELEASE for [41383174e.45563182e]
+Nov 30, 2015 6:18:09 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0510012: Received RELEASE for [41383174]
+Nov 30, 2015 6:18:11 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:11 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:11 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:11 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:13 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:13 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:13 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:13 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:17 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:17 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:17 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:17 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:18 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:18 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:18 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:18 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:22 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:22 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:22 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:22 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:25 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:25 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:25 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:25 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:28 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:28 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:28 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:28 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:32 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:32 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:33 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:33 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
+Nov 30, 2015 6:18:34 PM aletrainsystem.lockcoordinator.LockCoordinator retry
+INFO: 0110016: Retrying
+Nov 30, 2015 6:18:34 PM aletrainsystem.lockparticipant.LockParticipant received
+INFO: 0110016: Received RESERVE for [41383174e.45563182e, 41383174d.62887372d, 45563182, 45563182t.66487809t, 41383174]
+Nov 30, 2015 6:18:34 PM aletrainsystem.lockcoordinator.LockCoordinator reservationAcquired
+INFO: Could not aquire lock, failed at internal check: 45563182t.66487809t:null, 41383174e.45563182e:05, 45563182:05, 41383174:05,
+Nov 30, 2015 6:18:34 PM aletrainsystem.lockcoordinator.LockCoordinator log
+INFO: Could not aquire lock, failed at internal reservation.
