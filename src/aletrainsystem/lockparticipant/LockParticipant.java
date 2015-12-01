@@ -85,7 +85,10 @@ public class LockParticipant extends Block {
 	public void lock() {
 		for (String lockableId : request.lockableIDs()) {
 			Lockable localInstance = getLocalInstance(lockableId);
-			if (localInstance.checkReservation() == null && localInstance.checkLock() == null ) {
+			if ((localInstance.checkReservation() == null 
+					|| localInstance.checkReservation().equals(request.collector())
+					) 
+					&& localInstance.checkLock() == null ) {
 				localInstance.performLock(request.collector());
 			}
 			
