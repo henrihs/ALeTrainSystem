@@ -100,14 +100,17 @@ public class RegularLeg extends RailLeg {
 	
 	@Override
 	public RouteElement[] getNext(RouteElement previous) {
-		if (previous == connectors.first()) {
-			return new RouteElement[] {connectors.second()};
+		if (previous instanceof PointConnector) {
+			Point previousPoint = ((PointConnector) previous).point();
+			if (previousPoint.equals(connectors.first().point())) {
+				return new RouteElement[] {connectors.second()};
+			}
+			else if (previousPoint.equals(connectors.second().point())) {
+				return new RouteElement[] {connectors.first()};
+			}			
 		}
-		else if (previous == connectors.second()) {
-			return new RouteElement[] {connectors.first()};
-		}
-		else
-			return null;
+		
+		return null;
 	}
 	
 	private int getRelativeDirection(PointConnector direction){
