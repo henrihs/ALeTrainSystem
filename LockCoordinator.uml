@@ -57,12 +57,20 @@
           <transition xmi:id="_EYZIyIeYEeWRLfKAue1ERQ" name="in / locked+out" source="_EYZIzIeYEeWRLfKAue1ERQ" target="_EYZIzYeYEeWRLfKAue1ERQ"/>
           <transition xmi:id="_m3t5IIiAEeWS0rERPEKd6g" name="in / out+retrying" source="_EYZIzIeYEeWRLfKAue1ERQ" target="__ROlMIiBEeWS0rERPEKd6g"/>
           <transition xmi:id="_L2-kwIiCEeWS0rERPEKd6g" name=" / internalOut" source="__ROlMIiBEeWS0rERPEKd6g" target="_EYZIyoeYEeWRLfKAue1ERQ"/>
+          <transition xmi:id="_tAj3QJhFEeWphtl19WTsSA" name="/ " source="_EYZIyoeYEeWRLfKAue1ERQ" target="_tCMO8JhFEeWphtl19WTsSA"/>
+          <transition xmi:id="_uk9pQJhFEeWphtl19WTsSA" name="/ " source="_EYZIy4eYEeWRLfKAue1ERQ" target="_ulB6sJhFEeWphtl19WTsSA"/>
+          <transition xmi:id="_vPFkUJhFEeWphtl19WTsSA" name="/ " source="_EYZIzIeYEeWRLfKAue1ERQ" target="_vPKc0JhFEeWphtl19WTsSA"/>
+          <transition xmi:id="_vuIQwJhFEeWphtl19WTsSA" name="/ " source="__ROlMIiBEeWS0rERPEKd6g" target="_vuNJQJhFEeWphtl19WTsSA"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_EYZIyYeYEeWRLfKAue1ERQ" name="&lt;initial>"/>
           <subvertex xmi:type="uml:State" xmi:id="_EYZIyoeYEeWRLfKAue1ERQ" name="waitingForSelfCheck"/>
           <subvertex xmi:type="uml:State" xmi:id="_EYZIy4eYEeWRLfKAue1ERQ" name="selfCheckReceived"/>
           <subvertex xmi:type="uml:State" xmi:id="_EYZIzIeYEeWRLfKAue1ERQ" name="waitingForParticipants"/>
           <subvertex xmi:type="uml:FinalState" xmi:id="_EYZIzYeYEeWRLfKAue1ERQ" name="&lt;final>"/>
           <subvertex xmi:type="uml:State" xmi:id="__ROlMIiBEeWS0rERPEKd6g" name="retrying"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_tCMO8JhFEeWphtl19WTsSA" name="&lt;final>"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_ulB6sJhFEeWphtl19WTsSA" name="&lt;final>"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_vPKc0JhFEeWphtl19WTsSA" name="&lt;final>"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_vuNJQJhFEeWphtl19WTsSA" name="&lt;final>"/>
         </region>
       </ownedBehavior>
       <ownedOperation xmi:id="_EYZIzoeYEeWRLfKAue1ERQ" name="getAlias"/>
@@ -345,4 +353,8 @@
   <graphics:Shape xmi:id="_afsF0I69EeWHC5QBWQCGDw" x="558" y="180" width="97" height="55" base_Element="_adl0EI69EeWHC5QBWQCGDw"/>
   <arctis:location xmi:id="_mtFk0JRlEeWMOc1E_7dksQ" base_Variable="_mtBTYJRlEeWMOc1E_7dksQ" partition="_EYZI4IeYEeWRLfKAue1ERQ"/>
   <graphics:Shape xmi:id="_mtGL4JRlEeWMOc1E_7dksQ" x="756" y="108" base_Element="_mtBTYJRlEeWMOc1E_7dksQ"/>
+  <arctis:event xmi:id="_tCJysJhFEeWphtl19WTsSA" base_Transition="_tAj3QJhFEeWphtl19WTsSA"/>
+  <arctis:event xmi:id="_ulAFgJhFEeWphtl19WTsSA" base_Transition="_uk9pQJhFEeWphtl19WTsSA"/>
+  <arctis:event xmi:id="_vPIAkJhFEeWphtl19WTsSA" base_Transition="_vPFkUJhFEeWphtl19WTsSA"/>
+  <arctis:event xmi:id="_vuKtAJhFEeWphtl19WTsSA" base_Transition="_vuIQwJhFEeWphtl19WTsSA"/>
 </xmi:XMI>

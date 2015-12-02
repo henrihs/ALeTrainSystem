@@ -10,8 +10,8 @@ import aletrainsystem.pointswitch.PointConnector;
 public abstract class RailLeg extends RouteElement implements Lockable {
 	
 	protected ArrayList<RailBrick> railBricks;
-	private volatile TrainId lockedBy = null;
-	private volatile TrainId reservedBy = null;
+	private TrainId lockedBy = null;
+	private TrainId reservedBy = null;
 	
 	protected RailLeg() {
 		railBricks = new ArrayList<>();
@@ -39,34 +39,34 @@ public abstract class RailLeg extends RouteElement implements Lockable {
 	public abstract PointConnector getOppositeConnector(PointConnector connector);
 	
 	@Override
-	public TrainId checkLock() {
+	public synchronized TrainId checkLock() {
 		return lockedBy;
 	}
 		
 	@Override
-	public TrainId checkReservation() {
+	public synchronized TrainId checkReservation() {
 		return reservedBy;
 	}
 	
 	@Override
-	public void reserveLock(TrainId owner) {
+	public synchronized void reserveLock(TrainId owner) {
 		if (reservedBy == null)
 			reservedBy = owner;
 	}
 	
 	@Override
-	public void releaseReservation() {
+	public synchronized void releaseReservation() {
 		reservedBy = null;		
 	}
 	
 	@Override
-	public void performLock(TrainId owner) {
+	public synchronized void performLock(TrainId owner) {
 		if (reservedBy == null || reservedBy.equals(owner))
 			lockedBy = owner;		
 	}
 	
 	@Override
-	public void unLock() {
+	public synchronized void unLock() {
 		reservedBy = null;
 		lockedBy = null;
 	}

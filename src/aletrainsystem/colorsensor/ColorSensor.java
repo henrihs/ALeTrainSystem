@@ -1,5 +1,10 @@
 package aletrainsystem.colorsensor;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
 import aletrainsystem.enums.SleeperColor;
 import lejos.hardware.Button;
 import lejos.hardware.ev3.LocalEV3;
@@ -20,15 +25,22 @@ public class ColorSensor extends Block {
 	private int lastDetectedColorId = -1;
 	private int lastRegisteredColorId = BACKGROUND_COLOR_ID;
 	private int readings;
+	private ArrayList<String> log = new ArrayList<String>();
+	private long previousLogging;
 
 	public SleeperColor readColor() {
-		float[] f = new float[SAMPLESIZE];
-		for (int i = 0; i < f.length; i++) {
-			colorSensor.fetchSample(f, i);
-			if (i > 0 && f[i] != f[i-1]) return null;
-		}
-
-		int detectedColorId = (int) f[0];
+//		float[] f = new float[SAMPLESIZE];
+//		for (int i = 0; i < f.length; i++) {
+//			colorSensor.fetchSample(f, i);
+//			if (i > 0 && f[i] != f[i-1]) return null;
+//		}
+//
+//		int detectedColorId = (int) f[0];
+		int detectedColorId = colorSensor.getColorID();
+		
+		long now = System.currentTimeMillis();
+		log.add(String.valueOf(now - previousLogging));
+		previousLogging = now;
 
 		if (detectedColorId == lastRegisteredColorId) {	
 			return null;
@@ -51,9 +63,28 @@ public class ColorSensor extends Block {
 	}
 
 	public void init() {
+		log = new ArrayList<>();
+		previousLogging = System.currentTimeMillis();
 		Button.LEDPattern(2);
 		colorSensor = new EV3ColorSensor(s1);
 		colorSensor.setFloodlight(Color.WHITE);
 		logger.info("Initialized");
+	}
+	
+	public void writeLogToFile() {
+		try {
+			PrintWriter writer = new PrintWriter("readerlog.txt", "UTF-8");
+			writer.println("Battery voltage: " + lejos.hardware.Battery.getVoltage());
+			for (String string : log) {
+				writer.println(string);
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -10,6 +10,7 @@ import aletrainsystem.models.locking.Lockable;
 import aletrainsystem.models.locking.Request;
 import aletrainsystem.models.locking.RequestType;
 import aletrainsystem.models.locking.TransactionId;
+import aletrainsystem.models.railroad.Railroad;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class LockHandler extends Block {
@@ -18,7 +19,8 @@ public class LockHandler extends Block {
 	public TrainId trainId;
 	public aletrainsystem.models.locking.Request request;
 	public java.util.Set<aletrainsystem.models.TrainId> participants;
-	public aletrainsystem.models.railroad.IRailroad railroad;
+	public aletrainsystem.models.railroad.Railroad railroad;
+	public java.util.Set<aletrainsystem.models.locking.Lockable> lockables;
 	
 	public TrainId setId(TrainId id) {
 		this.trainId = id;
@@ -56,9 +58,15 @@ public class LockHandler extends Block {
 	public Set<Lockable> forceLock(Set<Lockable> objects) {
 		for (Lockable lockable : objects) {
 			lockable.performLock(trainId);
+			railroad.updateLockableResource(lockable);
 		}
 		
 		return objects;
+	}
+
+	public Railroad updateRailroad(Set<Lockable> objects) {
+		objects.forEach(obj -> railroad.updateLockableResource(obj));
+		return railroad;
 	}
 
 }

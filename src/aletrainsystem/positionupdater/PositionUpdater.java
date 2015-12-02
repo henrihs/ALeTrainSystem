@@ -3,6 +3,7 @@ package aletrainsystem.positionupdater;
 import java.util.ArrayList;
 
 import aletrainsystem.enums.PointConnectorEnum;
+import aletrainsystem.enums.SleeperColor;
 import aletrainsystem.mapcontroller.MapController;
 import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.RailBrick;
@@ -157,5 +158,9 @@ public class PositionUpdater extends Block {
 	
 	public boolean isNextComponentPointConnector() {
 		return parent.position.lookAhead(parent.direction) instanceof PointConnector;
+	}
+	
+	public SleeperColor fakedPointConnector() {
+		return ((PointConnector) parent.position.lookAhead(parent.direction)).getType().color();
 	}
 }

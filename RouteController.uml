@@ -13,11 +13,15 @@
           <transition xmi:id="_e70FcIhzEeWS0rERPEKd6g" name="getNextSubRoute / routeFinished" source="_Xn06cIhzEeWS0rERPEKd6g" target="_Zsk8UIe2EeWS0rERPEKd6g"/>
           <transition xmi:id="_jw6MIIhzEeWS0rERPEKd6g" name="update / " source="_Xn06cIhzEeWS0rERPEKd6g" target="_Xn06cIhzEeWS0rERPEKd6g"/>
           <transition xmi:id="_fNnYgIliEeWbcpvolr7Psw" name=" / routeFinished" source="_c5wqAIe2EeWS0rERPEKd6g" target="_Zsk8UIe2EeWS0rERPEKd6g"/>
+          <transition xmi:id="_EULuwJhGEeWphtl19WTsSA" name="/ " source="_c5wqAIe2EeWS0rERPEKd6g" target="_EVvN8JhGEeWphtl19WTsSA"/>
+          <transition xmi:id="_E-AH0JhGEeWphtl19WTsSA" name="/ " source="_Xn06cIhzEeWS0rERPEKd6g" target="_E-CkEJhGEeWphtl19WTsSA"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_npgVE4FyEeW-IY1wb01b1A" name="&lt;initial>"/>
           <subvertex xmi:type="uml:State" xmi:id="_Zsk8UIe2EeWS0rERPEKd6g" name="idle"/>
           <subvertex xmi:type="uml:State" xmi:id="_c5wqAIe2EeWS0rERPEKd6g" name="calculating"/>
           <subvertex xmi:type="uml:FinalState" xmi:id="_lwFKcIe2EeWS0rERPEKd6g" name="&lt;final>"/>
           <subvertex xmi:type="uml:State" xmi:id="_Xn06cIhzEeWS0rERPEKd6g" name="onRoute"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_EVvN8JhGEeWphtl19WTsSA" name="&lt;final>"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_E-CkEJhGEeWphtl19WTsSA" name="&lt;final>"/>
         </region>
       </ownedBehavior>
       <ownedOperation xmi:id="_aUb78IFzEeW-IY1wb01b1A" name="initialize"/>
@@ -200,4 +204,6 @@
   <graphics:Shape xmi:id="_-zDE0I6qEeWHC5QBWQCGDw" x="198" y="144" width="55" height="19" base_Element="_-xSKQI6qEeWHC5QBWQCGDw" orientation="north"/>
   <graphics:Shape xmi:id="_AjbdUI6rEeWHC5QBWQCGDw" x="432" y="126" width="109" height="55" base_Element="_AibXwI6rEeWHC5QBWQCGDw"/>
   <graphics:Shape xmi:id="_1Uk68JeMEeWphtl19WTsSA" x="522" y="198" width="199" height="55" base_Element="_1ShFcZeMEeWphtl19WTsSA"/>
+  <arctis:event xmi:id="_EVt_0JhGEeWphtl19WTsSA" base_Transition="_EULuwJhGEeWphtl19WTsSA"/>
+  <arctis:event xmi:id="_E-Au4JhGEeWphtl19WTsSA" base_Transition="_E-AH0JhGEeWphtl19WTsSA"/>
 </xmi:XMI>

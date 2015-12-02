@@ -50,7 +50,7 @@ public class MapController extends Block {
 
 	public SpeedLevel stopCommand() {
 		String timestamp = String.valueOf(System.currentTimeMillis());
-		logger.info("Breaking at ".concat(timestamp));
+		logger.info("Issuing stop command at time ".concat(timestamp));
 		return SpeedLevel.STOPPED;
 	}
 
@@ -72,6 +72,7 @@ public class MapController extends Block {
 	}
 
 	public SpeedLevel driveCommand() {
+		logger.info("Issuing drive command");
 		return SpeedLevel.MEDIUM;
 	}
 
@@ -121,10 +122,5 @@ public class MapController extends Block {
 		}
 		logger.info("Generated orders: " + orders.toString());
 		return orders;
-	}
-
-	public RouteElement br(RouteElement r) {
-		System.out.println("lol");
-		return r;
 	}
 }

@@ -1,5 +1,10 @@
 package aletrainsystem.colorsensorthreaded;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
 import aletrainsystem.enums.SleeperColor;
 import lejos.hardware.Button;
 import lejos.hardware.ev3.LocalEV3;
@@ -20,52 +25,46 @@ public class ColorSensorThreaded extends Block {
 	public int readings;
 	public boolean stopped = false;
 	public java.lang.Thread sensorThread;
+	private ArrayList<String> log = new ArrayList<String>();
+	private long previousLogging;
 	public void init() {
 		Button.LEDPattern(2);
 		colorSensor = new EV3ColorSensor(s1);
 		colorSensor.setFloodlight(Color.WHITE);
+		log = new ArrayList<>();
+		previousLogging = System.currentTimeMillis();
 		logger.info("Initialized");
 		
 		Runnable r = new Runnable() {
 			public void run() {
 				while (!stopped) {
-//					float[] f = new float[SAMPLESIZE];
-//					for (int i = 0; i < f.length; i++) {
-//						colorSensor.fetchSample(f, i);
-//						if (i > 0 && f[i] != f[i - 1])
-//							continue;
-//					}
-//					int detectedColorId = (int) f[0];
-//					if (detectedColorId == lastRegisteredColorId) {
-//						continue;
-//					}
-//					if (detectedColorId != lastDetectedColorId) {
-//						lastDetectedColorId = detectedColorId;
-//						readings = 1;
-//						continue;
-//					}
-//					readings++;
-//					if (detectedColorId < HIGHEST_SIGNAL_COLOR_ID || readings == CONSECUTIVE_READINGS_REQUIREMENT) {
-//						lastRegisteredColorId = detectedColorId;
-//						if (detectedColorId != BACKGROUND_COLOR_ID) {
-//							sendToBlock("SLEEPER", SleeperColor.convertFromLejosColor(detectedColorId));
-//						}
-//					}
 					int detectedColorId = colorSensor.getColorID();
+					
+					long now = System.currentTimeMillis();
+					log.add(String.valueOf(now - previousLogging));
+					previousLogging = now;
+
+					if (detectedColorId == lastRegisteredColorId) {	
+						sleep();
+						continue;
+					}
 
 					if (detectedColorId != lastDetectedColorId) {
 						lastDetectedColorId = detectedColorId;
+						readings = 1;
+						sleep();
+						continue;
 					}
 
-					else if (detectedColorId != BACKGROUND_COLOR_ID) {
-						sendToBlock("SLEEPER", SleeperColor.convertFromLejosColor(detectedColorId));
+					readings++;
+					if (detectedColorId < HIGHEST_SIGNAL_COLOR_ID || readings == CONSECUTIVE_READINGS_REQUIREMENT) {
+						lastRegisteredColorId = detectedColorId;
+						if (detectedColorId != BACKGROUND_COLOR_ID) {
+							sendToBlock("SLEEPER", SleeperColor.convertFromLejosColor(detectedColorId));
+						}
 					}
 
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					sleep();
 				}
 			}
 		};
@@ -75,5 +74,31 @@ public class ColorSensorThreaded extends Block {
 
 	public void stop() {
 		stopped = true;
+		writeLogToFile();
+	}
+	
+	public void sleep(){
+		try {
+			Thread.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void writeLogToFile() {
+		try {
+			PrintWriter writer = new PrintWriter("readerlog.txt", "UTF-8");
+			writer.println("Battery voltage: " + lejos.hardware.Battery.getVoltage());
+			for (String string : log) {
+				writer.println(string);
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -42,6 +42,7 @@ public class Component extends Block {
 	public void writeLogToFile() {
 		try {
 			PrintWriter writer = new PrintWriter("colorsensorlog.txt", "UTF-8");
+			writer.println("Battery voltage: " + lejos.hardware.Battery.getVoltage());
 			for (String string : log) {
 				writer.println(string);
 			}
@@ -53,6 +54,9 @@ public class Component extends Block {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void printBatteryLevel() {
 	}
 
 //	public void initColorReader() {

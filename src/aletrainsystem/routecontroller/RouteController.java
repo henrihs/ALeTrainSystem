@@ -9,6 +9,8 @@ import aletrainsystem.models.navigation.Route;
 import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.RailLeg;
 import aletrainsystem.models.railroad.RegularLeg;
+import aletrainsystem.pointswitch.Point;
+import aletrainsystem.pointswitch.PointConnector;
 import no.ntnu.item.arctis.runtime.Block;
 
 public class RouteController extends Block {
@@ -25,7 +27,13 @@ public class RouteController extends Block {
 			@Override
 			public void run() {
 				ShortestPathUniDirectional algorithm = new GreedyAlgorithm();
-				RailLeg start = (RailLeg) currentPosition.head().partOfElement();
+				RailLeg start = null;
+				if (currentPosition.head() instanceof PointConnector) {
+					start = currentPosition.getPreviousBrick().parentLeg();
+				}
+				else {
+					start = (RailLeg) currentPosition.head().partOfElement();				
+				}
 				Route shortestRoute = algorithm.findSingleShortestPath(railroad, start, destination, currentDirection);
 				logger.info("Shortest route found is ".concat(shortestRoute.toString()));
 				sendToBlock("ROUTECALCULATED", shortestRoute);

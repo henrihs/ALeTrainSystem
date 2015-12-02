@@ -23,6 +23,7 @@ public class HeadState extends Block {
 		return passed == SleeperColor.regularSleeper();
 	}
 	
+	
 	public boolean isValidColor() {
 		return VALID_COLORS.contains(passed);
 	}

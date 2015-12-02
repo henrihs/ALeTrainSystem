@@ -36,6 +36,7 @@ public class TrainController extends Block {
 		RailroadBuilder builder = new RailroadBuilder();
 		railroad = builder.build((String) getProperty(IRailroad.PROPERTYNAME));
 		initServedStationList();
+		trainsInProximity = new HashSet<>();
 	}
 
 	private void initServedStationList() {
@@ -69,9 +70,6 @@ public class TrainController extends Block {
 			updateRailroadFromGreeting(greeting);
 			
 			trainsInProximity = greeting.trainsInSystem();			
-		}
-		else {
-			trainsInProximity = new HashSet<>();
 		}
 	}
 
