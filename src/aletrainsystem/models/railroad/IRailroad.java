@@ -10,13 +10,15 @@ public interface IRailroad {
 		
 	public boolean isStation(String railLegId);
 	
-	public boolean isStation(RegularLeg railLeg);
-	
 	public RouteElement getRouteElement(String id);
 	
 	public Point findOrAddPoint(String railComponentId);
 	
-	public StartLeg getRailSystemStartLeg();
+	public RailLeg findRailLeg(String id);
+	
+	public Point findPoint(String id);
+	
+	public RailLeg getRailSystemStartLeg();
 	
 	public Lockable getLockableResource(String id);
 }

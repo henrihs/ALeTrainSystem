@@ -12,10 +12,12 @@ public abstract class RailLeg extends RouteElement implements Lockable {
 	protected ArrayList<RailBrick> railBricks;
 	private TrainId lockedBy = null;
 	private TrainId reservedBy = null;
-	
+	private RailLegId id = null;
 	protected RailLeg() {
 		railBricks = new ArrayList<>();
 	}
+	
+	public abstract RailLegId id();
 	
 	public int length(){
 		return railBricks.size();

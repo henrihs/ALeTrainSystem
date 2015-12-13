@@ -18,9 +18,9 @@ import aletrainsystem.pointswitch.PointConnector;
 public class Railroad implements IRailroad {
 
 	private ConcurrentHashMap<String, Point> points;
-	private ConcurrentHashMap<String, RegularLeg> legs;
+	private ConcurrentHashMap<String, RailLeg> legs;
 	private Set<PointConnector> connectedPointConnectors;
-	private StartLeg railSystemEntryPoint;
+	private RailLeg railSystemEntryPoint;
 
 	protected Railroad(){
 		points = new ConcurrentHashMap<>();
@@ -75,7 +75,7 @@ public class Railroad implements IRailroad {
 		return resources;
 	}
 
-	Map<String, RegularLeg> getRailLegs(){
+	Map<String, RailLeg> getRailLegs(){
 		return legs;
 	}
 	
@@ -114,7 +114,7 @@ public class Railroad implements IRailroad {
 		this.railSystemEntryPoint = railSystemEntryPoint;
 	}
 
-	public StartLeg getRailSystemStartLeg() {
+	public RailLeg getRailSystemStartLeg() {
 		return railSystemEntryPoint;
 	}
 
@@ -126,12 +126,15 @@ public class Railroad implements IRailroad {
 		return isStation(findRailLeg(railLegId));
 	}
 
-	public boolean isStation(RegularLeg railLeg){
-		if (railLeg == null || !legs.containsKey((railLeg.id().toString()))){
+	public boolean isStation(RailLeg railLeg){
+		if (railLeg == null 
+				|| !legs.containsKey((railLeg.id().toString()))
+				|| !(railLeg instanceof RegularLeg)
+				){
 			return false;
 		}
 
-		ConnectorPair connectors = railLeg.getConnectors();
+		ConnectorPair connectors = ((RegularLeg)railLeg).getConnectors();
 		if (connectors.bothOfType(PointConnectorEnum.DIVERT)){
 			RailLegId parallelRailLegId = new RailLegId(
 					connectors.first().point().getConnector(PointConnectorEnum.THROUGH), 
@@ -152,11 +155,11 @@ public class Railroad implements IRailroad {
 		return false;
 	}
 
-	public RegularLeg findRailLeg(String railLegId) {
+	public RailLeg findRailLeg(String railLegId) {
 		return legs.get(railLegId);
 	}
 
-	public RegularLeg findRailLeg(RailLegId railLegId){
+	public RailLeg findRailLeg(RailLegId railLegId){
 		return findRailLeg(railLegId.value());
 	}
 

@@ -1,5 +1,5 @@
 package aletrainsystem.models.railroad;
 
-public interface IRailRoadBuilder<IRailroad> {
+public interface IRailRoadBuilder {
 	public IRailroad build(String filePath);
 }

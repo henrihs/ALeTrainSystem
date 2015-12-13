@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="aletrainsystem.models.railroad.Railroad" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/Railroad.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="493" width="273" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="aletrainsystem.pointswitch.PointConnector" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/pointswitch/PointConnector.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="186" y="726"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="aletrainsystem.pointswitch.Point" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/pointswitch/Point.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="727" y="442"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" language="java" name="aletrainsystem.models.railroad.RailComponent" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/RailComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="552" y="948"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="aletrainsystem.models.navigation.RouteElement" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/navigation/RouteElement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-283" y="646"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="aletrainsystem.models.railroad.RailLeg" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/RailLeg.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-287" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="aletrainsystem.models.railroad.RailBrick" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/RailBrick.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-414" y="947"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="aletrainsystem.models.railroad.RailroadBuilder" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/RailroadBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="183" y="-87"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="9" language="java" name="aletrainsystem.enums.PointConnectorEnum" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/enums/PointConnectorEnum.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="944" y="801"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="10" language="java" name="aletrainsystem.models.RailComponentId" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/RailComponentId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-18" y="1041"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="aletrainsystem.models.railroad.RailLegId" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/RailLegId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="314" x="-444" y="-177"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="aletrainsystem.models.railroad.IRailroad" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/IRailroad.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="677" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="13" language="java" name="aletrainsystem.models.railroad.IRailRoadBuilder" project="aletrainsystem" 
+    file="/aletrainsystem/src/aletrainsystem/models/railroad/IRailRoadBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="678" y="-85"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <realization id="14">    
+    <bendpoint x="314" y="116"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <association id="15">    
+    <bendpoint x="-474" y="843"/>    
+    <bendpoint x="-474" y="403"/>    
+    <bendpoint x="-444" y="403"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="16" name="parentLeg">        
+        <position height="17" width="57" x="-470" y="407"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="1">        
+        <position height="15" width="23" x="-453" y="425"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
+    <bendpoint x="187" y="503"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="19" name="connectedPointConnectors">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="21">    
+    <bendpoint x="329" y="789"/>    
+    <bendpoint x="552" y="789"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <association id="22">    
+    <bendpoint x="-289" y="994"/>    
+    <bendpoint x="-119" y="994"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="23" name="id"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <bendpoint x="325" y="766"/>    
+    <bendpoint x="775" y="766"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="26" name="connector"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="28">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="29">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <generalization id="31">    
+    <bendpoint x="49" y="646"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="32">    
+    <bendpoint x="728" y="1041"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="33" name="id"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <bendpoint x="40" y="158"/>    
+    <bendpoint x="-93" y="158"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="36" name="legs">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <bendpoint x="325" y="628"/>    
+    <bendpoint x="424" y="628"/>    
+    <bendpoint x="424" y="563"/>    
+    <bendpoint x="555" y="563"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="39" name="point">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <bendpoint x="48" y="599"/>    
+    <bendpoint x="-124" y="599"/>    
+    <bendpoint x="-124" y="396"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="42" name="connectedRailLeg">        
+        <position height="17" width="93" x="-120" y="397"/>      
+      </attribute>      
+      <multiplicity id="43" minimum="0" maximum="1">        
+        <position height="15" width="23" x="-119" y="416"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="45" name="id"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="47">    
+    <bendpoint x="184" y="57"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="48">    
+    <bendpoint x="315" y="358"/>    
+    <bendpoint x="562" y="358"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="49" name="points">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <bendpoint x="728" y="727"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="52" name="connectors">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <bendpoint x="-401" y="409"/>    
+    <bendpoint x="-401" y="840"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="55" name="railBricks">        
+        <position height="17" width="52" x="-399" y="798"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <bendpoint x="33" y="229"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="58" name="railSystemEntryPoint">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="60">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="false" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
