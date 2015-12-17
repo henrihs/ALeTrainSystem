@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import aletrainsystem.enums.PointConnectorEnum;
 import aletrainsystem.models.navigation.Position;
 import aletrainsystem.models.navigation.Route;
+import aletrainsystem.models.navigation.RouteDescriptor;
 import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.*;
 import aletrainsystem.pointswitch.PointConnector;
@@ -27,8 +28,15 @@ public class GreedyAlgorithmTests {
 		RailLeg start = (RailLeg) railroad.getRouteElement("41383174d.62887372d");
 		PointConnector direction = (PointConnector) railroad.getRouteElement("41383174e"); 
 		RouteElement station = railroad.getRouteElement("29620820t.62920918t");	
+		RouteDescriptor descriptor = new RouteDescriptor(start, station);
 		
-		Route shortestRoute = greedy.findSingleShortestPath(railroad, start, station, direction);
+		Route shortestRoute = null;
+		try {
+			shortestRoute = greedy.findSingleShortestPath(railroad, descriptor, direction);
+		} catch (RouteNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		System.out.println(shortestRoute);
 	}

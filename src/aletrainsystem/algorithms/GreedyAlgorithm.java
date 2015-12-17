@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import aletrainsystem.models.RailComponentId;
 import aletrainsystem.models.navigation.Position;
 import aletrainsystem.models.navigation.Route;
+import aletrainsystem.models.navigation.RouteDescriptor;
 import aletrainsystem.models.navigation.RouteElement;
 import aletrainsystem.models.railroad.IRailroad;
 import aletrainsystem.models.railroad.RailBrick;
@@ -20,40 +21,10 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	private RouteElement startPosition;
 	private IRailroad railroad;
 
-	// public Route findSingleShortestPath(IRailroad railroad, Position
-	// position, RouteElement destination, PointConnector direction) {
-	// finalDestination = destination;
-	// this.railroad = railroad;
-	// routes = new ArrayList<>();
-	//
-	// RouteElement previous;
-	//
-	// if (position.headIsInPointSwitch()) {
-	// startPosition = (RouteElement) position.head();
-	// previous = position.getPreviousBrick().parentLeg();
-	// }
-	// else {
-	// RailBrick startBrick = (RailBrick)position.head();
-	// startPosition = startBrick.parentLeg();
-	// previous = ((RegularLeg)startPosition).getOppositeConnector(direction);
-	// }
-	//
-	// traverseAllPaths(new Route(), startPosition, previous);
-	//
-	// Route shortestRoute = null;
-	// for (Route route : routes) {
-	// if (shortestRoute == null
-	// || route.brickLength() < shortestRoute.brickLength())
-	// shortestRoute = route;
-	// }
-	//
-	// return shortestRoute;
-	// }
-
 	@Override
-	public Route findSingleShortestPath(IRailroad railroad, RailLeg start, RouteElement destination,
-			PointConnector direction) {
-		finalDestination = destination;
+	public Route findSingleShortestPath(IRailroad railroad, RouteDescriptor routeDescriptor, PointConnector direction) throws RouteNotFoundException {
+		finalDestination = routeDescriptor.getDestination();
+		RailLeg start = routeDescriptor.getStart();
 		this.railroad = railroad;
 		routes = new ArrayList<>();
 		RouteElement previous = null;
@@ -74,6 +45,10 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 			if (shortestRoute == null || route.brickLength() < shortestRoute.brickLength())
 				shortestRoute = route;
 		}
+		
+		if (shortestRoute == null) {
+			throw new RouteNotFoundException(routeDescriptor);
+		}
 
 		return shortestRoute;
 	}
@@ -91,6 +66,9 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 		}
 
 		RouteElement[] next = current.getNext(previous);
+		if (next == null || next.length < 1) {
+			return;
+		}
 
 		if (next.length == 1) {
 			traverseAllPaths(continuedRoute, next[0], current);
