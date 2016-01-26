@@ -280,7 +280,7 @@
       <appliedProfile href="pathmap://RAMSES_GRAPHIC_PROFILES/no.ntnu.item.ramses.graphicprofile.uml#_UEANMUVlEduH9aQE_pc66w"/>
     </profileApplication>
   </uml:Package>
-  <graphics:Shape xmi:id="_H9zLIIkvEeWbcpvolr7Psw" x="180" y="55" width="1009" height="55" base_Element="_H8UkcYkvEeWbcpvolr7Psw"/>
+  <graphics:Shape xmi:id="_H9zLIIkvEeWbcpvolr7Psw" x="180" y="55" width="1045" height="55" base_Element="_H8UkcYkvEeWbcpvolr7Psw"/>
   <graphics:Shape xmi:id="_H9zyMIkvEeWbcpvolr7Psw" x="180" y="108" width="1045" height="847" base_Element="_H8VLgIkvEeWbcpvolr7Psw"/>
   <arctis:esm xmi:id="_H-EQ4IkvEeWbcpvolr7Psw" base_StateMachine="_H-Dp0IkvEeWbcpvolr7Psw"/>
   <graphics:Shape xmi:id="_OCyMYIkvEeWbcpvolr7Psw" x="54" y="162" base_Element="_OBTlsIkvEeWbcpvolr7Psw" orientation="west"/>

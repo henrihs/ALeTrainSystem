@@ -1,4 +1,3 @@
-Battery voltage: 7.970302
 158
 10
 7

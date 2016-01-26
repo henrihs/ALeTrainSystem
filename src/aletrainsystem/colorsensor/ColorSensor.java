@@ -38,9 +38,9 @@ public class ColorSensor extends Block {
 //		int detectedColorId = (int) f[0];
 		int detectedColorId = colorSensor.getColorID();
 		
-		long now = System.currentTimeMillis();
-		log.add(String.valueOf(now - previousLogging));
-		previousLogging = now;
+//		long now = System.currentTimeMillis();
+//		log.add(String.valueOf(now - previousLogging));
+//		previousLogging = now;
 
 		if (detectedColorId == lastRegisteredColorId) {	
 			return null;
@@ -71,20 +71,20 @@ public class ColorSensor extends Block {
 		logger.info("Initialized");
 	}
 	
-	public void writeLogToFile() {
-		try {
-			PrintWriter writer = new PrintWriter("readerlog.txt", "UTF-8");
-			writer.println("Battery voltage: " + lejos.hardware.Battery.getVoltage());
-			for (String string : log) {
-				writer.println(string);
-			}
-			writer.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public void writeLogToFile() {
+//		try {
+//			PrintWriter writer = new PrintWriter("readerlog.txt", "UTF-8");
+//			writer.println("Battery voltage: " + lejos.hardware.Battery.getVoltage());
+//			for (String string : log) {
+//				writer.println(string);
+//			}
+//			writer.close();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

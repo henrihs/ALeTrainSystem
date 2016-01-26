@@ -74,10 +74,10 @@ public class ColorSensorThreaded extends Block {
 
 	public void stop() {
 		stopped = true;
-		writeLogToFile();
+//		writeLogToFile();
 	}
 	
-	public void sleep(){
+	private void sleep(){
 		try {
 			Thread.sleep(5);
 		} catch (InterruptedException e) {
@@ -85,20 +85,20 @@ public class ColorSensorThreaded extends Block {
 		}
 	}
 	
-	public void writeLogToFile() {
-		try {
-			PrintWriter writer = new PrintWriter("readerlog.txt", "UTF-8");
-			writer.println("Battery voltage: " + lejos.hardware.Battery.getVoltage());
-			for (String string : log) {
-				writer.println(string);
-			}
-			writer.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public void writeLogToFile() {
+//		try {
+//			PrintWriter writer = new PrintWriter("readerlog.txt", "UTF-8");
+//			writer.println("Battery voltage: " + lejos.hardware.Battery.getVoltage());
+//			for (String string : log) {
+//				writer.println(string);
+//			}
+//			writer.close();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

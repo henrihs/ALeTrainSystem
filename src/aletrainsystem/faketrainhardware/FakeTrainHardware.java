@@ -76,10 +76,6 @@ public class FakeTrainHardware extends Block {
 		frame.setVisible(true);
 		logger.info("Initialized");
 	}
-	
-	public boolean isMoving() {
-		return speedLevel != SpeedLevel.STOPPED;
-	}
 
 	public void setSpeedLevel(SpeedLevel level) {
 		speedLevel = level;
