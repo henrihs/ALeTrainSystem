@@ -22,15 +22,9 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 	private IRailroad railroad;
 
 	@Override
-<<<<<<< HEAD
 	public Route findSingleShortestPath(IRailroad railroad, RouteDescriptor routeDescriptor, PointConnector direction) throws RouteNotFoundException {
 		finalDestination = routeDescriptor.getDestination();
 		RailLeg start = routeDescriptor.getStart();
-=======
-	public Route findSingleShortestPath(IRailroad railroad, RouteDescriptor routeDescritor, PointConnector direction) throws RouteNotFoundException {
-		finalDestination = routeDescritor.getDestination();
-		RailLeg start = routeDescritor.getStart();
->>>>>>> ec96013b6c0f884922639ca66aaa40160f9e2d6d
 		this.railroad = railroad;
 		routes = new ArrayList<>();
 		RouteElement previous = null;
@@ -53,11 +47,7 @@ public class GreedyAlgorithm implements ShortestPathUniDirectional {
 		}
 		
 		if (shortestRoute == null) {
-<<<<<<< HEAD
 			throw new RouteNotFoundException(routeDescriptor);
-=======
-			throw new RouteNotFoundException(routeDescritor);
->>>>>>> ec96013b6c0f884922639ca66aaa40160f9e2d6d
 		}
 
 		return shortestRoute;
