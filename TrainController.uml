@@ -805,4 +805,7 @@
   <arctis:event xmi:id="_SsBucaV1EeW3eMLffoz_sw" base_Transition="_SsBucKV1EeW3eMLffoz_sw" triggers="_Snd-kKV1EeW3eMLffoz_sw"/>
   <arctis:event xmi:id="_SsC8kKV1EeW3eMLffoz_sw" base_Transition="_SsCVgKV1EeW3eMLffoz_sw" effects="_SneloKV1EeW3eMLffoz_sw"/>
   <arctis:event xmi:id="_SsDjoaV1EeW3eMLffoz_sw" base_Transition="_SsDjoKV1EeW3eMLffoz_sw" effects="_SneloqV1EeW3eMLffoz_sw"/>
+  <arctis:event xmi:id="_9TfDYJkaEeWg_dFrMxneJA" base_Transition="_9SBq0JkaEeWg_dFrMxneJA" effects="_6svR84ezEeWS0rERPEKd6g _eV-r7o4CEeWhyqPFGZmtAQ _uvSjAIkoEeWbcpvolr7Psw"/>
+  <arctis:event xmi:id="_9TgRgZkaEeWg_dFrMxneJA" base_Transition="_9TgRgJkaEeWg_dFrMxneJA" effects="_6svR84ezEeWS0rERPEKd6g _eV-r7o4CEeWhyqPFGZmtAQ _uvSjAIkoEeWbcpvolr7Psw"/>
+  <arctis:event xmi:id="_9Tg4kpkaEeWg_dFrMxneJA" base_Transition="_9Tg4kZkaEeWg_dFrMxneJA" effects="_uvSjAIkoEeWbcpvolr7Psw"/>
 </xmi:XMI>
